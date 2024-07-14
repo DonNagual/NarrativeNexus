@@ -11,7 +11,11 @@
     <None Include="..\..\Source\NarrativeNexusEditor.Target.cs">
       <Filter>Source</Filter>
     </None>
+    <None Include="..\..\.gitattributes" />
+    <None Include="..\..\.gitignore" />
     <None Include="..\..\.vsconfig" />
+    <None Include="..\..\LICENSE.txt" />
+    <None Include="..\..\README.md" />
     <Filter Include="Config">
       <UniqueIdentifier>{FA535FFB-25E1-3D20-B416-52F9BE21E06E}</UniqueIdentifier>
     </Filter>
@@ -102,6 +106,9 @@
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Game\NN_Cpp_Widget_GameInventory.cpp">
       <Filter>Source\NarrativeNexus\Private\Widgets\Game</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Game\NN_Cpp_Widget_GameMenu.cpp">
+      <Filter>Source\NarrativeNexus\Private\Widgets\Game</Filter>
+    </ClCompile>
     <Filter Include="Source\NarrativeNexus\Private\Widgets\Main">
       <UniqueIdentifier>{E6197E41-7F22-3ACE-8E36-B7A5817F6607}</UniqueIdentifier>
     </Filter>
@@ -175,6 +182,9 @@
       <Filter>Source\NarrativeNexus\Public\Widgets\Game</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Game\NN_Cpp_Widget_GameInventory.h">
+      <Filter>Source\NarrativeNexus\Public\Widgets\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Game\NN_Cpp_Widget_GameMenu.h">
       <Filter>Source\NarrativeNexus\Public\Widgets\Game</Filter>
     </ClInclude>
     <Filter Include="Source\NarrativeNexus\Public\Widgets\Main">

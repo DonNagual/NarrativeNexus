@@ -22,22 +22,35 @@ void ANN_Cpp_PlayerController::QuitGame()
 	ConsoleCommand("quit");
 }
 
-void ANN_Cpp_PlayerController::ShowSubWidget(UUserWidget* SubWidget)
-{
-	if (CategoryWidget)
-	{
-		if (auto MainWidget = Cast<UNN_Cpp_Widget_Main>(CategoryWidget))
-		{
-			MainWidget->HideAllSubWidgets();
-			MainWidget->ShowSubWidget(SubWidget);
-		}
-		else if (auto CreatorWidget = Cast<UNN_Cpp_Widget_Creator>(CategoryWidget))
-		{
-			CreatorWidget->HideAllSubWidgets();
-			CreatorWidget->ShowSubWidget(SubWidget);
-		}
-	}
-}
+//UUserWidget* ANN_Cpp_PlayerController::GetMainWidget()
+//{
+//	if (CategoryWidget)
+//	{
+//		auto MainWidget = Cast<UNN_Cpp_Widget_Category>(CategoryWidget);
+//		if (MainWidget)
+//		{
+//			return MainWidget->GetMainWidget();
+//		}
+//	}
+//	return nullptr;
+//}
+
+//void ANN_Cpp_PlayerController::ShowSubWidget(UUserWidget* SubWidget)
+//{
+//	if (CategoryWidget)
+//	{
+//		if (auto MainWidget = Cast<UNN_Cpp_Widget_Main>(CategoryWidget))
+//		{
+//			MainWidget->HideAllSubWidgets();
+//			MainWidget->ShowSubWidget(SubWidget);
+//		}
+//		else if (auto CreatorWidget = Cast<UNN_Cpp_Widget_Creator>(CategoryWidget))
+//		{
+//			CreatorWidget->HideAllSubWidgets();
+//			CreatorWidget->ShowSubWidget(SubWidget);
+//		}
+//	}
+//}
 
 void ANN_Cpp_PlayerController::HideAllSubWidgets()
 {
@@ -54,23 +67,24 @@ void ANN_Cpp_PlayerController::HideAllSubWidgets()
 	}
 }
 
-UUserWidget* ANN_Cpp_PlayerController::GetMainMenuWidget()
-{
-	if (auto MainWidget = Cast<UNN_Cpp_Widget_Main>(CategoryWidget))
-	{
-		return MainWidget->MainMenuWidget;
-	}
-	return nullptr;
-}
 
-UUserWidget* ANN_Cpp_PlayerController::GetMainOptionsWidget()
-{
-	if (auto MainWidget = Cast<UNN_Cpp_Widget_Main>(CategoryWidget))
-	{
-		return MainWidget->MainOptionsWidget;
-	}
-	return nullptr;
-}
+//UUserWidget* ANN_Cpp_PlayerController::GetMainMenuWidget()
+//{
+//	if (auto MainWidget = Cast<UNN_Cpp_Widget_Main>(CategoryWidget))
+//	{
+//		return MainWidget->MainMenuWidget;
+//	}
+//	return nullptr;
+//}
+//
+//UUserWidget* ANN_Cpp_PlayerController::GetMainOptionsWidget()
+//{
+//	if (auto MainWidget = Cast<UNN_Cpp_Widget_Main>(CategoryWidget))
+//	{
+//		return MainWidget->MainOptionsWidget;
+//	}
+//	return nullptr;
+//}
 
 void ANN_Cpp_PlayerController::SetCategoryWidget(UUserWidget* InCategoryWidget)
 {

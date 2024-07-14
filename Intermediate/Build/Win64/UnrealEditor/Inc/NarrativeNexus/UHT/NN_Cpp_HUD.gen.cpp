@@ -39,19 +39,17 @@ struct Z_Construct_UClass_ANN_Cpp_HUD_Statics
 		{ "ModuleRelativePath", "Public/General/NN_Cpp_HUD.h" },
 		{ "ShowCategories", "Input|MouseInput Input|TouchInput" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_CategoryWidget_MetaData[] = {
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_CategoryWidgetClass_MetaData[] = {
 		{ "Category", "UI Category" },
 		{ "ModuleRelativePath", "Public/General/NN_Cpp_HUD.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_WidgetInstances_MetaData[] = {
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_CategoryWidget_MetaData[] = {
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/General/NN_Cpp_HUD.h" },
 	};
 #endif // WITH_METADATA
-	static const UECodeGen_Private::FClassPropertyParams NewProp_CategoryWidget;
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_WidgetInstances_ValueProp;
-	static const UECodeGen_Private::FClassPropertyParams NewProp_WidgetInstances_Key_KeyProp;
-	static const UECodeGen_Private::FMapPropertyParams NewProp_WidgetInstances;
+	static const UECodeGen_Private::FClassPropertyParams NewProp_CategoryWidgetClass;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_CategoryWidget;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -59,15 +57,11 @@ struct Z_Construct_UClass_ANN_Cpp_HUD_Statics
 	};
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
-const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_ANN_Cpp_HUD_Statics::NewProp_CategoryWidget = { "CategoryWidget", nullptr, (EPropertyFlags)0x0024080000000005, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANN_Cpp_HUD, CategoryWidget), Z_Construct_UClass_UClass, Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CategoryWidget_MetaData), NewProp_CategoryWidget_MetaData) };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ANN_Cpp_HUD_Statics::NewProp_WidgetInstances_ValueProp = { "WidgetInstances", nullptr, (EPropertyFlags)0x0000000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 1, Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_ANN_Cpp_HUD_Statics::NewProp_WidgetInstances_Key_KeyProp = { "WidgetInstances_Key", nullptr, (EPropertyFlags)0x0004000000080008, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, 0, Z_Construct_UClass_UClass, Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(0, nullptr) };
-const UECodeGen_Private::FMapPropertyParams Z_Construct_UClass_ANN_Cpp_HUD_Statics::NewProp_WidgetInstances = { "WidgetInstances", nullptr, (EPropertyFlags)0x0040008000000008, UECodeGen_Private::EPropertyGenFlags::Map, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANN_Cpp_HUD, WidgetInstances), EMapPropertyFlags::None, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_WidgetInstances_MetaData), NewProp_WidgetInstances_MetaData) };
+const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_ANN_Cpp_HUD_Statics::NewProp_CategoryWidgetClass = { "CategoryWidgetClass", nullptr, (EPropertyFlags)0x0024080000000005, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANN_Cpp_HUD, CategoryWidgetClass), Z_Construct_UClass_UClass, Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CategoryWidgetClass_MetaData), NewProp_CategoryWidgetClass_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ANN_Cpp_HUD_Statics::NewProp_CategoryWidget = { "CategoryWidget", nullptr, (EPropertyFlags)0x0040000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANN_Cpp_HUD, CategoryWidget), Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CategoryWidget_MetaData), NewProp_CategoryWidget_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ANN_Cpp_HUD_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANN_Cpp_HUD_Statics::NewProp_CategoryWidgetClass,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANN_Cpp_HUD_Statics::NewProp_CategoryWidget,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANN_Cpp_HUD_Statics::NewProp_WidgetInstances_ValueProp,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANN_Cpp_HUD_Statics::NewProp_WidgetInstances_Key_KeyProp,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANN_Cpp_HUD_Statics::NewProp_WidgetInstances,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_ANN_Cpp_HUD_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_ANN_Cpp_HUD_Statics::DependentSingletons[])() = {
@@ -111,10 +105,10 @@ ANN_Cpp_HUD::~ANN_Cpp_HUD() {}
 struct Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_General_NN_Cpp_HUD_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ANN_Cpp_HUD, ANN_Cpp_HUD::StaticClass, TEXT("ANN_Cpp_HUD"), &Z_Registration_Info_UClass_ANN_Cpp_HUD, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ANN_Cpp_HUD), 1160202027U) },
+		{ Z_Construct_UClass_ANN_Cpp_HUD, ANN_Cpp_HUD::StaticClass, TEXT("ANN_Cpp_HUD"), &Z_Registration_Info_UClass_ANN_Cpp_HUD, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ANN_Cpp_HUD), 84276979U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_General_NN_Cpp_HUD_h_3193121562(TEXT("/Script/NarrativeNexus"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_General_NN_Cpp_HUD_h_3023839359(TEXT("/Script/NarrativeNexus"),
 	Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_General_NN_Cpp_HUD_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_General_NN_Cpp_HUD_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
