@@ -28,8 +28,8 @@ protected:
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<UButton> BackButton;
 
-	UFUNCTION()
-	void OnBackButtonClicked();
+	//UFUNCTION()
+	//void OnBackButtonClicked();
 
 private:
 	// Reference to the MainWidget

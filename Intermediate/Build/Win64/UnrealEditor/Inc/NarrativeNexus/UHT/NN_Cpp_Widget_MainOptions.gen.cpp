@@ -18,43 +18,9 @@ UMG_API UClass* Z_Construct_UClass_UUserWidget();
 UPackage* Z_Construct_UPackage__Script_NarrativeNexus();
 // End Cross Module References
 
-// Begin Class UNN_Cpp_Widget_MainOptions Function OnBackButtonClicked
-struct Z_Construct_UFunction_UNN_Cpp_Widget_MainOptions_OnBackButtonClicked_Statics
-{
-#if WITH_METADATA
-	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-		{ "ModuleRelativePath", "Public/Widgets/Main/NN_Cpp_Widget_MainOptions.h" },
-	};
-#endif // WITH_METADATA
-	static const UECodeGen_Private::FFunctionParams FuncParams;
-};
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UNN_Cpp_Widget_MainOptions_OnBackButtonClicked_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UNN_Cpp_Widget_MainOptions, nullptr, "OnBackButtonClicked", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00080401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UNN_Cpp_Widget_MainOptions_OnBackButtonClicked_Statics::Function_MetaDataParams), Z_Construct_UFunction_UNN_Cpp_Widget_MainOptions_OnBackButtonClicked_Statics::Function_MetaDataParams) };
-UFunction* Z_Construct_UFunction_UNN_Cpp_Widget_MainOptions_OnBackButtonClicked()
-{
-	static UFunction* ReturnFunction = nullptr;
-	if (!ReturnFunction)
-	{
-		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UNN_Cpp_Widget_MainOptions_OnBackButtonClicked_Statics::FuncParams);
-	}
-	return ReturnFunction;
-}
-DEFINE_FUNCTION(UNN_Cpp_Widget_MainOptions::execOnBackButtonClicked)
-{
-	P_FINISH;
-	P_NATIVE_BEGIN;
-	P_THIS->OnBackButtonClicked();
-	P_NATIVE_END;
-}
-// End Class UNN_Cpp_Widget_MainOptions Function OnBackButtonClicked
-
 // Begin Class UNN_Cpp_Widget_MainOptions
 void UNN_Cpp_Widget_MainOptions::StaticRegisterNativesUNN_Cpp_Widget_MainOptions()
 {
-	UClass* Class = UNN_Cpp_Widget_MainOptions::StaticClass();
-	static const FNameNativePtrPair Funcs[] = {
-		{ "OnBackButtonClicked", &UNN_Cpp_Widget_MainOptions::execOnBackButtonClicked },
-	};
-	FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
 }
 IMPLEMENT_CLASS_NO_AUTO_REGISTRATION(UNN_Cpp_Widget_MainOptions);
 UClass* Z_Construct_UClass_UNN_Cpp_Widget_MainOptions_NoRegister()
@@ -94,10 +60,6 @@ struct Z_Construct_UClass_UNN_Cpp_Widget_MainOptions_Statics
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_MainWidget;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
-	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
-		{ &Z_Construct_UFunction_UNN_Cpp_Widget_MainOptions_OnBackButtonClicked, "OnBackButtonClicked" }, // 977777899
-	};
-	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<UNN_Cpp_Widget_MainOptions>::IsAbstract,
 	};
@@ -120,11 +82,11 @@ const UECodeGen_Private::FClassParams Z_Construct_UClass_UNN_Cpp_Widget_MainOpti
 	nullptr,
 	&StaticCppClassTypeInfo,
 	DependentSingletons,
-	FuncInfo,
+	nullptr,
 	Z_Construct_UClass_UNN_Cpp_Widget_MainOptions_Statics::PropPointers,
 	nullptr,
 	UE_ARRAY_COUNT(DependentSingletons),
-	UE_ARRAY_COUNT(FuncInfo),
+	0,
 	UE_ARRAY_COUNT(Z_Construct_UClass_UNN_Cpp_Widget_MainOptions_Statics::PropPointers),
 	0,
 	0x00B010A0u,
@@ -151,10 +113,10 @@ UNN_Cpp_Widget_MainOptions::~UNN_Cpp_Widget_MainOptions() {}
 struct Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Main_NN_Cpp_Widget_MainOptions_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UNN_Cpp_Widget_MainOptions, UNN_Cpp_Widget_MainOptions::StaticClass, TEXT("UNN_Cpp_Widget_MainOptions"), &Z_Registration_Info_UClass_UNN_Cpp_Widget_MainOptions, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UNN_Cpp_Widget_MainOptions), 2192636431U) },
+		{ Z_Construct_UClass_UNN_Cpp_Widget_MainOptions, UNN_Cpp_Widget_MainOptions::StaticClass, TEXT("UNN_Cpp_Widget_MainOptions"), &Z_Registration_Info_UClass_UNN_Cpp_Widget_MainOptions, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UNN_Cpp_Widget_MainOptions), 3243469426U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Main_NN_Cpp_Widget_MainOptions_h_2349593560(TEXT("/Script/NarrativeNexus"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Main_NN_Cpp_Widget_MainOptions_h_3131993862(TEXT("/Script/NarrativeNexus"),
 	Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Main_NN_Cpp_Widget_MainOptions_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Main_NN_Cpp_Widget_MainOptions_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

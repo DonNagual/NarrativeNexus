@@ -21,10 +21,12 @@ class NARRATIVENEXUS_API INN_Cpp_IF_PlayerController
 public:
 	virtual void QuitGame() = 0;
 
-	virtual void ShowSubWidget(UUserWidget* SubWidget) = 0;
+	//virtual void ShowSubWidget(UUserWidget* SubWidget) = 0;
 	virtual void HideAllSubWidgets() = 0;
 
-	virtual UUserWidget* GetMainMenuWidget() = 0;
-	virtual UUserWidget* GetMainOptionsWidget() = 0;
+	/*virtual UUserWidget* GetMainWidget() = 0;*/
+
+	//virtual UUserWidget* GetMainMenuWidget() = 0;
+	//virtual UUserWidget* GetMainOptionsWidget() = 0;
 	virtual void SetCategoryWidget(class UUserWidget* InCategoryWidget) = 0;
 };

@@ -8,17 +8,19 @@ void UNN_Cpp_Widget_Category::NativeConstruct()
 	Super::NativeConstruct();
 
 	HideAllSubWidgets();
-	ShowSubWidget(MainWidget);
+	//ShowSubWidget(CreatorWidget);
+
+	//MainButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_Category::OnMainButtonClicked);
 }
 
-void UNN_Cpp_Widget_Category::ShowSubWidget(UUserWidget* SubWidget)
-{
-	if (SubWidget)
-	{
-		SubWidget->SetVisibility(ESlateVisibility::Visible);
-	}
-}
-
+//void UNN_Cpp_Widget_Category::ShowSubWidget(UUserWidget* SubWidget)
+//{
+//	if (SubWidget)
+//	{
+//		SubWidget->SetVisibility(ESlateVisibility::Visible);
+//	}
+//}
+//
 void UNN_Cpp_Widget_Category::HideAllSubWidgets()
 {
 	if (MainWidget)
@@ -29,4 +31,22 @@ void UNN_Cpp_Widget_Category::HideAllSubWidgets()
 	{
 		CreatorWidget->SetVisibility(ESlateVisibility::Collapsed);
 	}
+	if (GameWidget)
+	{
+		GameWidget->SetVisibility(ESlateVisibility::Collapsed);
+	}
 }
+
+//void UNN_Cpp_Widget_Category::OnMainButtonClicked()
+//{
+//	if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
+//	{
+//		if (INN_Cpp_IF_PlayerController* Interface = Cast<INN_Cpp_IF_PlayerController>(PC))
+//		{
+//			Interface->ShowSubWidget(Interface->GetMainWidget());
+//		}
+//	}
+//
+//	FString lc_text = FString::Printf(TEXT("Open Options"));
+//	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, lc_text);
+//}

@@ -252,7 +252,11 @@
     <None Include="..\..\NarrativeNexus.uproject"/>
     <None Include="..\..\Source\NarrativeNexus.Target.cs"/>
     <None Include="..\..\Source\NarrativeNexusEditor.Target.cs"/>
+    <None Include="..\..\.gitattributes"/>
+    <None Include="..\..\.gitignore"/>
     <None Include="..\..\.vsconfig"/>
+    <None Include="..\..\LICENSE.txt"/>
+    <None Include="..\..\README.md"/>
     <None Include="..\..\Config\DefaultEditor.ini"/>
     <None Include="..\..\Config\DefaultEngine.ini"/>
     <None Include="..\..\Config\DefaultGame.ini"/>
@@ -307,6 +311,9 @@
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Game\NN_Cpp_Widget_GameInventory.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Game\NN_Cpp_Widget_GameMenu.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Main\NN_Cpp_Widget_Main.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
@@ -331,6 +338,7 @@
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Game\NN_Cpp_Widget_Game.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Game\NN_Cpp_Widget_GameChat.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Game\NN_Cpp_Widget_GameInventory.h"/>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Game\NN_Cpp_Widget_GameMenu.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Main\NN_Cpp_Widget_Main.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Main\NN_Cpp_Widget_MainMenu.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Main\NN_Cpp_Widget_MainOptions.h"/>

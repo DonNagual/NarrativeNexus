@@ -36,8 +36,8 @@ protected:
 	UFUNCTION()
 	void OnPlayButtonClicked();
 
-	UFUNCTION()
-	void OnOptionsButtonClicked();
+	//UFUNCTION()
+	//void OnOptionsButtonClicked();
 
 	UFUNCTION()
 	void OnQuitButtonClicked();

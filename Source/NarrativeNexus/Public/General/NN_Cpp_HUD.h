@@ -5,14 +5,6 @@
 #include "CoreMinimal.h"
 #include "GameFramework/HUD.h"
 #include "Blueprint/UserWidget.h"
-#include "Widgets/Main/NN_Cpp_Widget_Main.h"
-#include "Widgets/Main/NN_Cpp_Widget_MainMenu.h"
-#include "Widgets/Main/NN_Cpp_Widget_MainOptions.h"
-#include "Widgets/Creator/NN_Cpp_Widget_Creator.h"
-#include "Widgets/Creator/NN_Cpp_Widget_CreatorMenu.h"
-#include "Widgets/Creator/NN_Cpp_Widget_CreatorWorld.h"
-#include "Widgets/Creator/NN_Cpp_Widget_CreatorCharacter.h"
-#include "Widgets/Creator/NN_Cpp_Widget_CreatorStory.h"
 #include "NN_Cpp_HUD.generated.h"
 
 /**
@@ -30,11 +22,11 @@ public:
 
 protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "UI Category")
-	TSubclassOf<UUserWidget> CategoryWidget;
+	TSubclassOf<UUserWidget> CategoryWidgetClass;
 
 private:
 	UPROPERTY()
-	TMap<TSubclassOf<UUserWidget>, UUserWidget*> WidgetInstances;
+	UUserWidget* CategoryWidget;
 
 	UUserWidget* CreateAndAddWidget(TSubclassOf<UUserWidget> WidgetClass);
 };
