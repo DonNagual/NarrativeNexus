@@ -31,9 +31,6 @@ struct Z_Construct_UClass_ANN_Cpp_PlayerController_Statics
 {
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[] = {
-#if !UE_BUILD_SHIPPING
-		{ "Comment", "/**\n * \n */" },
-#endif
 		{ "HideCategories", "Collision Rendering Transformation" },
 		{ "IncludePath", "General/NN_Cpp_PlayerController.h" },
 		{ "ModuleRelativePath", "Public/General/NN_Cpp_PlayerController.h" },
@@ -101,10 +98,10 @@ ANN_Cpp_PlayerController::~ANN_Cpp_PlayerController() {}
 struct Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_General_NN_Cpp_PlayerController_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ANN_Cpp_PlayerController, ANN_Cpp_PlayerController::StaticClass, TEXT("ANN_Cpp_PlayerController"), &Z_Registration_Info_UClass_ANN_Cpp_PlayerController, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ANN_Cpp_PlayerController), 1885165975U) },
+		{ Z_Construct_UClass_ANN_Cpp_PlayerController, ANN_Cpp_PlayerController::StaticClass, TEXT("ANN_Cpp_PlayerController"), &Z_Registration_Info_UClass_ANN_Cpp_PlayerController, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ANN_Cpp_PlayerController), 2735934239U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_General_NN_Cpp_PlayerController_h_3060535111(TEXT("/Script/NarrativeNexus"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_General_NN_Cpp_PlayerController_h_2308179709(TEXT("/Script/NarrativeNexus"),
 	Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_General_NN_Cpp_PlayerController_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_General_NN_Cpp_PlayerController_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

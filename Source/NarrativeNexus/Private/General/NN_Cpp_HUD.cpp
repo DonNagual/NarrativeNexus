@@ -7,25 +7,18 @@ void ANN_Cpp_HUD::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// Debug-Ausgabe
-	FString lc_text = FString::Printf(TEXT("Open Category Widget"));
-	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, lc_text);
-
-	// Initialize the CategoryWidget
+	// Initialize the CategoryWidget using the interface
 	if (CategoryWidgetClass)
 	{
-		CategoryWidget = CreateAndAddWidget(CategoryWidgetClass);
+		if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
+		{
+			if (INN_Cpp_IF_PlayerController* Interface = Cast<INN_Cpp_IF_PlayerController>(PC))
+			{
+				CategoryWidget = Interface->CreateAndAddWidget(CategoryWidgetClass);
+				// Debug-Ausgabe
+				FString lc_text = FString::Printf(TEXT("Open Category Widget"));
+				GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, lc_text);
+			}
+		}
 	}
-}
-
-UUserWidget* ANN_Cpp_HUD::CreateAndAddWidget(TSubclassOf<UUserWidget> WidgetClass)
-{
-	if (!WidgetClass) return nullptr;
-	
-	UUserWidget* Widget = CreateWidget<UUserWidget>(GetWorld(), WidgetClass);
-	if (Widget)
-	{
-		Widget->AddToViewport();
-	}
-	return Widget;
 }

@@ -7,20 +7,14 @@ void UNN_Cpp_Widget_Category::NativeConstruct()
 {
 	Super::NativeConstruct();
 
+	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, TEXT("Widget Category Constructed"));
+		
 	HideAllSubWidgets();
 	//ShowSubWidget(CreatorWidget);
 
 	//MainButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_Category::OnMainButtonClicked);
 }
 
-//void UNN_Cpp_Widget_Category::ShowSubWidget(UUserWidget* SubWidget)
-//{
-//	if (SubWidget)
-//	{
-//		SubWidget->SetVisibility(ESlateVisibility::Visible);
-//	}
-//}
-//
 void UNN_Cpp_Widget_Category::HideAllSubWidgets()
 {
 	if (MainWidget)
@@ -35,7 +29,19 @@ void UNN_Cpp_Widget_Category::HideAllSubWidgets()
 	{
 		GameWidget->SetVisibility(ESlateVisibility::Collapsed);
 	}
+	// Debug-Ausgabe
+	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, TEXT("Hide all Widgets in CategoryWidget"));
 }
+
+//void UNN_Cpp_Widget_Category::ShowSubWidget(UUserWidget* SubWidget)
+//{
+//	if (SubWidget)
+//	{
+//		SubWidget->SetVisibility(ESlateVisibility::Visible);
+//	}
+//}
+
+
 
 //void UNN_Cpp_Widget_Category::OnMainButtonClicked()
 //{

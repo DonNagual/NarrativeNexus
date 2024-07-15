@@ -5,11 +5,10 @@
 #include "CoreMinimal.h"
 #include "GameFramework/HUD.h"
 #include "Blueprint/UserWidget.h"
+#include "Widgets/NN_Cpp_Widget_Category.h"
+#include "Interface/NN_Cpp_IF_PlayerController.h"
 #include "NN_Cpp_HUD.generated.h"
 
-/**
- * 
- */
 UCLASS()
 class NARRATIVENEXUS_API ANN_Cpp_HUD : public AHUD
 {
@@ -18,8 +17,6 @@ class NARRATIVENEXUS_API ANN_Cpp_HUD : public AHUD
 public:
 	virtual void BeginPlay() override;
 
-	void ShowCategoryWidget();
-
 protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "UI Category")
 	TSubclassOf<UUserWidget> CategoryWidgetClass;
@@ -27,6 +24,4 @@ protected:
 private:
 	UPROPERTY()
 	UUserWidget* CategoryWidget;
-
-	UUserWidget* CreateAndAddWidget(TSubclassOf<UUserWidget> WidgetClass);
 };

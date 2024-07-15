@@ -22,6 +22,18 @@ void ANN_Cpp_PlayerController::QuitGame()
 	ConsoleCommand("quit");
 }
 
+UUserWidget* ANN_Cpp_PlayerController::CreateAndAddWidget(TSubclassOf<UUserWidget> WidgetClass)
+{
+	if (!WidgetClass) return nullptr;
+
+	UUserWidget* Widget = CreateWidget<UUserWidget>(GetWorld(), WidgetClass);
+	if (Widget)
+	{
+		Widget->AddToViewport();
+	}
+	return Widget;
+}
+
 //UUserWidget* ANN_Cpp_PlayerController::GetMainWidget()
 //{
 //	if (CategoryWidget)
@@ -52,20 +64,24 @@ void ANN_Cpp_PlayerController::QuitGame()
 //	}
 //}
 
-void ANN_Cpp_PlayerController::HideAllSubWidgets()
-{
-	if (CategoryWidget)
-	{
-		if (auto MainWidget = Cast<UNN_Cpp_Widget_Main>(CategoryWidget))
-		{
-			MainWidget->HideAllSubWidgets();
-		}
-		else if (auto CreatorWidget = Cast<UNN_Cpp_Widget_Creator>(CategoryWidget))
-		{
-			CreatorWidget->HideAllSubWidgets();
-		}
-	}
-}
+//void ANN_Cpp_PlayerController::HideAllSubWidgets()
+//{
+//	if (CategoryWidget)
+//	{
+//		if (auto MainWidget = Cast<UNN_Cpp_Widget_Main>(CategoryWidget))
+//		{
+//			MainWidget->HideAllSubWidgets();
+//		}
+//		else if (auto CreatorWidget = Cast<UNN_Cpp_Widget_Creator>(CategoryWidget))
+//		{
+//			CreatorWidget->HideAllSubWidgets();
+//		}
+//		/*else if (auto GameWidget = Cast<UNN_Cpp_Widget_Game>(CategoryWidget))
+//		{
+//			GameWidget->HideAllSubWidgets();
+//		}*/
+//	}
+//}
 
 
 //UUserWidget* ANN_Cpp_PlayerController::GetMainMenuWidget()

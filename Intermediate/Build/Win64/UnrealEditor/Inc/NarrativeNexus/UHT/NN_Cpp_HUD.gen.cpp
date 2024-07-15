@@ -31,9 +31,6 @@ struct Z_Construct_UClass_ANN_Cpp_HUD_Statics
 {
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[] = {
-#if !UE_BUILD_SHIPPING
-		{ "Comment", "/**\n * \n */" },
-#endif
 		{ "HideCategories", "Rendering Actor Input Replication" },
 		{ "IncludePath", "General/NN_Cpp_HUD.h" },
 		{ "ModuleRelativePath", "Public/General/NN_Cpp_HUD.h" },
@@ -105,10 +102,10 @@ ANN_Cpp_HUD::~ANN_Cpp_HUD() {}
 struct Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_General_NN_Cpp_HUD_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ANN_Cpp_HUD, ANN_Cpp_HUD::StaticClass, TEXT("ANN_Cpp_HUD"), &Z_Registration_Info_UClass_ANN_Cpp_HUD, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ANN_Cpp_HUD), 84276979U) },
+		{ Z_Construct_UClass_ANN_Cpp_HUD, ANN_Cpp_HUD::StaticClass, TEXT("ANN_Cpp_HUD"), &Z_Registration_Info_UClass_ANN_Cpp_HUD, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ANN_Cpp_HUD), 1610545147U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_General_NN_Cpp_HUD_h_3023839359(TEXT("/Script/NarrativeNexus"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_General_NN_Cpp_HUD_h_3654862439(TEXT("/Script/NarrativeNexus"),
 	Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_General_NN_Cpp_HUD_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_General_NN_Cpp_HUD_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

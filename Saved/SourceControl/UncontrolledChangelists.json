@@ -1,0 +1,13 @@
+{
+	"version": 1,
+	"changelists": [
+		{
+			"guid": "00000000000000000000000000000000",
+			"description": "Default Uncontrolled Changelist",
+			"files": [
+				"X:/UnrealEngine/NarrativeNexus/Content/Widgets/NN_BP_Widget_Category.uasset",
+				"X:/UnrealEngine/NarrativeNexus/Content/General/NN_BP_HUD.uasset"
+			]
+		}
+	]
+}
