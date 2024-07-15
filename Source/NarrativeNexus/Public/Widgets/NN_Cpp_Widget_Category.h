@@ -3,10 +3,11 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Kismet/GameplayStatics.h"
 #include "Components/Button.h"
 #include "Components/PanelWidget.h"
-#include "Interface/NN_Cpp_IF_PlayerController.h"
 #include "Blueprint/UserWidget.h"
+#include "Interface/NN_Cpp_IF_PlayerController.h"
 #include "NN_Cpp_Widget_Category.generated.h"
 
 UCLASS()
@@ -17,7 +18,6 @@ class NARRATIVENEXUS_API UNN_Cpp_Widget_Category : public UUserWidget
 public:
 	virtual void NativeConstruct() override;
 
-	//void ShowSubWidget(UUserWidget* SubWidget);
 	void HideAllSubWidgets();
 
 protected:
@@ -33,7 +33,7 @@ protected:
 	UPROPERTY(meta = (BindWidget))
 	class UUserWidget* CreatorWidget;
 
-	UPROPERTY(meta = (GameWidget))
+	UPROPERTY(meta = (BindWidget))
 	class UUserWidget* GameWidget;
 
 };

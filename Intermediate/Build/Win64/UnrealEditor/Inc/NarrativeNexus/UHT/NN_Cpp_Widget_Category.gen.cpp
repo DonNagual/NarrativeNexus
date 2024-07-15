@@ -56,8 +56,8 @@ struct Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics
 		{ "ModuleRelativePath", "Public/Widgets/NN_Cpp_Widget_Category.h" },
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_GameWidget_MetaData[] = {
+		{ "BindWidget", "" },
 		{ "EditInline", "true" },
-		{ "GameWidget", "" },
 		{ "ModuleRelativePath", "Public/Widgets/NN_Cpp_Widget_Category.h" },
 	};
 #endif // WITH_METADATA
@@ -124,10 +124,10 @@ UNN_Cpp_Widget_Category::~UNN_Cpp_Widget_Category() {}
 struct Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_NN_Cpp_Widget_Category_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UNN_Cpp_Widget_Category, UNN_Cpp_Widget_Category::StaticClass, TEXT("UNN_Cpp_Widget_Category"), &Z_Registration_Info_UClass_UNN_Cpp_Widget_Category, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UNN_Cpp_Widget_Category), 1853702747U) },
+		{ Z_Construct_UClass_UNN_Cpp_Widget_Category, UNN_Cpp_Widget_Category::StaticClass, TEXT("UNN_Cpp_Widget_Category"), &Z_Registration_Info_UClass_UNN_Cpp_Widget_Category, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UNN_Cpp_Widget_Category), 3664077027U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_NN_Cpp_Widget_Category_h_3476152965(TEXT("/Script/NarrativeNexus"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_NN_Cpp_Widget_Category_h_4294888951(TEXT("/Script/NarrativeNexus"),
 	Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_NN_Cpp_Widget_Category_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_NN_Cpp_Widget_Category_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
