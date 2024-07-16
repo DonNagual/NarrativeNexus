@@ -24,8 +24,27 @@ protected:
 	UPROPERTY(meta = (BindWidget))
 	class UPanelWidget* CategoryContainer;
 
-	//UPROPERTY(meta = (BindWidget))
-	//TObjectPtr<UButton> MainButton;
+	// ############### Buttons ###############
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UButton> MainButton;
+
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UButton> GameButton;
+
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UButton> CreatorButton;
+
+	// ############### Functions ###############
+	UFUNCTION()
+	void OnMainButtonClicked();
+
+	UFUNCTION()
+	void OnGameButtonClicked();
+
+	UFUNCTION()
+	void OnCreatorButtonClicked();
+
+	// ############### Widgets ###############
 
 	UPROPERTY(meta = (BindWidget))
 	class UUserWidget* MainWidget;
