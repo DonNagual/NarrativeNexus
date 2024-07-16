@@ -12,7 +12,9 @@ void UNN_Cpp_Widget_Category::NativeConstruct()
 	HideAllSubWidgets();
 	//ShowSubWidget(CreatorWidget);
 
-	//MainButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_Category::OnMainButtonClicked);
+	MainButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_Category::OnMainButtonClicked);
+	GameButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_Category::OnGameButtonClicked);
+	CreatorButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_Category::OnCreatorButtonClicked);
 }
 
 void UNN_Cpp_Widget_Category::HideAllSubWidgets()
@@ -43,16 +45,28 @@ void UNN_Cpp_Widget_Category::HideAllSubWidgets()
 
 
 
-//void UNN_Cpp_Widget_Category::OnMainButtonClicked()
-//{
-//	if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
-//	{
-//		if (INN_Cpp_IF_PlayerController* Interface = Cast<INN_Cpp_IF_PlayerController>(PC))
-//		{
-//			Interface->ShowSubWidget(Interface->GetMainWidget());
-//		}
-//	}
-//
-//	FString lc_text = FString::Printf(TEXT("Open Options"));
-//	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, lc_text);
-//}
+void UNN_Cpp_Widget_Category::OnMainButtonClicked()
+{
+	/*if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
+	{
+		if (INN_Cpp_IF_PlayerController* Interface = Cast<INN_Cpp_IF_PlayerController>(PC))
+		{
+			Interface->ShowSubWidget(Interface->GetMainWidget());
+		}
+	}*/
+
+	FString lc_text = FString::Printf(TEXT("Main Category"));
+	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, lc_text);
+}
+
+void UNN_Cpp_Widget_Category::OnGameButtonClicked()
+{
+	FString lc_text = FString::Printf(TEXT("Game Category"));
+	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, lc_text);
+}
+
+void UNN_Cpp_Widget_Category::OnCreatorButtonClicked()
+{
+	FString lc_text = FString::Printf(TEXT("Creator Category"));
+	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, lc_text);
+}
