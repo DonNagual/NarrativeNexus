@@ -43,23 +43,23 @@ struct Z_Construct_UClass_UNN_Cpp_Widget_Main_Statics
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_MainContainer_MetaData[] = {
 		{ "BindWidget", "" },
 #if !UE_BUILD_SHIPPING
-		{ "Comment", "// UI Main Sub Widgets\n//TObjectPtr<UPanelWidget> MainContainer;\x09// Mit Unreal Garbage Collection System\n" },
+		{ "Comment", "// UI Main Sub Widgets\n" },
 #endif
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/Widgets/Main/NN_Cpp_Widget_Main.h" },
 #if !UE_BUILD_SHIPPING
-		{ "ToolTip", "UI Main Sub Widgets\nTObjectPtr<UPanelWidget> MainContainer;         Mit Unreal Garbage Collection System" },
+		{ "ToolTip", "UI Main Sub Widgets" },
 #endif
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_MainMenuWidget_MetaData[] = {
 		{ "BindWidget", "" },
 #if !UE_BUILD_SHIPPING
-		{ "Comment", "// Eigene Speicherwerwaltung\n" },
+		{ "Comment", "// Mit Unreal Garbage Collection System\n//class UPanelWidget* MainContainer;\x09\x09\x09// Eigene Speicherwerwaltung\n" },
 #endif
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/Widgets/Main/NN_Cpp_Widget_Main.h" },
 #if !UE_BUILD_SHIPPING
-		{ "ToolTip", "Eigene Speicherwerwaltung" },
+		{ "ToolTip", "Mit Unreal Garbage Collection System\nclass UPanelWidget* MainContainer;                      Eigene Speicherwerwaltung" },
 #endif
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_MainOptionsWidget_MetaData[] = {
@@ -78,7 +78,7 @@ struct Z_Construct_UClass_UNN_Cpp_Widget_Main_Statics
 	};
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_Main_Statics::NewProp_MainContainer = { "MainContainer", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_Main, MainContainer), Z_Construct_UClass_UPanelWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MainContainer_MetaData), NewProp_MainContainer_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_Main_Statics::NewProp_MainContainer = { "MainContainer", nullptr, (EPropertyFlags)0x0114000000080008, UECodeGen_Private::EPropertyGenFlags::Object | UECodeGen_Private::EPropertyGenFlags::ObjectPtr, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_Main, MainContainer), Z_Construct_UClass_UPanelWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MainContainer_MetaData), NewProp_MainContainer_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_Main_Statics::NewProp_MainMenuWidget = { "MainMenuWidget", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_Main, MainMenuWidget), Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MainMenuWidget_MetaData), NewProp_MainMenuWidget_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_Main_Statics::NewProp_MainOptionsWidget = { "MainOptionsWidget", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_Main, MainOptionsWidget), Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MainOptionsWidget_MetaData), NewProp_MainOptionsWidget_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UNN_Cpp_Widget_Main_Statics::PropPointers[] = {
@@ -128,10 +128,10 @@ UNN_Cpp_Widget_Main::~UNN_Cpp_Widget_Main() {}
 struct Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Main_NN_Cpp_Widget_Main_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UNN_Cpp_Widget_Main, UNN_Cpp_Widget_Main::StaticClass, TEXT("UNN_Cpp_Widget_Main"), &Z_Registration_Info_UClass_UNN_Cpp_Widget_Main, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UNN_Cpp_Widget_Main), 1126000393U) },
+		{ Z_Construct_UClass_UNN_Cpp_Widget_Main, UNN_Cpp_Widget_Main::StaticClass, TEXT("UNN_Cpp_Widget_Main"), &Z_Registration_Info_UClass_UNN_Cpp_Widget_Main, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UNN_Cpp_Widget_Main), 3011110879U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Main_NN_Cpp_Widget_Main_h_3709163989(TEXT("/Script/NarrativeNexus"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Main_NN_Cpp_Widget_Main_h_2965535906(TEXT("/Script/NarrativeNexus"),
 	Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Main_NN_Cpp_Widget_Main_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Main_NN_Cpp_Widget_Main_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

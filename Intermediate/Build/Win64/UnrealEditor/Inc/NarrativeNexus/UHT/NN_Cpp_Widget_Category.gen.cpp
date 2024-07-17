@@ -77,6 +77,35 @@ DEFINE_FUNCTION(UNN_Cpp_Widget_Category::execOnGameButtonClicked)
 }
 // End Class UNN_Cpp_Widget_Category Function OnGameButtonClicked
 
+// Begin Class UNN_Cpp_Widget_Category Function OnHelpButtonClicked
+struct Z_Construct_UFunction_UNN_Cpp_Widget_Category_OnHelpButtonClicked_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/Widgets/NN_Cpp_Widget_Category.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UNN_Cpp_Widget_Category_OnHelpButtonClicked_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UNN_Cpp_Widget_Category, nullptr, "OnHelpButtonClicked", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00080401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UNN_Cpp_Widget_Category_OnHelpButtonClicked_Statics::Function_MetaDataParams), Z_Construct_UFunction_UNN_Cpp_Widget_Category_OnHelpButtonClicked_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_UNN_Cpp_Widget_Category_OnHelpButtonClicked()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UNN_Cpp_Widget_Category_OnHelpButtonClicked_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(UNN_Cpp_Widget_Category::execOnHelpButtonClicked)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->OnHelpButtonClicked();
+	P_NATIVE_END;
+}
+// End Class UNN_Cpp_Widget_Category Function OnHelpButtonClicked
+
 // Begin Class UNN_Cpp_Widget_Category Function OnMainButtonClicked
 struct Z_Construct_UFunction_UNN_Cpp_Widget_Category_OnMainButtonClicked_Statics
 {
@@ -112,6 +141,35 @@ DEFINE_FUNCTION(UNN_Cpp_Widget_Category::execOnMainButtonClicked)
 }
 // End Class UNN_Cpp_Widget_Category Function OnMainButtonClicked
 
+// Begin Class UNN_Cpp_Widget_Category Function OnQuitButtonClicked
+struct Z_Construct_UFunction_UNN_Cpp_Widget_Category_OnQuitButtonClicked_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/Widgets/NN_Cpp_Widget_Category.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UNN_Cpp_Widget_Category_OnQuitButtonClicked_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UNN_Cpp_Widget_Category, nullptr, "OnQuitButtonClicked", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00080401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UNN_Cpp_Widget_Category_OnQuitButtonClicked_Statics::Function_MetaDataParams), Z_Construct_UFunction_UNN_Cpp_Widget_Category_OnQuitButtonClicked_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_UNN_Cpp_Widget_Category_OnQuitButtonClicked()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UNN_Cpp_Widget_Category_OnQuitButtonClicked_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(UNN_Cpp_Widget_Category::execOnQuitButtonClicked)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->OnQuitButtonClicked();
+	P_NATIVE_END;
+}
+// End Class UNN_Cpp_Widget_Category Function OnQuitButtonClicked
+
 // Begin Class UNN_Cpp_Widget_Category
 void UNN_Cpp_Widget_Category::StaticRegisterNativesUNN_Cpp_Widget_Category()
 {
@@ -119,7 +177,9 @@ void UNN_Cpp_Widget_Category::StaticRegisterNativesUNN_Cpp_Widget_Category()
 	static const FNameNativePtrPair Funcs[] = {
 		{ "OnCreatorButtonClicked", &UNN_Cpp_Widget_Category::execOnCreatorButtonClicked },
 		{ "OnGameButtonClicked", &UNN_Cpp_Widget_Category::execOnGameButtonClicked },
+		{ "OnHelpButtonClicked", &UNN_Cpp_Widget_Category::execOnHelpButtonClicked },
 		{ "OnMainButtonClicked", &UNN_Cpp_Widget_Category::execOnMainButtonClicked },
+		{ "OnQuitButtonClicked", &UNN_Cpp_Widget_Category::execOnQuitButtonClicked },
 	};
 	FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
 }
@@ -161,6 +221,16 @@ struct Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/Widgets/NN_Cpp_Widget_Category.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_HelpButton_MetaData[] = {
+		{ "BindWidget", "" },
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "Public/Widgets/NN_Cpp_Widget_Category.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_QuitButton_MetaData[] = {
+		{ "BindWidget", "" },
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "Public/Widgets/NN_Cpp_Widget_Category.h" },
+	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_MainWidget_MetaData[] = {
 		{ "BindWidget", "" },
 #if !UE_BUILD_SHIPPING
@@ -187,6 +257,8 @@ struct Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_MainButton;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_GameButton;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_CreatorButton;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_HelpButton;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_QuitButton;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_MainWidget;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_GameWidget;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_CreatorWidget;
@@ -195,7 +267,9 @@ struct Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
 		{ &Z_Construct_UFunction_UNN_Cpp_Widget_Category_OnCreatorButtonClicked, "OnCreatorButtonClicked" }, // 1394552592
 		{ &Z_Construct_UFunction_UNN_Cpp_Widget_Category_OnGameButtonClicked, "OnGameButtonClicked" }, // 378660828
+		{ &Z_Construct_UFunction_UNN_Cpp_Widget_Category_OnHelpButtonClicked, "OnHelpButtonClicked" }, // 313095483
 		{ &Z_Construct_UFunction_UNN_Cpp_Widget_Category_OnMainButtonClicked, "OnMainButtonClicked" }, // 2416193024
+		{ &Z_Construct_UFunction_UNN_Cpp_Widget_Category_OnQuitButtonClicked, "OnQuitButtonClicked" }, // 3978031791
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -207,6 +281,8 @@ const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics::NewProp_MainButton = { "MainButton", nullptr, (EPropertyFlags)0x0124080000080008, UECodeGen_Private::EPropertyGenFlags::Object | UECodeGen_Private::EPropertyGenFlags::ObjectPtr, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_Category, MainButton), Z_Construct_UClass_UButton_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MainButton_MetaData), NewProp_MainButton_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics::NewProp_GameButton = { "GameButton", nullptr, (EPropertyFlags)0x0124080000080008, UECodeGen_Private::EPropertyGenFlags::Object | UECodeGen_Private::EPropertyGenFlags::ObjectPtr, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_Category, GameButton), Z_Construct_UClass_UButton_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_GameButton_MetaData), NewProp_GameButton_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics::NewProp_CreatorButton = { "CreatorButton", nullptr, (EPropertyFlags)0x0124080000080008, UECodeGen_Private::EPropertyGenFlags::Object | UECodeGen_Private::EPropertyGenFlags::ObjectPtr, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_Category, CreatorButton), Z_Construct_UClass_UButton_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CreatorButton_MetaData), NewProp_CreatorButton_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics::NewProp_HelpButton = { "HelpButton", nullptr, (EPropertyFlags)0x0124080000080008, UECodeGen_Private::EPropertyGenFlags::Object | UECodeGen_Private::EPropertyGenFlags::ObjectPtr, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_Category, HelpButton), Z_Construct_UClass_UButton_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_HelpButton_MetaData), NewProp_HelpButton_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics::NewProp_QuitButton = { "QuitButton", nullptr, (EPropertyFlags)0x0124080000080008, UECodeGen_Private::EPropertyGenFlags::Object | UECodeGen_Private::EPropertyGenFlags::ObjectPtr, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_Category, QuitButton), Z_Construct_UClass_UButton_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_QuitButton_MetaData), NewProp_QuitButton_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics::NewProp_MainWidget = { "MainWidget", nullptr, (EPropertyFlags)0x0020080000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_Category, MainWidget), Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MainWidget_MetaData), NewProp_MainWidget_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics::NewProp_GameWidget = { "GameWidget", nullptr, (EPropertyFlags)0x0020080000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_Category, GameWidget), Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_GameWidget_MetaData), NewProp_GameWidget_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics::NewProp_CreatorWidget = { "CreatorWidget", nullptr, (EPropertyFlags)0x0020080000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_Category, CreatorWidget), Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CreatorWidget_MetaData), NewProp_CreatorWidget_MetaData) };
@@ -215,6 +291,8 @@ const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UNN_Cpp_W
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics::NewProp_MainButton,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics::NewProp_GameButton,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics::NewProp_CreatorButton,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics::NewProp_HelpButton,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics::NewProp_QuitButton,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics::NewProp_MainWidget,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics::NewProp_GameWidget,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics::NewProp_CreatorWidget,
@@ -261,10 +339,10 @@ UNN_Cpp_Widget_Category::~UNN_Cpp_Widget_Category() {}
 struct Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_NN_Cpp_Widget_Category_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UNN_Cpp_Widget_Category, UNN_Cpp_Widget_Category::StaticClass, TEXT("UNN_Cpp_Widget_Category"), &Z_Registration_Info_UClass_UNN_Cpp_Widget_Category, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UNN_Cpp_Widget_Category), 2511178497U) },
+		{ Z_Construct_UClass_UNN_Cpp_Widget_Category, UNN_Cpp_Widget_Category::StaticClass, TEXT("UNN_Cpp_Widget_Category"), &Z_Registration_Info_UClass_UNN_Cpp_Widget_Category, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UNN_Cpp_Widget_Category), 2551994480U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_NN_Cpp_Widget_Category_h_2547411432(TEXT("/Script/NarrativeNexus"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_NN_Cpp_Widget_Category_h_3736365149(TEXT("/Script/NarrativeNexus"),
 	Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_NN_Cpp_Widget_Category_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_NN_Cpp_Widget_Category_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

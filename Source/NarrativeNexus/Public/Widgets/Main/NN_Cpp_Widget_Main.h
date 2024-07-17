@@ -24,8 +24,8 @@ public:
 
 	// UI Main Sub Widgets
 	UPROPERTY(meta = (BindWidget))
-	//TObjectPtr<UPanelWidget> MainContainer;	// Mit Unreal Garbage Collection System
-	class UPanelWidget* MainContainer;			// Eigene Speicherwerwaltung
+	TObjectPtr<UPanelWidget> MainContainer;	// Mit Unreal Garbage Collection System
+	//class UPanelWidget* MainContainer;			// Eigene Speicherwerwaltung
 
 	UPROPERTY(meta = (BindWidget))
 	class UUserWidget* MainMenuWidget;

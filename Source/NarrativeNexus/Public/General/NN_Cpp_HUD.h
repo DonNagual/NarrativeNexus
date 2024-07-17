@@ -5,7 +5,6 @@
 #include "CoreMinimal.h"
 #include "GameFramework/HUD.h"
 #include "Blueprint/UserWidget.h"
-#include "Widgets/NN_Cpp_Widget_Category.h"
 #include "Interface/NN_Cpp_IF_PlayerController.h"
 #include "NN_Cpp_HUD.generated.h"
 
@@ -24,4 +23,5 @@ protected:
 private:
 	UPROPERTY()
 	UUserWidget* CategoryWidget;
+
 };

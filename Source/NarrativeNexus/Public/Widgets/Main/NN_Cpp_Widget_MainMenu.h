@@ -30,17 +30,11 @@ protected:
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<UButton> OptionsButton;
 
-	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<UButton> QuitButton;
-
 	UFUNCTION()
 	void OnPlayButtonClicked();
 
 	//UFUNCTION()
 	//void OnOptionsButtonClicked();
-
-	UFUNCTION()
-	void OnQuitButtonClicked();
 
 private:
 	// Reference to the MainWidget

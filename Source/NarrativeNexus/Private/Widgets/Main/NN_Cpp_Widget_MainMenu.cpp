@@ -9,7 +9,6 @@ void UNN_Cpp_Widget_MainMenu::NativeConstruct()
 
 	GameButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_MainMenu::OnPlayButtonClicked);
 	//OptionsButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_MainMenu::OnOptionsButtonClicked);
-	QuitButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_MainMenu::OnQuitButtonClicked);
 
 }
 
@@ -38,14 +37,3 @@ void UNN_Cpp_Widget_MainMenu::OnPlayButtonClicked()
 //	FString lc_text = FString::Printf(TEXT("Open Options"));
 //	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, lc_text);
 //}
-
-void UNN_Cpp_Widget_MainMenu::OnQuitButtonClicked()
-{
-	if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
-	{
-		if (INN_Cpp_IF_PlayerController* Interface = Cast<INN_Cpp_IF_PlayerController>(PC))
-		{
-			Interface->QuitGame();
-		}
-	}
-}

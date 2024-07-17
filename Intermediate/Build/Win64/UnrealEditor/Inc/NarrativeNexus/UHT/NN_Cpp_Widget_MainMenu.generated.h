@@ -15,7 +15,6 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #define NARRATIVENEXUS_NN_Cpp_Widget_MainMenu_generated_h
 
 #define FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Main_NN_Cpp_Widget_MainMenu_h_17_RPC_WRAPPERS_NO_PURE_DECLS \
-	DECLARE_FUNCTION(execOnQuitButtonClicked); \
 	DECLARE_FUNCTION(execOnPlayButtonClicked);
 
 

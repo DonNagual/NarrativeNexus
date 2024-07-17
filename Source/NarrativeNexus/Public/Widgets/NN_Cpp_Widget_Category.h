@@ -3,7 +3,6 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Kismet/GameplayStatics.h"
 #include "Components/Button.h"
 #include "Components/PanelWidget.h"
 #include "Blueprint/UserWidget.h"
@@ -34,6 +33,12 @@ protected:
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<UButton> CreatorButton;
 
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UButton> HelpButton;
+
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UButton> QuitButton;
+
 	// ############### Functions ###############
 	UFUNCTION()
 	void OnMainButtonClicked();
@@ -43,6 +48,12 @@ protected:
 
 	UFUNCTION()
 	void OnCreatorButtonClicked();
+
+	UFUNCTION()
+	void OnHelpButtonClicked();
+
+	UFUNCTION()
+	void OnQuitButtonClicked();
 
 	// ############### Widgets ###############
 
