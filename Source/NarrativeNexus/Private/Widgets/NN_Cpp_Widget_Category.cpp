@@ -7,53 +7,42 @@ void UNN_Cpp_Widget_Category::NativeConstruct()
 {
 	Super::NativeConstruct();
 
+	// DEBUG
 	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, TEXT("Widget Category Constructed"));
-		
-	HideAllSubWidgets();
-	//ShowSubWidget(CreatorWidget);
+	
+	// Hide all sub-widgets initially
+	HideSubWidget(MainWidget);
+	HideSubWidget(GameWidget);
+	HideSubWidget(CreatorWidget);
+
 
 	MainButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_Category::OnMainButtonClicked);
 	GameButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_Category::OnGameButtonClicked);
 	CreatorButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_Category::OnCreatorButtonClicked);
 }
 
-void UNN_Cpp_Widget_Category::HideAllSubWidgets()
+void UNN_Cpp_Widget_Category::HideSubWidget(UUserWidget* SubWidget)
 {
-	if (MainWidget)
-	{
-		MainWidget->SetVisibility(ESlateVisibility::Collapsed);
-	}
-	if (CreatorWidget)
-	{
-		CreatorWidget->SetVisibility(ESlateVisibility::Collapsed);
-	}
-	if (GameWidget)
-	{
-		GameWidget->SetVisibility(ESlateVisibility::Collapsed);
-	}
-	// Debug-Ausgabe
-	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, TEXT("Hide all Widgets in CategoryWidget"));
-}
-
-//void UNN_Cpp_Widget_Category::ShowSubWidget(UUserWidget* SubWidget)
-//{
-//	if (SubWidget)
-//	{
-//		SubWidget->SetVisibility(ESlateVisibility::Visible);
-//	}
-//}
-
-
-
-void UNN_Cpp_Widget_Category::OnMainButtonClicked()
-{
-	/*if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
+	if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
 	{
 		if (INN_Cpp_IF_PlayerController* Interface = Cast<INN_Cpp_IF_PlayerController>(PC))
 		{
-			Interface->ShowSubWidget(Interface->GetMainWidget());
+			Interface->HideSubWidget(MainWidget);
+			Interface->HideSubWidget(GameWidget);
+			Interface->HideSubWidget(CreatorWidget);
 		}
-	}*/
+	}
+}
+
+void UNN_Cpp_Widget_Category::OnMainButtonClicked()
+{
+	if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
+	{
+		if (INN_Cpp_IF_PlayerController* Interface = Cast<INN_Cpp_IF_PlayerController>(PC))
+		{
+			Interface->ShowSubWidget(MainWidget);
+		}
+	}
 
 	FString lc_text = FString::Printf(TEXT("Main Category"));
 	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, lc_text);

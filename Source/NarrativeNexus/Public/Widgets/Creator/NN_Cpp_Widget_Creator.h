@@ -18,8 +18,8 @@ class NARRATIVENEXUS_API UNN_Cpp_Widget_Creator : public UUserWidget
 public:
 	virtual void NativeConstruct() override;
 
-	void ShowSubWidget(UUserWidget* SubWidget);
-	void HideAllSubWidgets();
+	//void ShowSubWidget(UUserWidget* SubWidget);
+	//void HideAllSubWidgets();
 
 	UPROPERTY(meta = (BindWidget))
 	class UPanelWidget* CreatorContainer;

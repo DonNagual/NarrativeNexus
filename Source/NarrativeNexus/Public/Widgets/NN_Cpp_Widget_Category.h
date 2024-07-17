@@ -18,7 +18,7 @@ class NARRATIVENEXUS_API UNN_Cpp_Widget_Category : public UUserWidget
 public:
 	virtual void NativeConstruct() override;
 
-	void HideAllSubWidgets();
+	void HideSubWidget(UUserWidget* SubWidget);
 
 protected:
 	UPROPERTY(meta = (BindWidget))
@@ -50,9 +50,8 @@ protected:
 	class UUserWidget* MainWidget;
 
 	UPROPERTY(meta = (BindWidget))
-	class UUserWidget* CreatorWidget;
-
-	UPROPERTY(meta = (BindWidget))
 	class UUserWidget* GameWidget;
 
+	UPROPERTY(meta = (BindWidget))
+	class UUserWidget* CreatorWidget;
 };
