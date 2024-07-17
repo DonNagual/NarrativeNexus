@@ -5,9 +5,6 @@
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
 #include "Widgets/NN_Cpp_Widget_Category.h"
-#include "Widgets/Main/NN_Cpp_Widget_Main.h"
-#include "Widgets/Creator/NN_Cpp_Widget_Creator.h"
-#include "Widgets/Game/NN_Cpp_Widget_Game.h"
 #include "Interface/NN_Cpp_IF_PlayerController.h"
 #include "NN_Cpp_PlayerController.generated.h"
 
@@ -24,9 +21,5 @@ public:
 	
 	virtual void ShowSubWidget(UUserWidget* SubWidget) override;
 	virtual void HideSubWidget(UUserWidget* SubWidget) override;
-
-private:
-	UPROPERTY()
-	class UUserWidget* CategoryWidget;
 
 };
