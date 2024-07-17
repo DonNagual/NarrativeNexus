@@ -21,16 +21,12 @@ public:
 	
 	virtual void QuitGame() override;
 	virtual UUserWidget* CreateAndAddWidget(TSubclassOf<UUserWidget> WidgetClass) override;
-	virtual void SetCategoryWidget(class UUserWidget* InCategoryWidget) override;
-
-	//virtual void ShowSubWidget(UUserWidget* SubWidget) override;
-
-	/*virtual UUserWidget* GetMainWidget() override;*/
-
-	//virtual UUserWidget* GetMainMenuWidget() override;
-	//virtual UUserWidget* GetMainOptionsWidget() override;
+	
+	virtual void ShowSubWidget(UUserWidget* SubWidget) override;
+	virtual void HideSubWidget(UUserWidget* SubWidget) override;
 
 private:
 	UPROPERTY()
 	class UUserWidget* CategoryWidget;
+
 };

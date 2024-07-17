@@ -39,8 +39,14 @@ struct Z_Construct_UClass_UNN_Cpp_Widget_Creator_Statics
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_CreatorContainer_MetaData[] = {
 		{ "BindWidget", "" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "//void ShowSubWidget(UUserWidget* SubWidget);\n//void HideAllSubWidgets();\n" },
+#endif
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/Widgets/Creator/NN_Cpp_Widget_Creator.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "void ShowSubWidget(UUserWidget* SubWidget);\nvoid HideAllSubWidgets();" },
+#endif
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_CreatorMenuWidget_MetaData[] = {
 		{ "BindwIDGET", "" },
@@ -129,10 +135,10 @@ UNN_Cpp_Widget_Creator::~UNN_Cpp_Widget_Creator() {}
 struct Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Creator_NN_Cpp_Widget_Creator_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UNN_Cpp_Widget_Creator, UNN_Cpp_Widget_Creator::StaticClass, TEXT("UNN_Cpp_Widget_Creator"), &Z_Registration_Info_UClass_UNN_Cpp_Widget_Creator, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UNN_Cpp_Widget_Creator), 3653474847U) },
+		{ Z_Construct_UClass_UNN_Cpp_Widget_Creator, UNN_Cpp_Widget_Creator::StaticClass, TEXT("UNN_Cpp_Widget_Creator"), &Z_Registration_Info_UClass_UNN_Cpp_Widget_Creator, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UNN_Cpp_Widget_Creator), 1607467510U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Creator_NN_Cpp_Widget_Creator_h_3013045862(TEXT("/Script/NarrativeNexus"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Creator_NN_Cpp_Widget_Creator_h_3501370753(TEXT("/Script/NarrativeNexus"),
 	Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Creator_NN_Cpp_Widget_Creator_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Creator_NN_Cpp_Widget_Creator_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
