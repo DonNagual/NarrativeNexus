@@ -115,10 +115,19 @@
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Main\NN_Cpp_Widget_Main.cpp">
       <Filter>Source\NarrativeNexus\Private\Widgets\Main</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Main\NN_Cpp_Widget_MainCredits.cpp">
+      <Filter>Source\NarrativeNexus\Private\Widgets\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Main\NN_Cpp_Widget_MainGuide.cpp">
+      <Filter>Source\NarrativeNexus\Private\Widgets\Main</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Main\NN_Cpp_Widget_MainMenu.cpp">
       <Filter>Source\NarrativeNexus\Private\Widgets\Main</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Main\NN_Cpp_Widget_MainOptions.cpp">
+      <Filter>Source\NarrativeNexus\Private\Widgets\Main</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Main\NN_Cpp_Widget_MainTutorial.cpp">
       <Filter>Source\NarrativeNexus\Private\Widgets\Main</Filter>
     </ClCompile>
     <Filter Include="Source\NarrativeNexus\Public">
@@ -193,10 +202,19 @@
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Main\NN_Cpp_Widget_Main.h">
       <Filter>Source\NarrativeNexus\Public\Widgets\Main</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Main\NN_Cpp_Widget_MainCredits.h">
+      <Filter>Source\NarrativeNexus\Public\Widgets\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Main\NN_Cpp_Widget_MainGuide.h">
+      <Filter>Source\NarrativeNexus\Public\Widgets\Main</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Main\NN_Cpp_Widget_MainMenu.h">
       <Filter>Source\NarrativeNexus\Public\Widgets\Main</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Main\NN_Cpp_Widget_MainOptions.h">
+      <Filter>Source\NarrativeNexus\Public\Widgets\Main</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Main\NN_Cpp_Widget_MainTutorial.h">
       <Filter>Source\NarrativeNexus\Public\Widgets\Main</Filter>
     </ClInclude>
   </ItemGroup>

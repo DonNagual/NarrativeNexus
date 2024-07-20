@@ -4,13 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "Components/Button.h"
-#include "Interface/NN_Cpp_IF_PlayerController.h"
 #include "Blueprint/UserWidget.h"
+#include "Interface/NN_Cpp_IF_PlayerController.h"
 #include "NN_Cpp_Widget_MainMenu.generated.h"
 
-/**
- * 
- */
 UCLASS()
 class NARRATIVENEXUS_API UNN_Cpp_Widget_MainMenu : public UUserWidget
 {
@@ -19,26 +16,36 @@ class NARRATIVENEXUS_API UNN_Cpp_Widget_MainMenu : public UUserWidget
 public:
 	virtual void NativeConstruct() override;
 
-	// Method to set the Reference
-	void SetMainWidget(class UNN_Cpp_Widget_Main* InCategoryMainWidget);
-
 protected:
 
+	// ############### Buttons ###############
+
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<UButton> GameButton;
+	TObjectPtr<UButton> GuideButton;
 
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<UButton> OptionsButton;
 
-	UFUNCTION()
-	void OnPlayButtonClicked();
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UButton> TutorialButton;
 
-	//UFUNCTION()
-	//void OnOptionsButtonClicked();
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UButton> CreditsButton;
 
 private:
-	// Reference to the MainWidget
-	UPROPERTY()
-	class UNN_Cpp_Widget_Main* MainWidget;
+
+	// ############### Functions ###############
+
+	UFUNCTION()
+	void OnGuideButtonClicked();
+
+	UFUNCTION()
+	void OnOptionsButtonClicked();
+
+	UFUNCTION()
+	void OnTutorialButtonClicked();
+
+	UFUNCTION()
+	void OnCreditsButtonClicked();
 
 };

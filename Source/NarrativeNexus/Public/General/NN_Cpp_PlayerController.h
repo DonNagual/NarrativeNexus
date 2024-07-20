@@ -3,8 +3,8 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Blueprint/UserWidget.h"
 #include "GameFramework/PlayerController.h"
-#include "Widgets/NN_Cpp_Widget_Category.h"
 #include "Interface/NN_Cpp_IF_PlayerController.h"
 #include "NN_Cpp_PlayerController.generated.h"
 
@@ -15,11 +15,14 @@ class NARRATIVENEXUS_API ANN_Cpp_PlayerController : public APlayerController, pu
 
 public:
 	virtual void BeginPlay() override;
-	
+
 	virtual void QuitGame() override;
+
 	virtual UUserWidget* CreateAndAddWidget(TSubclassOf<UUserWidget> WidgetClass) override;
 	
 	virtual void ShowSubWidget(UUserWidget* SubWidget) override;
 	virtual void HideSubWidget(UUserWidget* SubWidget) override;
+
+private:
 
 };

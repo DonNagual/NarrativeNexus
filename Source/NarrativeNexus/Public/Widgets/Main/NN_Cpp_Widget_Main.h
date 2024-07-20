@@ -4,12 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "Components/PanelWidget.h"
-#include "Interface/NN_Cpp_IF_PlayerController.h"
 #include "Blueprint/UserWidget.h"
+#include "Interface/NN_Cpp_IF_PlayerController.h"
 #include "NN_Cpp_Widget_Main.generated.h"
-
-// Forward declaration of the UNN_Cpp_Widget_MainOptions class
-//class UNN_Cpp_Widget_MainOptions;
 
 UCLASS()
 class NARRATIVENEXUS_API UNN_Cpp_Widget_Main : public UUserWidget
@@ -17,21 +14,33 @@ class NARRATIVENEXUS_API UNN_Cpp_Widget_Main : public UUserWidget
 	GENERATED_BODY()
 
 public:
+
 	virtual void NativeConstruct() override;
 
-	//void ShowSubWidget(UUserWidget* SubWWidget);
-	//void HideAllSubWidgets();
+	void HideSubWidget(UUserWidget* SubWidget);
+	void ShowSubWidget(UUserWidget* SubWidget);
 
-	// UI Main Sub Widgets
+protected:
+	
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<UPanelWidget> MainContainer;	// Mit Unreal Garbage Collection System
-	//class UPanelWidget* MainContainer;			// Eigene Speicherwerwaltung
+	TObjectPtr<UPanelWidget> MainContainer;	
+	
+private:
+
+	// ############### Widgets ###############
 
 	UPROPERTY(meta = (BindWidget))
 	class UUserWidget* MainMenuWidget;
-	
+
+	UPROPERTY(meta = (BindWidget))
+	class UUserWidget* MainGuideWidget;
+
 	UPROPERTY(meta = (BindWidget))
 	class UUserWidget* MainOptionsWidget;
-	//class UNN_Cpp_Widget_MainOptions* MainOptionsWidget;
-	
+
+	UPROPERTY(meta = (BindWidget))
+	class UUserWidget* MainTutorialWidget;
+
+	UPROPERTY(meta = (BindWidget))
+	class UUserWidget* MainCreditsWidget;
 };

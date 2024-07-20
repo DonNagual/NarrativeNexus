@@ -39,6 +39,8 @@ protected:
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<UButton> QuitButton;
 
+private:
+
 	// ############### Functions ###############
 	UFUNCTION()
 	void OnMainButtonClicked();
