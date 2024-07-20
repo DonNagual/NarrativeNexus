@@ -11,7 +11,7 @@ void UNN_Cpp_Widget_Category::NativeConstruct()
 	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, TEXT("Widget Category Constructed"));
 	
 	// Hide all sub-widgets initially
-	HideSubWidget(MainWidget);
+	//HideSubWidget(MainWidget);
 	HideSubWidget(GameWidget);
 	HideSubWidget(CreatorWidget);
 
@@ -46,11 +46,11 @@ void UNN_Cpp_Widget_Category::OnMainButtonClicked()
 		if (INN_Cpp_IF_PlayerController* Interface = Cast<INN_Cpp_IF_PlayerController>(PC))
 		{
 			Interface->ShowSubWidget(MainWidget);
+
+			FString lc_text = FString::Printf(TEXT("Main Category"));
+			GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, lc_text);
 		}
 	}
-
-	FString lc_text = FString::Printf(TEXT("Main Category"));
-	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, lc_text);
 }
 
 void UNN_Cpp_Widget_Category::OnGameButtonClicked()

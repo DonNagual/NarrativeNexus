@@ -39,6 +39,9 @@ void ANN_Cpp_PlayerController::ShowSubWidget(UUserWidget* SubWidget)
 	if (SubWidget)
 	{
 		SubWidget->SetVisibility(ESlateVisibility::Visible);
+
+		FString lc_text = FString::Printf(TEXT("Visible Interface"));
+		GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, lc_text);
 	}
 }
 
