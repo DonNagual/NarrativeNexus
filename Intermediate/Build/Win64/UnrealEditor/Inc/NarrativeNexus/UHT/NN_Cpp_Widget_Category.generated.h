@@ -9,6 +9,7 @@
 #include "UObject/ScriptMacros.h"
 
 PRAGMA_DISABLE_DEPRECATION_WARNINGS
+class UUserWidget;
 #ifdef NARRATIVENEXUS_NN_Cpp_Widget_Category_generated_h
 #error "NN_Cpp_Widget_Category.generated.h already included, missing '#pragma once' in NN_Cpp_Widget_Category.h"
 #endif
@@ -19,7 +20,9 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 	DECLARE_FUNCTION(execOnHelpButtonClicked); \
 	DECLARE_FUNCTION(execOnCreatorButtonClicked); \
 	DECLARE_FUNCTION(execOnGameButtonClicked); \
-	DECLARE_FUNCTION(execOnMainButtonClicked);
+	DECLARE_FUNCTION(execOnMainButtonClicked); \
+	DECLARE_FUNCTION(execShowCategorySubWidget); \
+	DECLARE_FUNCTION(execHideCategorySubWidget);
 
 
 #define FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_NN_Cpp_Widget_Category_h_15_INCLASS_NO_PURE_DECLS \

@@ -15,7 +15,12 @@
 				"X:/UnrealEngine/NarrativeNexus/Content/Widgets/Main/NN_BP_Widget_MainCredits.uasset",
 				"X:/UnrealEngine/NarrativeNexus/Content/Widgets/Main/NN_BP_Widget_MainGuide.uasset",
 				"X:/UnrealEngine/NarrativeNexus/Content/Widgets/Main/NN_BP_Widget_MainOptions.uasset",
-				"X:/UnrealEngine/NarrativeNexus/Content/General/NN_BP_PlayerController.uasset"
+				"X:/UnrealEngine/NarrativeNexus/Content/General/NN_BP_PlayerController.uasset",
+				"X:/UnrealEngine/NarrativeNexus/Content/Levels/Main_lvl.umap",
+				"X:/UnrealEngine/NarrativeNexus/Content/Widgets/Creator/NN_BP_Widget_CreatorCharacter.uasset",
+				"X:/UnrealEngine/NarrativeNexus/Content/Widgets/Creator/NN_BP_Widget_CreatorStory.uasset",
+				"X:/UnrealEngine/NarrativeNexus/Content/Widgets/Creator/NN_BP_Widget_CreatorWorld.uasset",
+				"X:/UnrealEngine/NarrativeNexus/Content/Widgets/Creator/NN_BP_Widget_CreatorMenu.uasset"
 			]
 		}
 	]

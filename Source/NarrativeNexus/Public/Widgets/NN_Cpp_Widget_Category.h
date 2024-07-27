@@ -1,12 +1,12 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
+// NN_Cpp_Widget_Category.h
 #pragma once
 
 #include "CoreMinimal.h"
 #include "Components/Button.h"
 #include "Components/PanelWidget.h"
 #include "Blueprint/UserWidget.h"
-#include "Interface/NN_Cpp_IF_PlayerController.h"
+#include "Interface/NN_Cpp_IF_WidgetController.h"
 #include "NN_Cpp_Widget_Category.generated.h"
 
 UCLASS()
@@ -17,13 +17,15 @@ class NARRATIVENEXUS_API UNN_Cpp_Widget_Category : public UUserWidget
 public:
 	virtual void NativeConstruct() override;
 
-	void HideSubWidget(UUserWidget* SubWidget);
+	UPROPERTY(meta = (BindWidget))
+	class UUserWidget* MainWidget;
 
 protected:
 	UPROPERTY(meta = (BindWidget))
 	class UPanelWidget* CategoryContainer;
 
 	// ############### Buttons ###############
+
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<UButton> MainButton;
 
@@ -42,6 +44,13 @@ protected:
 private:
 
 	// ############### Functions ###############
+
+	UFUNCTION()
+	void HideCategorySubWidget(UUserWidget* SubWidget);
+
+	UFUNCTION()
+	void ShowCategorySubWidget(UUserWidget* SubWidget);
+
 	UFUNCTION()
 	void OnMainButtonClicked();
 
@@ -59,8 +68,7 @@ private:
 
 	// ############### Widgets ###############
 
-	UPROPERTY(meta = (BindWidget))
-	class UUserWidget* MainWidget;
+
 
 	UPROPERTY(meta = (BindWidget))
 	class UUserWidget* GameWidget;
