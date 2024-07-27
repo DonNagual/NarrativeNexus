@@ -1,6 +1,5 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
-
+// NN_Cpp_PlayerController.cpp
 #include "General/NN_Cpp_PlayerController.h"
 
 void ANN_Cpp_PlayerController::BeginPlay()
@@ -31,6 +30,7 @@ UUserWidget* ANN_Cpp_PlayerController::CreateAndAddWidget(TSubclassOf<UUserWidge
 	{
 		Widget->AddToViewport();
 	}
+	CategoryWidget = Cast<UNN_Cpp_Widget_Category>(Widget);
 	return Widget;
 }
 
@@ -39,9 +39,20 @@ void ANN_Cpp_PlayerController::ShowSubWidget(UUserWidget* SubWidget)
 	if (SubWidget)
 	{
 		SubWidget->SetVisibility(ESlateVisibility::Visible);
+		
+		FString widgetName = SubWidget->GetName();
+		if (widgetName == TEXT("MainWidget"))
+		{
+			(Cast<UNN_Cpp_Widget_Main>(CategoryWidget->MainWidget))->ShowMainMenuSubWidget();
+		}
+		
+		//if (UNN_Cpp_Widget_Main* Main = Cast<UNN_Cpp_Widget_Main>(SubWidget))
+		//{
+		//	FString widgetName = SubWidget->GetName();
+		//	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Purple, widgetName);
 
-		FString lc_text = FString::Printf(TEXT("Visible Interface"));
-		GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, lc_text);
+		//	Main->ShowMainMenuSubWidget();
+		//}
 	}
 }
 
@@ -50,5 +61,20 @@ void ANN_Cpp_PlayerController::HideSubWidget(UUserWidget* SubWidget)
 	if (SubWidget)
 	{
 		SubWidget->SetVisibility(ESlateVisibility::Collapsed);
+
+		FString widgetName = SubWidget->GetName();
+		if (widgetName == TEXT("MainMenuWidget"))
+		{
+			(Cast<UNN_Cpp_Widget_Main>(CategoryWidget->MainWidget))->ShowMainGuideSubWidget();
+		}
 	}
+}
+
+UUserWidget* ANN_Cpp_PlayerController::GetMainGuideWidget()
+{
+	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::White, "F00");	
+	
+	(Cast<UNN_Cpp_Widget_Main>(CategoryWidget->MainWidget))->ShowMainGuideSubWidget();
+	
+	return 0;
 }

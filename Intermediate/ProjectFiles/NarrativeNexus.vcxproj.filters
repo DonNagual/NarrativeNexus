@@ -67,7 +67,7 @@
     <Filter Include="Source\NarrativeNexus\Private\Interface">
       <UniqueIdentifier>{304FF5E2-ACE1-333E-B089-44682F94EB20}</UniqueIdentifier>
     </Filter>
-    <ClCompile Include="..\..\Source\NarrativeNexus\Private\Interface\NN_Cpp_IF_PlayerController.cpp">
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\Interface\NN_Cpp_IF_WidgetController.cpp">
       <Filter>Source\NarrativeNexus\Private\Interface</Filter>
     </ClCompile>
     <Filter Include="Source\NarrativeNexus\Private\Widgets">
@@ -154,7 +154,7 @@
     <Filter Include="Source\NarrativeNexus\Public\Interface">
       <UniqueIdentifier>{38B8C82D-9DB4-3DD9-AB84-2B4EE655B2DE}</UniqueIdentifier>
     </Filter>
-    <ClInclude Include="..\..\Source\NarrativeNexus\Public\Interface\NN_Cpp_IF_PlayerController.h">
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\Interface\NN_Cpp_IF_WidgetController.h">
       <Filter>Source\NarrativeNexus\Public\Interface</Filter>
     </ClInclude>
     <Filter Include="Source\NarrativeNexus\Public\Widgets">

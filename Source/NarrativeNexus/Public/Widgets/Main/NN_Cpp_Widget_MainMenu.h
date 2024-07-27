@@ -1,11 +1,11 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
+// NN_Cpp_Widget_MainMenu.h
 #pragma once
 
 #include "CoreMinimal.h"
 #include "Components/Button.h"
 #include "Blueprint/UserWidget.h"
-#include "Interface/NN_Cpp_IF_PlayerController.h"
+#include "Interface/NN_Cpp_IF_WidgetController.h"
 #include "NN_Cpp_Widget_MainMenu.generated.h"
 
 UCLASS()
@@ -17,7 +17,6 @@ public:
 	virtual void NativeConstruct() override;
 
 protected:
-
 	// ############### Buttons ###############
 
 	UPROPERTY(meta = (BindWidget))

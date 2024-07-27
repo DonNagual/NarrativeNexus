@@ -4,9 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Components/Button.h"
-#include "Interface/NN_Cpp_IF_PlayerController.h"
-//#include "Widgets/Main/NN_Cpp_Widget_Main.h"
-//#include "General/NN_Cpp_PlayerController.h"
+#include "Interface/NN_Cpp_IF_WidgetController.h"
 #include "Blueprint/UserWidget.h"
 #include "NN_Cpp_Widget_MainOptions.generated.h"
 
