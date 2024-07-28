@@ -17,11 +17,14 @@ public:
 
 	virtual void NativeConstruct() override;
 
-	UFUNCTION()
-	virtual void ShowMainMenuSubWidget();
+	UPROPERTY(meta = (BindWidget))
+	class UUserWidget* MainMenuWidget;
 
 	UFUNCTION()
-	virtual void ShowMainGuideSubWidget();
+	virtual void ShowMainMenuWidget();
+
+	UFUNCTION()
+	virtual void ShowMainGuideWidget();
 
 protected:
 	
@@ -37,8 +40,7 @@ private:
 
 	// ############### Widgets ###############
 
-	UPROPERTY(meta = (BindWidget))
-	class UUserWidget* MainMenuWidget;
+
 
 	UPROPERTY(meta = (BindWidget))
 	class UUserWidget* MainGuideWidget;

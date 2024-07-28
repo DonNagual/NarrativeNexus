@@ -6,6 +6,7 @@
 #include "Blueprint/UserWidget.h"
 #include "Widgets/NN_Cpp_Widget_Category.h"
 #include "Widgets/Main/NN_Cpp_Widget_Main.h"
+#include "Widgets/Main/NN_Cpp_Widget_MainMenu.h"
 #include "GameFramework/PlayerController.h"
 #include "Interface/NN_Cpp_IF_WidgetController.h"
 #include "NN_Cpp_PlayerController.generated.h"
@@ -18,17 +19,20 @@ class NARRATIVENEXUS_API ANN_Cpp_PlayerController : public APlayerController, pu
 public:
 	virtual void BeginPlay() override;
 
-	virtual void QuitGame() override;
+	virtual void ShowWidget(UUserWidget* SubWidget) override;
+	virtual void HideWidget(UUserWidget* SubWidget) override;
 
-	virtual UUserWidget* CreateAndAddWidget(TSubclassOf<UUserWidget> WidgetClass) override;
-	
-	virtual void ShowSubWidget(UUserWidget* SubWidget) override;
-	virtual void HideSubWidget(UUserWidget* SubWidget) override;
+	virtual void ShowMainMenuViaInterface() override;
+	virtual void ShowMainGuideViaInterface() override;
 
+protected:
 
-	virtual UUserWidget* GetMainGuideWidget() override;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "UI Category")
+	TSubclassOf<UUserWidget> CategoryWidgetClass;
 
+private:
 	UPROPERTY()
 	class UNN_Cpp_Widget_Category* CategoryWidget;
 
+	void InitializeWidgets();
 };

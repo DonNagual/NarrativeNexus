@@ -6,6 +6,7 @@
 #include "Components/Button.h"
 #include "Components/PanelWidget.h"
 #include "Blueprint/UserWidget.h"
+#include "General/NN_Cpp_GameInstance.h"
 #include "Interface/NN_Cpp_IF_WidgetController.h"
 #include "NN_Cpp_Widget_Category.generated.h"
 
@@ -49,9 +50,6 @@ private:
 	void HideCategorySubWidget(UUserWidget* SubWidget);
 
 	UFUNCTION()
-	void ShowCategorySubWidget(UUserWidget* SubWidget);
-
-	UFUNCTION()
 	void OnMainButtonClicked();
 
 	UFUNCTION()
@@ -68,11 +66,10 @@ private:
 
 	// ############### Widgets ###############
 
-
-
 	UPROPERTY(meta = (BindWidget))
 	class UUserWidget* GameWidget;
 
 	UPROPERTY(meta = (BindWidget))
 	class UUserWidget* CreatorWidget;
+
 };

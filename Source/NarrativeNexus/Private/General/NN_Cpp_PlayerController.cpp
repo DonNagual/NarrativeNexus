@@ -6,75 +6,41 @@ void ANN_Cpp_PlayerController::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// Show the mouse cursor
-	bShowMouseCursor = true;
-
-	// Set input mode to UI only
-	FInputModeUIOnly InputMode;
-	InputMode.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock);
-	SetInputMode(InputMode);
+	InitializeWidgets();
 }
 
-void ANN_Cpp_PlayerController::QuitGame()
+void ANN_Cpp_PlayerController::InitializeWidgets()
 {
-	// Exit the game
-	ConsoleCommand("quit");
-}
-
-UUserWidget* ANN_Cpp_PlayerController::CreateAndAddWidget(TSubclassOf<UUserWidget> WidgetClass)
-{
-	if (!WidgetClass) return nullptr;
-
-	UUserWidget* Widget = CreateWidget<UUserWidget>(GetWorld(), WidgetClass);
+	UUserWidget* Widget = CreateWidget<UUserWidget>(GetWorld(), CategoryWidgetClass);
 	if (Widget)
 	{
 		Widget->AddToViewport();
+		CategoryWidget = Cast<UNN_Cpp_Widget_Category>(Widget);
 	}
-	CategoryWidget = Cast<UNN_Cpp_Widget_Category>(Widget);
-	return Widget;
 }
 
-void ANN_Cpp_PlayerController::ShowSubWidget(UUserWidget* SubWidget)
+void ANN_Cpp_PlayerController::ShowWidget(UUserWidget* SubWidget)
 {
 	if (SubWidget)
 	{
 		SubWidget->SetVisibility(ESlateVisibility::Visible);
-		
-		FString widgetName = SubWidget->GetName();
-		if (widgetName == TEXT("MainWidget"))
-		{
-			(Cast<UNN_Cpp_Widget_Main>(CategoryWidget->MainWidget))->ShowMainMenuSubWidget();
-		}
-		
-		//if (UNN_Cpp_Widget_Main* Main = Cast<UNN_Cpp_Widget_Main>(SubWidget))
-		//{
-		//	FString widgetName = SubWidget->GetName();
-		//	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Purple, widgetName);
-
-		//	Main->ShowMainMenuSubWidget();
-		//}
 	}
 }
 
-void ANN_Cpp_PlayerController::HideSubWidget(UUserWidget* SubWidget)
+void ANN_Cpp_PlayerController::HideWidget(UUserWidget* SubWidget)
 {
 	if (SubWidget)
 	{
 		SubWidget->SetVisibility(ESlateVisibility::Collapsed);
-
-		FString widgetName = SubWidget->GetName();
-		if (widgetName == TEXT("MainMenuWidget"))
-		{
-			(Cast<UNN_Cpp_Widget_Main>(CategoryWidget->MainWidget))->ShowMainGuideSubWidget();
-		}
 	}
 }
 
-UUserWidget* ANN_Cpp_PlayerController::GetMainGuideWidget()
+void ANN_Cpp_PlayerController::ShowMainMenuViaInterface()
 {
-	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::White, "F00");	
-	
-	(Cast<UNN_Cpp_Widget_Main>(CategoryWidget->MainWidget))->ShowMainGuideSubWidget();
-	
-	return 0;
+	(Cast<UNN_Cpp_Widget_Main>(CategoryWidget->MainWidget))->ShowMainMenuWidget();
+}
+
+void ANN_Cpp_PlayerController::ShowMainGuideViaInterface()
+{
+	(Cast<UNN_Cpp_Widget_Main>(CategoryWidget->MainWidget))->ShowMainGuideWidget();
 }

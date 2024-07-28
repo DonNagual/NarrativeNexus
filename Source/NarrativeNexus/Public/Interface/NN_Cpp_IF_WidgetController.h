@@ -19,13 +19,11 @@ class NARRATIVENEXUS_API INN_Cpp_IF_WidgetController
 
 	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
-	virtual void QuitGame() = 0;
 
-	virtual UUserWidget* CreateAndAddWidget(TSubclassOf<UUserWidget> WidgetClass) = 0;
-	//virtual void CreateAndAddWidget(UUserWidget* SubWidget) = 0;
+	virtual void ShowWidget(UUserWidget* SubWidget) = 0;
+	virtual void HideWidget(UUserWidget* SubWidget) = 0;
 
-	virtual void ShowSubWidget(UUserWidget* SubWidget) = 0;
-	virtual void HideSubWidget(UUserWidget* SubWidget) = 0;
-
-	virtual UUserWidget* GetMainGuideWidget() = 0;
+	virtual void ShowMainMenuViaInterface() = 0;
+	virtual void ShowMainGuideViaInterface() = 0;
+	
 };

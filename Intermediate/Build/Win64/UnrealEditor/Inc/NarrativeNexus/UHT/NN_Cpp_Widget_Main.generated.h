@@ -17,8 +17,8 @@ class UUserWidget;
 
 #define FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Main_NN_Cpp_Widget_Main_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
 	DECLARE_FUNCTION(execHideMainSubWidget); \
-	DECLARE_FUNCTION(execShowMainGuideSubWidget); \
-	DECLARE_FUNCTION(execShowMainMenuSubWidget);
+	DECLARE_FUNCTION(execShowMainGuideWidget); \
+	DECLARE_FUNCTION(execShowMainMenuWidget);
 
 
 #define FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Main_NN_Cpp_Widget_Main_h_14_INCLASS_NO_PURE_DECLS \

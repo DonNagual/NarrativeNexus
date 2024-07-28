@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Engine/GameInstance.h"
+#include "Kismet/KismetSystemLibrary.h"
 #include "NN_Cpp_GameInstance.generated.h"
 
 /**
@@ -13,5 +14,9 @@ UCLASS()
 class NARRATIVENEXUS_API UNN_Cpp_GameInstance : public UGameInstance
 {
 	GENERATED_BODY()
+
+public:
+    UFUNCTION()
+    void QuitGame();
 
 };
