@@ -11,15 +11,9 @@ void UNN_Cpp_Widget_MainGuide::NativeConstruct()
 
 void UNN_Cpp_Widget_MainGuide::OnBackButtonClicked()
 {
-	if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
+	if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
 	{
-		if (INN_Cpp_IF_WidgetController* Interface = Cast<INN_Cpp_IF_WidgetController>(PC))
-		{
 			Interface->HideWidget(this);
 			Interface->ShowMainMenuViaInterface();
-
-			FString lc_text = FString::Printf(TEXT("Guide"));
-			GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green, lc_text);
-		}
 	}
 }

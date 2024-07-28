@@ -3,8 +3,10 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Components/Button.h"
+#include "TimerManager.h"
 #include "Components/PanelWidget.h"
+#include "Components/Border.h"
+#include "Components/Button.h"
 #include "Blueprint/UserWidget.h"
 #include "General/NN_Cpp_GameInstance.h"
 #include "Interface/NN_Cpp_IF_WidgetController.h"
@@ -23,7 +25,10 @@ public:
 
 protected:
 	UPROPERTY(meta = (BindWidget))
-	class UPanelWidget* CategoryContainer;
+	TObjectPtr<UPanelWidget> CategoryContainer;
+
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UBorder> CategoryBorder;
 
 	// ############### Buttons ###############
 
@@ -43,11 +48,14 @@ protected:
 	TObjectPtr<UButton> QuitButton;
 
 private:
-
 	// ############### Functions ###############
 
 	UFUNCTION()
 	void HideCategorySubWidget(UUserWidget* SubWidget);
+
+	UFUNCTION()
+
+	void HideAllWidgets();
 
 	UFUNCTION()
 	void OnMainButtonClicked();
@@ -64,6 +72,13 @@ private:
 	UFUNCTION()
 	void OnQuitButtonClicked();
 
+	UFUNCTION()
+	void ExecuteQuitGame();
+	FTimerHandle TimerHandle;
+
+	UFUNCTION()
+	void HideCategoryBorder();
+
 	// ############### Widgets ###############
 
 	UPROPERTY(meta = (BindWidget))
@@ -72,4 +87,9 @@ private:
 	UPROPERTY(meta = (BindWidget))
 	class UUserWidget* CreatorWidget;
 
+	UPROPERTY(meta = (BindWidget))
+	class UUserWidget* HelpWidget;
+
+	UPROPERTY(meta = (BindWidget))
+	class UUserWidget* QuitWidget;
 };
