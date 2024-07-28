@@ -215,51 +215,6 @@ DEFINE_FUNCTION(UNN_Cpp_Widget_Category::execOnQuitButtonClicked)
 }
 // End Class UNN_Cpp_Widget_Category Function OnQuitButtonClicked
 
-// Begin Class UNN_Cpp_Widget_Category Function ShowCategorySubWidget
-struct Z_Construct_UFunction_UNN_Cpp_Widget_Category_ShowCategorySubWidget_Statics
-{
-	struct NN_Cpp_Widget_Category_eventShowCategorySubWidget_Parms
-	{
-		UUserWidget* SubWidget;
-	};
-#if WITH_METADATA
-	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-		{ "ModuleRelativePath", "Public/Widgets/NN_Cpp_Widget_Category.h" },
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_SubWidget_MetaData[] = {
-		{ "EditInline", "true" },
-	};
-#endif // WITH_METADATA
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_SubWidget;
-	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
-	static const UECodeGen_Private::FFunctionParams FuncParams;
-};
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UFunction_UNN_Cpp_Widget_Category_ShowCategorySubWidget_Statics::NewProp_SubWidget = { "SubWidget", nullptr, (EPropertyFlags)0x0010000000080080, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(NN_Cpp_Widget_Category_eventShowCategorySubWidget_Parms, SubWidget), Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_SubWidget_MetaData), NewProp_SubWidget_MetaData) };
-const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UNN_Cpp_Widget_Category_ShowCategorySubWidget_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UNN_Cpp_Widget_Category_ShowCategorySubWidget_Statics::NewProp_SubWidget,
-};
-static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UNN_Cpp_Widget_Category_ShowCategorySubWidget_Statics::PropPointers) < 2048);
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UNN_Cpp_Widget_Category_ShowCategorySubWidget_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UNN_Cpp_Widget_Category, nullptr, "ShowCategorySubWidget", nullptr, nullptr, Z_Construct_UFunction_UNN_Cpp_Widget_Category_ShowCategorySubWidget_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UNN_Cpp_Widget_Category_ShowCategorySubWidget_Statics::PropPointers), sizeof(Z_Construct_UFunction_UNN_Cpp_Widget_Category_ShowCategorySubWidget_Statics::NN_Cpp_Widget_Category_eventShowCategorySubWidget_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00040401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UNN_Cpp_Widget_Category_ShowCategorySubWidget_Statics::Function_MetaDataParams), Z_Construct_UFunction_UNN_Cpp_Widget_Category_ShowCategorySubWidget_Statics::Function_MetaDataParams) };
-static_assert(sizeof(Z_Construct_UFunction_UNN_Cpp_Widget_Category_ShowCategorySubWidget_Statics::NN_Cpp_Widget_Category_eventShowCategorySubWidget_Parms) < MAX_uint16);
-UFunction* Z_Construct_UFunction_UNN_Cpp_Widget_Category_ShowCategorySubWidget()
-{
-	static UFunction* ReturnFunction = nullptr;
-	if (!ReturnFunction)
-	{
-		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UNN_Cpp_Widget_Category_ShowCategorySubWidget_Statics::FuncParams);
-	}
-	return ReturnFunction;
-}
-DEFINE_FUNCTION(UNN_Cpp_Widget_Category::execShowCategorySubWidget)
-{
-	P_GET_OBJECT(UUserWidget,Z_Param_SubWidget);
-	P_FINISH;
-	P_NATIVE_BEGIN;
-	P_THIS->ShowCategorySubWidget(Z_Param_SubWidget);
-	P_NATIVE_END;
-}
-// End Class UNN_Cpp_Widget_Category Function ShowCategorySubWidget
-
 // Begin Class UNN_Cpp_Widget_Category
 void UNN_Cpp_Widget_Category::StaticRegisterNativesUNN_Cpp_Widget_Category()
 {
@@ -271,7 +226,6 @@ void UNN_Cpp_Widget_Category::StaticRegisterNativesUNN_Cpp_Widget_Category()
 		{ "OnHelpButtonClicked", &UNN_Cpp_Widget_Category::execOnHelpButtonClicked },
 		{ "OnMainButtonClicked", &UNN_Cpp_Widget_Category::execOnMainButtonClicked },
 		{ "OnQuitButtonClicked", &UNN_Cpp_Widget_Category::execOnQuitButtonClicked },
-		{ "ShowCategorySubWidget", &UNN_Cpp_Widget_Category::execShowCategorySubWidget },
 	};
 	FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
 }
@@ -363,7 +317,6 @@ struct Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics
 		{ &Z_Construct_UFunction_UNN_Cpp_Widget_Category_OnHelpButtonClicked, "OnHelpButtonClicked" }, // 2324601507
 		{ &Z_Construct_UFunction_UNN_Cpp_Widget_Category_OnMainButtonClicked, "OnMainButtonClicked" }, // 2877668426
 		{ &Z_Construct_UFunction_UNN_Cpp_Widget_Category_OnQuitButtonClicked, "OnQuitButtonClicked" }, // 639202989
-		{ &Z_Construct_UFunction_UNN_Cpp_Widget_Category_ShowCategorySubWidget, "ShowCategorySubWidget" }, // 206047394
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -433,10 +386,10 @@ UNN_Cpp_Widget_Category::~UNN_Cpp_Widget_Category() {}
 struct Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_NN_Cpp_Widget_Category_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UNN_Cpp_Widget_Category, UNN_Cpp_Widget_Category::StaticClass, TEXT("UNN_Cpp_Widget_Category"), &Z_Registration_Info_UClass_UNN_Cpp_Widget_Category, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UNN_Cpp_Widget_Category), 604070356U) },
+		{ Z_Construct_UClass_UNN_Cpp_Widget_Category, UNN_Cpp_Widget_Category::StaticClass, TEXT("UNN_Cpp_Widget_Category"), &Z_Registration_Info_UClass_UNN_Cpp_Widget_Category, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UNN_Cpp_Widget_Category), 4015308523U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_NN_Cpp_Widget_Category_h_1000854533(TEXT("/Script/NarrativeNexus"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_NN_Cpp_Widget_Category_h_3114529431(TEXT("/Script/NarrativeNexus"),
 	Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_NN_Cpp_Widget_Category_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_NN_Cpp_Widget_Category_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

@@ -27,48 +27,52 @@ void UNN_Cpp_Widget_Category::HideCategorySubWidget(UUserWidget* SubWidget)
 	{
 		if (INN_Cpp_IF_WidgetController* Interface = Cast<INN_Cpp_IF_WidgetController>(PC))
 		{
-			Interface->HideSubWidget(SubWidget);
-		}
-	}
-}
-
-void UNN_Cpp_Widget_Category::ShowCategorySubWidget(UUserWidget* SubWidget)
-{
-	if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
-	{
-		if (INN_Cpp_IF_WidgetController* Interface = Cast<INN_Cpp_IF_WidgetController>(PC))
-		{
-			Interface->ShowSubWidget(SubWidget);
+			Interface->HideWidget(SubWidget);
 		}
 	}
 }
 
 void UNN_Cpp_Widget_Category::OnMainButtonClicked()
 {
-	HideCategorySubWidget(GameWidget);
-	HideCategorySubWidget(CreatorWidget);
-
 	if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
 	{
 		if (INN_Cpp_IF_WidgetController* Interface = Cast<INN_Cpp_IF_WidgetController>(PC))
 		{
-			Interface->ShowSubWidget(MainWidget);
+			Interface->ShowWidget(MainWidget);
+			Interface->ShowMainMenuViaInterface();
+
+			Interface->HideWidget(GameWidget);
+			Interface->HideWidget(CreatorWidget);
 		}
 	}
 }
 
 void UNN_Cpp_Widget_Category::OnGameButtonClicked()
 {
-	HideCategorySubWidget(MainWidget);
-	HideCategorySubWidget(CreatorWidget);
-	ShowCategorySubWidget(GameWidget);
+	if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
+	{
+		if (INN_Cpp_IF_WidgetController* Interface = Cast<INN_Cpp_IF_WidgetController>(PC))
+		{
+			Interface->ShowWidget(GameWidget);
+
+			Interface->HideWidget(MainWidget);
+			Interface->HideWidget(CreatorWidget);
+		}
+	}
 }
 
 void UNN_Cpp_Widget_Category::OnCreatorButtonClicked()
 {
-	HideCategorySubWidget(MainWidget);
-	HideCategorySubWidget(GameWidget);
-	ShowCategorySubWidget(CreatorWidget);
+	if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
+	{
+		if (INN_Cpp_IF_WidgetController* Interface = Cast<INN_Cpp_IF_WidgetController>(PC))
+		{
+			Interface->ShowWidget(CreatorWidget);
+
+			Interface->HideWidget(MainWidget);
+			Interface->HideWidget(GameWidget);
+		}
+	}
 }
 
 void UNN_Cpp_Widget_Category::OnHelpButtonClicked()
@@ -77,15 +81,15 @@ void UNN_Cpp_Widget_Category::OnHelpButtonClicked()
 	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, lc_text);
 }
 
+// #################### QuitGame ####################
+
 void UNN_Cpp_Widget_Category::OnQuitButtonClicked()
 {
-	if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
+	if (UGameInstance* GI = GetWorld()->GetGameInstance())
 	{
-		if (INN_Cpp_IF_WidgetController* Interface = Cast<INN_Cpp_IF_WidgetController>(PC))
+		if (UNN_Cpp_GameInstance* NN_GI = Cast<UNN_Cpp_GameInstance>(GI))
 		{
-			Interface->QuitGame();
+			NN_GI->QuitGame();
 		}
 	}
-	FString lc_text = FString::Printf(TEXT("Quit Game"));
-	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, lc_text);
 }

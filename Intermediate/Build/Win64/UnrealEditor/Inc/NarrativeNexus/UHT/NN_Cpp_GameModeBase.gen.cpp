@@ -29,9 +29,6 @@ struct Z_Construct_UClass_ANN_Cpp_GameModeBase_Statics
 {
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[] = {
-#if !UE_BUILD_SHIPPING
-		{ "Comment", "/**\n * \n */" },
-#endif
 		{ "HideCategories", "Info Rendering MovementReplication Replication Actor Input Movement Collision Rendering HLOD WorldPartition DataLayers Transformation" },
 		{ "IncludePath", "General/NN_Cpp_GameModeBase.h" },
 		{ "ModuleRelativePath", "Public/General/NN_Cpp_GameModeBase.h" },
@@ -84,10 +81,10 @@ ANN_Cpp_GameModeBase::~ANN_Cpp_GameModeBase() {}
 struct Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_General_NN_Cpp_GameModeBase_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ANN_Cpp_GameModeBase, ANN_Cpp_GameModeBase::StaticClass, TEXT("ANN_Cpp_GameModeBase"), &Z_Registration_Info_UClass_ANN_Cpp_GameModeBase, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ANN_Cpp_GameModeBase), 2344276845U) },
+		{ Z_Construct_UClass_ANN_Cpp_GameModeBase, ANN_Cpp_GameModeBase::StaticClass, TEXT("ANN_Cpp_GameModeBase"), &Z_Registration_Info_UClass_ANN_Cpp_GameModeBase, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ANN_Cpp_GameModeBase), 2387608334U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_General_NN_Cpp_GameModeBase_h_3801068166(TEXT("/Script/NarrativeNexus"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_General_NN_Cpp_GameModeBase_h_4012275085(TEXT("/Script/NarrativeNexus"),
 	Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_General_NN_Cpp_GameModeBase_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_General_NN_Cpp_GameModeBase_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

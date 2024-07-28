@@ -58,9 +58,6 @@
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\General\NN_Cpp_GameStateBase.cpp">
       <Filter>Source\NarrativeNexus\Private\General</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\NarrativeNexus\Private\General\NN_Cpp_HUD.cpp">
-      <Filter>Source\NarrativeNexus\Private\General</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\General\NN_Cpp_PlayerController.cpp">
       <Filter>Source\NarrativeNexus\Private\General</Filter>
     </ClCompile>
@@ -74,6 +71,12 @@
       <UniqueIdentifier>{652D077C-4E5E-331A-BA24-C869F7B2EB2B}</UniqueIdentifier>
     </Filter>
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\NN_Cpp_Widget_Category.cpp">
+      <Filter>Source\NarrativeNexus\Private\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\NN_Cpp_Widget_Help.cpp">
+      <Filter>Source\NarrativeNexus\Private\Widgets</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\NN_Cpp_Widget_Quit.cpp">
       <Filter>Source\NarrativeNexus\Private\Widgets</Filter>
     </ClCompile>
     <Filter Include="Source\NarrativeNexus\Private\Widgets\Creator">
@@ -145,9 +148,6 @@
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\General\NN_Cpp_GameStateBase.h">
       <Filter>Source\NarrativeNexus\Public\General</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\NarrativeNexus\Public\General\NN_Cpp_HUD.h">
-      <Filter>Source\NarrativeNexus\Public\General</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\General\NN_Cpp_PlayerController.h">
       <Filter>Source\NarrativeNexus\Public\General</Filter>
     </ClInclude>
@@ -161,6 +161,12 @@
       <UniqueIdentifier>{CC1666D7-3C1B-39A0-A7EA-256B68BD009E}</UniqueIdentifier>
     </Filter>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\NN_Cpp_Widget_Category.h">
+      <Filter>Source\NarrativeNexus\Public\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\NN_Cpp_Widget_Help.h">
+      <Filter>Source\NarrativeNexus\Public\Widgets</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\NN_Cpp_Widget_Quit.h">
       <Filter>Source\NarrativeNexus\Public\Widgets</Filter>
     </ClInclude>
     <Filter Include="Source\NarrativeNexus\Public\Widgets\Creator">

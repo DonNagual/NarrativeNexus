@@ -20,7 +20,9 @@
 				"X:/UnrealEngine/NarrativeNexus/Content/Widgets/Creator/NN_BP_Widget_CreatorCharacter.uasset",
 				"X:/UnrealEngine/NarrativeNexus/Content/Widgets/Creator/NN_BP_Widget_CreatorStory.uasset",
 				"X:/UnrealEngine/NarrativeNexus/Content/Widgets/Creator/NN_BP_Widget_CreatorWorld.uasset",
-				"X:/UnrealEngine/NarrativeNexus/Content/Widgets/Creator/NN_BP_Widget_CreatorMenu.uasset"
+				"X:/UnrealEngine/NarrativeNexus/Content/Widgets/Creator/NN_BP_Widget_CreatorMenu.uasset",
+				"X:/UnrealEngine/NarrativeNexus/Content/Interface/NN_BP_IF_WidgetController.uasset",
+				"X:/UnrealEngine/NarrativeNexus/Content/General/NN_BP_GameModeBase.uasset"
 			]
 		}
 	]

@@ -13,36 +13,45 @@ void UNN_Cpp_Widget_Main::NativeConstruct()
 	HideMainSubWidget(MainCreditsWidget);
 }
 
-void UNN_Cpp_Widget_Main::ShowMainMenuSubWidget()
-{
-	if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
-	{
-		if (INN_Cpp_IF_WidgetController* Interface = Cast<INN_Cpp_IF_WidgetController>(PC))
-		{
-			Interface->ShowSubWidget(MainMenuWidget);
-		}
-	}
-}
-
 void UNN_Cpp_Widget_Main::HideMainSubWidget(UUserWidget* SubWidget)
 {
 	if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
 	{
 		if (INN_Cpp_IF_WidgetController* Interface = Cast<INN_Cpp_IF_WidgetController>(PC))
 		{
-			Interface->HideSubWidget(SubWidget);
+			Interface->HideWidget(SubWidget);
 		}
 	}
 }
 
-void UNN_Cpp_Widget_Main::ShowMainGuideSubWidget()
+void UNN_Cpp_Widget_Main::ShowMainMenuWidget()
 {
 	if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
 	{
 		if (INN_Cpp_IF_WidgetController* Interface = Cast<INN_Cpp_IF_WidgetController>(PC))
 		{
-			GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Red, "FOO FOO");
-			Interface->ShowSubWidget(MainGuideWidget);
+			Interface->ShowWidget(MainMenuWidget);
+
+			Interface->HideWidget(MainGuideWidget);
+			Interface->HideWidget(MainOptionsWidget);
+			Interface->HideWidget(MainTutorialWidget);
+			Interface->HideWidget(MainCreditsWidget);
+		}
+	}
+}
+
+void UNN_Cpp_Widget_Main::ShowMainGuideWidget()
+{
+	if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
+	{
+		if (INN_Cpp_IF_WidgetController* Interface = Cast<INN_Cpp_IF_WidgetController>(PC))
+		{
+			Interface->ShowWidget(MainGuideWidget);
+			
+			Interface->HideWidget(MainMenuWidget);
+			Interface->HideWidget(MainOptionsWidget);
+			Interface->HideWidget(MainTutorialWidget);
+			Interface->HideWidget(MainCreditsWidget);
 		}
 	}
 }

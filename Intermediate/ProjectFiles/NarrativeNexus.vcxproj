@@ -275,9 +275,6 @@
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\General\NN_Cpp_GameStateBase.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
-    <ClCompile Include="..\..\Source\NarrativeNexus\Private\General\NN_Cpp_HUD.cpp">
-      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-    </ClCompile>
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\General\NN_Cpp_PlayerController.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
@@ -285,6 +282,12 @@
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\NN_Cpp_Widget_Category.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\NN_Cpp_Widget_Help.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\NN_Cpp_Widget_Quit.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Creator\NN_Cpp_Widget_Creator.cpp">
@@ -335,10 +338,11 @@
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\General\NN_Cpp_GameInstance.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\General\NN_Cpp_GameModeBase.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\General\NN_Cpp_GameStateBase.h"/>
-    <ClInclude Include="..\..\Source\NarrativeNexus\Public\General\NN_Cpp_HUD.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\General\NN_Cpp_PlayerController.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Interface\NN_Cpp_IF_WidgetController.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\NN_Cpp_Widget_Category.h"/>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\NN_Cpp_Widget_Help.h"/>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\NN_Cpp_Widget_Quit.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Creator\NN_Cpp_Widget_Creator.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Creator\NN_Cpp_Widget_CreatorCharacter.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Creator\NN_Cpp_Widget_CreatorMenu.h"/>

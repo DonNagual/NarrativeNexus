@@ -15,18 +15,24 @@ void UNN_Cpp_Widget_MainMenu::NativeConstruct()
 
 void UNN_Cpp_Widget_MainMenu::OnGuideButtonClicked()
 {
-	if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
+	if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
 	{
-		if (INN_Cpp_IF_WidgetController* Interface = Cast<INN_Cpp_IF_WidgetController>(PC))
-		{
-			Interface->HideSubWidget(this);
-			//Interface->ShowSubWidget(Interface->GetMainWidget());
-			Interface->GetMainGuideWidget();
+		Interface->ShowMainGuideViaInterface();
 
-			FString lc_text = FString::Printf(TEXT("Guide"));
-			GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green, lc_text);
-		}
+		FString lc_text = FString::Printf(TEXT("Guide"));
+		GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Cyan, lc_text);
 	}
+	
+	//if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
+	//{
+	//	if (INN_Cpp_IF_WidgetController* Interface = Cast<INN_Cpp_IF_WidgetController>(PC))
+	//	{
+	//		Interface->ShowMainGuideViaInterface();
+
+	//		FString lc_text = FString::Printf(TEXT("Guide"));
+	//		GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green, lc_text);
+	//	}
+	//}
 }
 
 void UNN_Cpp_Widget_MainMenu::OnOptionsButtonClicked()

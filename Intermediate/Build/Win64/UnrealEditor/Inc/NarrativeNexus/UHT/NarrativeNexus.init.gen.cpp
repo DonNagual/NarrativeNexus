@@ -17,13 +17,13 @@ void EmptyLinkFunctionForGeneratedCodeNarrativeNexus_init() {}
 				nullptr,
 				0,
 				PKG_CompiledIn | 0x00000000,
-				0xBC17A086,
-				0xF9909BDB,
+				0x56E03B7E,
+				0x40C51E2F,
 				METADATA_PARAMS(0, nullptr)
 			};
 			UECodeGen_Private::ConstructUPackage(Z_Registration_Info_UPackage__Script_NarrativeNexus.OuterSingleton, PackageParams);
 		}
 		return Z_Registration_Info_UPackage__Script_NarrativeNexus.OuterSingleton;
 	}
-	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_NarrativeNexus(Z_Construct_UPackage__Script_NarrativeNexus, TEXT("/Script/NarrativeNexus"), Z_Registration_Info_UPackage__Script_NarrativeNexus, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0xBC17A086, 0xF9909BDB));
+	static FRegisterCompiledInInfo Z_CompiledInDeferPackage_UPackage__Script_NarrativeNexus(Z_Construct_UPackage__Script_NarrativeNexus, TEXT("/Script/NarrativeNexus"), Z_Registration_Info_UPackage__Script_NarrativeNexus, CONSTRUCT_RELOAD_VERSION_INFO(FPackageReloadVersionInfo, 0x56E03B7E, 0x40C51E2F));
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
