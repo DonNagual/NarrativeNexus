@@ -10,9 +10,7 @@ void UNN_Cpp_Widget_Category::NativeConstruct()
 	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, TEXT("Widget Category Constructed"));
 	
 	// Hide all sub-widgets initially
-	HideCategorySubWidget(MainWidget);
-	HideCategorySubWidget(GameWidget);
-	HideCategorySubWidget(CreatorWidget);
+	HideAllWidgets();
 
 	MainButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_Category::OnMainButtonClicked);
 	GameButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_Category::OnGameButtonClicked);
@@ -21,75 +19,82 @@ void UNN_Cpp_Widget_Category::NativeConstruct()
 	QuitButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_Category::OnQuitButtonClicked);
 }
 
+void UNN_Cpp_Widget_Category::HideAllWidgets()
+{
+	HideCategorySubWidget(MainWidget);
+	HideCategorySubWidget(GameWidget);
+	HideCategorySubWidget(CreatorWidget);
+	HideCategorySubWidget(HelpWidget);
+	HideCategorySubWidget(QuitWidget);
+}
+
 void UNN_Cpp_Widget_Category::HideCategorySubWidget(UUserWidget* SubWidget)
 {
-	if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
+	if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
 	{
-		if (INN_Cpp_IF_WidgetController* Interface = Cast<INN_Cpp_IF_WidgetController>(PC))
-		{
-			Interface->HideWidget(SubWidget);
-		}
+		Interface->HideWidget(SubWidget);
 	}
 }
 
 void UNN_Cpp_Widget_Category::OnMainButtonClicked()
 {
-	if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
+	HideAllWidgets();
+	if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
 	{
-		if (INN_Cpp_IF_WidgetController* Interface = Cast<INN_Cpp_IF_WidgetController>(PC))
-		{
-			Interface->ShowWidget(MainWidget);
-			Interface->ShowMainMenuViaInterface();
-
-			Interface->HideWidget(GameWidget);
-			Interface->HideWidget(CreatorWidget);
-		}
+		Interface->ShowWidget(MainWidget);
+		Interface->ShowMainMenuViaInterface();
 	}
 }
 
 void UNN_Cpp_Widget_Category::OnGameButtonClicked()
 {
-	if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
+	HideAllWidgets();
+	if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
 	{
-		if (INN_Cpp_IF_WidgetController* Interface = Cast<INN_Cpp_IF_WidgetController>(PC))
-		{
-			Interface->ShowWidget(GameWidget);
-
-			Interface->HideWidget(MainWidget);
-			Interface->HideWidget(CreatorWidget);
-		}
+		Interface->ShowWidget(GameWidget);
 	}
 }
 
 void UNN_Cpp_Widget_Category::OnCreatorButtonClicked()
 {
-	if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
+	HideAllWidgets();
+	if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
 	{
-		if (INN_Cpp_IF_WidgetController* Interface = Cast<INN_Cpp_IF_WidgetController>(PC))
-		{
-			Interface->ShowWidget(CreatorWidget);
-
-			Interface->HideWidget(MainWidget);
-			Interface->HideWidget(GameWidget);
-		}
+		Interface->ShowWidget(CreatorWidget);
 	}
 }
 
 void UNN_Cpp_Widget_Category::OnHelpButtonClicked()
 {
-	FString lc_text = FString::Printf(TEXT("Help"));
-	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, lc_text);
+	if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
+	{
+		Interface->ShowWidget(HelpWidget);
+	}
 }
 
 // #################### QuitGame ####################
 
+void UNN_Cpp_Widget_Category::HideCategoryBorder()
+{
+	CategoryBorder->SetVisibility(ESlateVisibility::Collapsed);
+}
+
 void UNN_Cpp_Widget_Category::OnQuitButtonClicked()
 {
-	if (UGameInstance* GI = GetWorld()->GetGameInstance())
+	HideAllWidgets();
+	HideCategoryBorder();
+	if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
+	{ 
+		Interface->ShowWidget(QuitWidget);
+
+		GetWorld()->GetTimerManager().SetTimer(TimerHandle, this, &UNN_Cpp_Widget_Category::ExecuteQuitGame, 2.5f, false);
+	}
+}
+
+void UNN_Cpp_Widget_Category::ExecuteQuitGame()
+{
+	if (auto* GI = Cast<UNN_Cpp_GameInstance>(GetWorld()->GetGameInstance()))
 	{
-		if (UNN_Cpp_GameInstance* NN_GI = Cast<UNN_Cpp_GameInstance>(GI))
-		{
-			NN_GI->QuitGame();
-		}
+		GI->QuitGame();
 	}
 }
