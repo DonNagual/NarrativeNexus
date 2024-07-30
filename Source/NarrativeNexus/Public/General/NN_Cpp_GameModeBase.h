@@ -4,29 +4,22 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
-#include "Blueprint/UserWidget.h"
-#include "NN_Cpp_HUD.h"
 #include "NN_Cpp_PlayerController.h"
 #include "NN_Cpp_GameModeBase.generated.h"
 
-/**
- * 
- */
 UCLASS()
 class NARRATIVENEXUS_API ANN_Cpp_GameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
 
-
 public:
 
-	virtual void BeginPlay() override;
+	ANN_Cpp_GameModeBase();
 
 protected:
 
-	
-private:
+	virtual void BeginPlay() override;
 
-	ANN_Cpp_GameModeBase();
+private:
 
 };

@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Interface/NN_Cpp_IF_PlayerController.h"
+#include "Interface/NN_Cpp_IF_WidgetController.h"
 #include "Blueprint/UserWidget.h"
 #include "NN_Cpp_Widget_Creator.generated.h"
 
@@ -18,8 +18,8 @@ class NARRATIVENEXUS_API UNN_Cpp_Widget_Creator : public UUserWidget
 public:
 	virtual void NativeConstruct() override;
 
-	void ShowSubWidget(UUserWidget* SubWidget);
-	void HideAllSubWidgets();
+	//void ShowSubWidget(UUserWidget* SubWidget);
+	//void HideAllSubWidgets();
 
 	UPROPERTY(meta = (BindWidget))
 	class UPanelWidget* CreatorContainer;

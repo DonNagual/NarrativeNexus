@@ -1,79 +1,46 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
-
+// NN_Cpp_PlayerController.cpp
 #include "General/NN_Cpp_PlayerController.h"
 
 void ANN_Cpp_PlayerController::BeginPlay()
 {
 	Super::BeginPlay();
 
-	// Show the mouse cursor
-	bShowMouseCursor = true;
-
-	// Set input mode to UI only
-	FInputModeUIOnly InputMode;
-	InputMode.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock);
-	SetInputMode(InputMode);
+	InitializeWidgets();
 }
 
-void ANN_Cpp_PlayerController::QuitGame()
+void ANN_Cpp_PlayerController::InitializeWidgets()
 {
-	// Exit the game
-	ConsoleCommand("quit");
-}
-
-void ANN_Cpp_PlayerController::ShowSubWidget(UUserWidget* SubWidget)
-{
-	if (CategoryWidget)
+	UUserWidget* Widget = CreateWidget<UUserWidget>(GetWorld(), CategoryWidgetClass);
+	if (Widget)
 	{
-		if (auto MainWidget = Cast<UNN_Cpp_Widget_Main>(CategoryWidget))
-		{
-			MainWidget->HideAllSubWidgets();
-			MainWidget->ShowSubWidget(SubWidget);
-		}
-		else if (auto CreatorWidget = Cast<UNN_Cpp_Widget_Creator>(CategoryWidget))
-		{
-			CreatorWidget->HideAllSubWidgets();
-			CreatorWidget->ShowSubWidget(SubWidget);
-		}
+		Widget->AddToViewport();
+		CategoryWidget = Cast<UNN_Cpp_Widget_Category>(Widget);
 	}
 }
 
-void ANN_Cpp_PlayerController::HideAllSubWidgets()
+void ANN_Cpp_PlayerController::ShowWidget(UUserWidget* SubWidget)
 {
-	if (CategoryWidget)
+	if (SubWidget)
 	{
-		if (auto MainWidget = Cast<UNN_Cpp_Widget_Main>(CategoryWidget))
-		{
-			MainWidget->HideAllSubWidgets();
-		}
-		else if (auto CreatorWidget = Cast<UNN_Cpp_Widget_Creator>(CategoryWidget))
-		{
-			CreatorWidget->HideAllSubWidgets();
-		}
+		SubWidget->SetVisibility(ESlateVisibility::Visible);
 	}
 }
 
-UUserWidget* ANN_Cpp_PlayerController::GetMainMenuWidget()
+void ANN_Cpp_PlayerController::HideWidget(UUserWidget* SubWidget)
 {
-	if (auto MainWidget = Cast<UNN_Cpp_Widget_Main>(CategoryWidget))
+	if (SubWidget)
 	{
-		return MainWidget->MainMenuWidget;
+		SubWidget->SetVisibility(ESlateVisibility::Collapsed);
 	}
-	return nullptr;
 }
 
-UUserWidget* ANN_Cpp_PlayerController::GetMainOptionsWidget()
+void ANN_Cpp_PlayerController::ShowMainMenuViaInterface()
 {
-	if (auto MainWidget = Cast<UNN_Cpp_Widget_Main>(CategoryWidget))
-	{
-		return MainWidget->MainOptionsWidget;
-	}
-	return nullptr;
+	(Cast<UNN_Cpp_Widget_Main>(CategoryWidget->MainWidget))->ShowMainMenuWidget();
 }
 
-void ANN_Cpp_PlayerController::SetCategoryWidget(UUserWidget* InCategoryWidget)
+void ANN_Cpp_PlayerController::ShowMainGuideViaInterface()
 {
-	CategoryWidget = InCategoryWidget;
+	(Cast<UNN_Cpp_Widget_Main>(CategoryWidget->MainWidget))->ShowMainGuideWidget();
 }
-

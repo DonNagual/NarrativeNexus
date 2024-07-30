@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Interface/NN_Cpp_IF_PlayerController.h"
+#include "Interface/NN_Cpp_IF_WidgetController.h"
 #include "Blueprint/UserWidget.h"
 #include "NN_Cpp_Widget_CreatorMenu.generated.h"
 

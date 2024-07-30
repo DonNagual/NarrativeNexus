@@ -1,51 +1,54 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
-
+// NN_Cpp_Widget_MainMenu.cpp
 #include "Widgets/Main/NN_Cpp_Widget_MainMenu.h"
 
 void UNN_Cpp_Widget_MainMenu::NativeConstruct()
 {
 	Super::NativeConstruct();
 
-	GameButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_MainMenu::OnPlayButtonClicked);
+	GuideButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_MainMenu::OnGuideButtonClicked);
 	OptionsButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_MainMenu::OnOptionsButtonClicked);
-	QuitButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_MainMenu::OnQuitButtonClicked);
+	TutorialButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_MainMenu::OnTutorialButtonClicked);
+	CreditsButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_MainMenu::OnCreditsButtonClicked);
 
 }
 
-void UNN_Cpp_Widget_MainMenu::SetMainWidget(UNN_Cpp_Widget_Main* InMainWidget)
+void UNN_Cpp_Widget_MainMenu::OnGuideButtonClicked()
 {
-	MainWidget = InMainWidget;
-}
+	if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
+	{
+		Interface->ShowMainGuideViaInterface();
 
-void UNN_Cpp_Widget_MainMenu::OnPlayButtonClicked()
-{
-	FString lc_text = FString::Printf(TEXT("Start Game"));
-	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green, lc_text);
-	// UGameplayStatics::OpenLevel(GetWorld(), FName(TEXT("Main_lvl")));
+		FString lc_text = FString::Printf(TEXT("Guide"));
+		GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Cyan, lc_text);
+	}
+	
+	//if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
+	//{
+	//	if (INN_Cpp_IF_WidgetController* Interface = Cast<INN_Cpp_IF_WidgetController>(PC))
+	//	{
+	//		Interface->ShowMainGuideViaInterface();
+
+	//		FString lc_text = FString::Printf(TEXT("Guide"));
+	//		GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green, lc_text);
+	//	}
+	//}
 }
 
 void UNN_Cpp_Widget_MainMenu::OnOptionsButtonClicked()
 {
-	if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
-	{
-		if (INN_Cpp_IF_PlayerController* Interface = Cast<INN_Cpp_IF_PlayerController>(PC))
-		{
-			Interface->ShowSubWidget(Interface->GetMainOptionsWidget());
-		}
-	}
-
-	FString lc_text = FString::Printf(TEXT("Open Options"));
-	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, lc_text);
+	FString lc_text = FString::Printf(TEXT("Options"));
+	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green, lc_text);
 }
 
-void UNN_Cpp_Widget_MainMenu::OnQuitButtonClicked()
+void UNN_Cpp_Widget_MainMenu::OnTutorialButtonClicked()
 {
-	if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
-	{
-		if (INN_Cpp_IF_PlayerController* Interface = Cast<INN_Cpp_IF_PlayerController>(PC))
-		{
-			Interface->QuitGame();
-		}
-	}
+	FString lc_text = FString::Printf(TEXT("Tutorial"));
+	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green, lc_text);
+}
+
+void UNN_Cpp_Widget_MainMenu::OnCreditsButtonClicked()
+{
+	FString lc_text = FString::Printf(TEXT("Credits"));
+	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green, lc_text);
 }

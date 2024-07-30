@@ -10,13 +10,76 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 void EmptyLinkFunctionForGeneratedCodeNN_Cpp_Widget_MainMenu() {}
 
 // Begin Cross Module References
-NARRATIVENEXUS_API UClass* Z_Construct_UClass_UNN_Cpp_Widget_Main_NoRegister();
 NARRATIVENEXUS_API UClass* Z_Construct_UClass_UNN_Cpp_Widget_MainMenu();
 NARRATIVENEXUS_API UClass* Z_Construct_UClass_UNN_Cpp_Widget_MainMenu_NoRegister();
 UMG_API UClass* Z_Construct_UClass_UButton_NoRegister();
 UMG_API UClass* Z_Construct_UClass_UUserWidget();
 UPackage* Z_Construct_UPackage__Script_NarrativeNexus();
 // End Cross Module References
+
+// Begin Class UNN_Cpp_Widget_MainMenu Function OnCreditsButtonClicked
+struct Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnCreditsButtonClicked_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/Widgets/Main/NN_Cpp_Widget_MainMenu.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnCreditsButtonClicked_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UNN_Cpp_Widget_MainMenu, nullptr, "OnCreditsButtonClicked", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00040401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnCreditsButtonClicked_Statics::Function_MetaDataParams), Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnCreditsButtonClicked_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnCreditsButtonClicked()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnCreditsButtonClicked_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(UNN_Cpp_Widget_MainMenu::execOnCreditsButtonClicked)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->OnCreditsButtonClicked();
+	P_NATIVE_END;
+}
+// End Class UNN_Cpp_Widget_MainMenu Function OnCreditsButtonClicked
+
+// Begin Class UNN_Cpp_Widget_MainMenu Function OnGuideButtonClicked
+struct Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnGuideButtonClicked_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "// ############### Functions ###############\n" },
+#endif
+		{ "ModuleRelativePath", "Public/Widgets/Main/NN_Cpp_Widget_MainMenu.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "############### Functions ###############" },
+#endif
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnGuideButtonClicked_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UNN_Cpp_Widget_MainMenu, nullptr, "OnGuideButtonClicked", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00040401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnGuideButtonClicked_Statics::Function_MetaDataParams), Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnGuideButtonClicked_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnGuideButtonClicked()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnGuideButtonClicked_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(UNN_Cpp_Widget_MainMenu::execOnGuideButtonClicked)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->OnGuideButtonClicked();
+	P_NATIVE_END;
+}
+// End Class UNN_Cpp_Widget_MainMenu Function OnGuideButtonClicked
 
 // Begin Class UNN_Cpp_Widget_MainMenu Function OnOptionsButtonClicked
 struct Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnOptionsButtonClicked_Statics
@@ -28,7 +91,7 @@ struct Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnOptionsButtonClicked_Stat
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnOptionsButtonClicked_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UNN_Cpp_Widget_MainMenu, nullptr, "OnOptionsButtonClicked", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00080401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnOptionsButtonClicked_Statics::Function_MetaDataParams), Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnOptionsButtonClicked_Statics::Function_MetaDataParams) };
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnOptionsButtonClicked_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UNN_Cpp_Widget_MainMenu, nullptr, "OnOptionsButtonClicked", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00040401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnOptionsButtonClicked_Statics::Function_MetaDataParams), Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnOptionsButtonClicked_Statics::Function_MetaDataParams) };
 UFunction* Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnOptionsButtonClicked()
 {
 	static UFunction* ReturnFunction = nullptr;
@@ -47,8 +110,8 @@ DEFINE_FUNCTION(UNN_Cpp_Widget_MainMenu::execOnOptionsButtonClicked)
 }
 // End Class UNN_Cpp_Widget_MainMenu Function OnOptionsButtonClicked
 
-// Begin Class UNN_Cpp_Widget_MainMenu Function OnPlayButtonClicked
-struct Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnPlayButtonClicked_Statics
+// Begin Class UNN_Cpp_Widget_MainMenu Function OnTutorialButtonClicked
+struct Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnTutorialButtonClicked_Statics
 {
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
@@ -57,62 +120,34 @@ struct Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnPlayButtonClicked_Statics
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnPlayButtonClicked_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UNN_Cpp_Widget_MainMenu, nullptr, "OnPlayButtonClicked", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00080401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnPlayButtonClicked_Statics::Function_MetaDataParams), Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnPlayButtonClicked_Statics::Function_MetaDataParams) };
-UFunction* Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnPlayButtonClicked()
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnTutorialButtonClicked_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UNN_Cpp_Widget_MainMenu, nullptr, "OnTutorialButtonClicked", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00040401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnTutorialButtonClicked_Statics::Function_MetaDataParams), Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnTutorialButtonClicked_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnTutorialButtonClicked()
 {
 	static UFunction* ReturnFunction = nullptr;
 	if (!ReturnFunction)
 	{
-		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnPlayButtonClicked_Statics::FuncParams);
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnTutorialButtonClicked_Statics::FuncParams);
 	}
 	return ReturnFunction;
 }
-DEFINE_FUNCTION(UNN_Cpp_Widget_MainMenu::execOnPlayButtonClicked)
+DEFINE_FUNCTION(UNN_Cpp_Widget_MainMenu::execOnTutorialButtonClicked)
 {
 	P_FINISH;
 	P_NATIVE_BEGIN;
-	P_THIS->OnPlayButtonClicked();
+	P_THIS->OnTutorialButtonClicked();
 	P_NATIVE_END;
 }
-// End Class UNN_Cpp_Widget_MainMenu Function OnPlayButtonClicked
-
-// Begin Class UNN_Cpp_Widget_MainMenu Function OnQuitButtonClicked
-struct Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnQuitButtonClicked_Statics
-{
-#if WITH_METADATA
-	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-		{ "ModuleRelativePath", "Public/Widgets/Main/NN_Cpp_Widget_MainMenu.h" },
-	};
-#endif // WITH_METADATA
-	static const UECodeGen_Private::FFunctionParams FuncParams;
-};
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnQuitButtonClicked_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UNN_Cpp_Widget_MainMenu, nullptr, "OnQuitButtonClicked", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00080401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnQuitButtonClicked_Statics::Function_MetaDataParams), Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnQuitButtonClicked_Statics::Function_MetaDataParams) };
-UFunction* Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnQuitButtonClicked()
-{
-	static UFunction* ReturnFunction = nullptr;
-	if (!ReturnFunction)
-	{
-		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnQuitButtonClicked_Statics::FuncParams);
-	}
-	return ReturnFunction;
-}
-DEFINE_FUNCTION(UNN_Cpp_Widget_MainMenu::execOnQuitButtonClicked)
-{
-	P_FINISH;
-	P_NATIVE_BEGIN;
-	P_THIS->OnQuitButtonClicked();
-	P_NATIVE_END;
-}
-// End Class UNN_Cpp_Widget_MainMenu Function OnQuitButtonClicked
+// End Class UNN_Cpp_Widget_MainMenu Function OnTutorialButtonClicked
 
 // Begin Class UNN_Cpp_Widget_MainMenu
 void UNN_Cpp_Widget_MainMenu::StaticRegisterNativesUNN_Cpp_Widget_MainMenu()
 {
 	UClass* Class = UNN_Cpp_Widget_MainMenu::StaticClass();
 	static const FNameNativePtrPair Funcs[] = {
+		{ "OnCreditsButtonClicked", &UNN_Cpp_Widget_MainMenu::execOnCreditsButtonClicked },
+		{ "OnGuideButtonClicked", &UNN_Cpp_Widget_MainMenu::execOnGuideButtonClicked },
 		{ "OnOptionsButtonClicked", &UNN_Cpp_Widget_MainMenu::execOnOptionsButtonClicked },
-		{ "OnPlayButtonClicked", &UNN_Cpp_Widget_MainMenu::execOnPlayButtonClicked },
-		{ "OnQuitButtonClicked", &UNN_Cpp_Widget_MainMenu::execOnQuitButtonClicked },
+		{ "OnTutorialButtonClicked", &UNN_Cpp_Widget_MainMenu::execOnTutorialButtonClicked },
 	};
 	FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
 }
@@ -125,48 +160,47 @@ struct Z_Construct_UClass_UNN_Cpp_Widget_MainMenu_Statics
 {
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[] = {
-#if !UE_BUILD_SHIPPING
-		{ "Comment", "/**\n * \n */" },
-#endif
 		{ "IncludePath", "Widgets/Main/NN_Cpp_Widget_MainMenu.h" },
 		{ "ModuleRelativePath", "Public/Widgets/Main/NN_Cpp_Widget_MainMenu.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_GameButton_MetaData[] = {
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_GuideButton_MetaData[] = {
 		{ "BindWidget", "" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "// ############### Buttons ###############\n" },
+#endif
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/Widgets/Main/NN_Cpp_Widget_MainMenu.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "############### Buttons ###############" },
+#endif
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_OptionsButton_MetaData[] = {
 		{ "BindWidget", "" },
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/Widgets/Main/NN_Cpp_Widget_MainMenu.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_QuitButton_MetaData[] = {
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_TutorialButton_MetaData[] = {
 		{ "BindWidget", "" },
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/Widgets/Main/NN_Cpp_Widget_MainMenu.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_MainWidget_MetaData[] = {
-#if !UE_BUILD_SHIPPING
-		{ "Comment", "// Reference to the MainWidget\n" },
-#endif
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_CreditsButton_MetaData[] = {
+		{ "BindWidget", "" },
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/Widgets/Main/NN_Cpp_Widget_MainMenu.h" },
-#if !UE_BUILD_SHIPPING
-		{ "ToolTip", "Reference to the MainWidget" },
-#endif
 	};
 #endif // WITH_METADATA
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_GameButton;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_GuideButton;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_OptionsButton;
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_QuitButton;
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_MainWidget;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_TutorialButton;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_CreditsButton;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
-		{ &Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnOptionsButtonClicked, "OnOptionsButtonClicked" }, // 566006874
-		{ &Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnPlayButtonClicked, "OnPlayButtonClicked" }, // 2816699804
-		{ &Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnQuitButtonClicked, "OnQuitButtonClicked" }, // 2775694116
+		{ &Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnCreditsButtonClicked, "OnCreditsButtonClicked" }, // 3663214447
+		{ &Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnGuideButtonClicked, "OnGuideButtonClicked" }, // 607322142
+		{ &Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnOptionsButtonClicked, "OnOptionsButtonClicked" }, // 1458187054
+		{ &Z_Construct_UFunction_UNN_Cpp_Widget_MainMenu_OnTutorialButtonClicked, "OnTutorialButtonClicked" }, // 1751912014
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -174,15 +208,15 @@ struct Z_Construct_UClass_UNN_Cpp_Widget_MainMenu_Statics
 	};
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_MainMenu_Statics::NewProp_GameButton = { "GameButton", nullptr, (EPropertyFlags)0x0124080000080008, UECodeGen_Private::EPropertyGenFlags::Object | UECodeGen_Private::EPropertyGenFlags::ObjectPtr, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_MainMenu, GameButton), Z_Construct_UClass_UButton_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_GameButton_MetaData), NewProp_GameButton_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_MainMenu_Statics::NewProp_GuideButton = { "GuideButton", nullptr, (EPropertyFlags)0x0124080000080008, UECodeGen_Private::EPropertyGenFlags::Object | UECodeGen_Private::EPropertyGenFlags::ObjectPtr, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_MainMenu, GuideButton), Z_Construct_UClass_UButton_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_GuideButton_MetaData), NewProp_GuideButton_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_MainMenu_Statics::NewProp_OptionsButton = { "OptionsButton", nullptr, (EPropertyFlags)0x0124080000080008, UECodeGen_Private::EPropertyGenFlags::Object | UECodeGen_Private::EPropertyGenFlags::ObjectPtr, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_MainMenu, OptionsButton), Z_Construct_UClass_UButton_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OptionsButton_MetaData), NewProp_OptionsButton_MetaData) };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_MainMenu_Statics::NewProp_QuitButton = { "QuitButton", nullptr, (EPropertyFlags)0x0124080000080008, UECodeGen_Private::EPropertyGenFlags::Object | UECodeGen_Private::EPropertyGenFlags::ObjectPtr, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_MainMenu, QuitButton), Z_Construct_UClass_UButton_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_QuitButton_MetaData), NewProp_QuitButton_MetaData) };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_MainMenu_Statics::NewProp_MainWidget = { "MainWidget", nullptr, (EPropertyFlags)0x0040000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_MainMenu, MainWidget), Z_Construct_UClass_UNN_Cpp_Widget_Main_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MainWidget_MetaData), NewProp_MainWidget_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_MainMenu_Statics::NewProp_TutorialButton = { "TutorialButton", nullptr, (EPropertyFlags)0x0124080000080008, UECodeGen_Private::EPropertyGenFlags::Object | UECodeGen_Private::EPropertyGenFlags::ObjectPtr, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_MainMenu, TutorialButton), Z_Construct_UClass_UButton_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_TutorialButton_MetaData), NewProp_TutorialButton_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_MainMenu_Statics::NewProp_CreditsButton = { "CreditsButton", nullptr, (EPropertyFlags)0x0124080000080008, UECodeGen_Private::EPropertyGenFlags::Object | UECodeGen_Private::EPropertyGenFlags::ObjectPtr, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_MainMenu, CreditsButton), Z_Construct_UClass_UButton_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CreditsButton_MetaData), NewProp_CreditsButton_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UNN_Cpp_Widget_MainMenu_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_MainMenu_Statics::NewProp_GameButton,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_MainMenu_Statics::NewProp_GuideButton,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_MainMenu_Statics::NewProp_OptionsButton,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_MainMenu_Statics::NewProp_QuitButton,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_MainMenu_Statics::NewProp_MainWidget,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_MainMenu_Statics::NewProp_TutorialButton,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_MainMenu_Statics::NewProp_CreditsButton,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_UNN_Cpp_Widget_MainMenu_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_UNN_Cpp_Widget_MainMenu_Statics::DependentSingletons[])() = {
@@ -226,10 +260,10 @@ UNN_Cpp_Widget_MainMenu::~UNN_Cpp_Widget_MainMenu() {}
 struct Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Main_NN_Cpp_Widget_MainMenu_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UNN_Cpp_Widget_MainMenu, UNN_Cpp_Widget_MainMenu::StaticClass, TEXT("UNN_Cpp_Widget_MainMenu"), &Z_Registration_Info_UClass_UNN_Cpp_Widget_MainMenu, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UNN_Cpp_Widget_MainMenu), 4031746097U) },
+		{ Z_Construct_UClass_UNN_Cpp_Widget_MainMenu, UNN_Cpp_Widget_MainMenu::StaticClass, TEXT("UNN_Cpp_Widget_MainMenu"), &Z_Registration_Info_UClass_UNN_Cpp_Widget_MainMenu, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UNN_Cpp_Widget_MainMenu), 1716861663U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Main_NN_Cpp_Widget_MainMenu_h_4038697868(TEXT("/Script/NarrativeNexus"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Main_NN_Cpp_Widget_MainMenu_h_235420576(TEXT("/Script/NarrativeNexus"),
 	Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Main_NN_Cpp_Widget_MainMenu_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Main_NN_Cpp_Widget_MainMenu_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
