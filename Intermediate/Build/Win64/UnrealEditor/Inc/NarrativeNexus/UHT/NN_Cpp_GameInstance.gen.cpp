@@ -16,9 +16,43 @@ NARRATIVENEXUS_API UClass* Z_Construct_UClass_UNN_Cpp_GameInstance_NoRegister();
 UPackage* Z_Construct_UPackage__Script_NarrativeNexus();
 // End Cross Module References
 
+// Begin Class UNN_Cpp_GameInstance Function QuitGame
+struct Z_Construct_UFunction_UNN_Cpp_GameInstance_QuitGame_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/General/NN_Cpp_GameInstance.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UNN_Cpp_GameInstance_QuitGame_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UNN_Cpp_GameInstance, nullptr, "QuitGame", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UNN_Cpp_GameInstance_QuitGame_Statics::Function_MetaDataParams), Z_Construct_UFunction_UNN_Cpp_GameInstance_QuitGame_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_UNN_Cpp_GameInstance_QuitGame()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UNN_Cpp_GameInstance_QuitGame_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(UNN_Cpp_GameInstance::execQuitGame)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->QuitGame();
+	P_NATIVE_END;
+}
+// End Class UNN_Cpp_GameInstance Function QuitGame
+
 // Begin Class UNN_Cpp_GameInstance
 void UNN_Cpp_GameInstance::StaticRegisterNativesUNN_Cpp_GameInstance()
 {
+	UClass* Class = UNN_Cpp_GameInstance::StaticClass();
+	static const FNameNativePtrPair Funcs[] = {
+		{ "QuitGame", &UNN_Cpp_GameInstance::execQuitGame },
+	};
+	FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
 }
 IMPLEMENT_CLASS_NO_AUTO_REGISTRATION(UNN_Cpp_GameInstance);
 UClass* Z_Construct_UClass_UNN_Cpp_GameInstance_NoRegister()
@@ -37,6 +71,10 @@ struct Z_Construct_UClass_UNN_Cpp_GameInstance_Statics
 	};
 #endif // WITH_METADATA
 	static UObject* (*const DependentSingletons[])();
+	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
+		{ &Z_Construct_UFunction_UNN_Cpp_GameInstance_QuitGame, "QuitGame" }, // 4291413608
+	};
+	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<UNN_Cpp_GameInstance>::IsAbstract,
 	};
@@ -52,11 +90,11 @@ const UECodeGen_Private::FClassParams Z_Construct_UClass_UNN_Cpp_GameInstance_St
 	nullptr,
 	&StaticCppClassTypeInfo,
 	DependentSingletons,
-	nullptr,
+	FuncInfo,
 	nullptr,
 	nullptr,
 	UE_ARRAY_COUNT(DependentSingletons),
-	0,
+	UE_ARRAY_COUNT(FuncInfo),
 	0,
 	0,
 	0x009000A8u,
@@ -83,10 +121,10 @@ UNN_Cpp_GameInstance::~UNN_Cpp_GameInstance() {}
 struct Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_General_NN_Cpp_GameInstance_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UNN_Cpp_GameInstance, UNN_Cpp_GameInstance::StaticClass, TEXT("UNN_Cpp_GameInstance"), &Z_Registration_Info_UClass_UNN_Cpp_GameInstance, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UNN_Cpp_GameInstance), 2423724864U) },
+		{ Z_Construct_UClass_UNN_Cpp_GameInstance, UNN_Cpp_GameInstance::StaticClass, TEXT("UNN_Cpp_GameInstance"), &Z_Registration_Info_UClass_UNN_Cpp_GameInstance, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UNN_Cpp_GameInstance), 1315019206U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_General_NN_Cpp_GameInstance_h_3549914026(TEXT("/Script/NarrativeNexus"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_General_NN_Cpp_GameInstance_h_3235808626(TEXT("/Script/NarrativeNexus"),
 	Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_General_NN_Cpp_GameInstance_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_General_NN_Cpp_GameInstance_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

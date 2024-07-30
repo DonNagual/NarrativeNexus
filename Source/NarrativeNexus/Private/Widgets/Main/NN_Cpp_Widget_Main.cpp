@@ -1,45 +1,57 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
-
+// NN_Cpp_Widget_Main.cpp
 #include "Widgets/Main/NN_Cpp_Widget_Main.h"
 
 void UNN_Cpp_Widget_Main::NativeConstruct()
 {
 	Super::NativeConstruct();
 
-	// Initially hide all sub - widgets
-	HideAllSubWidgets();
+	// Hide all sub-widgets initially
+	HideMainSubWidget(MainGuideWidget);
+	HideMainSubWidget(MainOptionsWidget);
+	HideMainSubWidget(MainTutorialWidget);
+	HideMainSubWidget(MainCreditsWidget);
+}
 
-	// Show the MainMenuWidget
-	ShowSubWidget(MainMenuWidget);
-
-	// Set the reference to the MainWidget in the PlayerController
+void UNN_Cpp_Widget_Main::HideMainSubWidget(UUserWidget* SubWidget)
+{
 	if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
 	{
-		if (INN_Cpp_IF_PlayerController* Interface = Cast<INN_Cpp_IF_PlayerController>(PC))
+		if (INN_Cpp_IF_WidgetController* Interface = Cast<INN_Cpp_IF_WidgetController>(PC))
 		{
-			Interface->SetCategoryWidget(this);
+			Interface->HideWidget(SubWidget);
 		}
 	}
 }
 
-void UNN_Cpp_Widget_Main::ShowSubWidget(UUserWidget* SubWidget)
+void UNN_Cpp_Widget_Main::ShowMainMenuWidget()
 {
-	if (SubWidget)
+	if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
 	{
-		SubWidget->SetVisibility(ESlateVisibility::Visible);
+		if (INN_Cpp_IF_WidgetController* Interface = Cast<INN_Cpp_IF_WidgetController>(PC))
+		{
+			Interface->ShowWidget(MainMenuWidget);
+
+			Interface->HideWidget(MainGuideWidget);
+			Interface->HideWidget(MainOptionsWidget);
+			Interface->HideWidget(MainTutorialWidget);
+			Interface->HideWidget(MainCreditsWidget);
+		}
 	}
 }
 
-void UNN_Cpp_Widget_Main::HideAllSubWidgets()
+void UNN_Cpp_Widget_Main::ShowMainGuideWidget()
 {
-	if (MainMenuWidget)
+	if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
 	{
-		MainMenuWidget->SetVisibility(ESlateVisibility::Collapsed);
-	}
-	
-	if (MainOptionsWidget)
-	{
-		MainOptionsWidget->SetVisibility(ESlateVisibility::Collapsed);
+		if (INN_Cpp_IF_WidgetController* Interface = Cast<INN_Cpp_IF_WidgetController>(PC))
+		{
+			Interface->ShowWidget(MainGuideWidget);
+			
+			Interface->HideWidget(MainMenuWidget);
+			Interface->HideWidget(MainOptionsWidget);
+			Interface->HideWidget(MainTutorialWidget);
+			Interface->HideWidget(MainCreditsWidget);
+		}
 	}
 }

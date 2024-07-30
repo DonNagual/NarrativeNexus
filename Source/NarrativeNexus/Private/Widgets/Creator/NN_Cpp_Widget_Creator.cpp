@@ -7,39 +7,39 @@ void UNN_Cpp_Widget_Creator::NativeConstruct()
 {
 	Super::NativeConstruct();
 
-	HideAllSubWidgets();
+	//HideAllSubWidgets();
 
-	ShowSubWidget(CreatorMenuWidget);
+	//ShowSubWidget(CreatorMenuWidget);
 
-	if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
+	/*if (APlayerController* PC = GetWorld()->GetFirstPlayerController())
 	{
 		if (INN_Cpp_IF_PlayerController* Interface = Cast<INN_Cpp_IF_PlayerController>(PC))
 		{
 			Interface->SetCategoryWidget(this);
 		}
-	}
+	}*/
 }
 
-void UNN_Cpp_Widget_Creator::ShowSubWidget(UUserWidget* SubWidget)
-{
-	if (SubWidget)
-	{
-		SubWidget->SetVisibility(ESlateVisibility::Visible);
-	}
-}
+//void UNN_Cpp_Widget_Creator::ShowSubWidget(UUserWidget* SubWidget)
+//{
+//	if (SubWidget)
+//	{
+//		SubWidget->SetVisibility(ESlateVisibility::Visible);
+//	}
+//}
 
-void UNN_Cpp_Widget_Creator::HideAllSubWidgets()
-{
-	if (CreatorWorldWidget)
-	{
-		CreatorWorldWidget->SetVisibility(ESlateVisibility::Collapsed);
-	}
-	if (CreatorCharacterWidget)
-	{
-		CreatorCharacterWidget->SetVisibility(ESlateVisibility::Collapsed);
-	}
-	if (CreatorStoryWidget)
-	{
-		CreatorStoryWidget->SetVisibility(ESlateVisibility::Collapsed);
-	}
-}
+//void UNN_Cpp_Widget_Creator::HideAllSubWidgets()
+//{
+//	if (CreatorWorldWidget)
+//	{
+//		CreatorWorldWidget->SetVisibility(ESlateVisibility::Collapsed);
+//	}
+//	if (CreatorCharacterWidget)
+//	{
+//		CreatorCharacterWidget->SetVisibility(ESlateVisibility::Collapsed);
+//	}
+//	if (CreatorStoryWidget)
+//	{
+//		CreatorStoryWidget->SetVisibility(ESlateVisibility::Collapsed);
+//	}
+//}
