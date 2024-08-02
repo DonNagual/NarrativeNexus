@@ -23,7 +23,25 @@ public:
 	virtual void ShowWidget(UUserWidget* SubWidget) = 0;
 	virtual void HideWidget(UUserWidget* SubWidget) = 0;
 
-	virtual void ShowMainMenuViaInterface() = 0;
-	virtual void ShowMainGuideViaInterface() = 0;
+	// ############### Main ###############
+
+	virtual void ShowMainMenuWidgetViaInterface() = 0;
+	virtual void ShowMainGuideWidgetViaInterface() = 0;
+	virtual void ShowMainOptionsWidgetViaInterface() = 0;
+	virtual void ShowMainTutorialWidgetViaInterface() = 0;
+	virtual void ShowMainCreditsWidgetViaInterface() = 0;
+
+	// ############### Creator ###############
+
+	virtual void ShowCreatorMenuWidgetViaInterface() = 0;
+	virtual void ShowCreatorWorlWidgetViaInterface() = 0;
+	virtual void ShowCreatorCharacterWidgetViaInterface() = 0;
+	virtual void ShowCreatorStoryWidgetViaInterface() = 0;
+
+	// ############### Game ###############
+
+	virtual void ShowGameMenuWidgetViaInterface() = 0;
+	virtual void ShowGameChatWidgetViaInterface() = 0;
+	virtual void ShowGameInventoryWidgetViaInterface() = 0;
 	
 };

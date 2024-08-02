@@ -18,6 +18,35 @@ UMG_API UClass* Z_Construct_UClass_UUserWidget_NoRegister();
 UPackage* Z_Construct_UPackage__Script_NarrativeNexus();
 // End Cross Module References
 
+// Begin Class UNN_Cpp_Widget_Main Function HideAllWidgets
+struct Z_Construct_UFunction_UNN_Cpp_Widget_Main_HideAllWidgets_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/Widgets/Main/NN_Cpp_Widget_Main.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UNN_Cpp_Widget_Main_HideAllWidgets_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UNN_Cpp_Widget_Main, nullptr, "HideAllWidgets", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00040401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UNN_Cpp_Widget_Main_HideAllWidgets_Statics::Function_MetaDataParams), Z_Construct_UFunction_UNN_Cpp_Widget_Main_HideAllWidgets_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_UNN_Cpp_Widget_Main_HideAllWidgets()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UNN_Cpp_Widget_Main_HideAllWidgets_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(UNN_Cpp_Widget_Main::execHideAllWidgets)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->HideAllWidgets();
+	P_NATIVE_END;
+}
+// End Class UNN_Cpp_Widget_Main Function HideAllWidgets
+
 // Begin Class UNN_Cpp_Widget_Main Function HideMainSubWidget
 struct Z_Construct_UFunction_UNN_Cpp_Widget_Main_HideMainSubWidget_Statics
 {
@@ -69,6 +98,35 @@ DEFINE_FUNCTION(UNN_Cpp_Widget_Main::execHideMainSubWidget)
 }
 // End Class UNN_Cpp_Widget_Main Function HideMainSubWidget
 
+// Begin Class UNN_Cpp_Widget_Main Function ShowMainCreditsWidget
+struct Z_Construct_UFunction_UNN_Cpp_Widget_Main_ShowMainCreditsWidget_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/Widgets/Main/NN_Cpp_Widget_Main.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UNN_Cpp_Widget_Main_ShowMainCreditsWidget_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UNN_Cpp_Widget_Main, nullptr, "ShowMainCreditsWidget", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020400, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UNN_Cpp_Widget_Main_ShowMainCreditsWidget_Statics::Function_MetaDataParams), Z_Construct_UFunction_UNN_Cpp_Widget_Main_ShowMainCreditsWidget_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_UNN_Cpp_Widget_Main_ShowMainCreditsWidget()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UNN_Cpp_Widget_Main_ShowMainCreditsWidget_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(UNN_Cpp_Widget_Main::execShowMainCreditsWidget)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->ShowMainCreditsWidget();
+	P_NATIVE_END;
+}
+// End Class UNN_Cpp_Widget_Main Function ShowMainCreditsWidget
+
 // Begin Class UNN_Cpp_Widget_Main Function ShowMainGuideWidget
 struct Z_Construct_UFunction_UNN_Cpp_Widget_Main_ShowMainGuideWidget_Statics
 {
@@ -103,7 +161,13 @@ struct Z_Construct_UFunction_UNN_Cpp_Widget_Main_ShowMainMenuWidget_Statics
 {
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "// ############### Functions ###############\n" },
+#endif
 		{ "ModuleRelativePath", "Public/Widgets/Main/NN_Cpp_Widget_Main.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "############### Functions ###############" },
+#endif
 	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FFunctionParams FuncParams;
@@ -127,14 +191,76 @@ DEFINE_FUNCTION(UNN_Cpp_Widget_Main::execShowMainMenuWidget)
 }
 // End Class UNN_Cpp_Widget_Main Function ShowMainMenuWidget
 
+// Begin Class UNN_Cpp_Widget_Main Function ShowMainOptionsWidget
+struct Z_Construct_UFunction_UNN_Cpp_Widget_Main_ShowMainOptionsWidget_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/Widgets/Main/NN_Cpp_Widget_Main.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UNN_Cpp_Widget_Main_ShowMainOptionsWidget_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UNN_Cpp_Widget_Main, nullptr, "ShowMainOptionsWidget", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020400, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UNN_Cpp_Widget_Main_ShowMainOptionsWidget_Statics::Function_MetaDataParams), Z_Construct_UFunction_UNN_Cpp_Widget_Main_ShowMainOptionsWidget_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_UNN_Cpp_Widget_Main_ShowMainOptionsWidget()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UNN_Cpp_Widget_Main_ShowMainOptionsWidget_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(UNN_Cpp_Widget_Main::execShowMainOptionsWidget)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->ShowMainOptionsWidget();
+	P_NATIVE_END;
+}
+// End Class UNN_Cpp_Widget_Main Function ShowMainOptionsWidget
+
+// Begin Class UNN_Cpp_Widget_Main Function ShowMainTutorialWidget
+struct Z_Construct_UFunction_UNN_Cpp_Widget_Main_ShowMainTutorialWidget_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/Widgets/Main/NN_Cpp_Widget_Main.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UNN_Cpp_Widget_Main_ShowMainTutorialWidget_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UNN_Cpp_Widget_Main, nullptr, "ShowMainTutorialWidget", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020400, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UNN_Cpp_Widget_Main_ShowMainTutorialWidget_Statics::Function_MetaDataParams), Z_Construct_UFunction_UNN_Cpp_Widget_Main_ShowMainTutorialWidget_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_UNN_Cpp_Widget_Main_ShowMainTutorialWidget()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UNN_Cpp_Widget_Main_ShowMainTutorialWidget_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(UNN_Cpp_Widget_Main::execShowMainTutorialWidget)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->ShowMainTutorialWidget();
+	P_NATIVE_END;
+}
+// End Class UNN_Cpp_Widget_Main Function ShowMainTutorialWidget
+
 // Begin Class UNN_Cpp_Widget_Main
 void UNN_Cpp_Widget_Main::StaticRegisterNativesUNN_Cpp_Widget_Main()
 {
 	UClass* Class = UNN_Cpp_Widget_Main::StaticClass();
 	static const FNameNativePtrPair Funcs[] = {
+		{ "HideAllWidgets", &UNN_Cpp_Widget_Main::execHideAllWidgets },
 		{ "HideMainSubWidget", &UNN_Cpp_Widget_Main::execHideMainSubWidget },
+		{ "ShowMainCreditsWidget", &UNN_Cpp_Widget_Main::execShowMainCreditsWidget },
 		{ "ShowMainGuideWidget", &UNN_Cpp_Widget_Main::execShowMainGuideWidget },
 		{ "ShowMainMenuWidget", &UNN_Cpp_Widget_Main::execShowMainMenuWidget },
+		{ "ShowMainOptionsWidget", &UNN_Cpp_Widget_Main::execShowMainOptionsWidget },
+		{ "ShowMainTutorialWidget", &UNN_Cpp_Widget_Main::execShowMainTutorialWidget },
 	};
 	FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
 }
@@ -152,16 +278,6 @@ struct Z_Construct_UClass_UNN_Cpp_Widget_Main_Statics
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_MainMenuWidget_MetaData[] = {
 		{ "BindWidget", "" },
-		{ "EditInline", "true" },
-		{ "ModuleRelativePath", "Public/Widgets/Main/NN_Cpp_Widget_Main.h" },
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_MainContainer_MetaData[] = {
-		{ "BindWidget", "" },
-		{ "EditInline", "true" },
-		{ "ModuleRelativePath", "Public/Widgets/Main/NN_Cpp_Widget_Main.h" },
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_MainGuideWidget_MetaData[] = {
-		{ "BindWidget", "" },
 #if !UE_BUILD_SHIPPING
 		{ "Comment", "// ############### Widgets ###############\n" },
 #endif
@@ -170,6 +286,11 @@ struct Z_Construct_UClass_UNN_Cpp_Widget_Main_Statics
 #if !UE_BUILD_SHIPPING
 		{ "ToolTip", "############### Widgets ###############" },
 #endif
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_MainGuideWidget_MetaData[] = {
+		{ "BindWidget", "" },
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "Public/Widgets/Main/NN_Cpp_Widget_Main.h" },
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_MainOptionsWidget_MetaData[] = {
 		{ "BindWidget", "" },
@@ -186,19 +307,28 @@ struct Z_Construct_UClass_UNN_Cpp_Widget_Main_Statics
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/Widgets/Main/NN_Cpp_Widget_Main.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_MainContainer_MetaData[] = {
+		{ "BindWidget", "" },
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "Public/Widgets/Main/NN_Cpp_Widget_Main.h" },
+	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_MainMenuWidget;
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_MainContainer;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_MainGuideWidget;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_MainOptionsWidget;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_MainTutorialWidget;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_MainCreditsWidget;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_MainContainer;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
+		{ &Z_Construct_UFunction_UNN_Cpp_Widget_Main_HideAllWidgets, "HideAllWidgets" }, // 2733752916
 		{ &Z_Construct_UFunction_UNN_Cpp_Widget_Main_HideMainSubWidget, "HideMainSubWidget" }, // 1853209780
+		{ &Z_Construct_UFunction_UNN_Cpp_Widget_Main_ShowMainCreditsWidget, "ShowMainCreditsWidget" }, // 3995405371
 		{ &Z_Construct_UFunction_UNN_Cpp_Widget_Main_ShowMainGuideWidget, "ShowMainGuideWidget" }, // 2568759037
-		{ &Z_Construct_UFunction_UNN_Cpp_Widget_Main_ShowMainMenuWidget, "ShowMainMenuWidget" }, // 752322184
+		{ &Z_Construct_UFunction_UNN_Cpp_Widget_Main_ShowMainMenuWidget, "ShowMainMenuWidget" }, // 3132115437
+		{ &Z_Construct_UFunction_UNN_Cpp_Widget_Main_ShowMainOptionsWidget, "ShowMainOptionsWidget" }, // 1654484364
+		{ &Z_Construct_UFunction_UNN_Cpp_Widget_Main_ShowMainTutorialWidget, "ShowMainTutorialWidget" }, // 1057569236
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -207,18 +337,18 @@ struct Z_Construct_UClass_UNN_Cpp_Widget_Main_Statics
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_Main_Statics::NewProp_MainMenuWidget = { "MainMenuWidget", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_Main, MainMenuWidget), Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MainMenuWidget_MetaData), NewProp_MainMenuWidget_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_Main_Statics::NewProp_MainGuideWidget = { "MainGuideWidget", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_Main, MainGuideWidget), Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MainGuideWidget_MetaData), NewProp_MainGuideWidget_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_Main_Statics::NewProp_MainOptionsWidget = { "MainOptionsWidget", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_Main, MainOptionsWidget), Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MainOptionsWidget_MetaData), NewProp_MainOptionsWidget_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_Main_Statics::NewProp_MainTutorialWidget = { "MainTutorialWidget", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_Main, MainTutorialWidget), Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MainTutorialWidget_MetaData), NewProp_MainTutorialWidget_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_Main_Statics::NewProp_MainCreditsWidget = { "MainCreditsWidget", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_Main, MainCreditsWidget), Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MainCreditsWidget_MetaData), NewProp_MainCreditsWidget_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_Main_Statics::NewProp_MainContainer = { "MainContainer", nullptr, (EPropertyFlags)0x0124080000080008, UECodeGen_Private::EPropertyGenFlags::Object | UECodeGen_Private::EPropertyGenFlags::ObjectPtr, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_Main, MainContainer), Z_Construct_UClass_UPanelWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MainContainer_MetaData), NewProp_MainContainer_MetaData) };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_Main_Statics::NewProp_MainGuideWidget = { "MainGuideWidget", nullptr, (EPropertyFlags)0x0040000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_Main, MainGuideWidget), Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MainGuideWidget_MetaData), NewProp_MainGuideWidget_MetaData) };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_Main_Statics::NewProp_MainOptionsWidget = { "MainOptionsWidget", nullptr, (EPropertyFlags)0x0040000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_Main, MainOptionsWidget), Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MainOptionsWidget_MetaData), NewProp_MainOptionsWidget_MetaData) };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_Main_Statics::NewProp_MainTutorialWidget = { "MainTutorialWidget", nullptr, (EPropertyFlags)0x0040000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_Main, MainTutorialWidget), Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MainTutorialWidget_MetaData), NewProp_MainTutorialWidget_MetaData) };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_Main_Statics::NewProp_MainCreditsWidget = { "MainCreditsWidget", nullptr, (EPropertyFlags)0x0040000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_Main, MainCreditsWidget), Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MainCreditsWidget_MetaData), NewProp_MainCreditsWidget_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UNN_Cpp_Widget_Main_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_Main_Statics::NewProp_MainMenuWidget,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_Main_Statics::NewProp_MainContainer,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_Main_Statics::NewProp_MainGuideWidget,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_Main_Statics::NewProp_MainOptionsWidget,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_Main_Statics::NewProp_MainTutorialWidget,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_Main_Statics::NewProp_MainCreditsWidget,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_Main_Statics::NewProp_MainContainer,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_UNN_Cpp_Widget_Main_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_UNN_Cpp_Widget_Main_Statics::DependentSingletons[])() = {
@@ -262,10 +392,10 @@ UNN_Cpp_Widget_Main::~UNN_Cpp_Widget_Main() {}
 struct Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Main_NN_Cpp_Widget_Main_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UNN_Cpp_Widget_Main, UNN_Cpp_Widget_Main::StaticClass, TEXT("UNN_Cpp_Widget_Main"), &Z_Registration_Info_UClass_UNN_Cpp_Widget_Main, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UNN_Cpp_Widget_Main), 1235527847U) },
+		{ Z_Construct_UClass_UNN_Cpp_Widget_Main, UNN_Cpp_Widget_Main::StaticClass, TEXT("UNN_Cpp_Widget_Main"), &Z_Registration_Info_UClass_UNN_Cpp_Widget_Main, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UNN_Cpp_Widget_Main), 573548155U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Main_NN_Cpp_Widget_Main_h_4079030272(TEXT("/Script/NarrativeNexus"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Main_NN_Cpp_Widget_Main_h_3885500420(TEXT("/Script/NarrativeNexus"),
 	Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Main_NN_Cpp_Widget_Main_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Main_NN_Cpp_Widget_Main_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

@@ -334,6 +334,22 @@ struct Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_MainWidget_MetaData[] = {
 		{ "BindWidget", "" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "// ############### Widgets ###############\n" },
+#endif
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "Public/Widgets/NN_Cpp_Widget_Category.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "############### Widgets ###############" },
+#endif
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_GameWidget_MetaData[] = {
+		{ "BindWidget", "" },
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "Public/Widgets/NN_Cpp_Widget_Category.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_CreatorWidget_MetaData[] = {
+		{ "BindWidget", "" },
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/Widgets/NN_Cpp_Widget_Category.h" },
 	};
@@ -378,7 +394,7 @@ struct Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/Widgets/NN_Cpp_Widget_Category.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_GameWidget_MetaData[] = {
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_HelpWidget_MetaData[] = {
 		{ "BindWidget", "" },
 #if !UE_BUILD_SHIPPING
 		{ "Comment", "// ############### Widgets ###############\n" },
@@ -389,16 +405,6 @@ struct Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics
 		{ "ToolTip", "############### Widgets ###############" },
 #endif
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_CreatorWidget_MetaData[] = {
-		{ "BindWidget", "" },
-		{ "EditInline", "true" },
-		{ "ModuleRelativePath", "Public/Widgets/NN_Cpp_Widget_Category.h" },
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_HelpWidget_MetaData[] = {
-		{ "BindWidget", "" },
-		{ "EditInline", "true" },
-		{ "ModuleRelativePath", "Public/Widgets/NN_Cpp_Widget_Category.h" },
-	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_QuitWidget_MetaData[] = {
 		{ "BindWidget", "" },
 		{ "EditInline", "true" },
@@ -406,6 +412,8 @@ struct Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics
 	};
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_MainWidget;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_GameWidget;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_CreatorWidget;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_CategoryContainer;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_CategoryBorder;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_MainButton;
@@ -413,8 +421,6 @@ struct Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_CreatorButton;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_HelpButton;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_QuitButton;
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_GameWidget;
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_CreatorWidget;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_HelpWidget;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_QuitWidget;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
@@ -437,6 +443,8 @@ struct Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics::NewProp_MainWidget = { "MainWidget", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_Category, MainWidget), Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MainWidget_MetaData), NewProp_MainWidget_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics::NewProp_GameWidget = { "GameWidget", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_Category, GameWidget), Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_GameWidget_MetaData), NewProp_GameWidget_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics::NewProp_CreatorWidget = { "CreatorWidget", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_Category, CreatorWidget), Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CreatorWidget_MetaData), NewProp_CreatorWidget_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics::NewProp_CategoryContainer = { "CategoryContainer", nullptr, (EPropertyFlags)0x0124080000080008, UECodeGen_Private::EPropertyGenFlags::Object | UECodeGen_Private::EPropertyGenFlags::ObjectPtr, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_Category, CategoryContainer), Z_Construct_UClass_UPanelWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CategoryContainer_MetaData), NewProp_CategoryContainer_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics::NewProp_CategoryBorder = { "CategoryBorder", nullptr, (EPropertyFlags)0x0124080000080008, UECodeGen_Private::EPropertyGenFlags::Object | UECodeGen_Private::EPropertyGenFlags::ObjectPtr, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_Category, CategoryBorder), Z_Construct_UClass_UBorder_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CategoryBorder_MetaData), NewProp_CategoryBorder_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics::NewProp_MainButton = { "MainButton", nullptr, (EPropertyFlags)0x0124080000080008, UECodeGen_Private::EPropertyGenFlags::Object | UECodeGen_Private::EPropertyGenFlags::ObjectPtr, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_Category, MainButton), Z_Construct_UClass_UButton_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MainButton_MetaData), NewProp_MainButton_MetaData) };
@@ -444,12 +452,12 @@ const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics::NewProp_CreatorButton = { "CreatorButton", nullptr, (EPropertyFlags)0x0124080000080008, UECodeGen_Private::EPropertyGenFlags::Object | UECodeGen_Private::EPropertyGenFlags::ObjectPtr, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_Category, CreatorButton), Z_Construct_UClass_UButton_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CreatorButton_MetaData), NewProp_CreatorButton_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics::NewProp_HelpButton = { "HelpButton", nullptr, (EPropertyFlags)0x0124080000080008, UECodeGen_Private::EPropertyGenFlags::Object | UECodeGen_Private::EPropertyGenFlags::ObjectPtr, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_Category, HelpButton), Z_Construct_UClass_UButton_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_HelpButton_MetaData), NewProp_HelpButton_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics::NewProp_QuitButton = { "QuitButton", nullptr, (EPropertyFlags)0x0124080000080008, UECodeGen_Private::EPropertyGenFlags::Object | UECodeGen_Private::EPropertyGenFlags::ObjectPtr, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_Category, QuitButton), Z_Construct_UClass_UButton_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_QuitButton_MetaData), NewProp_QuitButton_MetaData) };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics::NewProp_GameWidget = { "GameWidget", nullptr, (EPropertyFlags)0x0040000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_Category, GameWidget), Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_GameWidget_MetaData), NewProp_GameWidget_MetaData) };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics::NewProp_CreatorWidget = { "CreatorWidget", nullptr, (EPropertyFlags)0x0040000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_Category, CreatorWidget), Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CreatorWidget_MetaData), NewProp_CreatorWidget_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics::NewProp_HelpWidget = { "HelpWidget", nullptr, (EPropertyFlags)0x0040000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_Category, HelpWidget), Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_HelpWidget_MetaData), NewProp_HelpWidget_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics::NewProp_QuitWidget = { "QuitWidget", nullptr, (EPropertyFlags)0x0040000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_Category, QuitWidget), Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_QuitWidget_MetaData), NewProp_QuitWidget_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics::NewProp_MainWidget,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics::NewProp_GameWidget,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics::NewProp_CreatorWidget,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics::NewProp_CategoryContainer,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics::NewProp_CategoryBorder,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics::NewProp_MainButton,
@@ -457,8 +465,6 @@ const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UNN_Cpp_W
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics::NewProp_CreatorButton,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics::NewProp_HelpButton,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics::NewProp_QuitButton,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics::NewProp_GameWidget,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics::NewProp_CreatorWidget,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics::NewProp_HelpWidget,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics::NewProp_QuitWidget,
 };
@@ -504,10 +510,10 @@ UNN_Cpp_Widget_Category::~UNN_Cpp_Widget_Category() {}
 struct Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_NN_Cpp_Widget_Category_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UNN_Cpp_Widget_Category, UNN_Cpp_Widget_Category::StaticClass, TEXT("UNN_Cpp_Widget_Category"), &Z_Registration_Info_UClass_UNN_Cpp_Widget_Category, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UNN_Cpp_Widget_Category), 2936175532U) },
+		{ Z_Construct_UClass_UNN_Cpp_Widget_Category, UNN_Cpp_Widget_Category::StaticClass, TEXT("UNN_Cpp_Widget_Category"), &Z_Registration_Info_UClass_UNN_Cpp_Widget_Category, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UNN_Cpp_Widget_Category), 4039940767U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_NN_Cpp_Widget_Category_h_569177968(TEXT("/Script/NarrativeNexus"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_NN_Cpp_Widget_Category_h_4217970936(TEXT("/Script/NarrativeNexus"),
 	Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_NN_Cpp_Widget_Category_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_NN_Cpp_Widget_Category_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
