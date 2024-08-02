@@ -4,10 +4,12 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
+#include "GameFramework/PlayerController.h"
 #include "Widgets/NN_Cpp_Widget_Category.h"
 #include "Widgets/Main/NN_Cpp_Widget_Main.h"
+#include "Widgets/Creator/NN_Cpp_Widget_Creator.h"
+#include "Widgets/Game/NN_Cpp_Widget_Game.h"
 #include "Widgets/Main/NN_Cpp_Widget_MainMenu.h"
-#include "GameFramework/PlayerController.h"
 #include "Interface/NN_Cpp_IF_WidgetController.h"
 #include "NN_Cpp_PlayerController.generated.h"
 
@@ -22,8 +24,26 @@ public:
 	virtual void ShowWidget(UUserWidget* SubWidget) override;
 	virtual void HideWidget(UUserWidget* SubWidget) override;
 
-	virtual void ShowMainMenuViaInterface() override;
-	virtual void ShowMainGuideViaInterface() override;
+	// ############### Main ###############
+
+	virtual void ShowMainMenuWidgetViaInterface() override;
+	virtual void ShowMainGuideWidgetViaInterface() override;
+	virtual void ShowMainOptionsWidgetViaInterface() override;
+	virtual void ShowMainTutorialWidgetViaInterface() override;
+	virtual void ShowMainCreditsWidgetViaInterface() override;
+
+	// ############### Creator ###############
+
+	virtual void ShowCreatorMenuWidgetViaInterface() override;
+	virtual void ShowCreatorWorlWidgetViaInterface() override;
+	virtual void ShowCreatorCharacterWidgetViaInterface() override;
+	virtual void ShowCreatorStoryWidgetViaInterface() override;
+
+	// ############### Game ###############
+
+	virtual void ShowGameMenuWidgetViaInterface() override;
+	virtual void ShowGameChatWidgetViaInterface() override;
+	virtual void ShowGameInventoryWidgetViaInterface() override;
 
 protected:
 

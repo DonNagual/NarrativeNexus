@@ -46,6 +46,12 @@
     <Filter Include="Source\NarrativeNexus\Private">
       <UniqueIdentifier>{D9DBA5D8-76D3-3F78-A597-D341323A8311}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\NarrativeNexus\Private\ChatGPT">
+      <UniqueIdentifier>{ADC71D5D-65E1-3894-ACE7-A5C85E6A7B62}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\ChatGPT\NN_Cpp_ChatGPT.cpp">
+      <Filter>Source\NarrativeNexus\Private\ChatGPT</Filter>
+    </ClCompile>
     <Filter Include="Source\NarrativeNexus\Private\General">
       <UniqueIdentifier>{FA52DCF7-1F60-3838-AA80-C1F9484D9DE6}</UniqueIdentifier>
     </Filter>
@@ -106,6 +112,9 @@
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Game\NN_Cpp_Widget_GameChat.cpp">
       <Filter>Source\NarrativeNexus\Private\Widgets\Game</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Game\NN_Cpp_Widget_GameChatMessage.cpp">
+      <Filter>Source\NarrativeNexus\Private\Widgets\Game</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Game\NN_Cpp_Widget_GameInventory.cpp">
       <Filter>Source\NarrativeNexus\Private\Widgets\Game</Filter>
     </ClCompile>
@@ -136,6 +145,12 @@
     <Filter Include="Source\NarrativeNexus\Public">
       <UniqueIdentifier>{BFE93F78-3B91-31D4-9205-EA2E15236660}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\NarrativeNexus\Public\ChatGPT">
+      <UniqueIdentifier>{721B0A03-1BDF-3A47-8E2E-5C1340DFDE15}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\ChatGPT\NN_Cpp_ChatGPT.h">
+      <Filter>Source\NarrativeNexus\Public\ChatGPT</Filter>
+    </ClInclude>
     <Filter Include="Source\NarrativeNexus\Public\General">
       <UniqueIdentifier>{D87E2BFB-6A9F-3E5B-96F8-7071FE788C3A}</UniqueIdentifier>
     </Filter>
@@ -194,6 +209,9 @@
       <Filter>Source\NarrativeNexus\Public\Widgets\Game</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Game\NN_Cpp_Widget_GameChat.h">
+      <Filter>Source\NarrativeNexus\Public\Widgets\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Game\NN_Cpp_Widget_GameChatMessage.h">
       <Filter>Source\NarrativeNexus\Public\Widgets\Game</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Game\NN_Cpp_Widget_GameInventory.h">

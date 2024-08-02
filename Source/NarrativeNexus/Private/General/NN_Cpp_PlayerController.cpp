@@ -35,12 +35,68 @@ void ANN_Cpp_PlayerController::HideWidget(UUserWidget* SubWidget)
 	}
 }
 
-void ANN_Cpp_PlayerController::ShowMainMenuViaInterface()
+// ############### Main ###############
+
+void ANN_Cpp_PlayerController::ShowMainMenuWidgetViaInterface()
 {
 	(Cast<UNN_Cpp_Widget_Main>(CategoryWidget->MainWidget))->ShowMainMenuWidget();
 }
 
-void ANN_Cpp_PlayerController::ShowMainGuideViaInterface()
+void ANN_Cpp_PlayerController::ShowMainGuideWidgetViaInterface()
 {
 	(Cast<UNN_Cpp_Widget_Main>(CategoryWidget->MainWidget))->ShowMainGuideWidget();
+}
+
+void ANN_Cpp_PlayerController::ShowMainOptionsWidgetViaInterface()
+{
+	(Cast<UNN_Cpp_Widget_Main>(CategoryWidget->MainWidget))->ShowMainOptionsWidget();
+}
+
+void ANN_Cpp_PlayerController::ShowMainTutorialWidgetViaInterface()
+{
+	(Cast<UNN_Cpp_Widget_Main>(CategoryWidget->MainWidget))->ShowMainTutorialWidget();
+}
+
+void ANN_Cpp_PlayerController::ShowMainCreditsWidgetViaInterface()
+{
+	(Cast<UNN_Cpp_Widget_Main>(CategoryWidget->MainWidget))->ShowMainCreditsWidget();
+}
+
+// ############### Creator ###############
+
+void ANN_Cpp_PlayerController::ShowCreatorMenuWidgetViaInterface()
+{
+	(Cast<UNN_Cpp_Widget_Creator>(CategoryWidget->CreatorWidget))->ShowCreatorMenuWidget();
+}
+
+void ANN_Cpp_PlayerController::ShowCreatorWorlWidgetViaInterface()
+{
+	(Cast<UNN_Cpp_Widget_Creator>(CategoryWidget->CreatorWidget))->ShowCreatorWorlWidget();
+}
+
+void ANN_Cpp_PlayerController::ShowCreatorCharacterWidgetViaInterface()
+{
+	(Cast<UNN_Cpp_Widget_Creator>(CategoryWidget->CreatorWidget))->ShowCreatorCharacterWidget();
+}
+
+void ANN_Cpp_PlayerController::ShowCreatorStoryWidgetViaInterface()
+{
+	(Cast<UNN_Cpp_Widget_Creator>(CategoryWidget->CreatorWidget))->ShowCreatorStoryWidget();
+}
+
+// ############### Game ###############
+
+void ANN_Cpp_PlayerController::ShowGameMenuWidgetViaInterface()
+{
+	(Cast<UNN_Cpp_Widget_Game>(CategoryWidget->GameWidget))->ShowGameMenuWidget();
+}
+
+void ANN_Cpp_PlayerController::ShowGameChatWidgetViaInterface()
+{
+	(Cast<UNN_Cpp_Widget_Game>(CategoryWidget->GameWidget))->ShowGameChatWidget();
+}
+
+void ANN_Cpp_PlayerController::ShowGameInventoryWidgetViaInterface()
+{
+	(Cast<UNN_Cpp_Widget_Game>(CategoryWidget->GameWidget))->ShowGameInventoryWidget();
 }

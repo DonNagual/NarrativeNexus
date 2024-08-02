@@ -5,26 +5,14 @@
 			"guid": "00000000000000000000000000000000",
 			"description": "Default Uncontrolled Changelist",
 			"files": [
-				"X:/UnrealEngine/NarrativeNexus/Content/Widgets/NN_BP_Widget_Category.uasset",
-				"X:/UnrealEngine/NarrativeNexus/Content/Widgets/Main/NN_BP_Widget_Main.uasset",
-				"X:/UnrealEngine/NarrativeNexus/Content/Widgets/Game/NN_BP_Widget_Game.uasset",
-				"X:/UnrealEngine/NarrativeNexus/Content/Widgets/Creator/NN_BP_Widget_Creator.uasset",
-				"X:/UnrealEngine/NarrativeNexus/Content/Widgets/Main/NN_BP_Widget_MainMenu.uasset",
-				"X:/UnrealEngine/NarrativeNexus/Content/Widgets/Main/NN_BP_Widget_MainTutorial.uasset",
-				"X:/UnrealEngine/NarrativeNexus/Content/Widgets/Main/NN_BP_Widget_MainCredits.uasset",
-				"X:/UnrealEngine/NarrativeNexus/Content/Widgets/Main/NN_BP_Widget_MainGuide.uasset",
-				"X:/UnrealEngine/NarrativeNexus/Content/Widgets/Main/NN_BP_Widget_MainOptions.uasset",
-				"X:/UnrealEngine/NarrativeNexus/Content/General/NN_BP_PlayerController.uasset",
 				"X:/UnrealEngine/NarrativeNexus/Content/Levels/Main_lvl.umap",
-				"X:/UnrealEngine/NarrativeNexus/Content/Widgets/Creator/NN_BP_Widget_CreatorCharacter.uasset",
-				"X:/UnrealEngine/NarrativeNexus/Content/Widgets/Creator/NN_BP_Widget_CreatorStory.uasset",
-				"X:/UnrealEngine/NarrativeNexus/Content/Widgets/Creator/NN_BP_Widget_CreatorWorld.uasset",
-				"X:/UnrealEngine/NarrativeNexus/Content/Widgets/Creator/NN_BP_Widget_CreatorMenu.uasset",
-				"X:/UnrealEngine/NarrativeNexus/Content/Interface/NN_BP_IF_WidgetController.uasset",
-				"X:/UnrealEngine/NarrativeNexus/Content/General/NN_BP_GameModeBase.uasset",
-				"X:/UnrealEngine/NarrativeNexus/Content/Widgets/NN_BP_Widget_Help.uasset",
-				"X:/UnrealEngine/NarrativeNexus/Content/Widgets/NN_BP_Widget_Quit.uasset",
-				"X:/UnrealEngine/NarrativeNexus/Content/General/NN_BP_HUD.uasset"
+				"X:/UnrealEngine/NarrativeNexus/Content/General/NN_BP_PlayerController.uasset",
+				"X:/UnrealEngine/NarrativeNexus/Content/Widgets/NN_BP_Widget_Category.uasset",
+				"X:/UnrealEngine/NarrativeNexus/Content/Widgets/Game/NN_BP_Widget_GameMenu.uasset",
+				"X:/UnrealEngine/NarrativeNexus/Content/Widgets/Game/NN_BP_Widget_GameChat.uasset",
+				"X:/UnrealEngine/NarrativeNexus/Content/Widgets/Game/NN_BP_Widget_GameInventory.uasset",
+				"X:/UnrealEngine/NarrativeNexus/Content/Widgets/Game/NN_BP_Widget_Game.uasset",
+				"X:/UnrealEngine/NarrativeNexus/Content/Widgets/Game/NN_BP_Widget_GameChatMessage.uasset"
 			]
 		}
 	]

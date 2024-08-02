@@ -42,7 +42,7 @@ void UNN_Cpp_Widget_Category::OnMainButtonClicked()
 	if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
 	{
 		Interface->ShowWidget(MainWidget);
-		Interface->ShowMainMenuViaInterface();
+		Interface->ShowMainMenuWidgetViaInterface();
 	}
 }
 
@@ -52,6 +52,7 @@ void UNN_Cpp_Widget_Category::OnGameButtonClicked()
 	if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
 	{
 		Interface->ShowWidget(GameWidget);
+		Interface->ShowGameMenuWidgetViaInterface();
 	}
 }
 
@@ -61,12 +62,20 @@ void UNN_Cpp_Widget_Category::OnCreatorButtonClicked()
 	if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
 	{
 		Interface->ShowWidget(CreatorWidget);
+		Interface->ShowCreatorMenuWidgetViaInterface();
 	}
 }
 
 void UNN_Cpp_Widget_Category::OnHelpButtonClicked()
 {
-	if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
+	if (HelpWidget->IsVisible())
+	{
+		if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
+		{
+			Interface->HideWidget(HelpWidget);
+		}
+	}
+	else if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
 	{
 		Interface->ShowWidget(HelpWidget);
 	}

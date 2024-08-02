@@ -266,6 +266,9 @@
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ClInclude Include="..\..\Source\NarrativeNexus\NarrativeNexus.h"/>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\ChatGPT\NN_Cpp_ChatGPT.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\General\NN_Cpp_GameInstance.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
@@ -311,6 +314,9 @@
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Game\NN_Cpp_Widget_GameChat.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Game\NN_Cpp_Widget_GameChatMessage.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Game\NN_Cpp_Widget_GameInventory.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
@@ -335,6 +341,7 @@
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Main\NN_Cpp_Widget_MainTutorial.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\ChatGPT\NN_Cpp_ChatGPT.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\General\NN_Cpp_GameInstance.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\General\NN_Cpp_GameModeBase.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\General\NN_Cpp_GameStateBase.h"/>
@@ -350,6 +357,7 @@
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Creator\NN_Cpp_Widget_CreatorWorld.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Game\NN_Cpp_Widget_Game.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Game\NN_Cpp_Widget_GameChat.h"/>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Game\NN_Cpp_Widget_GameChatMessage.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Game\NN_Cpp_Widget_GameInventory.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Game\NN_Cpp_Widget_GameMenu.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Main\NN_Cpp_Widget_Main.h"/>
