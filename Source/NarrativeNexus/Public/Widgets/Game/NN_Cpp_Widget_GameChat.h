@@ -9,6 +9,7 @@
 #include "Blueprint/UserWidget.h"
 #include "ChatGPT/NN_Cpp_ChatGPT.h"
 #include "NN_Cpp_Widget_GameChatMessage.h"
+#include "UObject/StrongObjectPtr.h"
 #include "Interface/NN_Cpp_IF_WidgetController.h"
 #include "NN_Cpp_Widget_GameChat.generated.h"
 
@@ -19,6 +20,7 @@ class NARRATIVENEXUS_API UNN_Cpp_Widget_GameChat : public UUserWidget
 	
 public:
 	virtual void NativeConstruct() override;
+	virtual void NativeDestruct() override;
 
 protected:
 
@@ -75,11 +77,7 @@ private:
 	void AddMessageToChatFromUser(const FString& MessageText);
 	void AddMessageToChatFromChatGPT(const FString& MessageText);
 
-private:
-	UNN_Cpp_ChatGPT* ChatGPT;
-
-	//UPROPERTY()
-	//UNN_Cpp_ChatGPT* PersistentChatGPTClient;
+	TStrongObjectPtr<UNN_Cpp_ChatGPT> ChatGPT;
 
 	UFUNCTION()
 	void HandleChatGPTResponse(const FString& Response);

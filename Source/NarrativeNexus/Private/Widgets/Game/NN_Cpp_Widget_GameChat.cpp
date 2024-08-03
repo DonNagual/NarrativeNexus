@@ -11,19 +11,28 @@ void UNN_Cpp_Widget_GameChat::NativeConstruct()
 	SendButtom->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameChat::OnSendButtomClicked);
 
 	// Initialize ChatGPT
-	ChatGPT = UNN_Cpp_ChatGPT::CreateChatGPT(this);
+	ChatGPT = TStrongObjectPtr<UNN_Cpp_ChatGPT>(NewObject<UNN_Cpp_ChatGPT>(this));
 
 	// Register for ChatGPT response callback
-	if (ChatGPT)
+	if (ChatGPT.IsValid())
 	{
 		ChatGPT->OnChatGPTResponseReceived.AddDynamic(this, &UNN_Cpp_Widget_GameChat::HandleChatGPTResponse);
 	}
 	else
 	{
 		UE_LOG(LogTemp, Error, TEXT("Failed to initialize ChatGPT in NativeConstruct"));
-		GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, TEXT("Failed to initialize ChatGPT in NativeConstruct"));
-
 	}
+}
+
+void UNN_Cpp_Widget_GameChat::NativeDestruct()
+{
+	// Cleanup before the widget is destroyed
+	if (ChatGPT.IsValid())
+	{
+		ChatGPT->OnChatGPTResponseReceived.RemoveAll(this);
+	}
+
+	Super::NativeDestruct();
 }
 
 void UNN_Cpp_Widget_GameChat::OnBackButtonClicked()
@@ -46,8 +55,6 @@ void UNN_Cpp_Widget_GameChat::OnSendButtomClicked()
 		if (InputText.IsEmpty())
 		{
 			UE_LOG(LogTemp, Warning, TEXT("Cannot send an empty message"));
-			GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, TEXT("Cannot send an empty message"));
-
 			return;
 		}
 
@@ -61,8 +68,7 @@ void UNN_Cpp_Widget_GameChat::OnSendButtomClicked()
 
 void UNN_Cpp_Widget_GameChat::HandleChatGPTResponse(const FString& Response)
 {
-	AddMessageToChatFromChatGPT(Response);
-	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, TEXT("F00 F00"));
+	AddMessageToChatFromChatGPT(Response);;
 }
 
 void UNN_Cpp_Widget_GameChat::AddMessageToChatFromUser(const FString& MessageText)
@@ -104,15 +110,11 @@ void UNN_Cpp_Widget_GameChat::AddMessageToChat(const FString& Author, const FStr
 		else
 		{
 			UE_LOG(LogTemp, Error, TEXT("Failed to create new message widget"));
-			GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, TEXT("Failed to create new message widget"));
-
 		}
 	}
 	else
 	{
 		UE_LOG(LogTemp, Error, TEXT("GameChatMessageWidgetClass or MessageScrollBox is nullptr"));
-		GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, TEXT("GameChatMessageWidgetClass or MessageScrollBox is nullptr"));
-
 	}
 }
 
