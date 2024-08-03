@@ -8,7 +8,6 @@ UNN_Cpp_ChatGPT* UNN_Cpp_ChatGPT::CreateChatGPT(UObject* Outer)
 	if (!Outer)
 	{
 		UE_LOG(LogTemp, Error, TEXT("Outer object is null in CreateChatGPTClient"));
-		GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, TEXT("Outer object is null in CreateChatGPTClient"));
 		return nullptr;
 	}
 	return NewObject<UNN_Cpp_ChatGPT>(Outer);
@@ -19,7 +18,6 @@ void UNN_Cpp_ChatGPT::SendMessageToChatGPT(const FString& Message)
 	// Validate the input message
 	if (Message.IsEmpty())
 	{
-		GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, TEXT("Message to ChatGPT is empty"));
 		UE_LOG(LogTemp, Error, TEXT("Message to ChatGPT is empty"));
 		return;
 	}
@@ -30,7 +28,6 @@ void UNN_Cpp_ChatGPT::SendMessageToChatGPT(const FString& Message)
 	Request->SetURL(TEXT("https://api.openai.com/v1/chat/completions"));
 	Request->SetVerb(TEXT("POST"));
 	Request->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
-
 
 	// Create the JSON payload
 	TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject());
@@ -56,27 +53,22 @@ void UNN_Cpp_ChatGPT::SendMessageToChatGPT(const FString& Message)
 
 void UNN_Cpp_ChatGPT::OnResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful)
 {
-	// Sicherstellen, dass die Antwortverarbeitung im Hauptthread erfolgt
+	// Ensure that the response processing takes place in the main thread
 	AsyncTask(ENamedThreads::GameThread, [this, bWasSuccessful, Response]()
 	{
 
 		UE_LOG(LogTemp, Log, TEXT("Entering OnResponseReceived"));
-		GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, TEXT("Entering OnResponseReceived"));
 
 		if (!bWasSuccessful || !Response.IsValid())
 		{
 			UE_LOG(LogTemp, Error, TEXT("Failed to contact OpenAI"));
-			GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, TEXT("Failed to contact OpenAI"));
-			LastResponse = TEXT("leere Antwort bei Fehler");
+			LastResponse = TEXT("Empty response in case of error");
 			OnChatGPTResponseReceived.Broadcast(LastResponse);
 			return;
 		}
 
 		FString ResponseString = Response->GetContentAsString();
 		UE_LOG(LogTemp, Log, TEXT("Response: %s"), *ResponseString);
-		FString DebugMessageA = FString::Printf(TEXT("First Response: %s"), *ResponseString);
-		GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, DebugMessageA);
-
 
 		TSharedPtr<FJsonObject> JsonObject;
 		TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(ResponseString);
@@ -91,8 +83,6 @@ void UNN_Cpp_ChatGPT::OnResponseReceived(FHttpRequestPtr Request, FHttpResponseP
 				{
 					FString Reply = (*ChoicesArray)[0]->AsObject()->GetObjectField(TEXT("message"))->GetStringField(TEXT("content"));
 					UE_LOG(LogTemp, Log, TEXT("ChatGPT Reply: %s"), *Reply);
-					FString DebugMessageB = FString::Printf(TEXT("Second Response: %s"), *Reply);
-					GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, DebugMessageB);
 
 					LastResponse = Reply;
 
@@ -101,23 +91,19 @@ void UNN_Cpp_ChatGPT::OnResponseReceived(FHttpRequestPtr Request, FHttpResponseP
 				}
 				else
 				{
-					LastResponse = TEXT("Keine Antwort erhalten");
-					UE_LOG(LogTemp, Error, TEXT("MessageObject is invalid."));
-					GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, TEXT("MessageObject is invalid."));
+					LastResponse = TEXT("No answer received");
 					OnChatGPTResponseReceived.Broadcast(LastResponse);
 				}
 			}
 			else
 			{
-				LastResponse = TEXT("Keine Antwort erhalten");
-				GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, TEXT("Keine Antwort erhalten"));
+				LastResponse = TEXT("No answer received");
 				OnChatGPTResponseReceived.Broadcast(LastResponse);
 			}
 		}
 		else
 		{
-			LastResponse = TEXT("Fehler beim Parsen des JSON");
-			GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, TEXT("Keine Antwort erhalten"));
+			LastResponse = TEXT("Error parsing the JSON");
 			OnChatGPTResponseReceived.Broadcast(LastResponse);
 		}
 	});
