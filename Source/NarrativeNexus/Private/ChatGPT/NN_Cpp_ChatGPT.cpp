@@ -22,6 +22,26 @@ void UNN_Cpp_ChatGPT::SendMessageToChatGPT(const FString& Message)
 		return;
 	}
 
+	// Add the user´s message to the conversation history
+	TSharedPtr<FJsonObject> UserMessageObject = MakeShareable(new FJsonObject());
+	UserMessageObject->SetStringField(TEXT("role"), TEXT("user"));
+	UserMessageObject->SetStringField(TEXT("content"), Message);
+	ConversationHistory.Add(UserMessageObject);
+
+	// Limit the conversation history to the last 20 messages
+	const int32 MaxHistorySize = 20;
+	if (ConversationHistory.Num() > MaxHistorySize)
+	{
+		ConversationHistory.RemoveAt(0, ConversationHistory.Num() - MaxHistorySize);
+	}
+
+	// Convert ConversationHistory to an array of FJsonValue
+	TArray<TSharedPtr<FJsonValue>> JsonArray;
+	for (const TSharedPtr<FJsonObject>& JsonObject : ConversationHistory)
+	{
+		JsonArray.Add(MakeShareable(new FJsonValueObject(JsonObject)));
+	}
+
 	// Create the HTTP request
 	TSharedRef<IHttpRequest, ESPMode::ThreadSafe> Request = FHttpModule::Get().CreateRequest();
 	Request->OnProcessRequestComplete().BindUObject(this, &UNN_Cpp_ChatGPT::OnResponseReceived);
@@ -31,17 +51,13 @@ void UNN_Cpp_ChatGPT::SendMessageToChatGPT(const FString& Message)
 
 	// Create the JSON payload
 	TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject());
-	JsonObject->SetStringField(TEXT("model"), TEXT("gpt-3.5-turbo"));
+	JsonObject->SetStringField(TEXT("model"), TEXT("gpt-4o-mini"));
 
-	// Create the messages array
-	TArray<TSharedPtr<FJsonValue>> MessagesArray;
-	TSharedPtr<FJsonObject> MessageObject = MakeShareable(new FJsonObject());
-	MessageObject->SetStringField(TEXT("role"), TEXT("user"));
-	MessageObject->SetStringField(TEXT("content"), Message);
-	MessagesArray.Add(MakeShareable(new FJsonValueObject(MessageObject)));
+	// Send the entire conversation history
+	JsonObject->SetArrayField(TEXT("messages"), JsonArray);
 
-	JsonObject->SetArrayField(TEXT("messages"), MessagesArray);
 	JsonObject->SetNumberField(TEXT("max_tokens"), 150);
+
 
 	FString JsonString;
 	TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&JsonString);
@@ -85,6 +101,13 @@ void UNN_Cpp_ChatGPT::OnResponseReceived(FHttpRequestPtr Request, FHttpResponseP
 					UE_LOG(LogTemp, Log, TEXT("ChatGPT Reply: %s"), *Reply);
 
 					LastResponse = Reply;
+
+					// Add ChatGPT´s reply to the conversation history
+					TSharedPtr<FJsonObject> GPTMessageObject = MakeShareable(new FJsonObject());
+					GPTMessageObject->SetStringField(TEXT("role"), TEXT("assistant"));
+					GPTMessageObject->SetStringField(TEXT("content"), Reply);
+					ConversationHistory.Add(GPTMessageObject);
+
 
 					// Trigger the delegate to notify about the response
 					OnChatGPTResponseReceived.Broadcast(Reply);

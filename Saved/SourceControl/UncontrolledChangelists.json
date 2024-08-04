@@ -12,7 +12,9 @@
 				"X:/UnrealEngine/NarrativeNexus/Content/Widgets/Game/NN_BP_Widget_GameChat.uasset",
 				"X:/UnrealEngine/NarrativeNexus/Content/Widgets/Game/NN_BP_Widget_GameInventory.uasset",
 				"X:/UnrealEngine/NarrativeNexus/Content/Widgets/Game/NN_BP_Widget_Game.uasset",
-				"X:/UnrealEngine/NarrativeNexus/Content/Widgets/Game/NN_BP_Widget_GameChatMessage.uasset"
+				"X:/UnrealEngine/NarrativeNexus/Content/Widgets/Game/NN_BP_Widget_GameChatMessage.uasset",
+				"X:/UnrealEngine/NarrativeNexus/Content/Widgets/Game/NN_BP_Widget_GameChatReactions.uasset",
+				"X:/UnrealEngine/NarrativeNexus/Content/Textures/NarrativeNexus_Titelbild.uasset"
 			]
 		}
 	]
