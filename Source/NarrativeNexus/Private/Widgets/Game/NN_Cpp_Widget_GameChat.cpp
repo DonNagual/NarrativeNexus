@@ -118,14 +118,14 @@ void UNN_Cpp_Widget_GameChat::AddMessageToChat(const FString& Author, const FStr
 	}
 }
 
-void UNN_Cpp_Widget_GameChat::OnSelectContinueClicked()
+void UNN_Cpp_Widget_GameChat::OnSelectTopClicked()
 {
 }
 
-void UNN_Cpp_Widget_GameChat::OnSelectLeftClicked()
+void UNN_Cpp_Widget_GameChat::OnSelectMiddleClicked()
 {
 }
 
-void UNN_Cpp_Widget_GameChat::OnSelectRightClicked()
+void UNN_Cpp_Widget_GameChat::OnSelectLowerClicked()
 {
 }

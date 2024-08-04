@@ -87,7 +87,6 @@ struct Z_Construct_UClass_UNN_Cpp_ChatGPT_Statics
 		{ "ModuleRelativePath", "Public/ChatGPT/NN_Cpp_ChatGPT.h" },
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_OnChatGPTResponseReceived_MetaData[] = {
-		{ "Category", "ChatGPT" },
 #if !UE_BUILD_SHIPPING
 		{ "Comment", "// The response received delegate\n" },
 #endif
@@ -105,7 +104,7 @@ struct Z_Construct_UClass_UNN_Cpp_ChatGPT_Statics
 	};
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
-const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_UNN_Cpp_ChatGPT_Statics::NewProp_OnChatGPTResponseReceived = { "OnChatGPTResponseReceived", nullptr, (EPropertyFlags)0x0010000010080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_ChatGPT, OnChatGPTResponseReceived), Z_Construct_UDelegateFunction_NarrativeNexus_OnChatGPTResponseReceived__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OnChatGPTResponseReceived_MetaData), NewProp_OnChatGPTResponseReceived_MetaData) }; // 3559450189
+const UECodeGen_Private::FMulticastDelegatePropertyParams Z_Construct_UClass_UNN_Cpp_ChatGPT_Statics::NewProp_OnChatGPTResponseReceived = { "OnChatGPTResponseReceived", nullptr, (EPropertyFlags)0x0010000000080000, UECodeGen_Private::EPropertyGenFlags::InlineMulticastDelegate, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_ChatGPT, OnChatGPTResponseReceived), Z_Construct_UDelegateFunction_NarrativeNexus_OnChatGPTResponseReceived__DelegateSignature, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_OnChatGPTResponseReceived_MetaData), NewProp_OnChatGPTResponseReceived_MetaData) }; // 3559450189
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UNN_Cpp_ChatGPT_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_ChatGPT_Statics::NewProp_OnChatGPTResponseReceived,
 };
@@ -151,10 +150,10 @@ UNN_Cpp_ChatGPT::~UNN_Cpp_ChatGPT() {}
 struct Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_ChatGPT_NN_Cpp_ChatGPT_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UNN_Cpp_ChatGPT, UNN_Cpp_ChatGPT::StaticClass, TEXT("UNN_Cpp_ChatGPT"), &Z_Registration_Info_UClass_UNN_Cpp_ChatGPT, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UNN_Cpp_ChatGPT), 3803947000U) },
+		{ Z_Construct_UClass_UNN_Cpp_ChatGPT, UNN_Cpp_ChatGPT::StaticClass, TEXT("UNN_Cpp_ChatGPT"), &Z_Registration_Info_UClass_UNN_Cpp_ChatGPT, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UNN_Cpp_ChatGPT), 955389484U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_ChatGPT_NN_Cpp_ChatGPT_h_31404237(TEXT("/Script/NarrativeNexus"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_ChatGPT_NN_Cpp_ChatGPT_h_3384018649(TEXT("/Script/NarrativeNexus"),
 	Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_ChatGPT_NN_Cpp_ChatGPT_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_ChatGPT_NN_Cpp_ChatGPT_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

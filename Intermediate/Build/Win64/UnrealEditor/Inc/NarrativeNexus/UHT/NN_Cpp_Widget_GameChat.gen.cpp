@@ -14,7 +14,7 @@ COREUOBJECT_API UClass* Z_Construct_UClass_UClass();
 NARRATIVENEXUS_API UClass* Z_Construct_UClass_UNN_Cpp_Widget_GameChat();
 NARRATIVENEXUS_API UClass* Z_Construct_UClass_UNN_Cpp_Widget_GameChat_NoRegister();
 UMG_API UClass* Z_Construct_UClass_UButton_NoRegister();
-UMG_API UClass* Z_Construct_UClass_UMultiLineEditableText_NoRegister();
+UMG_API UClass* Z_Construct_UClass_UEditableTextBox_NoRegister();
 UMG_API UClass* Z_Construct_UClass_UScrollBox_NoRegister();
 UMG_API UClass* Z_Construct_UClass_UUserWidget();
 UMG_API UClass* Z_Construct_UClass_UUserWidget_NoRegister();
@@ -101,8 +101,8 @@ DEFINE_FUNCTION(UNN_Cpp_Widget_GameChat::execOnBackButtonClicked)
 }
 // End Class UNN_Cpp_Widget_GameChat Function OnBackButtonClicked
 
-// Begin Class UNN_Cpp_Widget_GameChat Function OnSelectContinueClicked
-struct Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSelectContinueClicked_Statics
+// Begin Class UNN_Cpp_Widget_GameChat Function OnSelectLowerClicked
+struct Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSelectLowerClicked_Statics
 {
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
@@ -111,27 +111,27 @@ struct Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSelectContinueClicked_Sta
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSelectContinueClicked_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UNN_Cpp_Widget_GameChat, nullptr, "OnSelectContinueClicked", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00040401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSelectContinueClicked_Statics::Function_MetaDataParams), Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSelectContinueClicked_Statics::Function_MetaDataParams) };
-UFunction* Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSelectContinueClicked()
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSelectLowerClicked_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UNN_Cpp_Widget_GameChat, nullptr, "OnSelectLowerClicked", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00040401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSelectLowerClicked_Statics::Function_MetaDataParams), Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSelectLowerClicked_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSelectLowerClicked()
 {
 	static UFunction* ReturnFunction = nullptr;
 	if (!ReturnFunction)
 	{
-		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSelectContinueClicked_Statics::FuncParams);
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSelectLowerClicked_Statics::FuncParams);
 	}
 	return ReturnFunction;
 }
-DEFINE_FUNCTION(UNN_Cpp_Widget_GameChat::execOnSelectContinueClicked)
+DEFINE_FUNCTION(UNN_Cpp_Widget_GameChat::execOnSelectLowerClicked)
 {
 	P_FINISH;
 	P_NATIVE_BEGIN;
-	P_THIS->OnSelectContinueClicked();
+	P_THIS->OnSelectLowerClicked();
 	P_NATIVE_END;
 }
-// End Class UNN_Cpp_Widget_GameChat Function OnSelectContinueClicked
+// End Class UNN_Cpp_Widget_GameChat Function OnSelectLowerClicked
 
-// Begin Class UNN_Cpp_Widget_GameChat Function OnSelectLeftClicked
-struct Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSelectLeftClicked_Statics
+// Begin Class UNN_Cpp_Widget_GameChat Function OnSelectMiddleClicked
+struct Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSelectMiddleClicked_Statics
 {
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
@@ -140,27 +140,27 @@ struct Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSelectLeftClicked_Statics
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSelectLeftClicked_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UNN_Cpp_Widget_GameChat, nullptr, "OnSelectLeftClicked", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00040401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSelectLeftClicked_Statics::Function_MetaDataParams), Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSelectLeftClicked_Statics::Function_MetaDataParams) };
-UFunction* Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSelectLeftClicked()
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSelectMiddleClicked_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UNN_Cpp_Widget_GameChat, nullptr, "OnSelectMiddleClicked", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00040401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSelectMiddleClicked_Statics::Function_MetaDataParams), Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSelectMiddleClicked_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSelectMiddleClicked()
 {
 	static UFunction* ReturnFunction = nullptr;
 	if (!ReturnFunction)
 	{
-		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSelectLeftClicked_Statics::FuncParams);
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSelectMiddleClicked_Statics::FuncParams);
 	}
 	return ReturnFunction;
 }
-DEFINE_FUNCTION(UNN_Cpp_Widget_GameChat::execOnSelectLeftClicked)
+DEFINE_FUNCTION(UNN_Cpp_Widget_GameChat::execOnSelectMiddleClicked)
 {
 	P_FINISH;
 	P_NATIVE_BEGIN;
-	P_THIS->OnSelectLeftClicked();
+	P_THIS->OnSelectMiddleClicked();
 	P_NATIVE_END;
 }
-// End Class UNN_Cpp_Widget_GameChat Function OnSelectLeftClicked
+// End Class UNN_Cpp_Widget_GameChat Function OnSelectMiddleClicked
 
-// Begin Class UNN_Cpp_Widget_GameChat Function OnSelectRightClicked
-struct Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSelectRightClicked_Statics
+// Begin Class UNN_Cpp_Widget_GameChat Function OnSelectTopClicked
+struct Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSelectTopClicked_Statics
 {
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
@@ -169,24 +169,24 @@ struct Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSelectRightClicked_Static
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSelectRightClicked_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UNN_Cpp_Widget_GameChat, nullptr, "OnSelectRightClicked", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00040401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSelectRightClicked_Statics::Function_MetaDataParams), Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSelectRightClicked_Statics::Function_MetaDataParams) };
-UFunction* Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSelectRightClicked()
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSelectTopClicked_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UNN_Cpp_Widget_GameChat, nullptr, "OnSelectTopClicked", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00040401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSelectTopClicked_Statics::Function_MetaDataParams), Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSelectTopClicked_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSelectTopClicked()
 {
 	static UFunction* ReturnFunction = nullptr;
 	if (!ReturnFunction)
 	{
-		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSelectRightClicked_Statics::FuncParams);
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSelectTopClicked_Statics::FuncParams);
 	}
 	return ReturnFunction;
 }
-DEFINE_FUNCTION(UNN_Cpp_Widget_GameChat::execOnSelectRightClicked)
+DEFINE_FUNCTION(UNN_Cpp_Widget_GameChat::execOnSelectTopClicked)
 {
 	P_FINISH;
 	P_NATIVE_BEGIN;
-	P_THIS->OnSelectRightClicked();
+	P_THIS->OnSelectTopClicked();
 	P_NATIVE_END;
 }
-// End Class UNN_Cpp_Widget_GameChat Function OnSelectRightClicked
+// End Class UNN_Cpp_Widget_GameChat Function OnSelectTopClicked
 
 // Begin Class UNN_Cpp_Widget_GameChat Function OnSendButtomClicked
 struct Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSendButtomClicked_Statics
@@ -224,9 +224,9 @@ void UNN_Cpp_Widget_GameChat::StaticRegisterNativesUNN_Cpp_Widget_GameChat()
 	static const FNameNativePtrPair Funcs[] = {
 		{ "HandleChatGPTResponse", &UNN_Cpp_Widget_GameChat::execHandleChatGPTResponse },
 		{ "OnBackButtonClicked", &UNN_Cpp_Widget_GameChat::execOnBackButtonClicked },
-		{ "OnSelectContinueClicked", &UNN_Cpp_Widget_GameChat::execOnSelectContinueClicked },
-		{ "OnSelectLeftClicked", &UNN_Cpp_Widget_GameChat::execOnSelectLeftClicked },
-		{ "OnSelectRightClicked", &UNN_Cpp_Widget_GameChat::execOnSelectRightClicked },
+		{ "OnSelectLowerClicked", &UNN_Cpp_Widget_GameChat::execOnSelectLowerClicked },
+		{ "OnSelectMiddleClicked", &UNN_Cpp_Widget_GameChat::execOnSelectMiddleClicked },
+		{ "OnSelectTopClicked", &UNN_Cpp_Widget_GameChat::execOnSelectTopClicked },
 		{ "OnSendButtomClicked", &UNN_Cpp_Widget_GameChat::execOnSendButtomClicked },
 	};
 	FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
@@ -259,17 +259,17 @@ struct Z_Construct_UClass_UNN_Cpp_Widget_GameChat_Statics
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/Widgets/Game/NN_Cpp_Widget_GameChat.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_SelectContinueButton_MetaData[] = {
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_SelectTopButton_MetaData[] = {
 		{ "BindWidget", "" },
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/Widgets/Game/NN_Cpp_Widget_GameChat.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_SelectLeftButton_MetaData[] = {
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_SelectMiddleButton_MetaData[] = {
 		{ "BindWidget", "" },
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/Widgets/Game/NN_Cpp_Widget_GameChat.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_SelectRightButton_MetaData[] = {
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_SelectLowerButton_MetaData[] = {
 		{ "BindWidget", "" },
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/Widgets/Game/NN_Cpp_Widget_GameChat.h" },
@@ -277,12 +277,12 @@ struct Z_Construct_UClass_UNN_Cpp_Widget_GameChat_Statics
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_InputMessageFeld_MetaData[] = {
 		{ "BindWidget", "" },
 #if !UE_BUILD_SHIPPING
-		{ "Comment", "// ############### Message ###############\n" },
+		{ "Comment", "//UPROPERTY(meta = (BindWidget))\n//TObjectPtr<UMultiLineEditableText> InputMessageFeld;\n" },
 #endif
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/Widgets/Game/NN_Cpp_Widget_GameChat.h" },
 #if !UE_BUILD_SHIPPING
-		{ "ToolTip", "############### Message ###############" },
+		{ "ToolTip", "UPROPERTY(meta = (BindWidget))\nTObjectPtr<UMultiLineEditableText> InputMessageFeld;" },
 #endif
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_MessageScrollBox_MetaData[] = {
@@ -297,9 +297,9 @@ struct Z_Construct_UClass_UNN_Cpp_Widget_GameChat_Statics
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_BackButton;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_SendButtom;
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_SelectContinueButton;
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_SelectLeftButton;
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_SelectRightButton;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_SelectTopButton;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_SelectMiddleButton;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_SelectLowerButton;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_InputMessageFeld;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_MessageScrollBox;
 	static const UECodeGen_Private::FClassPropertyParams NewProp_GameChatMessageWidgetClass;
@@ -308,9 +308,9 @@ struct Z_Construct_UClass_UNN_Cpp_Widget_GameChat_Statics
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
 		{ &Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_HandleChatGPTResponse, "HandleChatGPTResponse" }, // 1344434522
 		{ &Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnBackButtonClicked, "OnBackButtonClicked" }, // 104452184
-		{ &Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSelectContinueClicked, "OnSelectContinueClicked" }, // 950789350
-		{ &Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSelectLeftClicked, "OnSelectLeftClicked" }, // 2853581991
-		{ &Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSelectRightClicked, "OnSelectRightClicked" }, // 1976217373
+		{ &Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSelectLowerClicked, "OnSelectLowerClicked" }, // 2705080207
+		{ &Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSelectMiddleClicked, "OnSelectMiddleClicked" }, // 2944396551
+		{ &Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSelectTopClicked, "OnSelectTopClicked" }, // 2838889436
 		{ &Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSendButtomClicked, "OnSendButtomClicked" }, // 3856994712
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
@@ -321,18 +321,18 @@ struct Z_Construct_UClass_UNN_Cpp_Widget_GameChat_Statics
 };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_GameChat_Statics::NewProp_BackButton = { "BackButton", nullptr, (EPropertyFlags)0x0124080000080008, UECodeGen_Private::EPropertyGenFlags::Object | UECodeGen_Private::EPropertyGenFlags::ObjectPtr, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_GameChat, BackButton), Z_Construct_UClass_UButton_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_BackButton_MetaData), NewProp_BackButton_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_GameChat_Statics::NewProp_SendButtom = { "SendButtom", nullptr, (EPropertyFlags)0x0124080000080008, UECodeGen_Private::EPropertyGenFlags::Object | UECodeGen_Private::EPropertyGenFlags::ObjectPtr, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_GameChat, SendButtom), Z_Construct_UClass_UButton_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_SendButtom_MetaData), NewProp_SendButtom_MetaData) };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_GameChat_Statics::NewProp_SelectContinueButton = { "SelectContinueButton", nullptr, (EPropertyFlags)0x0124080000080008, UECodeGen_Private::EPropertyGenFlags::Object | UECodeGen_Private::EPropertyGenFlags::ObjectPtr, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_GameChat, SelectContinueButton), Z_Construct_UClass_UButton_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_SelectContinueButton_MetaData), NewProp_SelectContinueButton_MetaData) };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_GameChat_Statics::NewProp_SelectLeftButton = { "SelectLeftButton", nullptr, (EPropertyFlags)0x0124080000080008, UECodeGen_Private::EPropertyGenFlags::Object | UECodeGen_Private::EPropertyGenFlags::ObjectPtr, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_GameChat, SelectLeftButton), Z_Construct_UClass_UButton_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_SelectLeftButton_MetaData), NewProp_SelectLeftButton_MetaData) };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_GameChat_Statics::NewProp_SelectRightButton = { "SelectRightButton", nullptr, (EPropertyFlags)0x0124080000080008, UECodeGen_Private::EPropertyGenFlags::Object | UECodeGen_Private::EPropertyGenFlags::ObjectPtr, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_GameChat, SelectRightButton), Z_Construct_UClass_UButton_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_SelectRightButton_MetaData), NewProp_SelectRightButton_MetaData) };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_GameChat_Statics::NewProp_InputMessageFeld = { "InputMessageFeld", nullptr, (EPropertyFlags)0x0124080000080008, UECodeGen_Private::EPropertyGenFlags::Object | UECodeGen_Private::EPropertyGenFlags::ObjectPtr, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_GameChat, InputMessageFeld), Z_Construct_UClass_UMultiLineEditableText_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_InputMessageFeld_MetaData), NewProp_InputMessageFeld_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_GameChat_Statics::NewProp_SelectTopButton = { "SelectTopButton", nullptr, (EPropertyFlags)0x0124080000080008, UECodeGen_Private::EPropertyGenFlags::Object | UECodeGen_Private::EPropertyGenFlags::ObjectPtr, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_GameChat, SelectTopButton), Z_Construct_UClass_UButton_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_SelectTopButton_MetaData), NewProp_SelectTopButton_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_GameChat_Statics::NewProp_SelectMiddleButton = { "SelectMiddleButton", nullptr, (EPropertyFlags)0x0124080000080008, UECodeGen_Private::EPropertyGenFlags::Object | UECodeGen_Private::EPropertyGenFlags::ObjectPtr, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_GameChat, SelectMiddleButton), Z_Construct_UClass_UButton_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_SelectMiddleButton_MetaData), NewProp_SelectMiddleButton_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_GameChat_Statics::NewProp_SelectLowerButton = { "SelectLowerButton", nullptr, (EPropertyFlags)0x0124080000080008, UECodeGen_Private::EPropertyGenFlags::Object | UECodeGen_Private::EPropertyGenFlags::ObjectPtr, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_GameChat, SelectLowerButton), Z_Construct_UClass_UButton_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_SelectLowerButton_MetaData), NewProp_SelectLowerButton_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_GameChat_Statics::NewProp_InputMessageFeld = { "InputMessageFeld", nullptr, (EPropertyFlags)0x0124080000080008, UECodeGen_Private::EPropertyGenFlags::Object | UECodeGen_Private::EPropertyGenFlags::ObjectPtr, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_GameChat, InputMessageFeld), Z_Construct_UClass_UEditableTextBox_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_InputMessageFeld_MetaData), NewProp_InputMessageFeld_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_GameChat_Statics::NewProp_MessageScrollBox = { "MessageScrollBox", nullptr, (EPropertyFlags)0x0124080000080008, UECodeGen_Private::EPropertyGenFlags::Object | UECodeGen_Private::EPropertyGenFlags::ObjectPtr, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_GameChat, MessageScrollBox), Z_Construct_UClass_UScrollBox_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MessageScrollBox_MetaData), NewProp_MessageScrollBox_MetaData) };
 const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_GameChat_Statics::NewProp_GameChatMessageWidgetClass = { "GameChatMessageWidgetClass", nullptr, (EPropertyFlags)0x0024080000000005, UECodeGen_Private::EPropertyGenFlags::Class, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_GameChat, GameChatMessageWidgetClass), Z_Construct_UClass_UClass, Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_GameChatMessageWidgetClass_MetaData), NewProp_GameChatMessageWidgetClass_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UNN_Cpp_Widget_GameChat_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_GameChat_Statics::NewProp_BackButton,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_GameChat_Statics::NewProp_SendButtom,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_GameChat_Statics::NewProp_SelectContinueButton,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_GameChat_Statics::NewProp_SelectLeftButton,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_GameChat_Statics::NewProp_SelectRightButton,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_GameChat_Statics::NewProp_SelectTopButton,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_GameChat_Statics::NewProp_SelectMiddleButton,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_GameChat_Statics::NewProp_SelectLowerButton,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_GameChat_Statics::NewProp_InputMessageFeld,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_GameChat_Statics::NewProp_MessageScrollBox,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_GameChat_Statics::NewProp_GameChatMessageWidgetClass,
@@ -379,10 +379,10 @@ UNN_Cpp_Widget_GameChat::~UNN_Cpp_Widget_GameChat() {}
 struct Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Game_NN_Cpp_Widget_GameChat_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UNN_Cpp_Widget_GameChat, UNN_Cpp_Widget_GameChat::StaticClass, TEXT("UNN_Cpp_Widget_GameChat"), &Z_Registration_Info_UClass_UNN_Cpp_Widget_GameChat, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UNN_Cpp_Widget_GameChat), 744434943U) },
+		{ Z_Construct_UClass_UNN_Cpp_Widget_GameChat, UNN_Cpp_Widget_GameChat::StaticClass, TEXT("UNN_Cpp_Widget_GameChat"), &Z_Registration_Info_UClass_UNN_Cpp_Widget_GameChat, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UNN_Cpp_Widget_GameChat), 1086575554U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Game_NN_Cpp_Widget_GameChat_h_1927145694(TEXT("/Script/NarrativeNexus"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Game_NN_Cpp_Widget_GameChat_h_3267625573(TEXT("/Script/NarrativeNexus"),
 	Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Game_NN_Cpp_Widget_GameChat_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Game_NN_Cpp_Widget_GameChat_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

@@ -26,7 +26,7 @@ public:
 	FString GetLastResponse() const { return LastResponse; }
 
 	// The response received delegate
-	UPROPERTY(BlueprintAssignable, Category = "ChatGPT")
+	UPROPERTY()
 	FOnChatGPTResponseReceived OnChatGPTResponseReceived;
 
 private:
@@ -35,4 +35,7 @@ private:
 
 	// The response from ChatGPT will be stored here for further use
 	FString LastResponse;
+
+	// Store the entire conversation hoszory
+	TArray<TSharedPtr<FJsonObject>> ConversationHistory;
 };

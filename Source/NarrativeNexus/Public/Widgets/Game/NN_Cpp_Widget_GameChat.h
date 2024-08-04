@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Components/Button.h"
 #include "Components/MultiLineEditableText.h"
+#include "Components/EditableTextBox.h"
 #include "Components/ScrollBox.h"
 #include "Blueprint/UserWidget.h"
 #include "ChatGPT/NN_Cpp_ChatGPT.h"
@@ -33,18 +34,21 @@ protected:
 	TObjectPtr<UButton> SendButtom;
 
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<UButton> SelectContinueButton;
+	TObjectPtr<UButton> SelectTopButton;
 
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<UButton> SelectLeftButton;
+	TObjectPtr<UButton> SelectMiddleButton;
 
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<UButton> SelectRightButton;
+	TObjectPtr<UButton> SelectLowerButton;
 
 	// ############### Message ###############
 
+	//UPROPERTY(meta = (BindWidget))
+	//TObjectPtr<UMultiLineEditableText> InputMessageFeld;
+
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<UMultiLineEditableText> InputMessageFeld;
+	TObjectPtr<UEditableTextBox> InputMessageFeld;
 
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<UScrollBox> MessageScrollBox;
@@ -64,13 +68,13 @@ private:
 	void OnSendButtomClicked();
 
 	UFUNCTION()
-	void OnSelectContinueClicked();
+	void OnSelectTopClicked();
 
 	UFUNCTION()
-	void OnSelectLeftClicked();
+	void OnSelectMiddleClicked();
 
 	UFUNCTION()
-	void OnSelectRightClicked();
+	void OnSelectLowerClicked();
 
 	// Functions for adding messages to the chat
 	void AddMessageToChat(const FString& Author, const FString& MessageText);
