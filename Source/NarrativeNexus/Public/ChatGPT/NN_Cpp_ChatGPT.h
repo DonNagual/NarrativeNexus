@@ -29,13 +29,13 @@ public:
 	UPROPERTY()
 	FOnChatGPTResponseReceived OnChatGPTResponseReceived;
 
+	// Store the entire conversation hoszory
+	TArray<TSharedPtr<FJsonObject>> ConversationHistory;
+
 private:
 	// Callback method when a response is received
 	void OnResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful);
 
 	// The response from ChatGPT will be stored here for further use
 	FString LastResponse;
-
-	// Store the entire conversation hoszory
-	TArray<TSharedPtr<FJsonObject>> ConversationHistory;
 };

@@ -28,10 +28,25 @@ protected:
 	// ############### Buttons ###############
 
 	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UButton> SendButtom;
+
+	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<UButton> BackButton;
 
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<UButton> SendButtom;
+	TObjectPtr<UButton> RepeatButton;
+
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UButton> ResetButton;
+
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UButton>InfoButton;
+
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UButton>SummaryButton;
+
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UButton>ContinueButton;
 
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<UButton> SelectTopButton;
@@ -44,9 +59,6 @@ protected:
 
 	// ############### Message ###############
 
-	//UPROPERTY(meta = (BindWidget))
-	//TObjectPtr<UMultiLineEditableText> InputMessageFeld;
-
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<UEditableTextBox> InputMessageFeld;
 
@@ -56,30 +68,47 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Chat")
 	TSubclassOf<UUserWidget> GameChatMessageWidgetClass;
 	
-
-
 private:
 	// ############### Functions ###############
-
-	UFUNCTION()
-	void OnBackButtonClicked();
 
 	UFUNCTION()
 	void OnSendButtomClicked();
 
 	UFUNCTION()
-	void OnSelectTopClicked();
+	void OnBackButtonClicked();
 
 	UFUNCTION()
-	void OnSelectMiddleClicked();
+	void OnRepeatButtonClicked();
 
 	UFUNCTION()
-	void OnSelectLowerClicked();
+	void OnResetButtonClicked();
+
+	UFUNCTION()
+	void OnInfoButtonClicked();
+
+	UFUNCTION()
+	void OnSummaryButtonClicked();
+
+	UFUNCTION()
+	void OnContinueButtonClicked();
+
+	UFUNCTION()
+	void OnSelectTopButtonClicked();
+
+	UFUNCTION()
+	void OnSelectMiddleButtonClicked();
+
+	UFUNCTION()
+	void OnSelectLowerButtonClicked();
 
 	// Functions for adding messages to the chat
 	void AddMessageToChat(const FString& Author, const FString& MessageText);
 	void AddMessageToChatFromUser(const FString& MessageText);
 	void AddMessageToChatFromChatGPT(const FString& MessageText);
+
+	// Functions for remove messages at the chat
+	UFUNCTION()
+	void RemoveLastChatGPTMessageFromScrollBox();
 
 	TStrongObjectPtr<UNN_Cpp_ChatGPT> ChatGPT;
 

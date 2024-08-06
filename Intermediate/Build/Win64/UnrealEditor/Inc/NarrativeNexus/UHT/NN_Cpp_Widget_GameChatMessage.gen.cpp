@@ -31,9 +31,6 @@ struct Z_Construct_UClass_UNN_Cpp_Widget_GameChatMessage_Statics
 {
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Class_MetaDataParams[] = {
-#if !UE_BUILD_SHIPPING
-		{ "Comment", "/**\n * \n */" },
-#endif
 		{ "IncludePath", "Widgets/Game/NN_Cpp_Widget_GameChatMessage.h" },
 		{ "ModuleRelativePath", "Public/Widgets/Game/NN_Cpp_Widget_GameChatMessage.h" },
 	};
@@ -119,10 +116,10 @@ UNN_Cpp_Widget_GameChatMessage::~UNN_Cpp_Widget_GameChatMessage() {}
 struct Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Game_NN_Cpp_Widget_GameChatMessage_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UNN_Cpp_Widget_GameChatMessage, UNN_Cpp_Widget_GameChatMessage::StaticClass, TEXT("UNN_Cpp_Widget_GameChatMessage"), &Z_Registration_Info_UClass_UNN_Cpp_Widget_GameChatMessage, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UNN_Cpp_Widget_GameChatMessage), 3897268698U) },
+		{ Z_Construct_UClass_UNN_Cpp_Widget_GameChatMessage, UNN_Cpp_Widget_GameChatMessage::StaticClass, TEXT("UNN_Cpp_Widget_GameChatMessage"), &Z_Registration_Info_UClass_UNN_Cpp_Widget_GameChatMessage, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UNN_Cpp_Widget_GameChatMessage), 2362950097U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Game_NN_Cpp_Widget_GameChatMessage_h_196657223(TEXT("/Script/NarrativeNexus"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Game_NN_Cpp_Widget_GameChatMessage_h_2439534349(TEXT("/Script/NarrativeNexus"),
 	Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Game_NN_Cpp_Widget_GameChatMessage_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Game_NN_Cpp_Widget_GameChatMessage_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

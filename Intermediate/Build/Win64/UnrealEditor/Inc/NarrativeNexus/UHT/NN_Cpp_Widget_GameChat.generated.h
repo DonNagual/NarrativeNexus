@@ -16,11 +16,17 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 
 #define FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Game_NN_Cpp_Widget_GameChat_h_20_RPC_WRAPPERS_NO_PURE_DECLS \
 	DECLARE_FUNCTION(execHandleChatGPTResponse); \
-	DECLARE_FUNCTION(execOnSelectLowerClicked); \
-	DECLARE_FUNCTION(execOnSelectMiddleClicked); \
-	DECLARE_FUNCTION(execOnSelectTopClicked); \
-	DECLARE_FUNCTION(execOnSendButtomClicked); \
-	DECLARE_FUNCTION(execOnBackButtonClicked);
+	DECLARE_FUNCTION(execRemoveLastChatGPTMessageFromScrollBox); \
+	DECLARE_FUNCTION(execOnSelectLowerButtonClicked); \
+	DECLARE_FUNCTION(execOnSelectMiddleButtonClicked); \
+	DECLARE_FUNCTION(execOnSelectTopButtonClicked); \
+	DECLARE_FUNCTION(execOnContinueButtonClicked); \
+	DECLARE_FUNCTION(execOnSummaryButtonClicked); \
+	DECLARE_FUNCTION(execOnInfoButtonClicked); \
+	DECLARE_FUNCTION(execOnResetButtonClicked); \
+	DECLARE_FUNCTION(execOnRepeatButtonClicked); \
+	DECLARE_FUNCTION(execOnBackButtonClicked); \
+	DECLARE_FUNCTION(execOnSendButtomClicked);
 
 
 #define FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Game_NN_Cpp_Widget_GameChat_h_20_INCLASS_NO_PURE_DECLS \
