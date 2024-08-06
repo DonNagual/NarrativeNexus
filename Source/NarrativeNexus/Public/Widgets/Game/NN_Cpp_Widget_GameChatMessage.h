@@ -9,9 +9,6 @@
 #include "Interface/NN_Cpp_IF_WidgetController.h"
 #include "NN_Cpp_Widget_GameChatMessage.generated.h"
 
-/**
- * 
- */
 UCLASS()
 class NARRATIVENEXUS_API UNN_Cpp_Widget_GameChatMessage : public UUserWidget
 {

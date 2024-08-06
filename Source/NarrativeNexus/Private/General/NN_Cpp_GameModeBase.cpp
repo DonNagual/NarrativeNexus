@@ -19,7 +19,7 @@ void ANN_Cpp_GameModeBase::BeginPlay()
 		// Show the mouse cursor
 		PC->bShowMouseCursor = true;
 
-		// Set input mode to UI only
+		// Set input mode to Game and UI
 		FInputModeUIOnly InputMode;
 		InputMode.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock);
 		PC->SetInputMode(InputMode);

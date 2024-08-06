@@ -115,9 +115,6 @@
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Game\NN_Cpp_Widget_GameChatMessage.cpp">
       <Filter>Source\NarrativeNexus\Private\Widgets\Game</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Game\NN_Cpp_Widget_GameChatReactions.cpp">
-      <Filter>Source\NarrativeNexus\Private\Widgets\Game</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Game\NN_Cpp_Widget_GameInventory.cpp">
       <Filter>Source\NarrativeNexus\Private\Widgets\Game</Filter>
     </ClCompile>
@@ -215,9 +212,6 @@
       <Filter>Source\NarrativeNexus\Public\Widgets\Game</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Game\NN_Cpp_Widget_GameChatMessage.h">
-      <Filter>Source\NarrativeNexus\Public\Widgets\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Game\NN_Cpp_Widget_GameChatReactions.h">
       <Filter>Source\NarrativeNexus\Public\Widgets\Game</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Game\NN_Cpp_Widget_GameInventory.h">
