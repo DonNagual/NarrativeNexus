@@ -49,6 +49,21 @@ void UNN_Cpp_ChatGPT::SendMessageToChatGPT(const FString& Message)
 	Request->SetVerb(TEXT("POST"));
 	Request->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
 
+	// Load the API kay from the file
+	FString KeyFilePath = FPaths::ProjectDir() + TEXT("config/keys.txt");
+	FString ApiKey;
+	if (FFileHelper::LoadFileToString(ApiKey, *KeyFilePath))
+	{
+		// Trim the API key to remove any newline characters
+		ApiKey = ApiKey.TrimStartAndEnd();
+		Request->SetHeader(TEXT("Authorization"), FString::Printf(TEXT("Bearer %s"), *ApiKey));
+	}
+	else
+	{
+		UE_LOG(LogTemp, Error, TEXT("Failed to load API key from file"));
+		return;
+	}
+
 	// Create the JSON payload
 	TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject());
 	JsonObject->SetStringField(TEXT("model"), TEXT("gpt-4o-mini"));
