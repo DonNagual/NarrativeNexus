@@ -1,4 +1,3 @@
-// Fill out your copyright notice in the Description page of Project Settings.
 // NN_Cpp_Widget_GameChat.cpp
 
 #include "Widgets/Game/NN_Cpp_Widget_GameChat.h"
@@ -19,12 +18,12 @@ void UNN_Cpp_Widget_GameChat::NativeConstruct()
 	SelectLowerButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameChat::OnSelectLowerButtonClicked);
 
 	// Initialize ChatGPT
-	ChatGPT = TStrongObjectPtr<UNN_Cpp_ChatGPT>(NewObject<UNN_Cpp_ChatGPT>(this));
+	ChatGPT = NewObject<UNN_Cpp_ChatGPT>(this);
 
 	// Register for ChatGPT response callback
-	if (ChatGPT.IsValid())
+	if (ChatGPT)
 	{
-		ChatGPT->OnChatGPTResponseReceived.AddDynamic(this, &UNN_Cpp_Widget_GameChat::HandleChatGPTResponse);
+		ChatGPT->GetOnChatGPTResponseReceived().AddDynamic(this, &UNN_Cpp_Widget_GameChat::HandleChatGPTResponse);
 	}
 	else
 	{
@@ -35,9 +34,9 @@ void UNN_Cpp_Widget_GameChat::NativeConstruct()
 void UNN_Cpp_Widget_GameChat::NativeDestruct()
 {
 	// Cleanup before the widget is destroyed
-	if (ChatGPT.IsValid())
+	if (ChatGPT)
 	{
-		ChatGPT->OnChatGPTResponseReceived.RemoveAll(this);
+		ChatGPT->GetOnChatGPTResponseReceived().RemoveAll(this);
 	}
 
 	Super::NativeDestruct();
@@ -160,22 +159,23 @@ void UNN_Cpp_Widget_GameChat::OnBackButtonClicked()
 
 void UNN_Cpp_Widget_GameChat::OnRepeatButtonClicked()
 {
-	if (ChatGPT && ChatGPT->ConversationHistory.Num() > 0)
+	if (ChatGPT && ChatGPT->GetConversationHistory().Num() > 0)
 	{
+		auto& MutableConversationHistory = ChatGPT->GetMutableConversationHistory();
 		// Check whether the last message comes from ChatGPT (assistant) or from the user (user)
-		TSharedPtr<FJsonObject> LastMessageObject = ChatGPT->ConversationHistory.Last();
+		TSharedPtr<FJsonObject> LastMessageObject = MutableConversationHistory.Last();
 		FString Role = LastMessageObject->GetStringField(TEXT("role"));
 
 		if (Role == TEXT("assistant"))
 		{
 			// Romove the last message from the array containing the response from ChatGPT
-			ChatGPT->ConversationHistory.RemoveAt(ChatGPT->ConversationHistory.Num() - 1);
+			MutableConversationHistory.RemoveAt(MutableConversationHistory.Num() - 1);
 
 			// Also remove the last message from ChatGPT from the MessageScrollBox
 			RemoveLastChatGPTMessageFromScrollBox();
 
 			// Resend the last message to ChatGPT
-			FString LastUserMessage = ChatGPT->ConversationHistory.Last()->GetStringField(TEXT("content"));
+			FString LastUserMessage = MutableConversationHistory.Last()->GetStringField(TEXT("content"));
 			ChatGPT->SendMessageToChatGPT(LastUserMessage);
 
 			//// DEBUG
@@ -184,7 +184,7 @@ void UNN_Cpp_Widget_GameChat::OnRepeatButtonClicked()
 		else
 		{
 			// If the last message is not from ChatGPT, resend the entire history
-			ChatGPT->SendMessageToChatGPT(ChatGPT->ConversationHistory.Last()->GetStringField(TEXT("content")));
+			ChatGPT->SendMessageToChatGPT(MutableConversationHistory.Last()->GetStringField(TEXT("content")));
 
 			//// DEBUG
 			//AddMessageToChat(TEXT("System"), TEXT("Die letzte Nachricht wird erneut gesendet."));
@@ -198,6 +198,11 @@ void UNN_Cpp_Widget_GameChat::OnRepeatButtonClicked()
 
 void UNN_Cpp_Widget_GameChat::OnResetButtonClicked()
 {
+	if (ChatGPT)
+	{
+		ChatGPT->ResetConversation();
+		MessageScrollBox->ClearChildren();
+	}
 }
 
 void UNN_Cpp_Widget_GameChat::OnInfoButtonClicked()
@@ -222,4 +227,9 @@ void UNN_Cpp_Widget_GameChat::OnSelectMiddleButtonClicked()
 
 void UNN_Cpp_Widget_GameChat::OnSelectLowerButtonClicked()
 {
+}
+
+void UNN_Cpp_Widget_GameChat::CreateStoryImage()
+{
+
 }

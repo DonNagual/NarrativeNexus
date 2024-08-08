@@ -1,4 +1,3 @@
-// Fill out your copyright notice in the Description page of Project Settings.
 // NN_Cpp_Widget_GameChat.h
 #pragma once
 
@@ -7,10 +6,10 @@
 #include "Components/MultiLineEditableText.h"
 #include "Components/EditableTextBox.h"
 #include "Components/ScrollBox.h"
+#include "Components/Image.h"
 #include "Blueprint/UserWidget.h"
 #include "ChatGPT/NN_Cpp_ChatGPT.h"
 #include "NN_Cpp_Widget_GameChatMessage.h"
-#include "UObject/StrongObjectPtr.h"
 #include "Interface/NN_Cpp_IF_WidgetController.h"
 #include "NN_Cpp_Widget_GameChat.generated.h"
 
@@ -40,13 +39,13 @@ protected:
 	TObjectPtr<UButton> ResetButton;
 
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<UButton>InfoButton;
+	TObjectPtr<UButton> InfoButton;
 
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<UButton>SummaryButton;
+	TObjectPtr<UButton> SummaryButton;
 
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<UButton>ContinueButton;
+	TObjectPtr<UButton> ContinueButton;
 
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<UButton> SelectTopButton;
@@ -67,9 +66,14 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Chat")
 	TSubclassOf<UUserWidget> GameChatMessageWidgetClass;
+
+	// ############### Image ###############
+
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UImage> StoryImage;
 	
 private:
-	// ############### Functions ###############
+	// ############### Button - Functions ###############
 
 	UFUNCTION()
 	void OnSendButtomClicked();
@@ -101,6 +105,13 @@ private:
 	UFUNCTION()
 	void OnSelectLowerButtonClicked();
 
+	// ############### Image - Functions ###############
+
+	UFUNCTION()
+	void CreateStoryImage();
+
+	// ############### Message - Functions ###############
+
 	// Functions for adding messages to the chat
 	void AddMessageToChat(const FString& Author, const FString& MessageText);
 	void AddMessageToChatFromUser(const FString& MessageText);
@@ -110,7 +121,9 @@ private:
 	UFUNCTION()
 	void RemoveLastChatGPTMessageFromScrollBox();
 
-	TStrongObjectPtr<UNN_Cpp_ChatGPT> ChatGPT;
+	// Direct reference to ChatGPT object
+	UPROPERTY()
+	UNN_Cpp_ChatGPT* ChatGPT;
 
 	UFUNCTION()
 	void HandleChatGPTResponse(const FString& Response);

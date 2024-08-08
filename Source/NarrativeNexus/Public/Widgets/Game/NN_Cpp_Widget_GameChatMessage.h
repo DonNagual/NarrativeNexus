@@ -1,4 +1,3 @@
-// Fill out your copyright notice in the Description page of Project Settings.
 // NN_Cpp_Widget_GameChatMessage.h
 #pragma once
 
@@ -15,7 +14,6 @@ class NARRATIVENEXUS_API UNN_Cpp_Widget_GameChatMessage : public UUserWidget
 	GENERATED_BODY()
 	
 public:
-	virtual void NativeConstruct() override;
 
 	// ############### Message ###############
 

@@ -1,4 +1,3 @@
-// Fill out your copyright notice in the Description page of Project Settings.
 // NN_Cpp_ChatGPT.cpp
 
 #include "ChatGPT/NN_Cpp_ChatGPT.h"
@@ -65,21 +64,46 @@ void UNN_Cpp_ChatGPT::SendMessageToChatGPT(const FString& Message)
 	}
 
 	// Create the JSON payload
-	TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject());
-	JsonObject->SetStringField(TEXT("model"), TEXT("gpt-4o-mini"));
+	TSharedPtr<FJsonObject> JsonPayload = MakeShareable(new FJsonObject());
+	JsonPayload->SetStringField(TEXT("model"), TEXT("gpt-4o-mini"));
 
 	// Send the entire conversation history
-	JsonObject->SetArrayField(TEXT("messages"), JsonArray);
+	JsonPayload->SetArrayField(TEXT("messages"), JsonArray);
 
-	JsonObject->SetNumberField(TEXT("max_tokens"), 150);
-
+	JsonPayload->SetNumberField(TEXT("max_tokens"), 150);
 
 	FString JsonString;
 	TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&JsonString);
-	FJsonSerializer::Serialize(JsonObject.ToSharedRef(), Writer);
+	FJsonSerializer::Serialize(JsonPayload.ToSharedRef(), Writer);
 
 	Request->SetContentAsString(JsonString);
 	Request->ProcessRequest();
+}
+
+void UNN_Cpp_ChatGPT::ResetConversation()
+{
+	ConversationHistory.Empty();
+	LastResponse = TEXT("");
+}
+
+FString UNN_Cpp_ChatGPT::GetLastResponse() const
+{
+	return LastResponse;
+}
+
+const TArray<TSharedPtr<FJsonObject>>& UNN_Cpp_ChatGPT::GetConversationHistory() const
+{
+	return ConversationHistory;
+}
+
+TArray<TSharedPtr<FJsonObject>>& UNN_Cpp_ChatGPT::GetMutableConversationHistory()
+{
+	return ConversationHistory;
+}
+
+FOnChatGPTResponseReceived& UNN_Cpp_ChatGPT::GetOnChatGPTResponseReceived()
+{
+	return OnChatGPTResponseReceived;
 }
 
 void UNN_Cpp_ChatGPT::OnResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful)
@@ -122,7 +146,6 @@ void UNN_Cpp_ChatGPT::OnResponseReceived(FHttpRequestPtr Request, FHttpResponseP
 					GPTMessageObject->SetStringField(TEXT("role"), TEXT("assistant"));
 					GPTMessageObject->SetStringField(TEXT("content"), Reply);
 					ConversationHistory.Add(GPTMessageObject);
-
 
 					// Trigger the delegate to notify about the response
 					OnChatGPTResponseReceived.Broadcast(Reply);
