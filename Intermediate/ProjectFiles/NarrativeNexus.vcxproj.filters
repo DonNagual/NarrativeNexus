@@ -31,6 +31,9 @@
     <None Include="..\..\Config\DefaultInput.ini">
       <Filter>Config</Filter>
     </None>
+    <None Include="..\..\Config\keys.txt">
+      <Filter>Config</Filter>
+    </None>
     <Filter Include="Source\NarrativeNexus">
       <UniqueIdentifier>{04FEA5C8-60B3-3C7D-B0FB-104FFCAD1522}</UniqueIdentifier>
     </Filter>
@@ -70,6 +73,9 @@
     <Filter Include="Source\NarrativeNexus\Private\Interface">
       <UniqueIdentifier>{304FF5E2-ACE1-333E-B089-44682F94EB20}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\Interface\NN_Cpp_IF_ChatGPT.cpp">
+      <Filter>Source\NarrativeNexus\Private\Interface</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\Interface\NN_Cpp_IF_WidgetController.cpp">
       <Filter>Source\NarrativeNexus\Private\Interface</Filter>
     </ClCompile>
@@ -169,6 +175,9 @@
     <Filter Include="Source\NarrativeNexus\Public\Interface">
       <UniqueIdentifier>{38B8C82D-9DB4-3DD9-AB84-2B4EE655B2DE}</UniqueIdentifier>
     </Filter>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\Interface\NN_Cpp_IF_ChatGPT.h">
+      <Filter>Source\NarrativeNexus\Public\Interface</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Interface\NN_Cpp_IF_WidgetController.h">
       <Filter>Source\NarrativeNexus\Public\Interface</Filter>
     </ClInclude>
