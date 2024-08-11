@@ -1,4 +1,3 @@
-// Fill out your copyright notice in the Description page of Project Settings.
 // NN_Cpp_PlayerController.cpp
 #include "General/NN_Cpp_PlayerController.h"
 
@@ -16,6 +15,8 @@ void ANN_Cpp_PlayerController::InitializeWidgets()
 	{
 		Widget->AddToViewport();
 		CategoryWidget = Cast<UNN_Cpp_Widget_Category>(Widget);
+		MainWidget = Cast<UNN_Cpp_Widget_Main>(CategoryWidget->MainWidget);
+		MainOptionsWidget = Cast< UNN_Cpp_Widget_MainOptions>(MainWidget->MainOptionsWidget);
 	}
 }
 
@@ -99,4 +100,13 @@ void ANN_Cpp_PlayerController::ShowGameChatWidgetViaInterface()
 void ANN_Cpp_PlayerController::ShowGameInventoryWidgetViaInterface()
 {
 	(Cast<UNN_Cpp_Widget_Game>(CategoryWidget->GameWidget))->ShowGameInventoryWidget();
+}
+
+bool ANN_Cpp_PlayerController::IsImageGenerationEnabledViaInterface() const
+{
+	if (MainOptionsWidget)
+	{
+		return MainOptionsWidget->IsImageGenerationEnabled();
+	}
+	return false;
 }

@@ -1,4 +1,3 @@
-// Fill out your copyright notice in the Description page of Project Settings.
 // NN_Cpp_IF_WidgetController.h
 #pragma once
 
@@ -43,5 +42,9 @@ public:
 	virtual void ShowGameMenuWidgetViaInterface() = 0;
 	virtual void ShowGameChatWidgetViaInterface() = 0;
 	virtual void ShowGameInventoryWidgetViaInterface() = 0;
+
+	// ############### Options ###############
+
+	virtual bool IsImageGenerationEnabledViaInterface() const = 0;
 	
 };
