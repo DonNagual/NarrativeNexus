@@ -17,6 +17,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #define FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Game_NN_Cpp_Widget_GameChat_h_19_RPC_WRAPPERS_NO_PURE_DECLS \
 	DECLARE_FUNCTION(execHandleChatGPTResponse); \
 	DECLARE_FUNCTION(execRemoveLastChatGPTMessageFromScrollBox); \
+	DECLARE_FUNCTION(execWriteExecutiveSummaryText); \
+	DECLARE_FUNCTION(execMakeExecutiveSummaryText); \
 	DECLARE_FUNCTION(execCreateStoryImage); \
 	DECLARE_FUNCTION(execOnSelectLowerButtonClicked); \
 	DECLARE_FUNCTION(execOnSelectMiddleButtonClicked); \

@@ -33,5 +33,8 @@ public:
 	virtual TArray<TSharedPtr<FJsonObject>>& GetMutableConversationHistory() = 0;
 	// Method to get the delegate for ChatGPT responses
 	virtual FOnChatGPTResponseReceived& GetOnChatGPTResponseReceived() = 0;
-
+	// Method to generate an image from conversation
+	virtual void GenerateImageFromConversation(const FString& Messages, TFunction<void(UTexture2D*)> OnImageGenerated) = 0;
+	// Method to generate summary from conversation
+	virtual void GenerateSummaryFromConversation(const FString& Messages, TFunction<void(const FString&)> OnSummaryGenerated) = 0;
 };

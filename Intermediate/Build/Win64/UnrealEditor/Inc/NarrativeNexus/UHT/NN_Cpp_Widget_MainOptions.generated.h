@@ -15,6 +15,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #define NARRATIVENEXUS_NN_Cpp_Widget_MainOptions_generated_h
 
 #define FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Main_NN_Cpp_Widget_MainOptions_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
+	DECLARE_FUNCTION(execOnGenerateImageCheckBoxChanged); \
 	DECLARE_FUNCTION(execOnBackButtonClicked);
 
 

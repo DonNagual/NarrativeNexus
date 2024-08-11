@@ -71,6 +71,11 @@ protected:
 
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<UImage> StoryImage;
+
+	// ############### Summary Text ###############
+
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UTextBlock> ExecutiveSummaryText;
 	
 private:
 	// ############### Button - Functions ###############
@@ -108,7 +113,15 @@ private:
 	// ############### Image - Functions ###############
 
 	UFUNCTION()
-	void CreateStoryImage();
+	void CreateStoryImage(const FString& Summary);
+
+	// ############### Summary Text ###############
+
+	UFUNCTION()
+	void MakeExecutiveSummaryText();
+
+	UFUNCTION()
+	void WriteExecutiveSummaryText();
 
 	// ############### Message - Functions ###############
 
