@@ -267,9 +267,6 @@
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ClInclude Include="..\..\Source\NarrativeNexus\NarrativeNexus.h"/>
-    <ClCompile Include="..\..\Source\NarrativeNexus\Private\ChatGPT\NN_Cpp_ChatGPT.cpp">
-      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-    </ClCompile>
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\General\NN_Cpp_GameInstance.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
@@ -282,7 +279,10 @@
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\General\NN_Cpp_PlayerController.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
-    <ClCompile Include="..\..\Source\NarrativeNexus\Private\Interface\NN_Cpp_IF_ChatGPT.cpp">
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_GPT.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\Interface\NN_Cpp_IF_GPT.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\Interface\NN_Cpp_IF_WidgetController.cpp">
@@ -345,12 +345,12 @@
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Main\NN_Cpp_Widget_MainTutorial.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
-    <ClInclude Include="..\..\Source\NarrativeNexus\Public\ChatGPT\NN_Cpp_ChatGPT.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\General\NN_Cpp_GameInstance.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\General\NN_Cpp_GameModeBase.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\General\NN_Cpp_GameStateBase.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\General\NN_Cpp_PlayerController.h"/>
-    <ClInclude Include="..\..\Source\NarrativeNexus\Public\Interface\NN_Cpp_IF_ChatGPT.h"/>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_GPT.h"/>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\Interface\NN_Cpp_IF_GPT.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Interface\NN_Cpp_IF_WidgetController.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\NN_Cpp_Widget_Category.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\NN_Cpp_Widget_Help.h"/>
