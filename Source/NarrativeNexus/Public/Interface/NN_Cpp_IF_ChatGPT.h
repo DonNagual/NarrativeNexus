@@ -20,6 +20,8 @@ class NARRATIVENEXUS_API INN_Cpp_IF_ChatGPT
 	GENERATED_BODY()
 
 public:
+	// Method to get the delegate for ChatGPT responses
+	virtual FOnChatGPTResponseReceived& GetOnChatGPTResponseReceived() = 0;
 
 	// Method to send a message to ChatGPT
 	virtual void SendMessageToChatGPT(const FString& Message) = 0;
@@ -31,10 +33,13 @@ public:
 	virtual const TArray<TSharedPtr<FJsonObject>>& GetConversationHistory() const = 0;
 	// Access to the conversation history (mutable)
 	virtual TArray<TSharedPtr<FJsonObject>>& GetMutableConversationHistory() = 0;
-	// Method to get the delegate for ChatGPT responses
-	virtual FOnChatGPTResponseReceived& GetOnChatGPTResponseReceived() = 0;
+	// Method to generate short summary from conversation
+	virtual void GenerateShortSummaryFromConversation(const FString& Summary, TFunction<void(const FString&)> OnShortSummaryGenerated) = 0;
+	// Method to generate max summary from conversation
+	virtual void GenerateMaxSummaryFromConversation(const FString& Summary, TFunction<void(const FString&)> OnMaxSummaryGenerated) = 0;
+	// Method to generate image summary from conversation
+	virtual void GenerateImageSummaryFromConversation(const FString& Summary, TFunction<void(const FString&)> OnImageSummaryGenerated) = 0;
 	// Method to generate an image from conversation
-	virtual void GenerateImageFromConversation(const FString& Messages, TFunction<void(UTexture2D*)> OnImageGenerated) = 0;
-	// Method to generate summary from conversation
-	virtual void GenerateSummaryFromConversation(const FString& Messages, TFunction<void(const FString&)> OnSummaryGenerated) = 0;
+	virtual void GenerateChatImageFromConversation(const FString& Summary, TFunction<void(UTexture2D*)> OnChatImageGenerated) = 0;
+
 };

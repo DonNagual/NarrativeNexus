@@ -12,6 +12,8 @@ UNN_Cpp_ChatGPT* UNN_Cpp_ChatGPT::CreateChatGPT(UObject* Outer)
 	return NewObject<UNN_Cpp_ChatGPT>(Outer);
 }
 
+// ######################### Send Message To ChatGPT #########################
+
 void UNN_Cpp_ChatGPT::SendMessageToChatGPT(const FString& Message)
 {
 	// Validate the input message
@@ -50,7 +52,7 @@ void UNN_Cpp_ChatGPT::SendMessageToChatGPT(const FString& Message)
 	
 	// Create the HTTP request
 	TSharedRef<IHttpRequest, ESPMode::ThreadSafe> Request = FHttpModule::Get().CreateRequest();
-	Request->OnProcessRequestComplete().BindUObject(this, &UNN_Cpp_ChatGPT::OnResponseReceived);
+	Request->OnProcessRequestComplete().BindUObject(this, &UNN_Cpp_ChatGPT::OnTextResponseReceived);
 	Request->SetURL(TEXT("https://api.openai.com/v1/chat/completions"));
 	Request->SetVerb(TEXT("POST"));
 	Request->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
@@ -84,7 +86,9 @@ void UNN_Cpp_ChatGPT::SendMessageToChatGPT(const FString& Message)
 	Request->ProcessRequest();
 }
 
-void UNN_Cpp_ChatGPT::GenerateSummaryFromConversation(const FString& Messages, TFunction<void(const FString&)> OnSummaryGenerated)
+// ######################### Generate Short Summary From Conversation #########################
+
+void UNN_Cpp_ChatGPT::GenerateShortSummaryFromConversation(const FString& Summary, TFunction<void(const FString&)> OnShortSummaryGenerated)
 {
 	// Create the HTTP request for generating a summary
 	TSharedRef<IHttpRequest, ESPMode::ThreadSafe> Request = FHttpModule::Get().CreateRequest();
@@ -111,7 +115,7 @@ void UNN_Cpp_ChatGPT::GenerateSummaryFromConversation(const FString& Messages, T
 	// Prepare the messages array for the API request
 	TSharedPtr<FJsonObject> UserMessageObject = MakeShareable(new FJsonObject());
 	UserMessageObject->SetStringField(TEXT("role"), TEXT("user"));
-	UserMessageObject->SetStringField(TEXT("content"), Messages);
+	UserMessageObject->SetStringField(TEXT("content"), Summary);
 
 	TSharedPtr<FJsonObject> InstructionMessageObject = MakeShareable(new FJsonObject());
 	InstructionMessageObject->SetStringField(TEXT("role"), TEXT("system"));
@@ -132,7 +136,7 @@ void UNN_Cpp_ChatGPT::GenerateSummaryFromConversation(const FString& Messages, T
 	FJsonSerializer::Serialize(JsonObject.ToSharedRef(), Writer);
 
 	Request->SetContentAsString(JsonString);
-	Request->OnProcessRequestComplete().BindLambda([OnSummaryGenerated](FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful)
+	Request->OnProcessRequestComplete().BindLambda([OnShortSummaryGenerated](FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful)
 	{
 		if (bWasSuccessful && Response.IsValid())
 		{
@@ -150,40 +154,236 @@ void UNN_Cpp_ChatGPT::GenerateSummaryFromConversation(const FString& Messages, T
 					if (FirstChoice.IsValid() && FirstChoice->HasField(TEXT("message")))
 					{
 						FString Summary = FirstChoice->GetObjectField(TEXT("message"))->GetStringField(TEXT("content"));
-						OnSummaryGenerated(Summary);
+						OnShortSummaryGenerated(Summary);
 					}
 					else
 					{
 						UE_LOG(LogTemp, Error, TEXT("Failed to find 'message' field in the first choice."));
-						OnSummaryGenerated(TEXT("Failed to summarize conversation."));
+						OnShortSummaryGenerated(TEXT("Failed to summarize conversation."));
 					}
 				}
 				else
 				{
 					UE_LOG(LogTemp, Error, TEXT("Failed to find 'choices' array or it is empty."));
-					OnSummaryGenerated(TEXT("Failed to summarize conversation."));
+					OnShortSummaryGenerated(TEXT("Failed to summarize conversation."));
 				}
 			}
 			else
 			{
 				UE_LOG(LogTemp, Error, TEXT("Failed to summarize conversation."));
-				OnSummaryGenerated(TEXT("Failed to summarize conversation."));
+				OnShortSummaryGenerated(TEXT("Failed to summarize conversation."));
 			}
 		}
 		else
 		{
 			UE_LOG(LogTemp, Error, TEXT("Failed to contact OpenAI."));
-			OnSummaryGenerated(TEXT("Failed to contact OpenAI."));
+			OnShortSummaryGenerated(TEXT("Failed to contact OpenAI."));
 		}
 	});
 	Request->ProcessRequest();
 }
 
-void UNN_Cpp_ChatGPT::GenerateImageFromConversation(const FString& Messages, TFunction<void(UTexture2D*)> OnImageGenerated)
+// ######################### Generate Max Summary From Conversation #########################
+
+void UNN_Cpp_ChatGPT::GenerateMaxSummaryFromConversation(const FString& Summary, TFunction<void(const FString&)> OnMaxSummaryGenerated)
+{
+	// Create the HTTP request for generating a summary
+	TSharedRef<IHttpRequest, ESPMode::ThreadSafe> Request = FHttpModule::Get().CreateRequest();
+
+	// Set the API endpoint for ChatGPT
+	Request->SetURL(TEXT("https://api.openai.com/v1/chat/completions"));
+	Request->SetVerb(TEXT("POST"));
+	Request->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
+
+	FString KeyFilePath = FPaths::ProjectDir() + TEXT("config/keys.txt");
+	FString ApiKey;
+	if (FFileHelper::LoadFileToString(ApiKey, *KeyFilePath))
+	{
+		// Trim the API key to remove any newline characters
+		ApiKey = ApiKey.TrimStartAndEnd();
+		Request->SetHeader(TEXT("Authorization"), FString::Printf(TEXT("Bearer %s"), *ApiKey));
+	}
+	else
+	{
+		UE_LOG(LogTemp, Error, TEXT("Failed to load API key from file"));
+		return;
+	}
+
+	// Prepare the messages array for the API request
+	TSharedPtr<FJsonObject> UserMessageObject = MakeShareable(new FJsonObject());
+	UserMessageObject->SetStringField(TEXT("role"), TEXT("user"));
+	UserMessageObject->SetStringField(TEXT("content"), Summary);
+
+	TSharedPtr<FJsonObject> InstructionMessageObject = MakeShareable(new FJsonObject());
+	InstructionMessageObject->SetStringField(TEXT("role"), TEXT("system"));
+	InstructionMessageObject->SetStringField(TEXT("content"), TEXT("Bitte fassen Sie das obige Gespräch in weniger als 5000 Zeichen zusammen."));
+
+	TArray<TSharedPtr<FJsonValue>> MessagesArray;
+	MessagesArray.Add(MakeShareable(new FJsonValueObject(UserMessageObject)));
+	MessagesArray.Add(MakeShareable(new FJsonValueObject(InstructionMessageObject)));
+
+	// Create the JSON payload with the conversation messages and the instruction to summarize
+	TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject());
+	JsonObject->SetStringField(TEXT("model"), TEXT("gpt-4o-mini"));
+	JsonObject->SetArrayField(TEXT("messages"), MessagesArray);
+	JsonObject->SetNumberField(TEXT("max_tokens"), 150);
+
+	FString JsonString;
+	TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&JsonString);
+	FJsonSerializer::Serialize(JsonObject.ToSharedRef(), Writer);
+
+	Request->SetContentAsString(JsonString);
+	Request->OnProcessRequestComplete().BindLambda([OnMaxSummaryGenerated](FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful)
+		{
+			if (bWasSuccessful && Response.IsValid())
+			{
+				FString FullResponse = Response->GetContentAsString();
+				UE_LOG(LogTemp, Error, TEXT("Full JSON Response: %s"), *FullResponse);
+
+				TSharedPtr<FJsonObject> JsonObject;
+				TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(Response->GetContentAsString());
+				if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
+				{
+					const TArray<TSharedPtr<FJsonValue>>* ChoicesArray;
+					if (JsonObject->TryGetArrayField(TEXT("choices"), ChoicesArray) && ChoicesArray != nullptr && ChoicesArray->Num() > 0)
+					{
+						TSharedPtr<FJsonObject> FirstChoice = (*ChoicesArray)[0]->AsObject();
+						if (FirstChoice.IsValid() && FirstChoice->HasField(TEXT("message")))
+						{
+							FString Summary = FirstChoice->GetObjectField(TEXT("message"))->GetStringField(TEXT("content"));
+							OnMaxSummaryGenerated(Summary);
+						}
+						else
+						{
+							UE_LOG(LogTemp, Error, TEXT("Failed to find 'message' field in the first choice."));
+							OnMaxSummaryGenerated(TEXT("Failed to summarize conversation."));
+						}
+					}
+					else
+					{
+						UE_LOG(LogTemp, Error, TEXT("Failed to find 'choices' array or it is empty."));
+						OnMaxSummaryGenerated(TEXT("Failed to summarize conversation."));
+					}
+				}
+				else
+				{
+					UE_LOG(LogTemp, Error, TEXT("Failed to summarize conversation."));
+					OnMaxSummaryGenerated(TEXT("Failed to summarize conversation."));
+				}
+			}
+			else
+			{
+				UE_LOG(LogTemp, Error, TEXT("Failed to contact OpenAI."));
+				OnMaxSummaryGenerated(TEXT("Failed to contact OpenAI."));
+			}
+		});
+	Request->ProcessRequest();
+}
+
+// ######################### Generate Image Summary From Conversation #########################
+
+void UNN_Cpp_ChatGPT::GenerateImageSummaryFromConversation(const FString& Summary, TFunction<void(const FString&)> OnImageSummaryGenerated)
+{
+	// Create the HTTP request for generating a summary
+	TSharedRef<IHttpRequest, ESPMode::ThreadSafe> Request = FHttpModule::Get().CreateRequest();
+
+	// Set the API endpoint for ChatGPT
+	Request->SetURL(TEXT("https://api.openai.com/v1/chat/completions"));
+	Request->SetVerb(TEXT("POST"));
+	Request->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
+
+	FString KeyFilePath = FPaths::ProjectDir() + TEXT("config/keys.txt");
+	FString ApiKey;
+	if (FFileHelper::LoadFileToString(ApiKey, *KeyFilePath))
+	{
+		// Trim the API key to remove any newline characters
+		ApiKey = ApiKey.TrimStartAndEnd();
+		Request->SetHeader(TEXT("Authorization"), FString::Printf(TEXT("Bearer %s"), *ApiKey));
+	}
+	else
+	{
+		UE_LOG(LogTemp, Error, TEXT("Failed to load API key from file"));
+		return;
+	}
+
+	// Prepare the messages array for the API request
+	TSharedPtr<FJsonObject> UserMessageObject = MakeShareable(new FJsonObject());
+	UserMessageObject->SetStringField(TEXT("role"), TEXT("user"));
+	UserMessageObject->SetStringField(TEXT("content"), Summary);
+
+	TSharedPtr<FJsonObject> InstructionMessageObject = MakeShareable(new FJsonObject());
+	InstructionMessageObject->SetStringField(TEXT("role"), TEXT("system"));
+	InstructionMessageObject->SetStringField(TEXT("content"), TEXT("Bitte fassen Sie das obige Gespräch in weniger als 950 Zeichen zusammen."));
+
+	TArray<TSharedPtr<FJsonValue>> MessagesArray;
+	MessagesArray.Add(MakeShareable(new FJsonValueObject(UserMessageObject)));
+	MessagesArray.Add(MakeShareable(new FJsonValueObject(InstructionMessageObject)));
+
+	// Create the JSON payload with the conversation messages and the instruction to summarize
+	TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject());
+	JsonObject->SetStringField(TEXT("model"), TEXT("gpt-4o-mini"));
+	JsonObject->SetArrayField(TEXT("messages"), MessagesArray);
+	JsonObject->SetNumberField(TEXT("max_tokens"), 150);
+
+	FString JsonString;
+	TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&JsonString);
+	FJsonSerializer::Serialize(JsonObject.ToSharedRef(), Writer);
+
+	Request->SetContentAsString(JsonString);
+	Request->OnProcessRequestComplete().BindLambda([OnImageSummaryGenerated](FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful)
+		{
+			if (bWasSuccessful && Response.IsValid())
+			{
+				FString FullResponse = Response->GetContentAsString();
+				UE_LOG(LogTemp, Error, TEXT("Full JSON Response: %s"), *FullResponse);
+
+				TSharedPtr<FJsonObject> JsonObject;
+				TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(Response->GetContentAsString());
+				if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
+				{
+					const TArray<TSharedPtr<FJsonValue>>* ChoicesArray;
+					if (JsonObject->TryGetArrayField(TEXT("choices"), ChoicesArray) && ChoicesArray != nullptr && ChoicesArray->Num() > 0)
+					{
+						TSharedPtr<FJsonObject> FirstChoice = (*ChoicesArray)[0]->AsObject();
+						if (FirstChoice.IsValid() && FirstChoice->HasField(TEXT("message")))
+						{
+							FString Summary = FirstChoice->GetObjectField(TEXT("message"))->GetStringField(TEXT("content"));
+							OnImageSummaryGenerated(Summary);
+						}
+						else
+						{
+							UE_LOG(LogTemp, Error, TEXT("Failed to find 'message' field in the first choice."));
+							OnImageSummaryGenerated(TEXT("Failed to summarize conversation."));
+						}
+					}
+					else
+					{
+						UE_LOG(LogTemp, Error, TEXT("Failed to find 'choices' array or it is empty."));
+						OnImageSummaryGenerated(TEXT("Failed to summarize conversation."));
+					}
+				}
+				else
+				{
+					UE_LOG(LogTemp, Error, TEXT("Failed to summarize conversation."));
+					OnImageSummaryGenerated(TEXT("Failed to summarize conversation."));
+				}
+			}
+			else
+			{
+				UE_LOG(LogTemp, Error, TEXT("Failed to contact OpenAI."));
+				OnImageSummaryGenerated(TEXT("Failed to contact OpenAI."));
+			}
+		});
+	Request->ProcessRequest();
+}
+
+// ######################### Generate Image From Conversation #########################
+
+void UNN_Cpp_ChatGPT::GenerateChatImageFromConversation(const FString& Summary, TFunction<void(UTexture2D*)> OnChatImageGenerated)
 {
 	// Create the HTTP request for DALL-E image generation
 	TSharedRef<IHttpRequest, ESPMode::ThreadSafe> Request = FHttpModule::Get().CreateRequest();
-	Request->OnProcessRequestComplete().BindUObject(this, &UNN_Cpp_ChatGPT::OnImageResponseReceived, OnImageGenerated);
+	Request->OnProcessRequestComplete().BindUObject(this, &UNN_Cpp_ChatGPT::OnImageResponseReceived, OnChatImageGenerated);
 
 	// Set the API endpoint for DALL-E 2
 	Request->SetURL(TEXT("https://api.openai.com/v1/images/generations"));
@@ -207,7 +407,7 @@ void UNN_Cpp_ChatGPT::GenerateImageFromConversation(const FString& Messages, TFu
 
 	// Create the JSON payload with the prompt (Messages)
 	TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject());
-	JsonObject->SetStringField(TEXT("prompt"), Messages);
+	JsonObject->SetStringField(TEXT("prompt"), Summary);
 	JsonObject->SetNumberField(TEXT("n"), 1);
 	JsonObject->SetStringField(TEXT("size"), TEXT("512x512"));
 	JsonObject->SetStringField(TEXT("response_format"), TEXT("b64_json"));
@@ -219,6 +419,8 @@ void UNN_Cpp_ChatGPT::GenerateImageFromConversation(const FString& Messages, TFu
 	Request->SetContentAsString(JsonString);
 	Request->ProcessRequest();
 }
+
+// ######################### On Image Response Received #########################
 
 void UNN_Cpp_ChatGPT::OnImageResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful, TFunction<void(UTexture2D*)> OnImageGenerated)
 {
@@ -273,7 +475,9 @@ void UNN_Cpp_ChatGPT::OnImageResponseReceived(FHttpRequestPtr Request, FHttpResp
 	}
 }
 
-void UNN_Cpp_ChatGPT::OnResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful)
+// ######################### On Text Response Received #########################
+
+void UNN_Cpp_ChatGPT::OnTextResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful)
 {
 	// Ensure that the response processing takes place in the main thread
 	AsyncTask(ENamedThreads::GameThread, [this, bWasSuccessful, Response]()

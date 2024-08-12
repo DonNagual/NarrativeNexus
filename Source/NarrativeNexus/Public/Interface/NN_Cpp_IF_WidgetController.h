@@ -45,6 +45,8 @@ public:
 
 	// ############### Options ###############
 
+	virtual bool IsSummaryGenerationEnabledViaInterface() const = 0;
 	virtual bool IsImageGenerationEnabledViaInterface() const = 0;
+	virtual int32 GetCurrentMessageNumberViaInterface() const = 0;
 	
 };

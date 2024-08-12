@@ -16,6 +16,8 @@ void ANN_Cpp_PlayerController::InitializeWidgets()
 		Widget->AddToViewport();
 		CategoryWidget = Cast<UNN_Cpp_Widget_Category>(Widget);
 		MainWidget = Cast<UNN_Cpp_Widget_Main>(CategoryWidget->MainWidget);
+		CreatorWidget = Cast<UNN_Cpp_Widget_Creator>(CategoryWidget->CreatorWidget);
+		GameWidget = Cast<UNN_Cpp_Widget_Game>(CategoryWidget->GameWidget);
 		MainOptionsWidget = Cast< UNN_Cpp_Widget_MainOptions>(MainWidget->MainOptionsWidget);
 	}
 }
@@ -40,66 +42,75 @@ void ANN_Cpp_PlayerController::HideWidget(UUserWidget* SubWidget)
 
 void ANN_Cpp_PlayerController::ShowMainMenuWidgetViaInterface()
 {
-	(Cast<UNN_Cpp_Widget_Main>(CategoryWidget->MainWidget))->ShowMainMenuWidget();
+	MainWidget->ShowMainMenuWidget();
 }
 
 void ANN_Cpp_PlayerController::ShowMainGuideWidgetViaInterface()
 {
-	(Cast<UNN_Cpp_Widget_Main>(CategoryWidget->MainWidget))->ShowMainGuideWidget();
+	MainWidget->ShowMainGuideWidget();
 }
 
 void ANN_Cpp_PlayerController::ShowMainOptionsWidgetViaInterface()
 {
-	(Cast<UNN_Cpp_Widget_Main>(CategoryWidget->MainWidget))->ShowMainOptionsWidget();
+	MainWidget->ShowMainOptionsWidget();
 }
 
 void ANN_Cpp_PlayerController::ShowMainTutorialWidgetViaInterface()
 {
-	(Cast<UNN_Cpp_Widget_Main>(CategoryWidget->MainWidget))->ShowMainTutorialWidget();
+	MainWidget->ShowMainTutorialWidget();
 }
 
 void ANN_Cpp_PlayerController::ShowMainCreditsWidgetViaInterface()
 {
-	(Cast<UNN_Cpp_Widget_Main>(CategoryWidget->MainWidget))->ShowMainCreditsWidget();
+	MainWidget->ShowMainCreditsWidget();
 }
 
 // ############### Creator ###############
 
 void ANN_Cpp_PlayerController::ShowCreatorMenuWidgetViaInterface()
 {
-	(Cast<UNN_Cpp_Widget_Creator>(CategoryWidget->CreatorWidget))->ShowCreatorMenuWidget();
+	CreatorWidget->ShowCreatorMenuWidget();
 }
 
 void ANN_Cpp_PlayerController::ShowCreatorWorlWidgetViaInterface()
 {
-	(Cast<UNN_Cpp_Widget_Creator>(CategoryWidget->CreatorWidget))->ShowCreatorWorlWidget();
+	CreatorWidget->ShowCreatorWorlWidget();
 }
 
 void ANN_Cpp_PlayerController::ShowCreatorCharacterWidgetViaInterface()
 {
-	(Cast<UNN_Cpp_Widget_Creator>(CategoryWidget->CreatorWidget))->ShowCreatorCharacterWidget();
+	CreatorWidget->ShowCreatorCharacterWidget();
 }
 
 void ANN_Cpp_PlayerController::ShowCreatorStoryWidgetViaInterface()
 {
-	(Cast<UNN_Cpp_Widget_Creator>(CategoryWidget->CreatorWidget))->ShowCreatorStoryWidget();
+	CreatorWidget->ShowCreatorStoryWidget();
 }
 
 // ############### Game ###############
 
 void ANN_Cpp_PlayerController::ShowGameMenuWidgetViaInterface()
 {
-	(Cast<UNN_Cpp_Widget_Game>(CategoryWidget->GameWidget))->ShowGameMenuWidget();
+	GameWidget->ShowGameMenuWidget();
 }
 
 void ANN_Cpp_PlayerController::ShowGameChatWidgetViaInterface()
 {
-	(Cast<UNN_Cpp_Widget_Game>(CategoryWidget->GameWidget))->ShowGameChatWidget();
+	GameWidget->ShowGameChatWidget();
 }
 
 void ANN_Cpp_PlayerController::ShowGameInventoryWidgetViaInterface()
 {
-	(Cast<UNN_Cpp_Widget_Game>(CategoryWidget->GameWidget))->ShowGameInventoryWidget();
+	GameWidget->ShowGameInventoryWidget();
+}
+
+bool ANN_Cpp_PlayerController::IsSummaryGenerationEnabledViaInterface() const
+{
+	if (MainOptionsWidget)
+	{
+		return MainOptionsWidget->IsSummaryGenerationEnabled();
+	}
+	return false;
 }
 
 bool ANN_Cpp_PlayerController::IsImageGenerationEnabledViaInterface() const
@@ -109,4 +120,13 @@ bool ANN_Cpp_PlayerController::IsImageGenerationEnabledViaInterface() const
 		return MainOptionsWidget->IsImageGenerationEnabled();
 	}
 	return false;
+}
+
+int32 ANN_Cpp_PlayerController::GetCurrentMessageNumberViaInterface() const
+{
+	if (MainOptionsWidget)
+	{
+		return MainOptionsWidget->GetCurrentMessageNumber();
+	}
+	return 4;
 }

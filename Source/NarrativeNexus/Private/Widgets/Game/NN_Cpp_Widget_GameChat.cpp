@@ -85,14 +85,19 @@ void UNN_Cpp_Widget_GameChat::AddMessageToChat(const FString& Author, const FStr
 			// Scroll to the bottom to show the latest message
 			MessageScrollBox->ScrollToEnd();
 
-			// Check whether 6 messages have been added since the last image generation
+			// Check how many messages have been generated and create a summary
 			static int32 MessageCounter = 0;
 			MessageCounter++;
 
-			if (MessageCounter >= 4)
+			if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
 			{
-				MakeExecutiveSummaryText();
-				MessageCounter = 0;
+				int32 CurrentMessageNumber = Interface->GetCurrentMessageNumberViaInterface();
+				if (MessageCounter >= CurrentMessageNumber)
+				{
+					FString AllMessages = GetAllMessagesFromConversationHistory();
+					GenerateShortSummary(AllMessages);
+					MessageCounter = 0;
+				}
 			}
 		}
 		else
@@ -187,17 +192,11 @@ void UNN_Cpp_Widget_GameChat::OnRepeatButtonClicked()
 			// Resend the last message to ChatGPT
 			FString LastUserMessage = MutableConversationHistory.Last()->GetStringField(TEXT("content"));
 			ChatGPT->SendMessageToChatGPT(LastUserMessage);
-
-			//// DEBUG
-			//AddMessageToChat(TEXT("System"), TEXT("Die letzte Nachricht wird erneut gesendet."));
 		}
 		else
 		{
 			// If the last message is not from ChatGPT, resend the entire history
 			ChatGPT->SendMessageToChatGPT(MutableConversationHistory.Last()->GetStringField(TEXT("content")));
-
-			//// DEBUG
-			//AddMessageToChat(TEXT("System"), TEXT("Die letzte Nachricht wird erneut gesendet."));
 		}
 	}
 	else
@@ -239,7 +238,99 @@ void UNN_Cpp_Widget_GameChat::OnSelectLowerButtonClicked()
 {
 }
 
-void UNN_Cpp_Widget_GameChat::CreateStoryImage(const FString& Summary)
+FString UNN_Cpp_Widget_GameChat::GetAllMessagesFromConversationHistory()
+{
+	// Get all messages from the conversation history
+	FString AllMessages;
+	auto& ConversationHistory = ChatGPT->GetMutableConversationHistory();
+	for (int32 i = 0; i < ConversationHistory.Num(); ++i)
+	{
+		AllMessages += ConversationHistory[i]->GetStringField(TEXT("content")) + TEXT("\n");
+	}
+	// DEBUG
+	UE_LOG(LogTemp, Warning, TEXT("\n%s"), *AllMessages);
+	return AllMessages;
+}
+
+void UNN_Cpp_Widget_GameChat::GenerateShortSummary(const FString& Summary)
+{
+	// Check if Summary generation is enabled
+	if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
+	{
+		if (!Interface->IsSummaryGenerationEnabledViaInterface())
+		{
+			UE_LOG(LogTemp, Log, TEXT("Summary generation is disabled in the options."));
+			return;
+		}
+	}
+
+	// Generate a summary of the conversation
+	ChatGPT->GenerateShortSummaryFromConversation(Summary, [this](const FString& OnShortSummaryGenerated)
+		{
+			if (ExecutiveSummaryText)
+			{
+				ExecutiveSummaryText->SetText(FText::FromString(OnShortSummaryGenerated));
+			}
+			else
+			{
+				UE_LOG(LogTemp, Error, TEXT("Failed to set executive summary text."));
+			}
+		});
+}
+
+void UNN_Cpp_Widget_GameChat::GenerateMaxSummary(const FString& Summary)
+{
+	// Check if Summary generation is enabled
+	if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
+	{
+		if (!Interface->IsSummaryGenerationEnabledViaInterface())
+		{
+			UE_LOG(LogTemp, Log, TEXT("Summary generation is disabled in the options."));
+			return;
+		}
+	}
+
+	// Generate a summary of the conversation
+	ChatGPT->GenerateMaxSummaryFromConversation(Summary, [this](const FString& OnMaxSummaryGenerated)
+		{
+			if (ExecutiveSummaryText)
+			{
+				ExecutiveSummaryText->SetText(FText::FromString(OnMaxSummaryGenerated));
+			}
+			else
+			{
+				UE_LOG(LogTemp, Error, TEXT("Failed to set executive summary text."));
+			}
+		});
+}
+
+void UNN_Cpp_Widget_GameChat::GenerateImageSummary(const FString& Summary)
+{
+	// Check if Summary generation is enabled
+	if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
+	{
+		if (!Interface->IsSummaryGenerationEnabledViaInterface())
+		{
+			UE_LOG(LogTemp, Log, TEXT("Summary generation is disabled in the options."));
+			return;
+		}
+	}
+
+	// Generate a summary of the conversation
+	ChatGPT->GenerateImageSummaryFromConversation(Summary, [this](const FString& OnImageSummaryGenerated)
+		{
+			if (ExecutiveSummaryText)
+			{
+				ExecutiveSummaryText->SetText(FText::FromString(OnImageSummaryGenerated));
+			}
+			else
+			{
+				UE_LOG(LogTemp, Error, TEXT("Failed to set executive summary text."));
+			}
+		});
+}
+
+void UNN_Cpp_Widget_GameChat::GenerateChatImage(const FString& Summary)
 {
 	// Check if image generation is enabled
 	if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
@@ -252,47 +343,17 @@ void UNN_Cpp_Widget_GameChat::CreateStoryImage(const FString& Summary)
 	}
 
 	// Generate the image based on the summary
-	ChatGPT->GenerateImageFromConversation(Summary, [this](UTexture2D* GeneratedImage)
-	{
-		if (GeneratedImage && StoryImage)
+	ChatGPT->GenerateChatImageFromConversation(Summary, [this](UTexture2D* OnChatImageGenerated)
 		{
-			// Show image
-			StoryImage->SetBrushFromTexture(GeneratedImage);
-			GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Purple, TEXT("Image generated successfully."));
-		}
-		else
-		{
-			UE_LOG(LogTemp, Error, TEXT("Failed to generate image from conversation"));
-		}
-	});
-}
-
-void UNN_Cpp_Widget_GameChat::MakeExecutiveSummaryText()
-{
-	// Get all messages from the conversation history
-	FString AllMessages;
-	auto& ConversationHistory = ChatGPT->GetMutableConversationHistory();
-	for (int32 i = 0; i < ConversationHistory.Num(); ++i)
-	{
-		AllMessages += ConversationHistory[i]->GetStringField(TEXT("content")) + TEXT(" ");
-	}
-
-	// Generate a summary of the conversation
-	ChatGPT->GenerateSummaryFromConversation(AllMessages, [this](const FString& Summary)
-	{
-		if (ExecutiveSummaryText)
-		{
-			ExecutiveSummaryText->SetText(FText::FromString(Summary));
-			GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green, TEXT("Executive summary generated."));
-			CreateStoryImage(Summary);
-		}
-		else
-		{
-			UE_LOG(LogTemp, Error, TEXT("Failed to set executive summary text."));
-		}
-	});
-}
-
-void UNN_Cpp_Widget_GameChat::WriteExecutiveSummaryText()
-{
+			if (OnChatImageGenerated && StoryImage)
+			{
+				// Show image
+				StoryImage->SetBrushFromTexture(OnChatImageGenerated);
+				GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Purple, TEXT("Image generated successfully."));
+			}
+			else
+			{
+				UE_LOG(LogTemp, Error, TEXT("Failed to generate image from conversation"));
+			}
+		});
 }

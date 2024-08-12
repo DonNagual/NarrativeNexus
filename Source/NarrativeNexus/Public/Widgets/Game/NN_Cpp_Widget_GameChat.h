@@ -110,18 +110,22 @@ private:
 	UFUNCTION()
 	void OnSelectLowerButtonClicked();
 
-	// ############### Image - Functions ###############
+	// ############### Generate Summary and Image ###############
 
 	UFUNCTION()
-	void CreateStoryImage(const FString& Summary);
-
-	// ############### Summary Text ###############
+	void GenerateShortSummary(const FString& Summary);
 
 	UFUNCTION()
-	void MakeExecutiveSummaryText();
+	void GenerateMaxSummary(const FString& Summary);
 
 	UFUNCTION()
-	void WriteExecutiveSummaryText();
+	void GenerateImageSummary(const FString& Summary);
+
+	UFUNCTION()
+	void GenerateChatImage(const FString& Summary);
+
+	UFUNCTION()
+	FString GetAllMessagesFromConversationHistory();
 
 	// ############### Message - Functions ###############
 
@@ -134,10 +138,10 @@ private:
 	UFUNCTION()
 	void RemoveLastChatGPTMessageFromScrollBox();
 
+	UFUNCTION()
+	void HandleChatGPTResponse(const FString& Response);
+
 	// Direct reference to ChatGPT object
 	UPROPERTY()
 	UNN_Cpp_ChatGPT* ChatGPT;
-
-	UFUNCTION()
-	void HandleChatGPTResponse(const FString& Response);
 };

@@ -15,22 +15,24 @@ class NARRATIVENEXUS_API UNN_Cpp_ChatGPT : public UObject, public INN_Cpp_IF_Cha
 
 public:
 	// Interface methods
+	virtual FOnChatGPTResponseReceived& GetOnChatGPTResponseReceived() override;
+
 	virtual void SendMessageToChatGPT(const FString& Message) override;
 	virtual void ResetConversation() override;
 	virtual FString GetLastResponse() const override;
 	virtual const TArray<TSharedPtr<FJsonObject>>& GetConversationHistory() const override;
 	virtual TArray<TSharedPtr<FJsonObject>>& GetMutableConversationHistory() override;
-	virtual FOnChatGPTResponseReceived& GetOnChatGPTResponseReceived() override;
-	virtual void GenerateSummaryFromConversation(const FString& Messages, TFunction<void(const FString&)> OnSummaryGenerated) override;
-
-	virtual void GenerateImageFromConversation(const FString& Messages, TFunction<void(UTexture2D*)> OnImageGenerated) override;
+	virtual void GenerateShortSummaryFromConversation(const FString& Summary, TFunction<void(const FString&)> OnShortSummaryGenerated) override;
+	virtual void GenerateMaxSummaryFromConversation(const FString& Summary, TFunction<void(const FString&)> OnMaxSummaryGenerated) override;
+	virtual void GenerateImageSummaryFromConversation(const FString& Summary, TFunction<void(const FString&)> OnImageSummaryGenerated) override;
+	virtual void GenerateChatImageFromConversation(const FString& Summary, TFunction<void(UTexture2D*)> OnChatImageGenerated) override;
 
 	// Static method to create an instance of the ChatGPT
 	static UNN_Cpp_ChatGPT* CreateChatGPT(UObject* Outer);
 
 private:
 	// Callback method when a response is received
-	void OnResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful);
+	void OnTextResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful);
 	void OnImageResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful, TFunction<void(UTexture2D*)> OnImageGenerated);
 	
 	// The response received delegate
