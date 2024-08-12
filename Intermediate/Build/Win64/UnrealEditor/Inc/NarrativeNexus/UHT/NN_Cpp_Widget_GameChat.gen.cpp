@@ -24,21 +24,156 @@ UMG_API UClass* Z_Construct_UClass_UUserWidget_NoRegister();
 UPackage* Z_Construct_UPackage__Script_NarrativeNexus();
 // End Cross Module References
 
-// Begin Class UNN_Cpp_Widget_GameChat Function CreateStoryImage
-struct Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_CreateStoryImage_Statics
+// Begin Class UNN_Cpp_Widget_GameChat Function GenerateChatImage
+struct Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateChatImage_Statics
 {
-	struct NN_Cpp_Widget_GameChat_eventCreateStoryImage_Parms
+	struct NN_Cpp_Widget_GameChat_eventGenerateChatImage_Parms
+	{
+		FString Summary;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/Widgets/Game/NN_Cpp_Widget_GameChat.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Summary_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FStrPropertyParams NewProp_Summary;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FStrPropertyParams Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateChatImage_Statics::NewProp_Summary = { "Summary", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(NN_Cpp_Widget_GameChat_eventGenerateChatImage_Parms, Summary), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Summary_MetaData), NewProp_Summary_MetaData) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateChatImage_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateChatImage_Statics::NewProp_Summary,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateChatImage_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateChatImage_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UNN_Cpp_Widget_GameChat, nullptr, "GenerateChatImage", nullptr, nullptr, Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateChatImage_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateChatImage_Statics::PropPointers), sizeof(Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateChatImage_Statics::NN_Cpp_Widget_GameChat_eventGenerateChatImage_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00040401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateChatImage_Statics::Function_MetaDataParams), Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateChatImage_Statics::Function_MetaDataParams) };
+static_assert(sizeof(Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateChatImage_Statics::NN_Cpp_Widget_GameChat_eventGenerateChatImage_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateChatImage()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateChatImage_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(UNN_Cpp_Widget_GameChat::execGenerateChatImage)
+{
+	P_GET_PROPERTY(FStrProperty,Z_Param_Summary);
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->GenerateChatImage(Z_Param_Summary);
+	P_NATIVE_END;
+}
+// End Class UNN_Cpp_Widget_GameChat Function GenerateChatImage
+
+// Begin Class UNN_Cpp_Widget_GameChat Function GenerateImageSummary
+struct Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateImageSummary_Statics
+{
+	struct NN_Cpp_Widget_GameChat_eventGenerateImageSummary_Parms
+	{
+		FString Summary;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/Widgets/Game/NN_Cpp_Widget_GameChat.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Summary_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FStrPropertyParams NewProp_Summary;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FStrPropertyParams Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateImageSummary_Statics::NewProp_Summary = { "Summary", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(NN_Cpp_Widget_GameChat_eventGenerateImageSummary_Parms, Summary), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Summary_MetaData), NewProp_Summary_MetaData) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateImageSummary_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateImageSummary_Statics::NewProp_Summary,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateImageSummary_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateImageSummary_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UNN_Cpp_Widget_GameChat, nullptr, "GenerateImageSummary", nullptr, nullptr, Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateImageSummary_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateImageSummary_Statics::PropPointers), sizeof(Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateImageSummary_Statics::NN_Cpp_Widget_GameChat_eventGenerateImageSummary_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00040401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateImageSummary_Statics::Function_MetaDataParams), Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateImageSummary_Statics::Function_MetaDataParams) };
+static_assert(sizeof(Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateImageSummary_Statics::NN_Cpp_Widget_GameChat_eventGenerateImageSummary_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateImageSummary()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateImageSummary_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(UNN_Cpp_Widget_GameChat::execGenerateImageSummary)
+{
+	P_GET_PROPERTY(FStrProperty,Z_Param_Summary);
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->GenerateImageSummary(Z_Param_Summary);
+	P_NATIVE_END;
+}
+// End Class UNN_Cpp_Widget_GameChat Function GenerateImageSummary
+
+// Begin Class UNN_Cpp_Widget_GameChat Function GenerateMaxSummary
+struct Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateMaxSummary_Statics
+{
+	struct NN_Cpp_Widget_GameChat_eventGenerateMaxSummary_Parms
+	{
+		FString Summary;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/Widgets/Game/NN_Cpp_Widget_GameChat.h" },
+	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Summary_MetaData[] = {
+		{ "NativeConst", "" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FStrPropertyParams NewProp_Summary;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FStrPropertyParams Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateMaxSummary_Statics::NewProp_Summary = { "Summary", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(NN_Cpp_Widget_GameChat_eventGenerateMaxSummary_Parms, Summary), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Summary_MetaData), NewProp_Summary_MetaData) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateMaxSummary_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateMaxSummary_Statics::NewProp_Summary,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateMaxSummary_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateMaxSummary_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UNN_Cpp_Widget_GameChat, nullptr, "GenerateMaxSummary", nullptr, nullptr, Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateMaxSummary_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateMaxSummary_Statics::PropPointers), sizeof(Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateMaxSummary_Statics::NN_Cpp_Widget_GameChat_eventGenerateMaxSummary_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00040401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateMaxSummary_Statics::Function_MetaDataParams), Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateMaxSummary_Statics::Function_MetaDataParams) };
+static_assert(sizeof(Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateMaxSummary_Statics::NN_Cpp_Widget_GameChat_eventGenerateMaxSummary_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateMaxSummary()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateMaxSummary_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(UNN_Cpp_Widget_GameChat::execGenerateMaxSummary)
+{
+	P_GET_PROPERTY(FStrProperty,Z_Param_Summary);
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->GenerateMaxSummary(Z_Param_Summary);
+	P_NATIVE_END;
+}
+// End Class UNN_Cpp_Widget_GameChat Function GenerateMaxSummary
+
+// Begin Class UNN_Cpp_Widget_GameChat Function GenerateShortSummary
+struct Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateShortSummary_Statics
+{
+	struct NN_Cpp_Widget_GameChat_eventGenerateShortSummary_Parms
 	{
 		FString Summary;
 	};
 #if WITH_METADATA
 	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
 #if !UE_BUILD_SHIPPING
-		{ "Comment", "// ############### Image - Functions ###############\n" },
+		{ "Comment", "// ############### Generate Summary and Image ###############\n" },
 #endif
 		{ "ModuleRelativePath", "Public/Widgets/Game/NN_Cpp_Widget_GameChat.h" },
 #if !UE_BUILD_SHIPPING
-		{ "ToolTip", "############### Image - Functions ###############" },
+		{ "ToolTip", "############### Generate Summary and Image ###############" },
 #endif
 	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Summary_MetaData[] = {
@@ -49,31 +184,72 @@ struct Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_CreateStoryImage_Statics
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static const UECodeGen_Private::FFunctionParams FuncParams;
 };
-const UECodeGen_Private::FStrPropertyParams Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_CreateStoryImage_Statics::NewProp_Summary = { "Summary", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(NN_Cpp_Widget_GameChat_eventCreateStoryImage_Parms, Summary), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Summary_MetaData), NewProp_Summary_MetaData) };
-const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_CreateStoryImage_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_CreateStoryImage_Statics::NewProp_Summary,
+const UECodeGen_Private::FStrPropertyParams Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateShortSummary_Statics::NewProp_Summary = { "Summary", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(NN_Cpp_Widget_GameChat_eventGenerateShortSummary_Parms, Summary), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Summary_MetaData), NewProp_Summary_MetaData) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateShortSummary_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateShortSummary_Statics::NewProp_Summary,
 };
-static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_CreateStoryImage_Statics::PropPointers) < 2048);
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_CreateStoryImage_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UNN_Cpp_Widget_GameChat, nullptr, "CreateStoryImage", nullptr, nullptr, Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_CreateStoryImage_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_CreateStoryImage_Statics::PropPointers), sizeof(Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_CreateStoryImage_Statics::NN_Cpp_Widget_GameChat_eventCreateStoryImage_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00040401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_CreateStoryImage_Statics::Function_MetaDataParams), Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_CreateStoryImage_Statics::Function_MetaDataParams) };
-static_assert(sizeof(Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_CreateStoryImage_Statics::NN_Cpp_Widget_GameChat_eventCreateStoryImage_Parms) < MAX_uint16);
-UFunction* Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_CreateStoryImage()
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateShortSummary_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateShortSummary_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UNN_Cpp_Widget_GameChat, nullptr, "GenerateShortSummary", nullptr, nullptr, Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateShortSummary_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateShortSummary_Statics::PropPointers), sizeof(Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateShortSummary_Statics::NN_Cpp_Widget_GameChat_eventGenerateShortSummary_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00040401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateShortSummary_Statics::Function_MetaDataParams), Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateShortSummary_Statics::Function_MetaDataParams) };
+static_assert(sizeof(Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateShortSummary_Statics::NN_Cpp_Widget_GameChat_eventGenerateShortSummary_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateShortSummary()
 {
 	static UFunction* ReturnFunction = nullptr;
 	if (!ReturnFunction)
 	{
-		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_CreateStoryImage_Statics::FuncParams);
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateShortSummary_Statics::FuncParams);
 	}
 	return ReturnFunction;
 }
-DEFINE_FUNCTION(UNN_Cpp_Widget_GameChat::execCreateStoryImage)
+DEFINE_FUNCTION(UNN_Cpp_Widget_GameChat::execGenerateShortSummary)
 {
 	P_GET_PROPERTY(FStrProperty,Z_Param_Summary);
 	P_FINISH;
 	P_NATIVE_BEGIN;
-	P_THIS->CreateStoryImage(Z_Param_Summary);
+	P_THIS->GenerateShortSummary(Z_Param_Summary);
 	P_NATIVE_END;
 }
-// End Class UNN_Cpp_Widget_GameChat Function CreateStoryImage
+// End Class UNN_Cpp_Widget_GameChat Function GenerateShortSummary
+
+// Begin Class UNN_Cpp_Widget_GameChat Function GetAllMessagesFromConversationHistory
+struct Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GetAllMessagesFromConversationHistory_Statics
+{
+	struct NN_Cpp_Widget_GameChat_eventGetAllMessagesFromConversationHistory_Parms
+	{
+		FString ReturnValue;
+	};
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/Widgets/Game/NN_Cpp_Widget_GameChat.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FStrPropertyParams NewProp_ReturnValue;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FStrPropertyParams Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GetAllMessagesFromConversationHistory_Statics::NewProp_ReturnValue = { "ReturnValue", nullptr, (EPropertyFlags)0x0010000000000580, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(NN_Cpp_Widget_GameChat_eventGetAllMessagesFromConversationHistory_Parms, ReturnValue), METADATA_PARAMS(0, nullptr) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GetAllMessagesFromConversationHistory_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GetAllMessagesFromConversationHistory_Statics::NewProp_ReturnValue,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GetAllMessagesFromConversationHistory_Statics::PropPointers) < 2048);
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GetAllMessagesFromConversationHistory_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UNN_Cpp_Widget_GameChat, nullptr, "GetAllMessagesFromConversationHistory", nullptr, nullptr, Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GetAllMessagesFromConversationHistory_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GetAllMessagesFromConversationHistory_Statics::PropPointers), sizeof(Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GetAllMessagesFromConversationHistory_Statics::NN_Cpp_Widget_GameChat_eventGetAllMessagesFromConversationHistory_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00040401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GetAllMessagesFromConversationHistory_Statics::Function_MetaDataParams), Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GetAllMessagesFromConversationHistory_Statics::Function_MetaDataParams) };
+static_assert(sizeof(Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GetAllMessagesFromConversationHistory_Statics::NN_Cpp_Widget_GameChat_eventGetAllMessagesFromConversationHistory_Parms) < MAX_uint16);
+UFunction* Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GetAllMessagesFromConversationHistory()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GetAllMessagesFromConversationHistory_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(UNN_Cpp_Widget_GameChat::execGetAllMessagesFromConversationHistory)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	*(FString*)Z_Param__Result=P_THIS->GetAllMessagesFromConversationHistory();
+	P_NATIVE_END;
+}
+// End Class UNN_Cpp_Widget_GameChat Function GetAllMessagesFromConversationHistory
 
 // Begin Class UNN_Cpp_Widget_GameChat Function HandleChatGPTResponse
 struct Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_HandleChatGPTResponse_Statics
@@ -119,41 +295,6 @@ DEFINE_FUNCTION(UNN_Cpp_Widget_GameChat::execHandleChatGPTResponse)
 	P_NATIVE_END;
 }
 // End Class UNN_Cpp_Widget_GameChat Function HandleChatGPTResponse
-
-// Begin Class UNN_Cpp_Widget_GameChat Function MakeExecutiveSummaryText
-struct Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_MakeExecutiveSummaryText_Statics
-{
-#if WITH_METADATA
-	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-#if !UE_BUILD_SHIPPING
-		{ "Comment", "// ############### Summary Text ###############\n" },
-#endif
-		{ "ModuleRelativePath", "Public/Widgets/Game/NN_Cpp_Widget_GameChat.h" },
-#if !UE_BUILD_SHIPPING
-		{ "ToolTip", "############### Summary Text ###############" },
-#endif
-	};
-#endif // WITH_METADATA
-	static const UECodeGen_Private::FFunctionParams FuncParams;
-};
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_MakeExecutiveSummaryText_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UNN_Cpp_Widget_GameChat, nullptr, "MakeExecutiveSummaryText", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00040401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_MakeExecutiveSummaryText_Statics::Function_MetaDataParams), Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_MakeExecutiveSummaryText_Statics::Function_MetaDataParams) };
-UFunction* Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_MakeExecutiveSummaryText()
-{
-	static UFunction* ReturnFunction = nullptr;
-	if (!ReturnFunction)
-	{
-		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_MakeExecutiveSummaryText_Statics::FuncParams);
-	}
-	return ReturnFunction;
-}
-DEFINE_FUNCTION(UNN_Cpp_Widget_GameChat::execMakeExecutiveSummaryText)
-{
-	P_FINISH;
-	P_NATIVE_BEGIN;
-	P_THIS->MakeExecutiveSummaryText();
-	P_NATIVE_END;
-}
-// End Class UNN_Cpp_Widget_GameChat Function MakeExecutiveSummaryText
 
 // Begin Class UNN_Cpp_Widget_GameChat Function OnBackButtonClicked
 struct Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnBackButtonClicked_Statics
@@ -486,43 +627,17 @@ DEFINE_FUNCTION(UNN_Cpp_Widget_GameChat::execRemoveLastChatGPTMessageFromScrollB
 }
 // End Class UNN_Cpp_Widget_GameChat Function RemoveLastChatGPTMessageFromScrollBox
 
-// Begin Class UNN_Cpp_Widget_GameChat Function WriteExecutiveSummaryText
-struct Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_WriteExecutiveSummaryText_Statics
-{
-#if WITH_METADATA
-	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-		{ "ModuleRelativePath", "Public/Widgets/Game/NN_Cpp_Widget_GameChat.h" },
-	};
-#endif // WITH_METADATA
-	static const UECodeGen_Private::FFunctionParams FuncParams;
-};
-const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_WriteExecutiveSummaryText_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UNN_Cpp_Widget_GameChat, nullptr, "WriteExecutiveSummaryText", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00040401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_WriteExecutiveSummaryText_Statics::Function_MetaDataParams), Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_WriteExecutiveSummaryText_Statics::Function_MetaDataParams) };
-UFunction* Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_WriteExecutiveSummaryText()
-{
-	static UFunction* ReturnFunction = nullptr;
-	if (!ReturnFunction)
-	{
-		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_WriteExecutiveSummaryText_Statics::FuncParams);
-	}
-	return ReturnFunction;
-}
-DEFINE_FUNCTION(UNN_Cpp_Widget_GameChat::execWriteExecutiveSummaryText)
-{
-	P_FINISH;
-	P_NATIVE_BEGIN;
-	P_THIS->WriteExecutiveSummaryText();
-	P_NATIVE_END;
-}
-// End Class UNN_Cpp_Widget_GameChat Function WriteExecutiveSummaryText
-
 // Begin Class UNN_Cpp_Widget_GameChat
 void UNN_Cpp_Widget_GameChat::StaticRegisterNativesUNN_Cpp_Widget_GameChat()
 {
 	UClass* Class = UNN_Cpp_Widget_GameChat::StaticClass();
 	static const FNameNativePtrPair Funcs[] = {
-		{ "CreateStoryImage", &UNN_Cpp_Widget_GameChat::execCreateStoryImage },
+		{ "GenerateChatImage", &UNN_Cpp_Widget_GameChat::execGenerateChatImage },
+		{ "GenerateImageSummary", &UNN_Cpp_Widget_GameChat::execGenerateImageSummary },
+		{ "GenerateMaxSummary", &UNN_Cpp_Widget_GameChat::execGenerateMaxSummary },
+		{ "GenerateShortSummary", &UNN_Cpp_Widget_GameChat::execGenerateShortSummary },
+		{ "GetAllMessagesFromConversationHistory", &UNN_Cpp_Widget_GameChat::execGetAllMessagesFromConversationHistory },
 		{ "HandleChatGPTResponse", &UNN_Cpp_Widget_GameChat::execHandleChatGPTResponse },
-		{ "MakeExecutiveSummaryText", &UNN_Cpp_Widget_GameChat::execMakeExecutiveSummaryText },
 		{ "OnBackButtonClicked", &UNN_Cpp_Widget_GameChat::execOnBackButtonClicked },
 		{ "OnContinueButtonClicked", &UNN_Cpp_Widget_GameChat::execOnContinueButtonClicked },
 		{ "OnInfoButtonClicked", &UNN_Cpp_Widget_GameChat::execOnInfoButtonClicked },
@@ -534,7 +649,6 @@ void UNN_Cpp_Widget_GameChat::StaticRegisterNativesUNN_Cpp_Widget_GameChat()
 		{ "OnSendButtomClicked", &UNN_Cpp_Widget_GameChat::execOnSendButtomClicked },
 		{ "OnSummaryButtonClicked", &UNN_Cpp_Widget_GameChat::execOnSummaryButtonClicked },
 		{ "RemoveLastChatGPTMessageFromScrollBox", &UNN_Cpp_Widget_GameChat::execRemoveLastChatGPTMessageFromScrollBox },
-		{ "WriteExecutiveSummaryText", &UNN_Cpp_Widget_GameChat::execWriteExecutiveSummaryText },
 	};
 	FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
 }
@@ -677,9 +791,12 @@ struct Z_Construct_UClass_UNN_Cpp_Widget_GameChat_Statics
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
-		{ &Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_CreateStoryImage, "CreateStoryImage" }, // 2233202565
+		{ &Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateChatImage, "GenerateChatImage" }, // 219603898
+		{ &Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateImageSummary, "GenerateImageSummary" }, // 3386535615
+		{ &Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateMaxSummary, "GenerateMaxSummary" }, // 3811436609
+		{ &Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GenerateShortSummary, "GenerateShortSummary" }, // 3229155702
+		{ &Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_GetAllMessagesFromConversationHistory, "GetAllMessagesFromConversationHistory" }, // 3013455143
 		{ &Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_HandleChatGPTResponse, "HandleChatGPTResponse" }, // 1344434522
-		{ &Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_MakeExecutiveSummaryText, "MakeExecutiveSummaryText" }, // 1009335687
 		{ &Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnBackButtonClicked, "OnBackButtonClicked" }, // 2321172930
 		{ &Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnContinueButtonClicked, "OnContinueButtonClicked" }, // 1454730058
 		{ &Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnInfoButtonClicked, "OnInfoButtonClicked" }, // 2848602773
@@ -691,7 +808,6 @@ struct Z_Construct_UClass_UNN_Cpp_Widget_GameChat_Statics
 		{ &Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSendButtomClicked, "OnSendButtomClicked" }, // 2385754228
 		{ &Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_OnSummaryButtonClicked, "OnSummaryButtonClicked" }, // 2142684143
 		{ &Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_RemoveLastChatGPTMessageFromScrollBox, "RemoveLastChatGPTMessageFromScrollBox" }, // 2039829145
-		{ &Z_Construct_UFunction_UNN_Cpp_Widget_GameChat_WriteExecutiveSummaryText, "WriteExecutiveSummaryText" }, // 2780130911
 	};
 	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
@@ -775,10 +891,10 @@ UNN_Cpp_Widget_GameChat::~UNN_Cpp_Widget_GameChat() {}
 struct Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Game_NN_Cpp_Widget_GameChat_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UNN_Cpp_Widget_GameChat, UNN_Cpp_Widget_GameChat::StaticClass, TEXT("UNN_Cpp_Widget_GameChat"), &Z_Registration_Info_UClass_UNN_Cpp_Widget_GameChat, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UNN_Cpp_Widget_GameChat), 3342111761U) },
+		{ Z_Construct_UClass_UNN_Cpp_Widget_GameChat, UNN_Cpp_Widget_GameChat::StaticClass, TEXT("UNN_Cpp_Widget_GameChat"), &Z_Registration_Info_UClass_UNN_Cpp_Widget_GameChat, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UNN_Cpp_Widget_GameChat), 3494697430U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Game_NN_Cpp_Widget_GameChat_h_3821140445(TEXT("/Script/NarrativeNexus"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Game_NN_Cpp_Widget_GameChat_h_2247177673(TEXT("/Script/NarrativeNexus"),
 	Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Game_NN_Cpp_Widget_GameChat_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Game_NN_Cpp_Widget_GameChat_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

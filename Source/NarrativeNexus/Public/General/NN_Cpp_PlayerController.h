@@ -47,7 +47,9 @@ public:
 
 	// ############### Options ###############
 
+	virtual bool IsSummaryGenerationEnabledViaInterface() const override;
 	virtual bool IsImageGenerationEnabledViaInterface() const override;
+	virtual int32 GetCurrentMessageNumberViaInterface() const override;
 
 protected:
 
@@ -60,6 +62,12 @@ private:
 
 	UPROPERTY()
 	class UNN_Cpp_Widget_Main* MainWidget;
+
+	UPROPERTY()
+	class UNN_Cpp_Widget_Creator* CreatorWidget;
+
+	UPROPERTY()
+	class UNN_Cpp_Widget_Game* GameWidget;
 
 	UPROPERTY()
 	class UNN_Cpp_Widget_MainOptions* MainOptionsWidget;
