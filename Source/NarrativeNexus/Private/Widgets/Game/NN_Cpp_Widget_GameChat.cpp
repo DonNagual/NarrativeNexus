@@ -18,12 +18,12 @@ void UNN_Cpp_Widget_GameChat::NativeConstruct()
 	SelectLowerButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameChat::OnSelectLowerButtonClicked);
 
 	// Initialize ChatGPT
-	ChatGPT = NewObject<UNN_Cpp_ChatGPT>(this);
+	GPT = NewObject<UNN_Cpp_GPT>(this);
 
 	// Register for ChatGPT response callback
-	if (ChatGPT)
+	if (GPT)
 	{
-		ChatGPT->GetOnChatGPTResponseReceived().AddDynamic(this, &UNN_Cpp_Widget_GameChat::HandleChatGPTResponse);
+		GPT->GetOnGPTResponseReceived().AddDynamic(this, &UNN_Cpp_Widget_GameChat::HandleChatGPTResponse);
 	}
 	else
 	{
@@ -34,9 +34,9 @@ void UNN_Cpp_Widget_GameChat::NativeConstruct()
 void UNN_Cpp_Widget_GameChat::NativeDestruct()
 {
 	// Cleanup before the widget is destroyed
-	if (ChatGPT)
+	if (GPT)
 	{
-		ChatGPT->GetOnChatGPTResponseReceived().RemoveAll(this);
+		GPT->GetOnGPTResponseReceived().RemoveAll(this);
 	}
 
 	Super::NativeDestruct();
@@ -140,7 +140,7 @@ void UNN_Cpp_Widget_GameChat::RemoveLastChatGPTMessageFromScrollBox()
 
 void UNN_Cpp_Widget_GameChat::OnSendButtomClicked()
 {
-	if (InputMessageFeld && ChatGPT)
+	if (InputMessageFeld && GPT)
 	{
 		// Get the input text
 		FString InputText = InputMessageFeld->GetText().ToString();
@@ -156,7 +156,7 @@ void UNN_Cpp_Widget_GameChat::OnSendButtomClicked()
 		AddMessageToChatFromUser(InputText);
 
 		// Send the message to ChatGPT
-		ChatGPT->SendMessageToChatGPT(InputText);
+		GPT->SendMessageToGPT(InputText);
 
 		// Clear the input field
 		InputMessageFeld->SetText(FText::GetEmpty());
@@ -174,29 +174,29 @@ void UNN_Cpp_Widget_GameChat::OnBackButtonClicked()
 
 void UNN_Cpp_Widget_GameChat::OnRepeatButtonClicked()
 {
-	if (ChatGPT && ChatGPT->GetConversationHistory().Num() > 0)
+	if (GPT && GPT->GetConversationHistory().Num() > 0)
 	{
-		auto& MutableConversationHistory = ChatGPT->GetMutableConversationHistory();
-		// Check whether the last message comes from ChatGPT (assistant) or from the user (user)
+		auto& MutableConversationHistory = GPT->GetMutableConversationHistory();
+		// Check whether the last message comes from GPT (assistant) or from the user (user)
 		TSharedPtr<FJsonObject> LastMessageObject = MutableConversationHistory.Last();
 		FString Role = LastMessageObject->GetStringField(TEXT("role"));
 
 		if (Role == TEXT("assistant"))
 		{
-			// Romove the last message from the array containing the response from ChatGPT
+			// Romove the last message from the array containing the response from GPT
 			MutableConversationHistory.RemoveAt(MutableConversationHistory.Num() - 1);
 
-			// Also remove the last message from ChatGPT from the MessageScrollBox
+			// Also remove the last message from GPT from the MessageScrollBox
 			RemoveLastChatGPTMessageFromScrollBox();
 
-			// Resend the last message to ChatGPT
+			// Resend the last message to GPT
 			FString LastUserMessage = MutableConversationHistory.Last()->GetStringField(TEXT("content"));
-			ChatGPT->SendMessageToChatGPT(LastUserMessage);
+			GPT->SendMessageToGPT(LastUserMessage);
 		}
 		else
 		{
 			// If the last message is not from ChatGPT, resend the entire history
-			ChatGPT->SendMessageToChatGPT(MutableConversationHistory.Last()->GetStringField(TEXT("content")));
+			GPT->SendMessageToGPT(MutableConversationHistory.Last()->GetStringField(TEXT("content")));
 		}
 	}
 	else
@@ -207,9 +207,9 @@ void UNN_Cpp_Widget_GameChat::OnRepeatButtonClicked()
 
 void UNN_Cpp_Widget_GameChat::OnResetButtonClicked()
 {
-	if (ChatGPT)
+	if (GPT)
 	{
-		ChatGPT->ResetConversation();
+		GPT->ResetConversation();
 		MessageScrollBox->ClearChildren();
 	}
 }
@@ -242,7 +242,7 @@ FString UNN_Cpp_Widget_GameChat::GetAllMessagesFromConversationHistory()
 {
 	// Get all messages from the conversation history
 	FString AllMessages;
-	auto& ConversationHistory = ChatGPT->GetMutableConversationHistory();
+	auto& ConversationHistory = GPT->GetMutableConversationHistory();
 	for (int32 i = 0; i < ConversationHistory.Num(); ++i)
 	{
 		AllMessages += ConversationHistory[i]->GetStringField(TEXT("content")) + TEXT("\n");
@@ -265,7 +265,7 @@ void UNN_Cpp_Widget_GameChat::GenerateShortSummary(const FString& Summary)
 	}
 
 	// Generate a summary of the conversation
-	ChatGPT->GenerateShortSummaryFromConversation(Summary, [this](const FString& OnShortSummaryGenerated)
+	GPT->GenerateShortSummaryFromConversation(Summary, [this](const FString& OnShortSummaryGenerated)
 		{
 			if (ExecutiveSummaryText)
 			{
@@ -291,7 +291,7 @@ void UNN_Cpp_Widget_GameChat::GenerateMaxSummary(const FString& Summary)
 	}
 
 	// Generate a summary of the conversation
-	ChatGPT->GenerateMaxSummaryFromConversation(Summary, [this](const FString& OnMaxSummaryGenerated)
+	GPT->GenerateMaxSummaryFromConversation(Summary, [this](const FString& OnMaxSummaryGenerated)
 		{
 			if (ExecutiveSummaryText)
 			{
@@ -317,7 +317,7 @@ void UNN_Cpp_Widget_GameChat::GenerateImageSummary(const FString& Summary)
 	}
 
 	// Generate a summary of the conversation
-	ChatGPT->GenerateImageSummaryFromConversation(Summary, [this](const FString& OnImageSummaryGenerated)
+	GPT->GenerateImageSummaryFromConversation(Summary, [this](const FString& OnImageSummaryGenerated)
 		{
 			if (ExecutiveSummaryText)
 			{
@@ -343,7 +343,7 @@ void UNN_Cpp_Widget_GameChat::GenerateChatImage(const FString& Summary)
 	}
 
 	// Generate the image based on the summary
-	ChatGPT->GenerateChatImageFromConversation(Summary, [this](UTexture2D* OnChatImageGenerated)
+	GPT->GenerateChatImageFromConversation(Summary, [this](UTexture2D* OnChatImageGenerated)
 		{
 			if (OnChatImageGenerated && StoryImage)
 			{

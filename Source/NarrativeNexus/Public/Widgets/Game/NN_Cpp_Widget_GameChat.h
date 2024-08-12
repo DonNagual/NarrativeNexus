@@ -8,7 +8,7 @@
 #include "Components/ScrollBox.h"
 #include "Components/Image.h"
 #include "Blueprint/UserWidget.h"
-#include "ChatGPT/NN_Cpp_ChatGPT.h"
+#include "GPT/NN_Cpp_GPT.h"
 #include "NN_Cpp_Widget_GameChatMessage.h"
 #include "Interface/NN_Cpp_IF_WidgetController.h"
 #include "NN_Cpp_Widget_GameChat.generated.h"
@@ -143,5 +143,5 @@ private:
 
 	// Direct reference to ChatGPT object
 	UPROPERTY()
-	UNN_Cpp_ChatGPT* ChatGPT;
+	UNN_Cpp_GPT* GPT;
 };
