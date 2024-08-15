@@ -42,6 +42,10 @@ void UNN_Cpp_Widget_GameNavigator::AddNodeToScrollBox()
 
 void UNN_Cpp_Widget_GameNavigator::RemoveAllNodesFromScrollBox()
 {
+	if (NodeScrollBox)
+	{
+		NodeScrollBox->ClearChildren();
+	}
 }
 
 void UNN_Cpp_Widget_GameNavigator::OnSearchButtomClicked()
@@ -55,10 +59,14 @@ void UNN_Cpp_Widget_GameNavigator::OnBackButtonClicked()
 		Interface->HideWidget(this);
 		Interface->ShowGameMenuWidgetViaInterface();
 	}
+
+	RemoveAllNodesFromScrollBox();
 }
 
 void UNN_Cpp_Widget_GameNavigator::OnRepeatButtonClicked()
 {
+	RemoveAllNodesFromScrollBox();
+	AddNodeToScrollBox();
 }
 
 void UNN_Cpp_Widget_GameNavigator::OnAcceptButtonClicked()
