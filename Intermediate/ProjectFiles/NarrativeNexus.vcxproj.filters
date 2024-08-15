@@ -67,7 +67,28 @@
     <Filter Include="Source\NarrativeNexus\Private\GPT">
       <UniqueIdentifier>{2174FD71-3055-3363-BAA4-ACFCC21859B9}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_APIKeyLoader.cpp">
+      <Filter>Source\NarrativeNexus\Private\GPT</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_GPT.cpp">
+      <Filter>Source\NarrativeNexus\Private\GPT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_GPTImageGenerator.cpp">
+      <Filter>Source\NarrativeNexus\Private\GPT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_GPTMessageHandler.cpp">
+      <Filter>Source\NarrativeNexus\Private\GPT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_GPTResponseProcessor.cpp">
+      <Filter>Source\NarrativeNexus\Private\GPT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_GPTSummaryGenerator.cpp">
+      <Filter>Source\NarrativeNexus\Private\GPT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_HTTPRequestHandler.cpp">
+      <Filter>Source\NarrativeNexus\Private\GPT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_JSONHandler.cpp">
       <Filter>Source\NarrativeNexus\Private\GPT</Filter>
     </ClCompile>
     <Filter Include="Source\NarrativeNexus\Private\Interface">
@@ -127,6 +148,12 @@
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Game\NN_Cpp_Widget_GameMenu.cpp">
       <Filter>Source\NarrativeNexus\Private\Widgets\Game</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Game\NN_Cpp_Widget_GameNavigator.cpp">
+      <Filter>Source\NarrativeNexus\Private\Widgets\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Game\NN_Cpp_Widget_GameNode.cpp">
+      <Filter>Source\NarrativeNexus\Private\Widgets\Game</Filter>
+    </ClCompile>
     <Filter Include="Source\NarrativeNexus\Private\Widgets\Main">
       <UniqueIdentifier>{E6197E41-7F22-3ACE-8E36-B7A5817F6607}</UniqueIdentifier>
     </Filter>
@@ -169,7 +196,28 @@
     <Filter Include="Source\NarrativeNexus\Public\GPT">
       <UniqueIdentifier>{CD02E1B2-7EC3-317E-9E14-B8FBA0AB9F92}</UniqueIdentifier>
     </Filter>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_APIKeyLoader.h">
+      <Filter>Source\NarrativeNexus\Public\GPT</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_GPT.h">
+      <Filter>Source\NarrativeNexus\Public\GPT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_GPTImageGenerator.h">
+      <Filter>Source\NarrativeNexus\Public\GPT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_GPTMessageHandler.h">
+      <Filter>Source\NarrativeNexus\Public\GPT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_GPTResponseProcessor.h">
+      <Filter>Source\NarrativeNexus\Public\GPT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_GPTSummaryGenerator.h">
+      <Filter>Source\NarrativeNexus\Public\GPT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_HTTPRequestHandler.h">
+      <Filter>Source\NarrativeNexus\Public\GPT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_JSONHandler.h">
       <Filter>Source\NarrativeNexus\Public\GPT</Filter>
     </ClInclude>
     <Filter Include="Source\NarrativeNexus\Public\Interface">
@@ -227,6 +275,12 @@
       <Filter>Source\NarrativeNexus\Public\Widgets\Game</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Game\NN_Cpp_Widget_GameMenu.h">
+      <Filter>Source\NarrativeNexus\Public\Widgets\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Game\NN_Cpp_Widget_GameNavigator.h">
+      <Filter>Source\NarrativeNexus\Public\Widgets\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Game\NN_Cpp_Widget_GameNode.h">
       <Filter>Source\NarrativeNexus\Public\Widgets\Game</Filter>
     </ClInclude>
     <Filter Include="Source\NarrativeNexus\Public\Widgets\Main">

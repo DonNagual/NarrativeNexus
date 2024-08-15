@@ -2,6 +2,12 @@
 
 #include "GPT/NN_Cpp_GPT.h"
 
+UNN_Cpp_GPT::UNN_Cpp_GPT()
+{
+	// DEBUG
+	UE_LOG(LogTemp, Warning, TEXT("UNN_Cpp_GPT Constructor - Objekt: %p"), this);
+}
+
 UNN_Cpp_GPT* UNN_Cpp_GPT::CreateGPT(UObject* Outer)
 {
 	if (!Outer)
@@ -49,7 +55,7 @@ void UNN_Cpp_GPT::SendMessageToGPT(const FString& Message)
 	InstructionMessageObject->SetStringField(TEXT("content"), TEXT("Bitte begrenzen Sie die Antwort auf maximal 1000 Zeichen."));
 
 	JsonArray.Add(MakeShareable(new FJsonValueObject(InstructionMessageObject)));
-	
+
 	// Create the HTTP request
 	TSharedRef<IHttpRequest, ESPMode::ThreadSafe> Request = FHttpModule::Get().CreateRequest();
 	Request->OnProcessRequestComplete().BindUObject(this, &UNN_Cpp_GPT::OnTextResponseReceived);
@@ -85,6 +91,7 @@ void UNN_Cpp_GPT::SendMessageToGPT(const FString& Message)
 	Request->SetContentAsString(JsonString);
 	Request->ProcessRequest();
 }
+
 
 // ######################### Generate Short Summary From Conversation #########################
 
@@ -482,8 +489,8 @@ void UNN_Cpp_GPT::OnTextResponseReceived(FHttpRequestPtr Request, FHttpResponseP
 	// Ensure that the response processing takes place in the main thread
 	AsyncTask(ENamedThreads::GameThread, [this, bWasSuccessful, Response]()
 	{
-
-		UE_LOG(LogTemp, Log, TEXT("Entering OnResponseReceived"));
+		// DEBUG
+		UE_LOG(LogTemp, Warning, TEXT("UNN_Cpp_GPT OnResponseReceived - Objekt: %p"), this);
 
 		if (!bWasSuccessful || !Response.IsValid())
 		{
@@ -520,6 +527,9 @@ void UNN_Cpp_GPT::OnTextResponseReceived(FHttpRequestPtr Request, FHttpResponseP
 
 					// Trigger the delegate to notify about the response
 					OnGPTResponseReceived.Broadcast(Reply);
+
+					// DEBUG
+					UE_LOG(LogTemp, Warning, TEXT("UNN_Cpp_GPT Broadcast - Objekt: %p"), this);
 				}
 				else
 				{
@@ -560,9 +570,4 @@ const TArray<TSharedPtr<FJsonObject>>& UNN_Cpp_GPT::GetConversationHistory() con
 TArray<TSharedPtr<FJsonObject>>& UNN_Cpp_GPT::GetMutableConversationHistory()
 {
 	return ConversationHistory;
-}
-
-FOnGPTResponseReceived& UNN_Cpp_GPT::GetOnGPTResponseReceived()
-{
-	return OnGPTResponseReceived;
 }

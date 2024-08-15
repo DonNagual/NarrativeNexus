@@ -17,17 +17,32 @@ void UNN_Cpp_Widget_GameChat::NativeConstruct()
 	SelectMiddleButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameChat::OnSelectMiddleButtonClicked);
 	SelectLowerButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameChat::OnSelectLowerButtonClicked);
 
-	// Initialize ChatGPT
-	GPT = NewObject<UNN_Cpp_GPT>(this);
-
-	// Register for ChatGPT response callback
-	if (GPT)
+	// Fetch GPT from PlayerController
+	if (auto* PlayerController = Cast<ANN_Cpp_PlayerController>(GetWorld()->GetFirstPlayerController()))
 	{
-		GPT->GetOnGPTResponseReceived().AddDynamic(this, &UNN_Cpp_Widget_GameChat::HandleChatGPTResponse);
+		GPT = PlayerController->GetGPT();
+		if (GPT == nullptr)
+		{
+			UE_LOG(LogTemp, Error, TEXT("GPT is nullptr after GetGPT() in NativeConstruct"));
+		}
+		else
+		{
+			UE_LOG(LogTemp, Warning, TEXT("GPT successfully retrieved in NativeConstruct: %p"), GPT);
+		}
 	}
 	else
 	{
-		UE_LOG(LogTemp, Error, TEXT("Failed to initialize ChatGPT in NativeConstruct"));
+		UE_LOG(LogTemp, Error, TEXT("Failed to cast PlayerController in NativeConstruct"));
+	}
+
+	// Register for GPT response callback
+	if (GPT)
+	{
+		GPT->OnGPTResponseReceived.AddDynamic(this, &UNN_Cpp_Widget_GameChat::HandleChatGPTResponse);
+	}
+	else
+	{
+		UE_LOG(LogTemp, Error, TEXT("Failed to initialize GPT in NativeConstruct"));
 	}
 }
 
@@ -36,7 +51,7 @@ void UNN_Cpp_Widget_GameChat::NativeDestruct()
 	// Cleanup before the widget is destroyed
 	if (GPT)
 	{
-		GPT->GetOnGPTResponseReceived().RemoveAll(this);
+		GPT->OnGPTResponseReceived.RemoveAll(this);
 	}
 
 	Super::NativeDestruct();

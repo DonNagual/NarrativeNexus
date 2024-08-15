@@ -19,7 +19,7 @@ class UUserWidget;
 	DECLARE_FUNCTION(execHideAllWidgets); \
 	DECLARE_FUNCTION(execHideGameSubWidget); \
 	DECLARE_FUNCTION(execShowGameInventoryWidget); \
-	DECLARE_FUNCTION(execShowGameChatWidget); \
+	DECLARE_FUNCTION(execShowGameNavigatorWidget); \
 	DECLARE_FUNCTION(execShowGameMenuWidget);
 
 

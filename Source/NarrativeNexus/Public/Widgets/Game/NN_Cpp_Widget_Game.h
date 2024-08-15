@@ -1,5 +1,5 @@
-// Fill out your copyright notice in the Description page of Project Settings.
 // NN_Cpp_Widget_Game.h
+
 #pragma once
 
 #include "CoreMinimal.h"
@@ -22,10 +22,13 @@ public:
 	class UUserWidget* GameMenuWidget;
 
 	UPROPERTY(meta = (BindWidget))
-	class UUserWidget* GameChatWidget;
+	class UUserWidget* GameNavigatorWidget;
 
 	UPROPERTY(meta = (BindWidget))
 	class UUserWidget* GameInventoryWidget;
+
+	UPROPERTY(meta = (BindWidget))
+	class UUserWidget* GameChatWidget;
 
 	// ############### Functions ###############
 
@@ -33,10 +36,12 @@ public:
 	virtual void ShowGameMenuWidget();
 
 	UFUNCTION()
-	virtual void ShowGameChatWidget();
+	virtual void ShowGameNavigatorWidget();
 
 	UFUNCTION()
 	virtual void ShowGameInventoryWidget();
+
+
 
 protected:
 

@@ -1,4 +1,5 @@
 // NN_Cpp_IF_WidgetController.h
+
 #pragma once
 
 #include "CoreMinimal.h"
@@ -21,6 +22,7 @@ public:
 
 	virtual void ShowWidget(UUserWidget* SubWidget) = 0;
 	virtual void HideWidget(UUserWidget* SubWidget) = 0;
+	virtual void OnWidgetVisibilityChangedViaInterface() = 0;
 
 	// ############### Main ###############
 
@@ -40,7 +42,7 @@ public:
 	// ############### Game ###############
 
 	virtual void ShowGameMenuWidgetViaInterface() = 0;
-	virtual void ShowGameChatWidgetViaInterface() = 0;
+	virtual void ShowGameNavigatorWidgetViaInterface() = 0;
 	virtual void ShowGameInventoryWidgetViaInterface() = 0;
 
 	// ############### Options ###############
