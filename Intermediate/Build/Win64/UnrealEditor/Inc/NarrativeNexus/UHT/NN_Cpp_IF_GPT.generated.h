@@ -14,10 +14,6 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define NARRATIVENEXUS_NN_Cpp_IF_GPT_generated_h
 
-#define FID_NarrativeNexus_Source_NarrativeNexus_Public_Interface_NN_Cpp_IF_GPT_h_9_DELEGATE \
-NARRATIVENEXUS_API void FOnGPTResponseReceived_DelegateWrapper(const FMulticastScriptDelegate& OnGPTResponseReceived, const FString& Response);
-
-
 #define FID_NarrativeNexus_Source_NarrativeNexus_Public_Interface_NN_Cpp_IF_GPT_h_15_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NARRATIVENEXUS_API UNN_Cpp_IF_GPT(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \

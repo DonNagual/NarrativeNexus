@@ -1,5 +1,5 @@
-// Fill out your copyright notice in the Description page of Project Settings.
 // NN_Cpp_Widget_GameMenu.h
+
 #pragma once
 
 #include "CoreMinimal.h"
@@ -20,18 +20,18 @@ protected:
 	// ############### Buttons ###############
 
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<UButton> ChatButton;
+	TObjectPtr<UButton> NewNexusButton;
 
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<UButton> InventoryButton;
+	TObjectPtr<UButton> LoadNexusButton;
 
 private:
 
 	// ############### Functions ###############
 
 	UFUNCTION()
-	void OnChatButtonClicked();
+	void OnNewNexusButtonClicked();
 
 	UFUNCTION()
-	void OnInventoryButtonClicked();
+	void OnLoadNexusButtonClicked();
 };

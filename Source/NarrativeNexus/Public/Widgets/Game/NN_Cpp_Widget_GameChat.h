@@ -3,13 +3,14 @@
 
 #include "CoreMinimal.h"
 #include "Components/Button.h"
-#include "Components/MultiLineEditableText.h"
+#include "Components/TextBlock.h"
 #include "Components/EditableTextBox.h"
 #include "Components/ScrollBox.h"
 #include "Components/Image.h"
 #include "Blueprint/UserWidget.h"
 #include "GPT/NN_Cpp_GPT.h"
 #include "NN_Cpp_Widget_GameChatMessage.h"
+#include "General/NN_Cpp_PlayerController.h"
 #include "Interface/NN_Cpp_IF_WidgetController.h"
 #include "NN_Cpp_Widget_GameChat.generated.h"
 
@@ -17,7 +18,7 @@ UCLASS()
 class NARRATIVENEXUS_API UNN_Cpp_Widget_GameChat : public UUserWidget
 {
 	GENERATED_BODY()
-	
+
 public:
 	virtual void NativeConstruct() override;
 	virtual void NativeDestruct() override;
@@ -76,7 +77,7 @@ protected:
 
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<UTextBlock> ExecutiveSummaryText;
-	
+
 private:
 	// ############### Button - Functions ###############
 
@@ -141,7 +142,7 @@ private:
 	UFUNCTION()
 	void HandleChatGPTResponse(const FString& Response);
 
-	// Direct reference to ChatGPT object
+	// Direct reference to GPT object
 	UPROPERTY()
 	UNN_Cpp_GPT* GPT;
 };

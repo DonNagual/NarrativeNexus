@@ -13,56 +13,8 @@ void EmptyLinkFunctionForGeneratedCodeNN_Cpp_IF_GPT() {}
 COREUOBJECT_API UClass* Z_Construct_UClass_UInterface();
 NARRATIVENEXUS_API UClass* Z_Construct_UClass_UNN_Cpp_IF_GPT();
 NARRATIVENEXUS_API UClass* Z_Construct_UClass_UNN_Cpp_IF_GPT_NoRegister();
-NARRATIVENEXUS_API UFunction* Z_Construct_UDelegateFunction_NarrativeNexus_OnGPTResponseReceived__DelegateSignature();
 UPackage* Z_Construct_UPackage__Script_NarrativeNexus();
 // End Cross Module References
-
-// Begin Delegate FOnGPTResponseReceived
-struct Z_Construct_UDelegateFunction_NarrativeNexus_OnGPTResponseReceived__DelegateSignature_Statics
-{
-	struct _Script_NarrativeNexus_eventOnGPTResponseReceived_Parms
-	{
-		FString Response;
-	};
-#if WITH_METADATA
-	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
-		{ "ModuleRelativePath", "Public/Interface/NN_Cpp_IF_GPT.h" },
-	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_Response_MetaData[] = {
-		{ "NativeConst", "" },
-	};
-#endif // WITH_METADATA
-	static const UECodeGen_Private::FStrPropertyParams NewProp_Response;
-	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
-	static const UECodeGen_Private::FFunctionParams FuncParams;
-};
-const UECodeGen_Private::FStrPropertyParams Z_Construct_UDelegateFunction_NarrativeNexus_OnGPTResponseReceived__DelegateSignature_Statics::NewProp_Response = { "Response", nullptr, (EPropertyFlags)0x0010000000000080, UECodeGen_Private::EPropertyGenFlags::Str, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(_Script_NarrativeNexus_eventOnGPTResponseReceived_Parms, Response), METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_Response_MetaData), NewProp_Response_MetaData) };
-const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UDelegateFunction_NarrativeNexus_OnGPTResponseReceived__DelegateSignature_Statics::PropPointers[] = {
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UDelegateFunction_NarrativeNexus_OnGPTResponseReceived__DelegateSignature_Statics::NewProp_Response,
-};
-static_assert(UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_NarrativeNexus_OnGPTResponseReceived__DelegateSignature_Statics::PropPointers) < 2048);
-const UECodeGen_Private::FFunctionParams Z_Construct_UDelegateFunction_NarrativeNexus_OnGPTResponseReceived__DelegateSignature_Statics::FuncParams = { (UObject*(*)())Z_Construct_UPackage__Script_NarrativeNexus, nullptr, "OnGPTResponseReceived__DelegateSignature", nullptr, nullptr, Z_Construct_UDelegateFunction_NarrativeNexus_OnGPTResponseReceived__DelegateSignature_Statics::PropPointers, UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_NarrativeNexus_OnGPTResponseReceived__DelegateSignature_Statics::PropPointers), sizeof(Z_Construct_UDelegateFunction_NarrativeNexus_OnGPTResponseReceived__DelegateSignature_Statics::_Script_NarrativeNexus_eventOnGPTResponseReceived_Parms), RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00130000, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UDelegateFunction_NarrativeNexus_OnGPTResponseReceived__DelegateSignature_Statics::Function_MetaDataParams), Z_Construct_UDelegateFunction_NarrativeNexus_OnGPTResponseReceived__DelegateSignature_Statics::Function_MetaDataParams) };
-static_assert(sizeof(Z_Construct_UDelegateFunction_NarrativeNexus_OnGPTResponseReceived__DelegateSignature_Statics::_Script_NarrativeNexus_eventOnGPTResponseReceived_Parms) < MAX_uint16);
-UFunction* Z_Construct_UDelegateFunction_NarrativeNexus_OnGPTResponseReceived__DelegateSignature()
-{
-	static UFunction* ReturnFunction = nullptr;
-	if (!ReturnFunction)
-	{
-		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UDelegateFunction_NarrativeNexus_OnGPTResponseReceived__DelegateSignature_Statics::FuncParams);
-	}
-	return ReturnFunction;
-}
-void FOnGPTResponseReceived_DelegateWrapper(const FMulticastScriptDelegate& OnGPTResponseReceived, const FString& Response)
-{
-	struct _Script_NarrativeNexus_eventOnGPTResponseReceived_Parms
-	{
-		FString Response;
-	};
-	_Script_NarrativeNexus_eventOnGPTResponseReceived_Parms Parms;
-	Parms.Response=Response;
-	OnGPTResponseReceived.ProcessMulticastDelegate<UObject>(&Parms);
-}
-// End Delegate FOnGPTResponseReceived
 
 // Begin Interface UNN_Cpp_IF_GPT
 void UNN_Cpp_IF_GPT::StaticRegisterNativesUNN_Cpp_IF_GPT()

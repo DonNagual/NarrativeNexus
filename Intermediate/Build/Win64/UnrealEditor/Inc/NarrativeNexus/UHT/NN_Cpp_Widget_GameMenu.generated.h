@@ -15,8 +15,8 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #define NARRATIVENEXUS_NN_Cpp_Widget_GameMenu_generated_h
 
 #define FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Game_NN_Cpp_Widget_GameMenu_h_14_RPC_WRAPPERS_NO_PURE_DECLS \
-	DECLARE_FUNCTION(execOnInventoryButtonClicked); \
-	DECLARE_FUNCTION(execOnChatButtonClicked);
+	DECLARE_FUNCTION(execOnLoadNexusButtonClicked); \
+	DECLARE_FUNCTION(execOnNewNexusButtonClicked);
 
 
 #define FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Game_NN_Cpp_Widget_GameMenu_h_14_INCLASS_NO_PURE_DECLS \

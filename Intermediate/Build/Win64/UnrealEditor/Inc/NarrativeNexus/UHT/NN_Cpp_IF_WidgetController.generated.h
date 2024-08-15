@@ -14,7 +14,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define NARRATIVENEXUS_NN_Cpp_IF_WidgetController_generated_h
 
-#define FID_NarrativeNexus_Source_NarrativeNexus_Public_Interface_NN_Cpp_IF_WidgetController_h_12_ENHANCED_CONSTRUCTORS \
+#define FID_NarrativeNexus_Source_NarrativeNexus_Public_Interface_NN_Cpp_IF_WidgetController_h_13_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NARRATIVENEXUS_API UNN_Cpp_IF_WidgetController(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 private: \
@@ -28,7 +28,7 @@ public: \
 	NARRATIVENEXUS_API virtual ~UNN_Cpp_IF_WidgetController();
 
 
-#define FID_NarrativeNexus_Source_NarrativeNexus_Public_Interface_NN_Cpp_IF_WidgetController_h_12_GENERATED_UINTERFACE_BODY() \
+#define FID_NarrativeNexus_Source_NarrativeNexus_Public_Interface_NN_Cpp_IF_WidgetController_h_13_GENERATED_UINTERFACE_BODY() \
 private: \
 	static void StaticRegisterNativesUNN_Cpp_IF_WidgetController(); \
 	friend struct Z_Construct_UClass_UNN_Cpp_IF_WidgetController_Statics; \
@@ -37,15 +37,15 @@ public: \
 	DECLARE_SERIALIZER(UNN_Cpp_IF_WidgetController)
 
 
-#define FID_NarrativeNexus_Source_NarrativeNexus_Public_Interface_NN_Cpp_IF_WidgetController_h_12_GENERATED_BODY \
+#define FID_NarrativeNexus_Source_NarrativeNexus_Public_Interface_NN_Cpp_IF_WidgetController_h_13_GENERATED_BODY \
 	PRAGMA_DISABLE_DEPRECATION_WARNINGS \
-	FID_NarrativeNexus_Source_NarrativeNexus_Public_Interface_NN_Cpp_IF_WidgetController_h_12_GENERATED_UINTERFACE_BODY() \
-	FID_NarrativeNexus_Source_NarrativeNexus_Public_Interface_NN_Cpp_IF_WidgetController_h_12_ENHANCED_CONSTRUCTORS \
+	FID_NarrativeNexus_Source_NarrativeNexus_Public_Interface_NN_Cpp_IF_WidgetController_h_13_GENERATED_UINTERFACE_BODY() \
+	FID_NarrativeNexus_Source_NarrativeNexus_Public_Interface_NN_Cpp_IF_WidgetController_h_13_ENHANCED_CONSTRUCTORS \
 private: \
 	PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define FID_NarrativeNexus_Source_NarrativeNexus_Public_Interface_NN_Cpp_IF_WidgetController_h_12_INCLASS_IINTERFACE_NO_PURE_DECLS \
+#define FID_NarrativeNexus_Source_NarrativeNexus_Public_Interface_NN_Cpp_IF_WidgetController_h_13_INCLASS_IINTERFACE_NO_PURE_DECLS \
 protected: \
 	virtual ~INN_Cpp_IF_WidgetController() {} \
 public: \
@@ -54,11 +54,11 @@ public: \
 	virtual UObject* _getUObject() const { return nullptr; }
 
 
-#define FID_NarrativeNexus_Source_NarrativeNexus_Public_Interface_NN_Cpp_IF_WidgetController_h_9_PROLOG
-#define FID_NarrativeNexus_Source_NarrativeNexus_Public_Interface_NN_Cpp_IF_WidgetController_h_17_GENERATED_BODY \
+#define FID_NarrativeNexus_Source_NarrativeNexus_Public_Interface_NN_Cpp_IF_WidgetController_h_10_PROLOG
+#define FID_NarrativeNexus_Source_NarrativeNexus_Public_Interface_NN_Cpp_IF_WidgetController_h_18_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_NarrativeNexus_Source_NarrativeNexus_Public_Interface_NN_Cpp_IF_WidgetController_h_12_INCLASS_IINTERFACE_NO_PURE_DECLS \
+	FID_NarrativeNexus_Source_NarrativeNexus_Public_Interface_NN_Cpp_IF_WidgetController_h_13_INCLASS_IINTERFACE_NO_PURE_DECLS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
