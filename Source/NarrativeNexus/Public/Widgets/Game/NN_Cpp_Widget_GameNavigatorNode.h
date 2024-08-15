@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Components/Button.h"
 #include "Blueprint/UserWidget.h"
+#include "Interface/NN_Cpp_IF_GPT.h"
 #include "Interface/NN_Cpp_IF_WidgetController.h"
 #include "NN_Cpp_Widget_GameNavigatorNode.generated.h"
 
@@ -16,15 +17,14 @@ class NARRATIVENEXUS_API UNN_Cpp_Widget_GameNavigatorNode : public UUserWidget
 public:
 
 	virtual void NativeConstruct() override;
+	virtual void NativeDestruct() override;
 
 protected:
 	// ############### Buttons ###############
 
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<UButton> DescriptionButton;
-
 private:
-
 	// ############### Functions ###############
 
 	UFUNCTION()

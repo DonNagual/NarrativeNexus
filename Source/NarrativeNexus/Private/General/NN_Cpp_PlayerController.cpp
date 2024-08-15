@@ -6,7 +6,6 @@ void ANN_Cpp_PlayerController::BeginPlay()
 {
 	Super::BeginPlay();
 
-	InitializeGPT();
 	InitializeWidgets();
 }
 
@@ -30,24 +29,26 @@ void ANN_Cpp_PlayerController::InitializeGPT()
 	GPTInstance = NewObject<UNN_Cpp_GPT>(this);
 	if (GPTInstance)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("GPTInstance successfully created: %p"), GPTInstance);
+		UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController: GPTInstance successfully created: %p"), GPTInstance);
 	}
 	else
 	{
-		UE_LOG(LogTemp, Error, TEXT("Failed to create GPTInstance"));
+		UE_LOG(LogTemp, Error, TEXT("NN_Cpp_PlayerController: Failed to create GPTInstance"));
+	}
+}
+
+void ANN_Cpp_PlayerController::DestroyGPT()
+{
+	if (GPTInstance)
+	{
+		GPTInstance->ConditionalBeginDestroy();
+		GPTInstance = nullptr;
+		UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController: GPTInstance destroyed"));
 	}
 }
 
 UNN_Cpp_GPT* ANN_Cpp_PlayerController::GetGPT() const
 {
-	if (GPTInstance)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Returning GPTInstance: %p"), GPTInstance);
-	}
-	else
-	{
-		UE_LOG(LogTemp, Error, TEXT("GPTInstance is nullptr in GetGPT()"));
-	}
 	return GPTInstance;
 }
 

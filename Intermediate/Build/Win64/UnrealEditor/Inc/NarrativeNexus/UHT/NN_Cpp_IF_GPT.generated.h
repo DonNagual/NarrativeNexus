@@ -14,7 +14,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define NARRATIVENEXUS_NN_Cpp_IF_GPT_generated_h
 
-#define FID_NarrativeNexus_Source_NarrativeNexus_Public_Interface_NN_Cpp_IF_GPT_h_15_ENHANCED_CONSTRUCTORS \
+#define FID_NarrativeNexus_Source_NarrativeNexus_Public_Interface_NN_Cpp_IF_GPT_h_16_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NARRATIVENEXUS_API UNN_Cpp_IF_GPT(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 private: \
@@ -28,7 +28,7 @@ public: \
 	NARRATIVENEXUS_API virtual ~UNN_Cpp_IF_GPT();
 
 
-#define FID_NarrativeNexus_Source_NarrativeNexus_Public_Interface_NN_Cpp_IF_GPT_h_15_GENERATED_UINTERFACE_BODY() \
+#define FID_NarrativeNexus_Source_NarrativeNexus_Public_Interface_NN_Cpp_IF_GPT_h_16_GENERATED_UINTERFACE_BODY() \
 private: \
 	static void StaticRegisterNativesUNN_Cpp_IF_GPT(); \
 	friend struct Z_Construct_UClass_UNN_Cpp_IF_GPT_Statics; \
@@ -37,15 +37,15 @@ public: \
 	DECLARE_SERIALIZER(UNN_Cpp_IF_GPT)
 
 
-#define FID_NarrativeNexus_Source_NarrativeNexus_Public_Interface_NN_Cpp_IF_GPT_h_15_GENERATED_BODY \
+#define FID_NarrativeNexus_Source_NarrativeNexus_Public_Interface_NN_Cpp_IF_GPT_h_16_GENERATED_BODY \
 	PRAGMA_DISABLE_DEPRECATION_WARNINGS \
-	FID_NarrativeNexus_Source_NarrativeNexus_Public_Interface_NN_Cpp_IF_GPT_h_15_GENERATED_UINTERFACE_BODY() \
-	FID_NarrativeNexus_Source_NarrativeNexus_Public_Interface_NN_Cpp_IF_GPT_h_15_ENHANCED_CONSTRUCTORS \
+	FID_NarrativeNexus_Source_NarrativeNexus_Public_Interface_NN_Cpp_IF_GPT_h_16_GENERATED_UINTERFACE_BODY() \
+	FID_NarrativeNexus_Source_NarrativeNexus_Public_Interface_NN_Cpp_IF_GPT_h_16_ENHANCED_CONSTRUCTORS \
 private: \
 	PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
 
-#define FID_NarrativeNexus_Source_NarrativeNexus_Public_Interface_NN_Cpp_IF_GPT_h_15_INCLASS_IINTERFACE_NO_PURE_DECLS \
+#define FID_NarrativeNexus_Source_NarrativeNexus_Public_Interface_NN_Cpp_IF_GPT_h_16_INCLASS_IINTERFACE_NO_PURE_DECLS \
 protected: \
 	virtual ~INN_Cpp_IF_GPT() {} \
 public: \
@@ -54,11 +54,11 @@ public: \
 	virtual UObject* _getUObject() const { return nullptr; }
 
 
-#define FID_NarrativeNexus_Source_NarrativeNexus_Public_Interface_NN_Cpp_IF_GPT_h_12_PROLOG
-#define FID_NarrativeNexus_Source_NarrativeNexus_Public_Interface_NN_Cpp_IF_GPT_h_20_GENERATED_BODY \
+#define FID_NarrativeNexus_Source_NarrativeNexus_Public_Interface_NN_Cpp_IF_GPT_h_13_PROLOG
+#define FID_NarrativeNexus_Source_NarrativeNexus_Public_Interface_NN_Cpp_IF_GPT_h_21_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_NarrativeNexus_Source_NarrativeNexus_Public_Interface_NN_Cpp_IF_GPT_h_15_INCLASS_IINTERFACE_NO_PURE_DECLS \
+	FID_NarrativeNexus_Source_NarrativeNexus_Public_Interface_NN_Cpp_IF_GPT_h_16_INCLASS_IINTERFACE_NO_PURE_DECLS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 
