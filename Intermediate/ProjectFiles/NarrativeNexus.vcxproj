@@ -351,7 +351,7 @@
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Game\NN_Cpp_Widget_GameNavigator.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
-    <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Game\NN_Cpp_Widget_GameNode.cpp">
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Game\NN_Cpp_Widget_GameNavigatorNode.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Main\NN_Cpp_Widget_Main.cpp">
@@ -400,7 +400,7 @@
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Game\NN_Cpp_Widget_GameInventory.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Game\NN_Cpp_Widget_GameMenu.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Game\NN_Cpp_Widget_GameNavigator.h"/>
-    <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Game\NN_Cpp_Widget_GameNode.h"/>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Game\NN_Cpp_Widget_GameNavigatorNode.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Main\NN_Cpp_Widget_Main.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Main\NN_Cpp_Widget_MainCredits.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Main\NN_Cpp_Widget_MainGuide.h"/>

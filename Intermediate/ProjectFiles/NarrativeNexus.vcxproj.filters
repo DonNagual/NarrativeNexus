@@ -151,7 +151,7 @@
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Game\NN_Cpp_Widget_GameNavigator.cpp">
       <Filter>Source\NarrativeNexus\Private\Widgets\Game</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Game\NN_Cpp_Widget_GameNode.cpp">
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Game\NN_Cpp_Widget_GameNavigatorNode.cpp">
       <Filter>Source\NarrativeNexus\Private\Widgets\Game</Filter>
     </ClCompile>
     <Filter Include="Source\NarrativeNexus\Private\Widgets\Main">
@@ -280,7 +280,7 @@
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Game\NN_Cpp_Widget_GameNavigator.h">
       <Filter>Source\NarrativeNexus\Public\Widgets\Game</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Game\NN_Cpp_Widget_GameNode.h">
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Game\NN_Cpp_Widget_GameNavigatorNode.h">
       <Filter>Source\NarrativeNexus\Public\Widgets\Game</Filter>
     </ClInclude>
     <Filter Include="Source\NarrativeNexus\Public\Widgets\Main">
