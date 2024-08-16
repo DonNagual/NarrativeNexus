@@ -20,6 +20,7 @@ NARRATIVENEXUS_API UClass* Z_Construct_UClass_UNN_Cpp_IF_WidgetController_NoRegi
 NARRATIVENEXUS_API UClass* Z_Construct_UClass_UNN_Cpp_Widget_Category_NoRegister();
 NARRATIVENEXUS_API UClass* Z_Construct_UClass_UNN_Cpp_Widget_Creator_NoRegister();
 NARRATIVENEXUS_API UClass* Z_Construct_UClass_UNN_Cpp_Widget_Game_NoRegister();
+NARRATIVENEXUS_API UClass* Z_Construct_UClass_UNN_Cpp_Widget_GameChat_NoRegister();
 NARRATIVENEXUS_API UClass* Z_Construct_UClass_UNN_Cpp_Widget_GameNavigator_NoRegister();
 NARRATIVENEXUS_API UClass* Z_Construct_UClass_UNN_Cpp_Widget_Main_NoRegister();
 NARRATIVENEXUS_API UClass* Z_Construct_UClass_UNN_Cpp_Widget_MainOptions_NoRegister();
@@ -71,6 +72,10 @@ struct Z_Construct_UClass_ANN_Cpp_PlayerController_Statics
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/General/NN_Cpp_PlayerController.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_MainOptionsWidget_MetaData[] = {
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "Public/General/NN_Cpp_PlayerController.h" },
+	};
 	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_CreatorWidget_MetaData[] = {
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/General/NN_Cpp_PlayerController.h" },
@@ -79,7 +84,7 @@ struct Z_Construct_UClass_ANN_Cpp_PlayerController_Statics
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/General/NN_Cpp_PlayerController.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_MainOptionsWidget_MetaData[] = {
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_GameChatWidget_MetaData[] = {
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/General/NN_Cpp_PlayerController.h" },
 	};
@@ -92,9 +97,10 @@ struct Z_Construct_UClass_ANN_Cpp_PlayerController_Statics
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_GPTInstance;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_CategoryWidget;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_MainWidget;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_MainOptionsWidget;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_CreatorWidget;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_GameWidget;
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_MainOptionsWidget;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_GameChatWidget;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_GameNavigatorWidget;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
@@ -108,18 +114,20 @@ const UECodeGen_Private::FClassPropertyParams Z_Construct_UClass_ANN_Cpp_PlayerC
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ANN_Cpp_PlayerController_Statics::NewProp_GPTInstance = { "GPTInstance", nullptr, (EPropertyFlags)0x0040000000000000, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANN_Cpp_PlayerController, GPTInstance), Z_Construct_UClass_UNN_Cpp_GPT_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_GPTInstance_MetaData), NewProp_GPTInstance_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ANN_Cpp_PlayerController_Statics::NewProp_CategoryWidget = { "CategoryWidget", nullptr, (EPropertyFlags)0x0040000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANN_Cpp_PlayerController, CategoryWidget), Z_Construct_UClass_UNN_Cpp_Widget_Category_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CategoryWidget_MetaData), NewProp_CategoryWidget_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ANN_Cpp_PlayerController_Statics::NewProp_MainWidget = { "MainWidget", nullptr, (EPropertyFlags)0x0040000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANN_Cpp_PlayerController, MainWidget), Z_Construct_UClass_UNN_Cpp_Widget_Main_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MainWidget_MetaData), NewProp_MainWidget_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ANN_Cpp_PlayerController_Statics::NewProp_MainOptionsWidget = { "MainOptionsWidget", nullptr, (EPropertyFlags)0x0040000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANN_Cpp_PlayerController, MainOptionsWidget), Z_Construct_UClass_UNN_Cpp_Widget_MainOptions_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MainOptionsWidget_MetaData), NewProp_MainOptionsWidget_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ANN_Cpp_PlayerController_Statics::NewProp_CreatorWidget = { "CreatorWidget", nullptr, (EPropertyFlags)0x0040000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANN_Cpp_PlayerController, CreatorWidget), Z_Construct_UClass_UNN_Cpp_Widget_Creator_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_CreatorWidget_MetaData), NewProp_CreatorWidget_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ANN_Cpp_PlayerController_Statics::NewProp_GameWidget = { "GameWidget", nullptr, (EPropertyFlags)0x0040000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANN_Cpp_PlayerController, GameWidget), Z_Construct_UClass_UNN_Cpp_Widget_Game_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_GameWidget_MetaData), NewProp_GameWidget_MetaData) };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ANN_Cpp_PlayerController_Statics::NewProp_MainOptionsWidget = { "MainOptionsWidget", nullptr, (EPropertyFlags)0x0040000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANN_Cpp_PlayerController, MainOptionsWidget), Z_Construct_UClass_UNN_Cpp_Widget_MainOptions_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_MainOptionsWidget_MetaData), NewProp_MainOptionsWidget_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ANN_Cpp_PlayerController_Statics::NewProp_GameChatWidget = { "GameChatWidget", nullptr, (EPropertyFlags)0x0040000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANN_Cpp_PlayerController, GameChatWidget), Z_Construct_UClass_UNN_Cpp_Widget_GameChat_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_GameChatWidget_MetaData), NewProp_GameChatWidget_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_ANN_Cpp_PlayerController_Statics::NewProp_GameNavigatorWidget = { "GameNavigatorWidget", nullptr, (EPropertyFlags)0x0040000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(ANN_Cpp_PlayerController, GameNavigatorWidget), Z_Construct_UClass_UNN_Cpp_Widget_GameNavigator_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_GameNavigatorWidget_MetaData), NewProp_GameNavigatorWidget_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_ANN_Cpp_PlayerController_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANN_Cpp_PlayerController_Statics::NewProp_CategoryWidgetClass,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANN_Cpp_PlayerController_Statics::NewProp_GPTInstance,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANN_Cpp_PlayerController_Statics::NewProp_CategoryWidget,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANN_Cpp_PlayerController_Statics::NewProp_MainWidget,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANN_Cpp_PlayerController_Statics::NewProp_MainOptionsWidget,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANN_Cpp_PlayerController_Statics::NewProp_CreatorWidget,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANN_Cpp_PlayerController_Statics::NewProp_GameWidget,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANN_Cpp_PlayerController_Statics::NewProp_MainOptionsWidget,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANN_Cpp_PlayerController_Statics::NewProp_GameChatWidget,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_ANN_Cpp_PlayerController_Statics::NewProp_GameNavigatorWidget,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_ANN_Cpp_PlayerController_Statics::PropPointers) < 2048);
@@ -168,10 +176,10 @@ ANN_Cpp_PlayerController::~ANN_Cpp_PlayerController() {}
 struct Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_General_NN_Cpp_PlayerController_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_ANN_Cpp_PlayerController, ANN_Cpp_PlayerController::StaticClass, TEXT("ANN_Cpp_PlayerController"), &Z_Registration_Info_UClass_ANN_Cpp_PlayerController, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ANN_Cpp_PlayerController), 3666377086U) },
+		{ Z_Construct_UClass_ANN_Cpp_PlayerController, ANN_Cpp_PlayerController::StaticClass, TEXT("ANN_Cpp_PlayerController"), &Z_Registration_Info_UClass_ANN_Cpp_PlayerController, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(ANN_Cpp_PlayerController), 1512263828U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_General_NN_Cpp_PlayerController_h_3201811862(TEXT("/Script/NarrativeNexus"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_General_NN_Cpp_PlayerController_h_644108691(TEXT("/Script/NarrativeNexus"),
 	Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_General_NN_Cpp_PlayerController_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_General_NN_Cpp_PlayerController_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

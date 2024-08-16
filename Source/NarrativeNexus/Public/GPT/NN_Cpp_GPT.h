@@ -17,6 +17,13 @@ class NARRATIVENEXUS_API UNN_Cpp_GPT : public UObject
 public:
 	UNN_Cpp_GPT();
 
+	// The response received delegate
+	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnGPTResponseReceived, const FString&, Response);
+	FOnGPTResponseReceived OnGPTResponseReceived;
+
+	// Static method to create an instance of the GPT
+	static UNN_Cpp_GPT* CreateGPT(UObject* Outer);
+
 	void SendMessageToGPT(const FString& Message);
 	void ResetConversation();
 	FString GetLastResponse() const;
@@ -26,13 +33,6 @@ public:
 	void GenerateMaxSummaryFromConversation(const FString& Summary, TFunction<void(const FString&)> OnMaxSummaryGenerated);
 	void GenerateImageSummaryFromConversation(const FString& Summary, TFunction<void(const FString&)> OnImageSummaryGenerated);
 	void GenerateChatImageFromConversation(const FString& Summary, TFunction<void(UTexture2D*)> OnChatImageGenerated);
-
-	// Static method to create an instance of the GPT
-	static UNN_Cpp_GPT* CreateGPT(UObject* Outer);
-
-	// The response received delegate
-	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnGPTResponseReceived, const FString&, Response);
-	FOnGPTResponseReceived OnGPTResponseReceived;
 
 private:
 	// Callback method when a response is received

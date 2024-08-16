@@ -98,6 +98,35 @@ DEFINE_FUNCTION(UNN_Cpp_Widget_Game::execHideGameSubWidget)
 }
 // End Class UNN_Cpp_Widget_Game Function HideGameSubWidget
 
+// Begin Class UNN_Cpp_Widget_Game Function ShowGameChatWidget
+struct Z_Construct_UFunction_UNN_Cpp_Widget_Game_ShowGameChatWidget_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+		{ "ModuleRelativePath", "Public/Widgets/Game/NN_Cpp_Widget_Game.h" },
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UNN_Cpp_Widget_Game_ShowGameChatWidget_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UNN_Cpp_Widget_Game, nullptr, "ShowGameChatWidget", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00020400, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UNN_Cpp_Widget_Game_ShowGameChatWidget_Statics::Function_MetaDataParams), Z_Construct_UFunction_UNN_Cpp_Widget_Game_ShowGameChatWidget_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_UNN_Cpp_Widget_Game_ShowGameChatWidget()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UNN_Cpp_Widget_Game_ShowGameChatWidget_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(UNN_Cpp_Widget_Game::execShowGameChatWidget)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->ShowGameChatWidget();
+	P_NATIVE_END;
+}
+// End Class UNN_Cpp_Widget_Game Function ShowGameChatWidget
+
 // Begin Class UNN_Cpp_Widget_Game Function ShowGameInventoryWidget
 struct Z_Construct_UFunction_UNN_Cpp_Widget_Game_ShowGameInventoryWidget_Statics
 {
@@ -198,6 +227,7 @@ void UNN_Cpp_Widget_Game::StaticRegisterNativesUNN_Cpp_Widget_Game()
 	static const FNameNativePtrPair Funcs[] = {
 		{ "HideAllWidgets", &UNN_Cpp_Widget_Game::execHideAllWidgets },
 		{ "HideGameSubWidget", &UNN_Cpp_Widget_Game::execHideGameSubWidget },
+		{ "ShowGameChatWidget", &UNN_Cpp_Widget_Game::execShowGameChatWidget },
 		{ "ShowGameInventoryWidget", &UNN_Cpp_Widget_Game::execShowGameInventoryWidget },
 		{ "ShowGameMenuWidget", &UNN_Cpp_Widget_Game::execShowGameMenuWidget },
 		{ "ShowGameNavigatorWidget", &UNN_Cpp_Widget_Game::execShowGameNavigatorWidget },
@@ -232,12 +262,12 @@ struct Z_Construct_UClass_UNN_Cpp_Widget_Game_Statics
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/Widgets/Game/NN_Cpp_Widget_Game.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_GameInventoryWidget_MetaData[] = {
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_GameChatWidget_MetaData[] = {
 		{ "BindWidget", "" },
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/Widgets/Game/NN_Cpp_Widget_Game.h" },
 	};
-	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_GameChatWidget_MetaData[] = {
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_GameInventoryWidget_MetaData[] = {
 		{ "BindWidget", "" },
 		{ "EditInline", "true" },
 		{ "ModuleRelativePath", "Public/Widgets/Game/NN_Cpp_Widget_Game.h" },
@@ -250,14 +280,15 @@ struct Z_Construct_UClass_UNN_Cpp_Widget_Game_Statics
 #endif // WITH_METADATA
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_GameMenuWidget;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_GameNavigatorWidget;
-	static const UECodeGen_Private::FObjectPropertyParams NewProp_GameInventoryWidget;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_GameChatWidget;
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_GameInventoryWidget;
 	static const UECodeGen_Private::FObjectPropertyParams NewProp_GameContainer;
 	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
 	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
 		{ &Z_Construct_UFunction_UNN_Cpp_Widget_Game_HideAllWidgets, "HideAllWidgets" }, // 2192055593
 		{ &Z_Construct_UFunction_UNN_Cpp_Widget_Game_HideGameSubWidget, "HideGameSubWidget" }, // 2157879058
+		{ &Z_Construct_UFunction_UNN_Cpp_Widget_Game_ShowGameChatWidget, "ShowGameChatWidget" }, // 33773527
 		{ &Z_Construct_UFunction_UNN_Cpp_Widget_Game_ShowGameInventoryWidget, "ShowGameInventoryWidget" }, // 1992615076
 		{ &Z_Construct_UFunction_UNN_Cpp_Widget_Game_ShowGameMenuWidget, "ShowGameMenuWidget" }, // 2210748241
 		{ &Z_Construct_UFunction_UNN_Cpp_Widget_Game_ShowGameNavigatorWidget, "ShowGameNavigatorWidget" }, // 1805902375
@@ -270,14 +301,14 @@ struct Z_Construct_UClass_UNN_Cpp_Widget_Game_Statics
 };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_Game_Statics::NewProp_GameMenuWidget = { "GameMenuWidget", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_Game, GameMenuWidget), Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_GameMenuWidget_MetaData), NewProp_GameMenuWidget_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_Game_Statics::NewProp_GameNavigatorWidget = { "GameNavigatorWidget", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_Game, GameNavigatorWidget), Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_GameNavigatorWidget_MetaData), NewProp_GameNavigatorWidget_MetaData) };
-const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_Game_Statics::NewProp_GameInventoryWidget = { "GameInventoryWidget", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_Game, GameInventoryWidget), Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_GameInventoryWidget_MetaData), NewProp_GameInventoryWidget_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_Game_Statics::NewProp_GameChatWidget = { "GameChatWidget", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_Game, GameChatWidget), Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_GameChatWidget_MetaData), NewProp_GameChatWidget_MetaData) };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_Game_Statics::NewProp_GameInventoryWidget = { "GameInventoryWidget", nullptr, (EPropertyFlags)0x0010000000080008, UECodeGen_Private::EPropertyGenFlags::Object, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_Game, GameInventoryWidget), Z_Construct_UClass_UUserWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_GameInventoryWidget_MetaData), NewProp_GameInventoryWidget_MetaData) };
 const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_Game_Statics::NewProp_GameContainer = { "GameContainer", nullptr, (EPropertyFlags)0x0124080000080008, UECodeGen_Private::EPropertyGenFlags::Object | UECodeGen_Private::EPropertyGenFlags::ObjectPtr, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_Game, GameContainer), Z_Construct_UClass_UPanelWidget_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_GameContainer_MetaData), NewProp_GameContainer_MetaData) };
 const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UNN_Cpp_Widget_Game_Statics::PropPointers[] = {
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_Game_Statics::NewProp_GameMenuWidget,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_Game_Statics::NewProp_GameNavigatorWidget,
-	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_Game_Statics::NewProp_GameInventoryWidget,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_Game_Statics::NewProp_GameChatWidget,
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_Game_Statics::NewProp_GameInventoryWidget,
 	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_Game_Statics::NewProp_GameContainer,
 };
 static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_UNN_Cpp_Widget_Game_Statics::PropPointers) < 2048);
@@ -322,10 +353,10 @@ UNN_Cpp_Widget_Game::~UNN_Cpp_Widget_Game() {}
 struct Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Game_NN_Cpp_Widget_Game_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UNN_Cpp_Widget_Game, UNN_Cpp_Widget_Game::StaticClass, TEXT("UNN_Cpp_Widget_Game"), &Z_Registration_Info_UClass_UNN_Cpp_Widget_Game, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UNN_Cpp_Widget_Game), 2632346882U) },
+		{ Z_Construct_UClass_UNN_Cpp_Widget_Game, UNN_Cpp_Widget_Game::StaticClass, TEXT("UNN_Cpp_Widget_Game"), &Z_Registration_Info_UClass_UNN_Cpp_Widget_Game, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UNN_Cpp_Widget_Game), 2745104634U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Game_NN_Cpp_Widget_Game_h_3728501694(TEXT("/Script/NarrativeNexus"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Game_NN_Cpp_Widget_Game_h_109932787(TEXT("/Script/NarrativeNexus"),
 	Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Game_NN_Cpp_Widget_Game_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Game_NN_Cpp_Widget_Game_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);

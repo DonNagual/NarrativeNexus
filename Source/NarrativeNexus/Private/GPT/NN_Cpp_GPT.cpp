@@ -5,14 +5,14 @@
 UNN_Cpp_GPT::UNN_Cpp_GPT()
 {
 	// DEBUG
-	UE_LOG(LogTemp, Warning, TEXT("UNN_Cpp_GPT Constructor - Objekt: %p"), this);
+	UE_LOG(LogTemp, Warning, TEXT("UNN_Cpp_GPT: Constructor - Objekt: %p"), this);
 }
 
 UNN_Cpp_GPT* UNN_Cpp_GPT::CreateGPT(UObject* Outer)
 {
 	if (!Outer)
 	{
-		UE_LOG(LogTemp, Error, TEXT("Outer object is null in CreateChatGPTClient"));
+		UE_LOG(LogTemp, Error, TEXT("NN_Cpp_GPT: Outer object is null in CreateGPT"));
 		return nullptr;
 	}
 	return NewObject<UNN_Cpp_GPT>(Outer);
@@ -25,7 +25,7 @@ void UNN_Cpp_GPT::SendMessageToGPT(const FString& Message)
 	// Validate the input message
 	if (Message.IsEmpty())
 	{
-		UE_LOG(LogTemp, Error, TEXT("Message to ChatGPT is empty"));
+		UE_LOG(LogTemp, Error, TEXT("Message to GPT is empty"));
 		return;
 	}
 
