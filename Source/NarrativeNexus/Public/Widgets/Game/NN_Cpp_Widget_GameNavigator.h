@@ -24,7 +24,6 @@ public:
 	UFUNCTION()
 	void OnWidgetVisibilityChanged();
 
-
 protected:
 
 	// ############### Buttons ###############

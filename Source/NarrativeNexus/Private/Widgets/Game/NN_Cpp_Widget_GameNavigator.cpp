@@ -54,10 +54,10 @@ void UNN_Cpp_Widget_GameNavigator::OnSearchButtomClicked()
 
 void UNN_Cpp_Widget_GameNavigator::OnBackButtonClicked()
 {
-	if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
+	if (auto* PCInterface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
 	{
-		Interface->HideWidget(this);
-		Interface->ShowGameMenuWidgetViaInterface();
+		PCInterface->HideWidget(this);
+		PCInterface->ShowGameMenuWidgetViaInterface();
 	}
 
 	RemoveAllNodesFromScrollBox();

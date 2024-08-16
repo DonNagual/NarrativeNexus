@@ -17,7 +17,6 @@ class NARRATIVENEXUS_API UNN_Cpp_Widget_GameNavigatorNode : public UUserWidget
 public:
 
 	virtual void NativeConstruct() override;
-	virtual void NativeDestruct() override;
 
 protected:
 	// ############### Buttons ###############
