@@ -14,7 +14,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define NARRATIVENEXUS_NN_Cpp_GPT_generated_h
 
-#define FID_NarrativeNexus_Source_NarrativeNexus_Public_GPT_NN_Cpp_GPT_h_34_DELEGATE \
+#define FID_NarrativeNexus_Source_NarrativeNexus_Public_GPT_NN_Cpp_GPT_h_21_DELEGATE \
 static void FOnGPTResponseReceived_DelegateWrapper(const FMulticastScriptDelegate& OnGPTResponseReceived, const FString& Response);
 
 
