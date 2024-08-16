@@ -261,7 +261,6 @@
     <None Include="..\..\Config\DefaultEngine.ini"/>
     <None Include="..\..\Config\DefaultGame.ini"/>
     <None Include="..\..\Config\DefaultInput.ini"/>
-    <None Include="..\..\Config\keys.txt"/>
     <None Include="..\..\Source\NarrativeNexus\NarrativeNexus.Build.cs"/>
     <ClCompile Include="..\..\Source\NarrativeNexus\NarrativeNexus.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>

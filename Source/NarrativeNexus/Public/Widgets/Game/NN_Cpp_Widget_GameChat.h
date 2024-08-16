@@ -1,4 +1,5 @@
 // NN_Cpp_Widget_GameChat.h
+
 #pragma once
 
 #include "CoreMinimal.h"
@@ -8,9 +9,8 @@
 #include "Components/ScrollBox.h"
 #include "Components/Image.h"
 #include "Blueprint/UserWidget.h"
-#include "GPT/NN_Cpp_GPT.h"
 #include "NN_Cpp_Widget_GameChatMessage.h"
-#include "General/NN_Cpp_PlayerController.h"
+#include "Interface/NN_Cpp_IF_GPT.h"
 #include "Interface/NN_Cpp_IF_WidgetController.h"
 #include "NN_Cpp_Widget_GameChat.generated.h"
 
@@ -22,6 +22,8 @@ class NARRATIVENEXUS_API UNN_Cpp_Widget_GameChat : public UUserWidget
 public:
 	virtual void NativeConstruct() override;
 	virtual void NativeDestruct() override;
+
+	void SetGPT(UNN_Cpp_GPT* InGPT);
 
 protected:
 
@@ -142,7 +144,8 @@ private:
 	UFUNCTION()
 	void HandleChatGPTResponse(const FString& Response);
 
-	// Direct reference to GPT object
+	// GPT-Instanz
 	UPROPERTY()
 	UNN_Cpp_GPT* GPT;
+
 };

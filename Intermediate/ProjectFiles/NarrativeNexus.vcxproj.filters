@@ -31,9 +31,6 @@
     <None Include="..\..\Config\DefaultInput.ini">
       <Filter>Config</Filter>
     </None>
-    <None Include="..\..\Config\keys.txt">
-      <Filter>Config</Filter>
-    </None>
     <Filter Include="Source\NarrativeNexus">
       <UniqueIdentifier>{04FEA5C8-60B3-3C7D-B0FB-104FFCAD1522}</UniqueIdentifier>
     </Filter>

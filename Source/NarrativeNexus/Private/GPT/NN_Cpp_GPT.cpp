@@ -2,22 +2,6 @@
 
 #include "GPT/NN_Cpp_GPT.h"
 
-UNN_Cpp_GPT::UNN_Cpp_GPT()
-{
-	// DEBUG
-	UE_LOG(LogTemp, Warning, TEXT("UNN_Cpp_GPT Constructor - Objekt: %p"), this);
-}
-
-UNN_Cpp_GPT* UNN_Cpp_GPT::CreateGPT(UObject* Outer)
-{
-	if (!Outer)
-	{
-		UE_LOG(LogTemp, Error, TEXT("Outer object is null in CreateChatGPTClient"));
-		return nullptr;
-	}
-	return NewObject<UNN_Cpp_GPT>(Outer);
-}
-
 // ######################### Send Message To ChatGPT #########################
 
 void UNN_Cpp_GPT::SendMessageToGPT(const FString& Message)
@@ -25,7 +9,7 @@ void UNN_Cpp_GPT::SendMessageToGPT(const FString& Message)
 	// Validate the input message
 	if (Message.IsEmpty())
 	{
-		UE_LOG(LogTemp, Error, TEXT("Message to ChatGPT is empty"));
+		UE_LOG(LogTemp, Error, TEXT("Message to GPT is empty"));
 		return;
 	}
 
@@ -41,6 +25,18 @@ void UNN_Cpp_GPT::SendMessageToGPT(const FString& Message)
 	{
 		ConversationHistory.RemoveAt(0, ConversationHistory.Num() - MaxHistorySize);
 	}
+
+	// DEBUG
+	FString HistoryString;
+	for (const TSharedPtr<FJsonObject>& MessageObj : ConversationHistory)
+	{
+		FString Role, Content;
+		MessageObj->TryGetStringField(TEXT("role"), Role);
+		MessageObj->TryGetStringField(TEXT("content"), Content);
+
+		HistoryString += FString::Printf(TEXT("-- %s: %s\n"), *Role, *Content);
+	}
+	UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_GPT - ConversationHistory: %p\n%s\n"), this, *HistoryString);
 
 	// Convert ConversationHistory to an array of FJsonValue
 	TArray<TSharedPtr<FJsonValue>> JsonArray;
@@ -489,9 +485,6 @@ void UNN_Cpp_GPT::OnTextResponseReceived(FHttpRequestPtr Request, FHttpResponseP
 	// Ensure that the response processing takes place in the main thread
 	AsyncTask(ENamedThreads::GameThread, [this, bWasSuccessful, Response]()
 	{
-		// DEBUG
-		UE_LOG(LogTemp, Warning, TEXT("UNN_Cpp_GPT OnResponseReceived - Objekt: %p"), this);
-
 		if (!bWasSuccessful || !Response.IsValid())
 		{
 			UE_LOG(LogTemp, Error, TEXT("Failed to contact OpenAI"));
@@ -501,7 +494,7 @@ void UNN_Cpp_GPT::OnTextResponseReceived(FHttpRequestPtr Request, FHttpResponseP
 		}
 
 		FString ResponseString = Response->GetContentAsString();
-		UE_LOG(LogTemp, Log, TEXT("Response: %s"), *ResponseString);
+		//UE_LOG(LogTemp, Log, TEXT("Response: %s"), *ResponseString);
 
 		TSharedPtr<FJsonObject> JsonObject;
 		TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(ResponseString);
@@ -515,7 +508,6 @@ void UNN_Cpp_GPT::OnTextResponseReceived(FHttpRequestPtr Request, FHttpResponseP
 				if (MessageObject.IsValid())
 				{
 					FString Reply = (*ChoicesArray)[0]->AsObject()->GetObjectField(TEXT("message"))->GetStringField(TEXT("content"));
-					UE_LOG(LogTemp, Log, TEXT("ChatGPT Reply: %s"), *Reply);
 
 					LastResponse = Reply;
 
@@ -529,7 +521,7 @@ void UNN_Cpp_GPT::OnTextResponseReceived(FHttpRequestPtr Request, FHttpResponseP
 					OnGPTResponseReceived.Broadcast(Reply);
 
 					// DEBUG
-					UE_LOG(LogTemp, Warning, TEXT("UNN_Cpp_GPT Broadcast - Objekt: %p"), this);
+					UE_LOG(LogTemp, Warning, TEXT("ChatGPT - Reply: %p\n-- %s\n"), this, *Reply);
 				}
 				else
 				{
