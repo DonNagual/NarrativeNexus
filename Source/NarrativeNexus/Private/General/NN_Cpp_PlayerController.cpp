@@ -21,15 +21,18 @@ void ANN_Cpp_PlayerController::InitializeWidgets()
 		GameWidget = Cast<UNN_Cpp_Widget_Game>(CategoryWidget->GameWidget);
 		MainOptionsWidget = Cast<UNN_Cpp_Widget_MainOptions>(MainWidget->MainOptionsWidget);
 		GameNavigatorWidget = Cast<UNN_Cpp_Widget_GameNavigator>(GameWidget->GameNavigatorWidget);
+		GameChatWidget = Cast<UNN_Cpp_Widget_GameChat>(GameWidget->GameChatWidget);
 	}
 }
 
 void ANN_Cpp_PlayerController::InitializeGPT()
 {
 	GPTInstance = NewObject<UNN_Cpp_GPT>(this);
+
+	// DEBUG
 	if (GPTInstance)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController: GPTInstance successfully created: %p"), GPTInstance);
+		UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController - InitializeGPTInstance: %p\n"), GPTInstance);
 	}
 	else
 	{
@@ -43,13 +46,31 @@ void ANN_Cpp_PlayerController::DestroyGPT()
 	{
 		GPTInstance->ConditionalBeginDestroy();
 		GPTInstance = nullptr;
-		UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController: GPTInstance destroyed"));
+		GameChatWidget->NativeDestruct();
+		// DEBUG
+		UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController - DestroyGPTInstance: %p\n"), GPTInstance);
 	}
 }
 
 UNN_Cpp_GPT* ANN_Cpp_PlayerController::GetGPT() const
 {
+	if (!GPTInstance)
+	{
+		UE_LOG(LogTemp, Error, TEXT("NN_Cpp_PlayerController: GPTInstance is nullptr in GetGPT()"));
+	}
 	return GPTInstance;
+}
+
+void ANN_Cpp_PlayerController::SetGPT(UNN_Cpp_GPT* InGPT)
+{
+	if (GameChatWidget)
+	{
+		GameChatWidget->SetGPT(InGPT);
+	}
+	else
+	{
+		UE_LOG(LogTemp, Error, TEXT("NN_Cpp_PlayerController: GameChatWidget is nullptr in SetGPT()"));
+	}
 }
 
 void ANN_Cpp_PlayerController::ShowWidget(UUserWidget* SubWidget)
@@ -132,6 +153,11 @@ void ANN_Cpp_PlayerController::ShowGameMenuWidgetViaInterface()
 void ANN_Cpp_PlayerController::ShowGameNavigatorWidgetViaInterface()
 {
 	GameWidget->ShowGameNavigatorWidget();
+}
+
+void ANN_Cpp_PlayerController::ShowGameChatWidgetViaInterface()
+{
+	GameWidget->ShowGameChatWidget();
 }
 
 void ANN_Cpp_PlayerController::ShowGameInventoryWidgetViaInterface()

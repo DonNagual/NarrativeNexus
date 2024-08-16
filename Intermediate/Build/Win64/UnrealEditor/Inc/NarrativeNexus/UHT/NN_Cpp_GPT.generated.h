@@ -14,7 +14,7 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define NARRATIVENEXUS_NN_Cpp_GPT_generated_h
 
-#define FID_NarrativeNexus_Source_NarrativeNexus_Public_GPT_NN_Cpp_GPT_h_34_DELEGATE \
+#define FID_NarrativeNexus_Source_NarrativeNexus_Public_GPT_NN_Cpp_GPT_h_20_DELEGATE \
 static void FOnGPTResponseReceived_DelegateWrapper(const FMulticastScriptDelegate& OnGPTResponseReceived, const FString& Response);
 
 
@@ -28,6 +28,8 @@ public: \
 
 
 #define FID_NarrativeNexus_Source_NarrativeNexus_Public_GPT_NN_Cpp_GPT_h_15_ENHANCED_CONSTRUCTORS \
+	/** Standard constructor, called after all reflected properties have been initialized */ \
+	NO_API UNN_Cpp_GPT(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 private: \
 	/** Private move- and copy-constructors, should never be used */ \
 	UNN_Cpp_GPT(UNN_Cpp_GPT&&); \
@@ -35,7 +37,7 @@ private: \
 public: \
 	DECLARE_VTABLE_PTR_HELPER_CTOR(NO_API, UNN_Cpp_GPT); \
 	DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UNN_Cpp_GPT); \
-	DEFINE_DEFAULT_CONSTRUCTOR_CALL(UNN_Cpp_GPT) \
+	DEFINE_DEFAULT_OBJECT_INITIALIZER_CONSTRUCTOR_CALL(UNN_Cpp_GPT) \
 	NO_API virtual ~UNN_Cpp_GPT();
 
 

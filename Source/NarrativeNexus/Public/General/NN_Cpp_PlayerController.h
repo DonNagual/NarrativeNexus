@@ -11,6 +11,7 @@
 #include "Widgets/Main/NN_Cpp_Widget_MainOptions.h"
 #include "Widgets/Creator/NN_Cpp_Widget_Creator.h"
 #include "Widgets/Game/NN_Cpp_Widget_Game.h"
+#include "Widgets/Game/NN_Cpp_Widget_GameChat.h"
 #include "Widgets/Game/NN_Cpp_Widget_GameNavigator.h"
 #include "Interface/NN_Cpp_IF_GPT.h"
 #include "Interface/NN_Cpp_IF_WidgetController.h"
@@ -28,6 +29,7 @@ public:
 	virtual void InitializeGPT() override;
 	virtual void DestroyGPT() override;
 	virtual UNN_Cpp_GPT* GetGPT() const override;
+	virtual void SetGPT(UNN_Cpp_GPT* InGPT) override;
 
 	// ############### WidgetController Interface ###############
 
@@ -54,6 +56,7 @@ public:
 
 	virtual void ShowGameMenuWidgetViaInterface() override;
 	virtual void ShowGameNavigatorWidgetViaInterface() override;
+	virtual void ShowGameChatWidgetViaInterface() override;
 	virtual void ShowGameInventoryWidgetViaInterface() override;
 
 	// ############### Options ###############
@@ -81,13 +84,16 @@ private:
 	class UNN_Cpp_Widget_Main* MainWidget;
 
 	UPROPERTY()
+	class UNN_Cpp_Widget_MainOptions* MainOptionsWidget;
+
+	UPROPERTY()
 	class UNN_Cpp_Widget_Creator* CreatorWidget;
 
 	UPROPERTY()
 	class UNN_Cpp_Widget_Game* GameWidget;
 
 	UPROPERTY()
-	class UNN_Cpp_Widget_MainOptions* MainOptionsWidget;
+	class UNN_Cpp_Widget_GameChat* GameChatWidget;
 
 	UPROPERTY()
 	class UNN_Cpp_Widget_GameNavigator*	GameNavigatorWidget;

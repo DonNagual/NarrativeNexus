@@ -17,7 +17,6 @@ class NARRATIVENEXUS_API INN_Cpp_IF_WidgetController
 {
 	GENERATED_BODY()
 
-	// Add interface functions to this class. This is the class that will be inherited to implement this interface.
 public:
 
 	virtual void ShowWidget(UUserWidget* SubWidget) = 0;
@@ -43,6 +42,7 @@ public:
 
 	virtual void ShowGameMenuWidgetViaInterface() = 0;
 	virtual void ShowGameNavigatorWidgetViaInterface() = 0;
+	virtual void ShowGameChatWidgetViaInterface() = 0;
 	virtual void ShowGameInventoryWidgetViaInterface() = 0;
 
 	// ############### Options ###############
