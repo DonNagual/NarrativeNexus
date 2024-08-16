@@ -25,10 +25,10 @@ public:
 	class UUserWidget* GameNavigatorWidget;
 
 	UPROPERTY(meta = (BindWidget))
-	class UUserWidget* GameInventoryWidget;
+	class UUserWidget* GameChatWidget;
 
 	UPROPERTY(meta = (BindWidget))
-	class UUserWidget* GameChatWidget;
+	class UUserWidget* GameInventoryWidget;
 
 	// ############### Functions ###############
 
@@ -39,9 +39,10 @@ public:
 	virtual void ShowGameNavigatorWidget();
 
 	UFUNCTION()
+	virtual void ShowGameChatWidget();
+
+	UFUNCTION()
 	virtual void ShowGameInventoryWidget();
-
-
 
 protected:
 

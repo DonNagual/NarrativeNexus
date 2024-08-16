@@ -16,34 +16,6 @@ void UNN_Cpp_Widget_GameChat::NativeConstruct()
 	SelectTopButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameChat::OnSelectTopButtonClicked);
 	SelectMiddleButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameChat::OnSelectMiddleButtonClicked);
 	SelectLowerButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameChat::OnSelectLowerButtonClicked);
-
-	// Fetch GPT from PlayerController
-	if (auto* PlayerController = Cast<ANN_Cpp_PlayerController>(GetWorld()->GetFirstPlayerController()))
-	{
-		GPT = PlayerController->GetGPT();
-		if (GPT == nullptr)
-		{
-			UE_LOG(LogTemp, Error, TEXT("GPT is nullptr after GetGPT() in NativeConstruct"));
-		}
-		else
-		{
-			UE_LOG(LogTemp, Warning, TEXT("GPT successfully retrieved in NativeConstruct: %p"), GPT);
-		}
-	}
-	else
-	{
-		UE_LOG(LogTemp, Error, TEXT("Failed to cast PlayerController in NativeConstruct"));
-	}
-
-	// Register for GPT response callback
-	if (GPT)
-	{
-		GPT->OnGPTResponseReceived.AddDynamic(this, &UNN_Cpp_Widget_GameChat::HandleChatGPTResponse);
-	}
-	else
-	{
-		UE_LOG(LogTemp, Error, TEXT("Failed to initialize GPT in NativeConstruct"));
-	}
 }
 
 void UNN_Cpp_Widget_GameChat::NativeDestruct()
@@ -52,12 +24,30 @@ void UNN_Cpp_Widget_GameChat::NativeDestruct()
 	if (GPT)
 	{
 		GPT->OnGPTResponseReceived.RemoveAll(this);
+		GPT = nullptr;
+
+		UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_Widget_GameChat - DestructGPT: %p\n"), GPT);
 	}
 
 	Super::NativeDestruct();
 }
 
-// ############### ChatGPT - Functions ###############
+void UNN_Cpp_Widget_GameChat::SetGPT(UNN_Cpp_GPT* InGPT)
+{
+	GPT = InGPT;
+	if (GPT)
+	{
+		GPT->OnGPTResponseReceived.AddDynamic(this, &UNN_Cpp_Widget_GameChat::HandleChatGPTResponse);
+		// DEBUG
+		UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_Widget_GameChat - ConstructGPT: %p\n"), InGPT);
+	}
+	else
+	{
+		UE_LOG(LogTemp, Error, TEXT("NN_Cpp_Widget_GameChat: Failed to initialize GPT in SetGPT"));
+	}
+}
+
+// ############### GPT - Functions ###############
 
 void UNN_Cpp_Widget_GameChat::HandleChatGPTResponse(const FString& Response)
 {
@@ -182,6 +172,10 @@ void UNN_Cpp_Widget_GameChat::OnBackButtonClicked()
 {
 	if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
 	{
+		if (auto* GPTInterface = Cast<INN_Cpp_IF_GPT>(GetWorld()->GetFirstPlayerController()))
+		{
+			GPTInterface->DestroyGPT();
+		}
 		Interface->HideWidget(this);
 		Interface->ShowGameMenuWidgetViaInterface();
 	}
@@ -263,7 +257,7 @@ FString UNN_Cpp_Widget_GameChat::GetAllMessagesFromConversationHistory()
 		AllMessages += ConversationHistory[i]->GetStringField(TEXT("content")) + TEXT("\n");
 	}
 	// DEBUG
-	UE_LOG(LogTemp, Warning, TEXT("\n%s"), *AllMessages);
+	//UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_Widget_GameChat - AllMessages: %p\n-- %s\n"), *AllMessages, *AllMessages);
 	return AllMessages;
 }
 
@@ -274,7 +268,7 @@ void UNN_Cpp_Widget_GameChat::GenerateShortSummary(const FString& Summary)
 	{
 		if (!Interface->IsSummaryGenerationEnabledViaInterface())
 		{
-			UE_LOG(LogTemp, Log, TEXT("Summary generation is disabled in the options."));
+			UE_LOG(LogTemp, Error, TEXT("Summary generation is disabled in the options."));
 			return;
 		}
 	}
@@ -300,7 +294,7 @@ void UNN_Cpp_Widget_GameChat::GenerateMaxSummary(const FString& Summary)
 	{
 		if (!Interface->IsSummaryGenerationEnabledViaInterface())
 		{
-			UE_LOG(LogTemp, Log, TEXT("Summary generation is disabled in the options."));
+			UE_LOG(LogTemp, Error, TEXT("Summary generation is disabled in the options."));
 			return;
 		}
 	}
@@ -326,7 +320,7 @@ void UNN_Cpp_Widget_GameChat::GenerateImageSummary(const FString& Summary)
 	{
 		if (!Interface->IsSummaryGenerationEnabledViaInterface())
 		{
-			UE_LOG(LogTemp, Log, TEXT("Summary generation is disabled in the options."));
+			UE_LOG(LogTemp, Error, TEXT("Summary generation is disabled in the options."));
 			return;
 		}
 	}
@@ -352,7 +346,7 @@ void UNN_Cpp_Widget_GameChat::GenerateChatImage(const FString& Summary)
 	{
 		if (!Interface->IsImageGenerationEnabledViaInterface())
 		{
-			UE_LOG(LogTemp, Log, TEXT("Image generation is disabled in the options."));
+			UE_LOG(LogTemp, Error, TEXT("Image generation is disabled in the options."));
 			return;
 		}
 	}
