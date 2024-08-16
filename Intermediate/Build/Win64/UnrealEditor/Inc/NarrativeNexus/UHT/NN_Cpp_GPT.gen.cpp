@@ -129,6 +129,7 @@ template<> NARRATIVENEXUS_API UClass* StaticClass<UNN_Cpp_GPT>()
 {
 	return UNN_Cpp_GPT::StaticClass();
 }
+UNN_Cpp_GPT::UNN_Cpp_GPT(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {}
 DEFINE_VTABLE_PTR_HELPER_CTOR(UNN_Cpp_GPT);
 UNN_Cpp_GPT::~UNN_Cpp_GPT() {}
 // End Class UNN_Cpp_GPT
