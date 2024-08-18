@@ -3,3 +3,18 @@
 
 #include "Widgets/Main/NN_Cpp_Widget_MainCredits.h"
 
+void UNN_Cpp_Widget_MainCredits::NativeConstruct()
+{
+	Super::NativeConstruct();
+
+	BackButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_MainCredits::OnBackButtonClicked);
+}
+
+void UNN_Cpp_Widget_MainCredits::OnBackButtonClicked()
+{
+	if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
+	{
+		Interface->HideWidget(this);
+		Interface->ShowMainMenuWidgetViaInterface();
+	}
+}

@@ -3,3 +3,18 @@
 
 #include "Widgets/Creator/NN_Cpp_Widget_CreatorStory.h"
 
+void UNN_Cpp_Widget_CreatorStory::NativeConstruct()
+{
+	Super::NativeConstruct();
+
+	BackButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_CreatorStory::OnBackButtonClicked);
+}
+
+void UNN_Cpp_Widget_CreatorStory::OnBackButtonClicked()
+{
+	if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
+	{
+		Interface->HideWidget(this);
+		Interface->ShowCreatorMenuWidgetViaInterface();
+	}
+}

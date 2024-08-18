@@ -15,7 +15,7 @@ class UUserWidget;
 #endif
 #define NARRATIVENEXUS_NN_Cpp_Widget_Category_generated_h
 
-#define FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_NN_Cpp_Widget_Category_h_18_RPC_WRAPPERS_NO_PURE_DECLS \
+#define FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_NN_Cpp_Widget_Category_h_17_RPC_WRAPPERS_NO_PURE_DECLS \
 	DECLARE_FUNCTION(execHideCategoryBorder); \
 	DECLARE_FUNCTION(execExecuteQuitGame); \
 	DECLARE_FUNCTION(execOnQuitButtonClicked); \
@@ -27,7 +27,7 @@ class UUserWidget;
 	DECLARE_FUNCTION(execHideCategorySubWidget);
 
 
-#define FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_NN_Cpp_Widget_Category_h_18_INCLASS_NO_PURE_DECLS \
+#define FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_NN_Cpp_Widget_Category_h_17_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUNN_Cpp_Widget_Category(); \
 	friend struct Z_Construct_UClass_UNN_Cpp_Widget_Category_Statics; \
@@ -36,7 +36,7 @@ public: \
 	DECLARE_SERIALIZER(UNN_Cpp_Widget_Category)
 
 
-#define FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_NN_Cpp_Widget_Category_h_18_ENHANCED_CONSTRUCTORS \
+#define FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_NN_Cpp_Widget_Category_h_17_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API UNN_Cpp_Widget_Category(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 private: \
@@ -50,13 +50,13 @@ public: \
 	NO_API virtual ~UNN_Cpp_Widget_Category();
 
 
-#define FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_NN_Cpp_Widget_Category_h_15_PROLOG
-#define FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_NN_Cpp_Widget_Category_h_18_GENERATED_BODY \
+#define FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_NN_Cpp_Widget_Category_h_14_PROLOG
+#define FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_NN_Cpp_Widget_Category_h_17_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_NN_Cpp_Widget_Category_h_18_RPC_WRAPPERS_NO_PURE_DECLS \
-	FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_NN_Cpp_Widget_Category_h_18_INCLASS_NO_PURE_DECLS \
-	FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_NN_Cpp_Widget_Category_h_18_ENHANCED_CONSTRUCTORS \
+	FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_NN_Cpp_Widget_Category_h_17_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_NN_Cpp_Widget_Category_h_17_INCLASS_NO_PURE_DECLS \
+	FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_NN_Cpp_Widget_Category_h_17_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

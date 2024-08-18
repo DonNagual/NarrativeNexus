@@ -1,4 +1,3 @@
-// Fill out your copyright notice in the Description page of Project Settings.
 // NN_Cpp_IF_WidgetController.cpp
 #include "Interface/NN_Cpp_IF_WidgetController.h"
 

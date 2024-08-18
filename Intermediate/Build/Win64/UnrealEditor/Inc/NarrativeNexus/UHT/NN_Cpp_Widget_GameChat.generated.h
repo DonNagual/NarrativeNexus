@@ -14,7 +14,27 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define NARRATIVENEXUS_NN_Cpp_Widget_GameChat_generated_h
 
-#define FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Game_NN_Cpp_Widget_GameChat_h_15_INCLASS_NO_PURE_DECLS \
+#define FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Game_NN_Cpp_Widget_GameChat_h_20_RPC_WRAPPERS_NO_PURE_DECLS \
+	DECLARE_FUNCTION(execHandleChatGPTResponse); \
+	DECLARE_FUNCTION(execRemoveLastChatGPTMessageFromScrollBox); \
+	DECLARE_FUNCTION(execGetAllMessagesFromConversationHistory); \
+	DECLARE_FUNCTION(execGenerateChatImage); \
+	DECLARE_FUNCTION(execGenerateImageSummary); \
+	DECLARE_FUNCTION(execGenerateMaxSummary); \
+	DECLARE_FUNCTION(execGenerateShortSummary); \
+	DECLARE_FUNCTION(execOnSelectLowerButtonClicked); \
+	DECLARE_FUNCTION(execOnSelectMiddleButtonClicked); \
+	DECLARE_FUNCTION(execOnSelectTopButtonClicked); \
+	DECLARE_FUNCTION(execOnContinueButtonClicked); \
+	DECLARE_FUNCTION(execOnSummaryButtonClicked); \
+	DECLARE_FUNCTION(execOnInfoButtonClicked); \
+	DECLARE_FUNCTION(execOnResetButtonClicked); \
+	DECLARE_FUNCTION(execOnRepeatButtonClicked); \
+	DECLARE_FUNCTION(execOnBackButtonClicked); \
+	DECLARE_FUNCTION(execOnSendButtomClicked);
+
+
+#define FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Game_NN_Cpp_Widget_GameChat_h_20_INCLASS_NO_PURE_DECLS \
 private: \
 	static void StaticRegisterNativesUNN_Cpp_Widget_GameChat(); \
 	friend struct Z_Construct_UClass_UNN_Cpp_Widget_GameChat_Statics; \
@@ -23,7 +43,7 @@ public: \
 	DECLARE_SERIALIZER(UNN_Cpp_Widget_GameChat)
 
 
-#define FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Game_NN_Cpp_Widget_GameChat_h_15_ENHANCED_CONSTRUCTORS \
+#define FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Game_NN_Cpp_Widget_GameChat_h_20_ENHANCED_CONSTRUCTORS \
 	/** Standard constructor, called after all reflected properties have been initialized */ \
 	NO_API UNN_Cpp_Widget_GameChat(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get()); \
 private: \
@@ -37,12 +57,13 @@ public: \
 	NO_API virtual ~UNN_Cpp_Widget_GameChat();
 
 
-#define FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Game_NN_Cpp_Widget_GameChat_h_12_PROLOG
-#define FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Game_NN_Cpp_Widget_GameChat_h_15_GENERATED_BODY \
+#define FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Game_NN_Cpp_Widget_GameChat_h_17_PROLOG
+#define FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Game_NN_Cpp_Widget_GameChat_h_20_GENERATED_BODY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \
 public: \
-	FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Game_NN_Cpp_Widget_GameChat_h_15_INCLASS_NO_PURE_DECLS \
-	FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Game_NN_Cpp_Widget_GameChat_h_15_ENHANCED_CONSTRUCTORS \
+	FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Game_NN_Cpp_Widget_GameChat_h_20_RPC_WRAPPERS_NO_PURE_DECLS \
+	FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Game_NN_Cpp_Widget_GameChat_h_20_INCLASS_NO_PURE_DECLS \
+	FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Game_NN_Cpp_Widget_GameChat_h_20_ENHANCED_CONSTRUCTORS \
 private: \
 PRAGMA_ENABLE_DEPRECATION_WARNINGS
 

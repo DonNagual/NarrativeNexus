@@ -1,15 +1,13 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
+// NN_Cpp_Widget_MainOptions.h
 #pragma once
 
 #include "CoreMinimal.h"
 #include "Components/Button.h"
-#include "Interface/NN_Cpp_IF_WidgetController.h"
+#include "Components/CheckBox.h"
+#include "Components/TextBlock.h"
 #include "Blueprint/UserWidget.h"
+#include "Interface/NN_Cpp_IF_WidgetController.h"
 #include "NN_Cpp_Widget_MainOptions.generated.h"
-
-// Forward declaration of the UNN_Cpp_Widget_Main class
-// class UNN_Cpp_Widget_Main;
 
 UCLASS()
 class NARRATIVENEXUS_API UNN_Cpp_Widget_MainOptions : public UUserWidget
@@ -19,18 +17,57 @@ class NARRATIVENEXUS_API UNN_Cpp_Widget_MainOptions : public UUserWidget
 public:
 	virtual void NativeConstruct() override;
 
-	// Method to set the Reference
-	void SetMainWidget(class UNN_Cpp_Widget_Main* InMainWidget);
+	bool IsImageGenerationEnabled() const;
+
+	bool IsSummaryGenerationEnabled() const;
+
+	int GetCurrentMessageNumber() const;
 
 protected:
+	// ############### Buttons ###############
+
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<UButton> BackButton;
 
-	//UFUNCTION()
-	//void OnBackButtonClicked();
+	// ############### Message Counter ###############
+
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UButton> UpButton;
+
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UButton> DownButton;
+
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UTextBlock> MessageNumberText;
+	
+	// ############### CheckBox ###############
+
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UCheckBox> GenerateImageCheckBox;
+
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UCheckBox> GenerateSummaryCheckBox;
 
 private:
-	// Reference to the MainWidget
-	UPROPERTY()
-	class UNN_Cpp_Widget_Main* MainWidget;
+	// ############### Functions ###############
+
+	UFUNCTION()
+	void OnBackButtonClicked();
+
+	UFUNCTION()
+	void OnGenerateSummaryCheckBoxChanged(bool bIsChecked);
+
+	UFUNCTION()
+	void OnGenerateImageCheckBoxChanged(bool bIsChecked);
+
+	// ############### Message Number ###############
+	
+	int32 CurrentMessageNumber = 4;
+
+	UFUNCTION()
+	void OnUpButtonClicked();
+
+	UFUNCTION()
+	void OnDownButtonClicked();
+
 };

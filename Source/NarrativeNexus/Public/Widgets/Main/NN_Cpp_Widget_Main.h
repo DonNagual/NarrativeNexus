@@ -17,14 +17,39 @@ public:
 
 	virtual void NativeConstruct() override;
 
+	// ############### Widgets ###############
+
 	UPROPERTY(meta = (BindWidget))
 	class UUserWidget* MainMenuWidget;
+
+	UPROPERTY(meta = (BindWidget))
+	class UUserWidget* MainGuideWidget;
+
+	UPROPERTY(meta = (BindWidget))
+	class UUserWidget* MainOptionsWidget;
+
+	UPROPERTY(meta = (BindWidget))
+	class UUserWidget* MainTutorialWidget;
+
+	UPROPERTY(meta = (BindWidget))
+	class UUserWidget* MainCreditsWidget;
+
+	// ############### Functions ###############
 
 	UFUNCTION()
 	virtual void ShowMainMenuWidget();
 
 	UFUNCTION()
 	virtual void ShowMainGuideWidget();
+
+	UFUNCTION()
+	virtual void ShowMainOptionsWidget();
+
+	UFUNCTION()
+	virtual void ShowMainTutorialWidget();
+
+	UFUNCTION()
+	virtual void ShowMainCreditsWidget();
 
 protected:
 	
@@ -38,20 +63,7 @@ private:
 	UFUNCTION()
 	void HideMainSubWidget(UUserWidget* SubWidget);
 
-	// ############### Widgets ###############
-
-
-
-	UPROPERTY(meta = (BindWidget))
-	class UUserWidget* MainGuideWidget;
-
-	UPROPERTY(meta = (BindWidget))
-	class UUserWidget* MainOptionsWidget;
-
-	UPROPERTY(meta = (BindWidget))
-	class UUserWidget* MainTutorialWidget;
-
-	UPROPERTY(meta = (BindWidget))
-	class UUserWidget* MainCreditsWidget;
+	UFUNCTION()
+	void HideAllWidgets();
 
 };

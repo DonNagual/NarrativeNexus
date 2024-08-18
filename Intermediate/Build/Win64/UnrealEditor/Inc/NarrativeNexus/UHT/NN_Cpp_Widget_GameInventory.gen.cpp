@@ -12,13 +12,54 @@ void EmptyLinkFunctionForGeneratedCodeNN_Cpp_Widget_GameInventory() {}
 // Begin Cross Module References
 NARRATIVENEXUS_API UClass* Z_Construct_UClass_UNN_Cpp_Widget_GameInventory();
 NARRATIVENEXUS_API UClass* Z_Construct_UClass_UNN_Cpp_Widget_GameInventory_NoRegister();
+UMG_API UClass* Z_Construct_UClass_UButton_NoRegister();
 UMG_API UClass* Z_Construct_UClass_UUserWidget();
 UPackage* Z_Construct_UPackage__Script_NarrativeNexus();
 // End Cross Module References
 
+// Begin Class UNN_Cpp_Widget_GameInventory Function OnBackButtonClicked
+struct Z_Construct_UFunction_UNN_Cpp_Widget_GameInventory_OnBackButtonClicked_Statics
+{
+#if WITH_METADATA
+	static constexpr UECodeGen_Private::FMetaDataPairParam Function_MetaDataParams[] = {
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "// ############### Functions ###############\n" },
+#endif
+		{ "ModuleRelativePath", "Public/Widgets/Game/NN_Cpp_Widget_GameInventory.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "############### Functions ###############" },
+#endif
+	};
+#endif // WITH_METADATA
+	static const UECodeGen_Private::FFunctionParams FuncParams;
+};
+const UECodeGen_Private::FFunctionParams Z_Construct_UFunction_UNN_Cpp_Widget_GameInventory_OnBackButtonClicked_Statics::FuncParams = { (UObject*(*)())Z_Construct_UClass_UNN_Cpp_Widget_GameInventory, nullptr, "OnBackButtonClicked", nullptr, nullptr, nullptr, 0, 0, RF_Public|RF_Transient|RF_MarkAsNative, (EFunctionFlags)0x00040401, 0, 0, METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UFunction_UNN_Cpp_Widget_GameInventory_OnBackButtonClicked_Statics::Function_MetaDataParams), Z_Construct_UFunction_UNN_Cpp_Widget_GameInventory_OnBackButtonClicked_Statics::Function_MetaDataParams) };
+UFunction* Z_Construct_UFunction_UNN_Cpp_Widget_GameInventory_OnBackButtonClicked()
+{
+	static UFunction* ReturnFunction = nullptr;
+	if (!ReturnFunction)
+	{
+		UECodeGen_Private::ConstructUFunction(&ReturnFunction, Z_Construct_UFunction_UNN_Cpp_Widget_GameInventory_OnBackButtonClicked_Statics::FuncParams);
+	}
+	return ReturnFunction;
+}
+DEFINE_FUNCTION(UNN_Cpp_Widget_GameInventory::execOnBackButtonClicked)
+{
+	P_FINISH;
+	P_NATIVE_BEGIN;
+	P_THIS->OnBackButtonClicked();
+	P_NATIVE_END;
+}
+// End Class UNN_Cpp_Widget_GameInventory Function OnBackButtonClicked
+
 // Begin Class UNN_Cpp_Widget_GameInventory
 void UNN_Cpp_Widget_GameInventory::StaticRegisterNativesUNN_Cpp_Widget_GameInventory()
 {
+	UClass* Class = UNN_Cpp_Widget_GameInventory::StaticClass();
+	static const FNameNativePtrPair Funcs[] = {
+		{ "OnBackButtonClicked", &UNN_Cpp_Widget_GameInventory::execOnBackButtonClicked },
+	};
+	FNativeFunctionRegistrar::RegisterFunctions(Class, Funcs, UE_ARRAY_COUNT(Funcs));
 }
 IMPLEMENT_CLASS_NO_AUTO_REGISTRATION(UNN_Cpp_Widget_GameInventory);
 UClass* Z_Construct_UClass_UNN_Cpp_Widget_GameInventory_NoRegister()
@@ -35,13 +76,35 @@ struct Z_Construct_UClass_UNN_Cpp_Widget_GameInventory_Statics
 		{ "IncludePath", "Widgets/Game/NN_Cpp_Widget_GameInventory.h" },
 		{ "ModuleRelativePath", "Public/Widgets/Game/NN_Cpp_Widget_GameInventory.h" },
 	};
+	static constexpr UECodeGen_Private::FMetaDataPairParam NewProp_BackButton_MetaData[] = {
+		{ "BindWidget", "" },
+#if !UE_BUILD_SHIPPING
+		{ "Comment", "// ############### Buttons ###############\n" },
+#endif
+		{ "EditInline", "true" },
+		{ "ModuleRelativePath", "Public/Widgets/Game/NN_Cpp_Widget_GameInventory.h" },
+#if !UE_BUILD_SHIPPING
+		{ "ToolTip", "############### Buttons ###############" },
+#endif
+	};
 #endif // WITH_METADATA
+	static const UECodeGen_Private::FObjectPropertyParams NewProp_BackButton;
+	static const UECodeGen_Private::FPropertyParamsBase* const PropPointers[];
 	static UObject* (*const DependentSingletons[])();
+	static constexpr FClassFunctionLinkInfo FuncInfo[] = {
+		{ &Z_Construct_UFunction_UNN_Cpp_Widget_GameInventory_OnBackButtonClicked, "OnBackButtonClicked" }, // 1465246372
+	};
+	static_assert(UE_ARRAY_COUNT(FuncInfo) < 2048);
 	static constexpr FCppClassTypeInfoStatic StaticCppClassTypeInfo = {
 		TCppClassTypeTraits<UNN_Cpp_Widget_GameInventory>::IsAbstract,
 	};
 	static const UECodeGen_Private::FClassParams ClassParams;
 };
+const UECodeGen_Private::FObjectPropertyParams Z_Construct_UClass_UNN_Cpp_Widget_GameInventory_Statics::NewProp_BackButton = { "BackButton", nullptr, (EPropertyFlags)0x0124080000080008, UECodeGen_Private::EPropertyGenFlags::Object | UECodeGen_Private::EPropertyGenFlags::ObjectPtr, RF_Public|RF_Transient|RF_MarkAsNative, nullptr, nullptr, 1, STRUCT_OFFSET(UNN_Cpp_Widget_GameInventory, BackButton), Z_Construct_UClass_UButton_NoRegister, METADATA_PARAMS(UE_ARRAY_COUNT(NewProp_BackButton_MetaData), NewProp_BackButton_MetaData) };
+const UECodeGen_Private::FPropertyParamsBase* const Z_Construct_UClass_UNN_Cpp_Widget_GameInventory_Statics::PropPointers[] = {
+	(const UECodeGen_Private::FPropertyParamsBase*)&Z_Construct_UClass_UNN_Cpp_Widget_GameInventory_Statics::NewProp_BackButton,
+};
+static_assert(UE_ARRAY_COUNT(Z_Construct_UClass_UNN_Cpp_Widget_GameInventory_Statics::PropPointers) < 2048);
 UObject* (*const Z_Construct_UClass_UNN_Cpp_Widget_GameInventory_Statics::DependentSingletons[])() = {
 	(UObject* (*)())Z_Construct_UClass_UUserWidget,
 	(UObject* (*)())Z_Construct_UPackage__Script_NarrativeNexus,
@@ -52,12 +115,12 @@ const UECodeGen_Private::FClassParams Z_Construct_UClass_UNN_Cpp_Widget_GameInve
 	nullptr,
 	&StaticCppClassTypeInfo,
 	DependentSingletons,
-	nullptr,
-	nullptr,
+	FuncInfo,
+	Z_Construct_UClass_UNN_Cpp_Widget_GameInventory_Statics::PropPointers,
 	nullptr,
 	UE_ARRAY_COUNT(DependentSingletons),
-	0,
-	0,
+	UE_ARRAY_COUNT(FuncInfo),
+	UE_ARRAY_COUNT(Z_Construct_UClass_UNN_Cpp_Widget_GameInventory_Statics::PropPointers),
 	0,
 	0x00B010A0u,
 	METADATA_PARAMS(UE_ARRAY_COUNT(Z_Construct_UClass_UNN_Cpp_Widget_GameInventory_Statics::Class_MetaDataParams), Z_Construct_UClass_UNN_Cpp_Widget_GameInventory_Statics::Class_MetaDataParams)
@@ -83,10 +146,10 @@ UNN_Cpp_Widget_GameInventory::~UNN_Cpp_Widget_GameInventory() {}
 struct Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Game_NN_Cpp_Widget_GameInventory_h_Statics
 {
 	static constexpr FClassRegisterCompiledInInfo ClassInfo[] = {
-		{ Z_Construct_UClass_UNN_Cpp_Widget_GameInventory, UNN_Cpp_Widget_GameInventory::StaticClass, TEXT("UNN_Cpp_Widget_GameInventory"), &Z_Registration_Info_UClass_UNN_Cpp_Widget_GameInventory, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UNN_Cpp_Widget_GameInventory), 3579361605U) },
+		{ Z_Construct_UClass_UNN_Cpp_Widget_GameInventory, UNN_Cpp_Widget_GameInventory::StaticClass, TEXT("UNN_Cpp_Widget_GameInventory"), &Z_Registration_Info_UClass_UNN_Cpp_Widget_GameInventory, CONSTRUCT_RELOAD_VERSION_INFO(FClassReloadVersionInfo, sizeof(UNN_Cpp_Widget_GameInventory), 1416991448U) },
 	};
 };
-static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Game_NN_Cpp_Widget_GameInventory_h_2698961628(TEXT("/Script/NarrativeNexus"),
+static FRegisterCompiledInInfo Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Game_NN_Cpp_Widget_GameInventory_h_841369474(TEXT("/Script/NarrativeNexus"),
 	Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Game_NN_Cpp_Widget_GameInventory_h_Statics::ClassInfo, UE_ARRAY_COUNT(Z_CompiledInDeferFile_FID_NarrativeNexus_Source_NarrativeNexus_Public_Widgets_Game_NN_Cpp_Widget_GameInventory_h_Statics::ClassInfo),
 	nullptr, 0,
 	nullptr, 0);
