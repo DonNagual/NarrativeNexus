@@ -36,6 +36,19 @@ void UNN_Cpp_GPT::SendMessageToGPT(const FString& Message)
 
 		HistoryString += FString::Printf(TEXT("-- %s: %s\n"), *Role, *Content);
 	}
+	UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_GPT - ConversationHistory: %p\n%s\n"), this, *HistoryString);
+
+	// DEBUG
+	FString HistoryString;
+	for (const TSharedPtr<FJsonObject>& MessageObj : ConversationHistory)
+	{
+		FString Role, Content;
+		MessageObj->TryGetStringField(TEXT("role"), Role);
+		MessageObj->TryGetStringField(TEXT("content"), Content);
+
+		HistoryString += FString::Printf(TEXT("-- %s: %s\n"), *Role, *Content);
+	}
+	UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_GPT - ConversationHistory: %p\n%s\n"), this, *HistoryString);
 
 	UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_GPT - ConversationHistory: %p\n%s\n"), this, *HistoryString);
 
@@ -510,7 +523,7 @@ void UNN_Cpp_GPT::OnTextResponseReceived(FHttpRequestPtr Request, FHttpResponseP
 				if (MessageObject.IsValid())
 				{
 					FString Reply = (*ChoicesArray)[0]->AsObject()->GetObjectField(TEXT("message"))->GetStringField(TEXT("content"));
-					
+
 					LastResponse = Reply;
 
 					// Add ChatGPT´s reply to the conversation history
