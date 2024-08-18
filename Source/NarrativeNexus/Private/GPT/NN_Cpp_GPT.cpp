@@ -38,6 +38,9 @@ void UNN_Cpp_GPT::SendMessageToGPT(const FString& Message)
 	}
 	UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_GPT - ConversationHistory: %p\n%s\n"), this, *HistoryString);
 
+	UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_GPT - ConversationHistory: %p\n%s\n"), this, *HistoryString);
+
+
 	// Convert ConversationHistory to an array of FJsonValue
 	TArray<TSharedPtr<FJsonValue>> JsonArray;
 	for (const TSharedPtr<FJsonObject>& JsonObject : ConversationHistory)
