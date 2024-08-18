@@ -1,15 +1,12 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
+// NN_Cpp_Widget_Creator.h
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Interface/NN_Cpp_IF_WidgetController.h"
 #include "Blueprint/UserWidget.h"
+#include "Interface/NN_Cpp_IF_WidgetController.h"
 #include "NN_Cpp_Widget_Creator.generated.h"
 
-/**
- * 
- */
 UCLASS()
 class NARRATIVENEXUS_API UNN_Cpp_Widget_Creator : public UUserWidget
 {
@@ -18,11 +15,7 @@ class NARRATIVENEXUS_API UNN_Cpp_Widget_Creator : public UUserWidget
 public:
 	virtual void NativeConstruct() override;
 
-	//void ShowSubWidget(UUserWidget* SubWidget);
-	//void HideAllSubWidgets();
-
-	UPROPERTY(meta = (BindWidget))
-	class UPanelWidget* CreatorContainer;
+	// ############### Widgets ###############
 
 	UPROPERTY(meta = (BindwIDGET))
 	class UUserWidget* CreatorMenuWidget;
@@ -35,4 +28,33 @@ public:
 
 	UPROPERTY(META = (BindWidget))
 	class UUserWidget* CreatorStoryWidget;
+
+	// ############### Functions ###############
+
+	UFUNCTION()
+	virtual void ShowCreatorMenuWidget();
+
+	UFUNCTION()
+	virtual void ShowCreatorWorlWidget();
+
+	UFUNCTION()
+	virtual void ShowCreatorCharacterWidget();
+
+	UFUNCTION()
+	virtual void ShowCreatorStoryWidget();
+
+protected:
+
+	UPROPERTY(meta = (BindWidget))
+	class UPanelWidget* CreatorContainer;
+
+private:
+
+	// ############### Functions ###############
+
+	UFUNCTION()
+	void HideCreatorSubWidget(UUserWidget* SubWidget);
+
+	UFUNCTION()
+	void HideAllWidgets();
 };

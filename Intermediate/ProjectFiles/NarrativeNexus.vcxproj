@@ -261,6 +261,7 @@
     <None Include="..\..\Config\DefaultEngine.ini"/>
     <None Include="..\..\Config\DefaultGame.ini"/>
     <None Include="..\..\Config\DefaultInput.ini"/>
+    <None Include="..\..\Config\keys.txt"/>
     <None Include="..\..\Source\NarrativeNexus\NarrativeNexus.Build.cs"/>
     <ClCompile Include="..\..\Source\NarrativeNexus\NarrativeNexus.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -276,6 +277,33 @@
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\General\NN_Cpp_PlayerController.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_APIKeyLoader.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_GPT.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_GPTImageGenerator.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_GPTMessageHandler.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_GPTResponseProcessor.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_GPTSummaryGenerator.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_HTTPRequestHandler.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_JSONHandler.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\Interface\NN_Cpp_IF_GPT.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\Interface\NN_Cpp_IF_WidgetController.cpp">
@@ -311,10 +339,19 @@
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Game\NN_Cpp_Widget_GameChat.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Game\NN_Cpp_Widget_GameChatMessage.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Game\NN_Cpp_Widget_GameInventory.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Game\NN_Cpp_Widget_GameMenu.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Game\NN_Cpp_Widget_GameNavigator.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Game\NN_Cpp_Widget_GameNavigatorNode.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Main\NN_Cpp_Widget_Main.cpp">
@@ -339,6 +376,15 @@
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\General\NN_Cpp_GameModeBase.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\General\NN_Cpp_GameStateBase.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\General\NN_Cpp_PlayerController.h"/>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_APIKeyLoader.h"/>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_GPT.h"/>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_GPTImageGenerator.h"/>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_GPTMessageHandler.h"/>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_GPTResponseProcessor.h"/>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_GPTSummaryGenerator.h"/>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_HTTPRequestHandler.h"/>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_JSONHandler.h"/>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\Interface\NN_Cpp_IF_GPT.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Interface\NN_Cpp_IF_WidgetController.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\NN_Cpp_Widget_Category.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\NN_Cpp_Widget_Help.h"/>
@@ -350,8 +396,11 @@
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Creator\NN_Cpp_Widget_CreatorWorld.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Game\NN_Cpp_Widget_Game.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Game\NN_Cpp_Widget_GameChat.h"/>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Game\NN_Cpp_Widget_GameChatMessage.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Game\NN_Cpp_Widget_GameInventory.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Game\NN_Cpp_Widget_GameMenu.h"/>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Game\NN_Cpp_Widget_GameNavigator.h"/>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Game\NN_Cpp_Widget_GameNavigatorNode.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Main\NN_Cpp_Widget_Main.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Main\NN_Cpp_Widget_MainCredits.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Main\NN_Cpp_Widget_MainGuide.h"/>

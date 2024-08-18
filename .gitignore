@@ -361,3 +361,11 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# OPENAI_API_KEY
+/config/keys.txt
+
+# Ignoriere das Saved und config Verzeichnis
+Saved/
+config/
+

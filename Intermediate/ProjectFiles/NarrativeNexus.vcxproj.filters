@@ -31,6 +31,9 @@
     <None Include="..\..\Config\DefaultInput.ini">
       <Filter>Config</Filter>
     </None>
+    <None Include="..\..\Config\keys.txt">
+      <Filter>Config</Filter>
+    </None>
     <Filter Include="Source\NarrativeNexus">
       <UniqueIdentifier>{04FEA5C8-60B3-3C7D-B0FB-104FFCAD1522}</UniqueIdentifier>
     </Filter>
@@ -61,9 +64,39 @@
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\General\NN_Cpp_PlayerController.cpp">
       <Filter>Source\NarrativeNexus\Private\General</Filter>
     </ClCompile>
+    <Filter Include="Source\NarrativeNexus\Private\GPT">
+      <UniqueIdentifier>{2174FD71-3055-3363-BAA4-ACFCC21859B9}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_APIKeyLoader.cpp">
+      <Filter>Source\NarrativeNexus\Private\GPT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_GPT.cpp">
+      <Filter>Source\NarrativeNexus\Private\GPT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_GPTImageGenerator.cpp">
+      <Filter>Source\NarrativeNexus\Private\GPT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_GPTMessageHandler.cpp">
+      <Filter>Source\NarrativeNexus\Private\GPT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_GPTResponseProcessor.cpp">
+      <Filter>Source\NarrativeNexus\Private\GPT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_GPTSummaryGenerator.cpp">
+      <Filter>Source\NarrativeNexus\Private\GPT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_HTTPRequestHandler.cpp">
+      <Filter>Source\NarrativeNexus\Private\GPT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_JSONHandler.cpp">
+      <Filter>Source\NarrativeNexus\Private\GPT</Filter>
+    </ClCompile>
     <Filter Include="Source\NarrativeNexus\Private\Interface">
       <UniqueIdentifier>{304FF5E2-ACE1-333E-B089-44682F94EB20}</UniqueIdentifier>
     </Filter>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\Interface\NN_Cpp_IF_GPT.cpp">
+      <Filter>Source\NarrativeNexus\Private\Interface</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\Interface\NN_Cpp_IF_WidgetController.cpp">
       <Filter>Source\NarrativeNexus\Private\Interface</Filter>
     </ClCompile>
@@ -106,10 +139,19 @@
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Game\NN_Cpp_Widget_GameChat.cpp">
       <Filter>Source\NarrativeNexus\Private\Widgets\Game</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Game\NN_Cpp_Widget_GameChatMessage.cpp">
+      <Filter>Source\NarrativeNexus\Private\Widgets\Game</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Game\NN_Cpp_Widget_GameInventory.cpp">
       <Filter>Source\NarrativeNexus\Private\Widgets\Game</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Game\NN_Cpp_Widget_GameMenu.cpp">
+      <Filter>Source\NarrativeNexus\Private\Widgets\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Game\NN_Cpp_Widget_GameNavigator.cpp">
+      <Filter>Source\NarrativeNexus\Private\Widgets\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Game\NN_Cpp_Widget_GameNavigatorNode.cpp">
       <Filter>Source\NarrativeNexus\Private\Widgets\Game</Filter>
     </ClCompile>
     <Filter Include="Source\NarrativeNexus\Private\Widgets\Main">
@@ -151,9 +193,39 @@
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\General\NN_Cpp_PlayerController.h">
       <Filter>Source\NarrativeNexus\Public\General</Filter>
     </ClInclude>
+    <Filter Include="Source\NarrativeNexus\Public\GPT">
+      <UniqueIdentifier>{CD02E1B2-7EC3-317E-9E14-B8FBA0AB9F92}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_APIKeyLoader.h">
+      <Filter>Source\NarrativeNexus\Public\GPT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_GPT.h">
+      <Filter>Source\NarrativeNexus\Public\GPT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_GPTImageGenerator.h">
+      <Filter>Source\NarrativeNexus\Public\GPT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_GPTMessageHandler.h">
+      <Filter>Source\NarrativeNexus\Public\GPT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_GPTResponseProcessor.h">
+      <Filter>Source\NarrativeNexus\Public\GPT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_GPTSummaryGenerator.h">
+      <Filter>Source\NarrativeNexus\Public\GPT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_HTTPRequestHandler.h">
+      <Filter>Source\NarrativeNexus\Public\GPT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_JSONHandler.h">
+      <Filter>Source\NarrativeNexus\Public\GPT</Filter>
+    </ClInclude>
     <Filter Include="Source\NarrativeNexus\Public\Interface">
       <UniqueIdentifier>{38B8C82D-9DB4-3DD9-AB84-2B4EE655B2DE}</UniqueIdentifier>
     </Filter>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\Interface\NN_Cpp_IF_GPT.h">
+      <Filter>Source\NarrativeNexus\Public\Interface</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Interface\NN_Cpp_IF_WidgetController.h">
       <Filter>Source\NarrativeNexus\Public\Interface</Filter>
     </ClInclude>
@@ -196,10 +268,19 @@
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Game\NN_Cpp_Widget_GameChat.h">
       <Filter>Source\NarrativeNexus\Public\Widgets\Game</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Game\NN_Cpp_Widget_GameChatMessage.h">
+      <Filter>Source\NarrativeNexus\Public\Widgets\Game</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Game\NN_Cpp_Widget_GameInventory.h">
       <Filter>Source\NarrativeNexus\Public\Widgets\Game</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Game\NN_Cpp_Widget_GameMenu.h">
+      <Filter>Source\NarrativeNexus\Public\Widgets\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Game\NN_Cpp_Widget_GameNavigator.h">
+      <Filter>Source\NarrativeNexus\Public\Widgets\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\Game\NN_Cpp_Widget_GameNavigatorNode.h">
       <Filter>Source\NarrativeNexus\Public\Widgets\Game</Filter>
     </ClInclude>
     <Filter Include="Source\NarrativeNexus\Public\Widgets\Main">

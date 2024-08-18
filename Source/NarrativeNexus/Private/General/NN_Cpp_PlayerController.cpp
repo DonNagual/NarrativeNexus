@@ -1,5 +1,5 @@
-// Fill out your copyright notice in the Description page of Project Settings.
 // NN_Cpp_PlayerController.cpp
+
 #include "General/NN_Cpp_PlayerController.h"
 
 void ANN_Cpp_PlayerController::BeginPlay()
@@ -16,6 +16,60 @@ void ANN_Cpp_PlayerController::InitializeWidgets()
 	{
 		Widget->AddToViewport();
 		CategoryWidget = Cast<UNN_Cpp_Widget_Category>(Widget);
+		MainWidget = Cast<UNN_Cpp_Widget_Main>(CategoryWidget->MainWidget);
+		CreatorWidget = Cast<UNN_Cpp_Widget_Creator>(CategoryWidget->CreatorWidget);
+		GameWidget = Cast<UNN_Cpp_Widget_Game>(CategoryWidget->GameWidget);
+		MainOptionsWidget = Cast<UNN_Cpp_Widget_MainOptions>(MainWidget->MainOptionsWidget);
+		GameNavigatorWidget = Cast<UNN_Cpp_Widget_GameNavigator>(GameWidget->GameNavigatorWidget);
+		GameChatWidget = Cast<UNN_Cpp_Widget_GameChat>(GameWidget->GameChatWidget);
+	}
+}
+
+void ANN_Cpp_PlayerController::InitializeGPT()
+{
+	GPTInstance = NewObject<UNN_Cpp_GPT>(this);
+
+	// DEBUG
+	if (GPTInstance)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController - InitializeGPTInstance: %p\n"), GPTInstance);
+	}
+	else
+	{
+		UE_LOG(LogTemp, Error, TEXT("NN_Cpp_PlayerController: Failed to create GPTInstance"));
+	}
+}
+
+void ANN_Cpp_PlayerController::DestroyGPT()
+{
+	if (GPTInstance)
+	{
+		GPTInstance->ConditionalBeginDestroy();
+		GPTInstance = nullptr;
+		GameChatWidget->NativeDestruct();
+		// DEBUG
+		UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController - DestroyGPTInstance: %p\n"), GPTInstance);
+	}
+}
+
+UNN_Cpp_GPT* ANN_Cpp_PlayerController::GetGPT() const
+{
+	if (!GPTInstance)
+	{
+		UE_LOG(LogTemp, Error, TEXT("NN_Cpp_PlayerController: GPTInstance is nullptr in GetGPT()"));
+	}
+	return GPTInstance;
+}
+
+void ANN_Cpp_PlayerController::SetGPT(UNN_Cpp_GPT* InGPT)
+{
+	if (GameChatWidget)
+	{
+		GameChatWidget->SetGPT(InGPT);
+	}
+	else
+	{
+		UE_LOG(LogTemp, Error, TEXT("NN_Cpp_PlayerController: GameChatWidget is nullptr in SetGPT()"));
 	}
 }
 
@@ -35,12 +89,105 @@ void ANN_Cpp_PlayerController::HideWidget(UUserWidget* SubWidget)
 	}
 }
 
-void ANN_Cpp_PlayerController::ShowMainMenuViaInterface()
+void ANN_Cpp_PlayerController::OnWidgetVisibilityChangedViaInterface()
 {
-	(Cast<UNN_Cpp_Widget_Main>(CategoryWidget->MainWidget))->ShowMainMenuWidget();
+	GameNavigatorWidget->OnWidgetVisibilityChanged();
 }
 
-void ANN_Cpp_PlayerController::ShowMainGuideViaInterface()
+// ############### Main ###############
+
+void ANN_Cpp_PlayerController::ShowMainMenuWidgetViaInterface()
 {
-	(Cast<UNN_Cpp_Widget_Main>(CategoryWidget->MainWidget))->ShowMainGuideWidget();
+	MainWidget->ShowMainMenuWidget();
+}
+
+void ANN_Cpp_PlayerController::ShowMainGuideWidgetViaInterface()
+{
+	MainWidget->ShowMainGuideWidget();
+}
+
+void ANN_Cpp_PlayerController::ShowMainOptionsWidgetViaInterface()
+{
+	MainWidget->ShowMainOptionsWidget();
+}
+
+void ANN_Cpp_PlayerController::ShowMainTutorialWidgetViaInterface()
+{
+	MainWidget->ShowMainTutorialWidget();
+}
+
+void ANN_Cpp_PlayerController::ShowMainCreditsWidgetViaInterface()
+{
+	MainWidget->ShowMainCreditsWidget();
+}
+
+// ############### Creator ###############
+
+void ANN_Cpp_PlayerController::ShowCreatorMenuWidgetViaInterface()
+{
+	CreatorWidget->ShowCreatorMenuWidget();
+}
+
+void ANN_Cpp_PlayerController::ShowCreatorWorlWidgetViaInterface()
+{
+	CreatorWidget->ShowCreatorWorlWidget();
+}
+
+void ANN_Cpp_PlayerController::ShowCreatorCharacterWidgetViaInterface()
+{
+	CreatorWidget->ShowCreatorCharacterWidget();
+}
+
+void ANN_Cpp_PlayerController::ShowCreatorStoryWidgetViaInterface()
+{
+	CreatorWidget->ShowCreatorStoryWidget();
+}
+
+// ############### Game ###############
+
+void ANN_Cpp_PlayerController::ShowGameMenuWidgetViaInterface()
+{
+	GameWidget->ShowGameMenuWidget();
+}
+
+void ANN_Cpp_PlayerController::ShowGameNavigatorWidgetViaInterface()
+{
+	GameWidget->ShowGameNavigatorWidget();
+}
+
+void ANN_Cpp_PlayerController::ShowGameChatWidgetViaInterface()
+{
+	GameWidget->ShowGameChatWidget();
+}
+
+void ANN_Cpp_PlayerController::ShowGameInventoryWidgetViaInterface()
+{
+	GameWidget->ShowGameInventoryWidget();
+}
+
+bool ANN_Cpp_PlayerController::IsSummaryGenerationEnabledViaInterface() const
+{
+	if (MainOptionsWidget)
+	{
+		return MainOptionsWidget->IsSummaryGenerationEnabled();
+	}
+	return false;
+}
+
+bool ANN_Cpp_PlayerController::IsImageGenerationEnabledViaInterface() const
+{
+	if (MainOptionsWidget)
+	{
+		return MainOptionsWidget->IsImageGenerationEnabled();
+	}
+	return false;
+}
+
+int32 ANN_Cpp_PlayerController::GetCurrentMessageNumberViaInterface() const
+{
+	if (MainOptionsWidget)
+	{
+		return MainOptionsWidget->GetCurrentMessageNumber();
+	}
+	return 4;
 }
