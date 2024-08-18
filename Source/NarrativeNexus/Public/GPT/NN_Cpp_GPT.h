@@ -20,13 +20,6 @@ public:
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnGPTResponseReceived, const FString&, Response);
 	FOnGPTResponseReceived OnGPTResponseReceived;
 
-	// The response received delegate
-	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnGPTResponseReceived, const FString&, Response);
-	FOnGPTResponseReceived OnGPTResponseReceived;
-
-	// Static method to create an instance of the GPT
-	static UNN_Cpp_GPT* CreateGPT(UObject* Outer);
-
 	void SendMessageToGPT(const FString& Message);
 	void ResetConversation();
 	FString GetLastResponse() const;
