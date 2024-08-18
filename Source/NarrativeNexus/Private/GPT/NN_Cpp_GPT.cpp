@@ -38,21 +38,6 @@ void UNN_Cpp_GPT::SendMessageToGPT(const FString& Message)
 	}
 	UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_GPT - ConversationHistory: %p\n%s\n"), this, *HistoryString);
 
-	// DEBUG
-	FString HistoryString;
-	for (const TSharedPtr<FJsonObject>& MessageObj : ConversationHistory)
-	{
-		FString Role, Content;
-		MessageObj->TryGetStringField(TEXT("role"), Role);
-		MessageObj->TryGetStringField(TEXT("content"), Content);
-
-		HistoryString += FString::Printf(TEXT("-- %s: %s\n"), *Role, *Content);
-	}
-	UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_GPT - ConversationHistory: %p\n%s\n"), this, *HistoryString);
-
-	UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_GPT - ConversationHistory: %p\n%s\n"), this, *HistoryString);
-
-
 	// Convert ConversationHistory to an array of FJsonValue
 	TArray<TSharedPtr<FJsonValue>> JsonArray;
 	for (const TSharedPtr<FJsonObject>& JsonObject : ConversationHistory)
