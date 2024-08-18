@@ -367,5 +367,6 @@ FodyWeavers.xsd
 
 # Ignoriere das Saved und config Verzeichnis
 Saved/
-config/
-
+Config/
+Intermediate/
+Binaries/
