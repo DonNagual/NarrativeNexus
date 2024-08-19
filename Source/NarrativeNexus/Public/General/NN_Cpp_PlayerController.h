@@ -65,6 +65,10 @@ public:
 	virtual bool IsImageGenerationEnabledViaInterface() const override;
 	virtual int32 GetCurrentMessageNumberViaInterface() const override;
 
+	// ############### GameNavigator ###############
+
+	virtual void RemoveAllNodesFromScrollBoxViaInterface() override;
+
 protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "UI Category")
