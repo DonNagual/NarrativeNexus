@@ -191,3 +191,8 @@ int32 ANN_Cpp_PlayerController::GetCurrentMessageNumberViaInterface() const
 	}
 	return 4;
 }
+
+void ANN_Cpp_PlayerController::RemoveAllNodesFromScrollBoxViaInterface()
+{
+	GameNavigatorWidget->RemoveAllNodesFromScrollBox();
+}

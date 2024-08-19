@@ -178,6 +178,8 @@ void UNN_Cpp_Widget_GameChat::OnBackButtonClicked()
 		}
 		Interface->HideWidget(this);
 		Interface->ShowGameMenuWidgetViaInterface();
+
+		Interface->RemoveAllNodesFromScrollBoxViaInterface();
 	}
 }
 
