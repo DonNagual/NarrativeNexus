@@ -24,11 +24,7 @@ void UNN_Cpp_Widget_GameChat::NativeDestruct()
 	if (GPT)
 	{
 		GPT->OnGPTResponseReceived.RemoveAll(this);
-		GPT = nullptr;
-
-		UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_Widget_GameChat - DestructGPT: %p\n"), GPT);
 	}
-
 	Super::NativeDestruct();
 }
 
@@ -38,8 +34,6 @@ void UNN_Cpp_Widget_GameChat::SetGPT(UNN_Cpp_GPT* InGPT)
 	if (GPT)
 	{
 		GPT->OnGPTResponseReceived.AddDynamic(this, &UNN_Cpp_Widget_GameChat::HandleChatGPTResponse);
-		// DEBUG
-		UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_Widget_GameChat - ConstructGPT: %p\n"), InGPT);
 	}
 	else
 	{
@@ -177,9 +171,9 @@ void UNN_Cpp_Widget_GameChat::OnBackButtonClicked()
 			GPTInterface->DestroyGPT();
 		}
 		Interface->HideWidget(this);
-		Interface->ShowGameMenuWidgetViaInterface();
+		Interface->ShowGameNavigatorWidgetViaInterface();
+		Interface->OnWidgetVisibilityChangedViaInterface();
 
-		Interface->RemoveAllNodesFromScrollBoxViaInterface();
 	}
 }
 

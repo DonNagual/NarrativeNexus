@@ -22,6 +22,7 @@ void UNN_Cpp_Widget_GameNavigatorNode::OnDescriptionButtonClicked()
 
 			if (auto* PCInterface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
 			{	
+				PCInterface->HideWidget(this);
 				PCInterface->ShowGameChatWidgetViaInterface();
 			}
 		}

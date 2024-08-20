@@ -78,6 +78,9 @@ private:
 	// ############### GPT ###############
 	UPROPERTY()
 	UNN_Cpp_GPT* GPTInstance;
+
+	UPROPERTY()
+	UNN_Cpp_APIKeyLoader* APIKeyInstance;
 	
 	// ############### Widgets ###############
 

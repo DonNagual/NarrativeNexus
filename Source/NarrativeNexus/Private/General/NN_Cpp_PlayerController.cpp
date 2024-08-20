@@ -28,15 +28,27 @@ void ANN_Cpp_PlayerController::InitializeWidgets()
 void ANN_Cpp_PlayerController::InitializeGPT()
 {
 	GPTInstance = NewObject<UNN_Cpp_GPT>(this);
+	APIKeyInstance = NewObject<UNN_Cpp_APIKeyLoader>(this);
+	UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController - InitializeGPTInstance: %p\n"), GPTInstance);
+	UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController - InitializeAPIKeyInstance: %p\n"), APIKeyInstance);
 
-	// DEBUG
-	if (GPTInstance)
+
+	if (GPTInstance && APIKeyInstance)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController - InitializeGPTInstance: %p\n"), GPTInstance);
+		// Load the API key once and pass it to the GPT instance
+		FString ApiKey = APIKeyInstance->LoadAPIKey();
+		if (!ApiKey.IsEmpty())
+		{
+			GPTInstance->SetAPIKey(ApiKey);
+		}
+		else
+		{
+			UE_LOG(LogTemp, Error, TEXT("Failed to load API key in InitializeGPT"));
+		}
 	}
 	else
 	{
-		UE_LOG(LogTemp, Error, TEXT("NN_Cpp_PlayerController: Failed to create GPTInstance"));
+		UE_LOG(LogTemp, Error, TEXT("NN_Cpp_PlayerController: Failed to create GPTInstance or APIKeyLoaderInstance"));
 	}
 }
 
@@ -44,10 +56,11 @@ void ANN_Cpp_PlayerController::DestroyGPT()
 {
 	if (GPTInstance)
 	{
-		GPTInstance->ConditionalBeginDestroy();
-		GPTInstance = nullptr;
 		GameChatWidget->NativeDestruct();
-		// DEBUG
+		GPTInstance->ConditionalBeginDestroy();
+		APIKeyInstance = nullptr;
+		GPTInstance = nullptr;
+		UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController - DestroyAPIKeyInstance: %p\n"), APIKeyInstance);
 		UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController - DestroyGPTInstance: %p\n"), GPTInstance);
 	}
 }
