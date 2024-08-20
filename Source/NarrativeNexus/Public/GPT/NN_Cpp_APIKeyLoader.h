@@ -9,8 +9,13 @@ UCLASS()
 class NARRATIVENEXUS_API UNN_Cpp_APIKeyLoader : public UObject
 {
 	GENERATED_BODY()
-	
+
 public:
-	FString LoadAPIKey(const FString& FilePath) const;
+
+	FString LoadAPIKey() const;
+
+private:
+
+	FString LoadAPIKeyFromFile(const FString& FilePath) const;
 
 };

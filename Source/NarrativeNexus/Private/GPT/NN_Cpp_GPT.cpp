@@ -2,6 +2,11 @@
 
 #include "GPT/NN_Cpp_GPT.h"
 
+void UNN_Cpp_GPT::SetAPIKey(const FString& InApiKey)
+{
+	ApiKey = InApiKey;
+}
+
 // ######################### Send Message To ChatGPT #########################
 
 void UNN_Cpp_GPT::SendMessageToGPT(const FString& Message)
@@ -60,17 +65,14 @@ void UNN_Cpp_GPT::SendMessageToGPT(const FString& Message)
 	Request->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
 
 	// Load the API key from the file
-	FString KeyFilePath = FPaths::ProjectDir() + TEXT("config/keys.txt");
-	FString ApiKey;
-	if (FFileHelper::LoadFileToString(ApiKey, *KeyFilePath))
+	if (!ApiKey.IsEmpty())
 	{
-		// Trim the API key to remove any newline characters
-		ApiKey = ApiKey.TrimStartAndEnd();
+		UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_GPT - ApiKey: %p\n"), *ApiKey);
 		Request->SetHeader(TEXT("Authorization"), FString::Printf(TEXT("Bearer %s"), *ApiKey));
 	}
 	else
 	{
-		UE_LOG(LogTemp, Error, TEXT("Failed to load API key from file"));
+		UE_LOG(LogTemp, Error, TEXT("API key is empty in SendMessageToGPT"));
 		return;
 	}
 
@@ -88,7 +90,6 @@ void UNN_Cpp_GPT::SendMessageToGPT(const FString& Message)
 	Request->ProcessRequest();
 }
 
-
 // ######################### Generate Short Summary From Conversation #########################
 
 void UNN_Cpp_GPT::GenerateShortSummaryFromConversation(const FString& Summary, TFunction<void(const FString&)> OnShortSummaryGenerated)
@@ -101,17 +102,15 @@ void UNN_Cpp_GPT::GenerateShortSummaryFromConversation(const FString& Summary, T
 	Request->SetVerb(TEXT("POST"));
 	Request->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
 
-	FString KeyFilePath = FPaths::ProjectDir() + TEXT("config/keys.txt");
-	FString ApiKey;
-	if (FFileHelper::LoadFileToString(ApiKey, *KeyFilePath))
+	// Load the API key from the file
+	if (!ApiKey.IsEmpty())
 	{
-		// Trim the API key to remove any newline characters
-		ApiKey = ApiKey.TrimStartAndEnd();
+		UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_GPT - ApiKey: %p\n"), *ApiKey);
 		Request->SetHeader(TEXT("Authorization"), FString::Printf(TEXT("Bearer %s"), *ApiKey));
 	}
 	else
 	{
-		UE_LOG(LogTemp, Error, TEXT("Failed to load API key from file"));
+		UE_LOG(LogTemp, Error, TEXT("API key is empty in GenerateShortSummaryFromConversation"));
 		return;
 	}
 
@@ -198,17 +197,15 @@ void UNN_Cpp_GPT::GenerateMaxSummaryFromConversation(const FString& Summary, TFu
 	Request->SetVerb(TEXT("POST"));
 	Request->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
 
-	FString KeyFilePath = FPaths::ProjectDir() + TEXT("config/keys.txt");
-	FString ApiKey;
-	if (FFileHelper::LoadFileToString(ApiKey, *KeyFilePath))
+	// Load the API key from the file
+	if (!ApiKey.IsEmpty())
 	{
-		// Trim the API key to remove any newline characters
-		ApiKey = ApiKey.TrimStartAndEnd();
+		UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_GPT - ApiKey: %p\n"), *ApiKey);
 		Request->SetHeader(TEXT("Authorization"), FString::Printf(TEXT("Bearer %s"), *ApiKey));
 	}
 	else
 	{
-		UE_LOG(LogTemp, Error, TEXT("Failed to load API key from file"));
+		UE_LOG(LogTemp, Error, TEXT("API key is empty in GenerateMaxtSummaryFromConversation"));
 		return;
 	}
 
@@ -295,17 +292,15 @@ void UNN_Cpp_GPT::GenerateImageSummaryFromConversation(const FString& Summary, T
 	Request->SetVerb(TEXT("POST"));
 	Request->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
 
-	FString KeyFilePath = FPaths::ProjectDir() + TEXT("config/keys.txt");
-	FString ApiKey;
-	if (FFileHelper::LoadFileToString(ApiKey, *KeyFilePath))
+	// Load the API key from the file
+	if (!ApiKey.IsEmpty())
 	{
-		// Trim the API key to remove any newline characters
-		ApiKey = ApiKey.TrimStartAndEnd();
+		UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_GPT - ApiKey: %p\n"), *ApiKey);
 		Request->SetHeader(TEXT("Authorization"), FString::Printf(TEXT("Bearer %s"), *ApiKey));
 	}
 	else
 	{
-		UE_LOG(LogTemp, Error, TEXT("Failed to load API key from file"));
+		UE_LOG(LogTemp, Error, TEXT("API key is empty in GenerateImageSummaryFromConversation"));
 		return;
 	}
 
@@ -394,17 +389,14 @@ void UNN_Cpp_GPT::GenerateChatImageFromConversation(const FString& Summary, TFun
 	Request->SetHeader(TEXT("Content-Type"), TEXT("application/json"));
 
 	// Load the API key from the file
-	FString KeyFilePath = FPaths::ProjectDir() + TEXT("config/keys.txt");
-	FString ApiKey;
-	if (FFileHelper::LoadFileToString(ApiKey, *KeyFilePath))
+	if (!ApiKey.IsEmpty())
 	{
-		// Trim the API key to remove any newline characters
-		ApiKey = ApiKey.TrimStartAndEnd();
+		UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_GPT - ApiKey: %p\n"), *ApiKey);
 		Request->SetHeader(TEXT("Authorization"), FString::Printf(TEXT("Bearer %s"), *ApiKey));
 	}
 	else
 	{
-		UE_LOG(LogTemp, Error, TEXT("Failed to load API key from file"));
+		UE_LOG(LogTemp, Error, TEXT("API key is empty in GenerateImageFromConversation"));
 		return;
 	}
 

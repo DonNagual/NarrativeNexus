@@ -6,6 +6,7 @@
 #include "Misc/Base64.h"
 #include "ImageUtils.h"
 #include "Http.h"
+#include "GPT/NN_Cpp_APIKeyLoader.h"
 #include "Delegates/DelegateCombinations.h"
 #include "NN_Cpp_GPT.generated.h"
 
@@ -20,6 +21,7 @@ public:
 	DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnGPTResponseReceived, const FString&, Response);
 	FOnGPTResponseReceived OnGPTResponseReceived;
 
+	void SetAPIKey(const FString& InApiKey);
 	void SendMessageToGPT(const FString& Message);
 	void ResetConversation();
 	FString GetLastResponse() const;
@@ -40,4 +42,6 @@ private:
 
 	// Store the entire conversation history
 	TArray<TSharedPtr<FJsonObject>> ConversationHistory;
+
+	FString ApiKey;
 };

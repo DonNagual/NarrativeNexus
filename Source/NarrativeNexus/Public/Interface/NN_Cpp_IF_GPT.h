@@ -18,8 +18,7 @@ class NARRATIVENEXUS_API INN_Cpp_IF_GPT
 {
 	GENERATED_BODY()
 
-public:
-		
+public:	
 	virtual void InitializeGPT() = 0;
 	virtual void DestroyGPT() = 0;
 	virtual class UNN_Cpp_GPT* GetGPT() const = 0;
