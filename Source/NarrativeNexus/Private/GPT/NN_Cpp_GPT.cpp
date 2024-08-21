@@ -7,10 +7,21 @@ void UNN_Cpp_GPT::SetAPIKey(const FString& InApiKey)
 	ApiKey = InApiKey;
 }
 
+void UNN_Cpp_GPT::SetJSONHandler(UNN_Cpp_JSONHandler* InJSONHandler)
+{
+	JSONHandlerInstance = InJSONHandler;
+}
+
 // ######################### Send Message To ChatGPT #########################
 
 void UNN_Cpp_GPT::SendMessageToGPT(const FString& Message)
 {
+	if (!JSONHandlerInstance)
+	{
+		UE_LOG(LogTemp, Error, TEXT("JSONHandlerInstance is nullptr in SendMessageToGPT"));
+		return;
+	}
+
 	// Validate the input message
 	if (Message.IsEmpty())
 	{
@@ -54,7 +65,6 @@ void UNN_Cpp_GPT::SendMessageToGPT(const FString& Message)
 	TSharedPtr<FJsonObject> InstructionMessageObject = MakeShareable(new FJsonObject());
 	InstructionMessageObject->SetStringField(TEXT("role"), TEXT("system"));
 	InstructionMessageObject->SetStringField(TEXT("content"), TEXT("Bitte begrenzen Sie die Antwort auf maximal 1000 Zeichen."));
-
 	JsonArray.Add(MakeShareable(new FJsonValueObject(InstructionMessageObject)));
 
 	// Create the HTTP request
@@ -77,14 +87,12 @@ void UNN_Cpp_GPT::SendMessageToGPT(const FString& Message)
 	}
 
 	// Create the JSON payload
-	TSharedPtr<FJsonObject> JsonPayload = MakeShareable(new FJsonObject());
-	JsonPayload->SetStringField(TEXT("model"), TEXT("gpt-4o-mini"));
-	JsonPayload->SetArrayField(TEXT("messages"), JsonArray);
-	JsonPayload->SetNumberField(TEXT("max_tokens"), 250);
+	TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject());
+	JsonObject->SetStringField(TEXT("model"), TEXT("gpt-4o-mini"));
+	JsonObject->SetArrayField(TEXT("messages"), JsonArray);
+	JsonObject->SetNumberField(TEXT("max_tokens"), 250);
 
-	FString JsonString;
-	TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&JsonString);
-	FJsonSerializer::Serialize(JsonPayload.ToSharedRef(), Writer);
+	FString JsonString = JSONHandlerInstance->SerializeJSON(JsonObject);
 
 	Request->SetContentAsString(JsonString);
 	Request->ProcessRequest();
@@ -133,9 +141,7 @@ void UNN_Cpp_GPT::GenerateShortSummaryFromConversation(const FString& Summary, T
 	JsonObject->SetArrayField(TEXT("messages"), MessagesArray);
 	JsonObject->SetNumberField(TEXT("max_tokens"), 150);
 
-	FString JsonString;
-	TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&JsonString);
-	FJsonSerializer::Serialize(JsonObject.ToSharedRef(), Writer);
+	FString JsonString = JSONHandlerInstance->SerializeJSON(JsonObject);
 
 	Request->SetContentAsString(JsonString);
 	Request->OnProcessRequestComplete().BindLambda([OnShortSummaryGenerated](FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful)
@@ -228,9 +234,7 @@ void UNN_Cpp_GPT::GenerateMaxSummaryFromConversation(const FString& Summary, TFu
 	JsonObject->SetArrayField(TEXT("messages"), MessagesArray);
 	JsonObject->SetNumberField(TEXT("max_tokens"), 150);
 
-	FString JsonString;
-	TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&JsonString);
-	FJsonSerializer::Serialize(JsonObject.ToSharedRef(), Writer);
+	FString JsonString = JSONHandlerInstance->SerializeJSON(JsonObject);
 
 	Request->SetContentAsString(JsonString);
 	Request->OnProcessRequestComplete().BindLambda([OnMaxSummaryGenerated](FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful)
@@ -323,9 +327,7 @@ void UNN_Cpp_GPT::GenerateImageSummaryFromConversation(const FString& Summary, T
 	JsonObject->SetArrayField(TEXT("messages"), MessagesArray);
 	JsonObject->SetNumberField(TEXT("max_tokens"), 150);
 
-	FString JsonString;
-	TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&JsonString);
-	FJsonSerializer::Serialize(JsonObject.ToSharedRef(), Writer);
+	FString JsonString = JSONHandlerInstance->SerializeJSON(JsonObject);
 
 	Request->SetContentAsString(JsonString);
 	Request->OnProcessRequestComplete().BindLambda([OnImageSummaryGenerated](FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful)
@@ -407,9 +409,7 @@ void UNN_Cpp_GPT::GenerateChatImageFromConversation(const FString& Summary, TFun
 	JsonObject->SetStringField(TEXT("size"), TEXT("512x512"));
 	JsonObject->SetStringField(TEXT("response_format"), TEXT("b64_json"));
 
-	FString JsonString;
-	TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&JsonString);
-	FJsonSerializer::Serialize(JsonObject.ToSharedRef(), Writer);
+	FString JsonString = JSONHandlerInstance->SerializeJSON(JsonObject);
 
 	Request->SetContentAsString(JsonString);
 	Request->ProcessRequest();
@@ -488,10 +488,9 @@ void UNN_Cpp_GPT::OnTextResponseReceived(FHttpRequestPtr Request, FHttpResponseP
 		FString ResponseString = Response->GetContentAsString();
 		//UE_LOG(LogTemp, Log, TEXT("Response: %s"), *ResponseString);
 
-		TSharedPtr<FJsonObject> JsonObject;
-		TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(ResponseString);
+		TSharedPtr<FJsonObject> JsonObject = JSONHandlerInstance->DeserializeJSON(ResponseString);
 
-		if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
+		if (JsonObject.IsValid())
 		{
 			const TArray<TSharedPtr<FJsonValue>>* ChoicesArray;
 			if (JsonObject->TryGetArrayField(TEXT("choices"), ChoicesArray) && ChoicesArray != nullptr && ChoicesArray->Num() > 0)
