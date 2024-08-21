@@ -35,7 +35,6 @@ public:
 
 	virtual void ShowWidget(UUserWidget* SubWidget) override;
 	virtual void HideWidget(UUserWidget* SubWidget) override;
-	virtual void OnWidgetVisibilityChangedViaInterface() override;
 
 	// ############### Main ###############
 
@@ -68,6 +67,11 @@ public:
 	// ############### GameNavigator ###############
 
 	virtual void RemoveAllNodesFromScrollBoxViaInterface() override;
+	virtual void OnGameNavigatorWidgetVisibilityChangedViaInterface() override;
+
+	// ############### GameChat ###############
+
+	virtual void RemoveAllGPTMessagesFromScrollBoxViaInterface() override;
 
 protected:
 

@@ -102,9 +102,14 @@ void ANN_Cpp_PlayerController::HideWidget(UUserWidget* SubWidget)
 	}
 }
 
-void ANN_Cpp_PlayerController::OnWidgetVisibilityChangedViaInterface()
+void ANN_Cpp_PlayerController::OnGameNavigatorWidgetVisibilityChangedViaInterface()
 {
-	GameNavigatorWidget->OnWidgetVisibilityChanged();
+	GameNavigatorWidget->OnGameNavigatorWidgetVisibilityChanged();
+}
+
+void ANN_Cpp_PlayerController::RemoveAllGPTMessagesFromScrollBoxViaInterface()
+{
+	GameChatWidget->RemoveAllGPTMessagesFromScrollBox();
 }
 
 // ############### Main ###############

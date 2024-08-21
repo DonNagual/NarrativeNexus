@@ -12,7 +12,7 @@ void UNN_Cpp_Widget_GameNavigator::NativeConstruct()
 	AcceptButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameNavigator::OnAcceptButtonClicked);
 }
 
-void UNN_Cpp_Widget_GameNavigator::OnWidgetVisibilityChanged()
+void UNN_Cpp_Widget_GameNavigator::OnGameNavigatorWidgetVisibilityChanged()
 {
 	if (this->IsVisible())
 	{
