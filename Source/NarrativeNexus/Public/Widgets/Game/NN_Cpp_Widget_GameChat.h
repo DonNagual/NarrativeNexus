@@ -25,6 +25,9 @@ public:
 
 	void SetGPT(UNN_Cpp_GPT* InGPT);
 
+	UFUNCTION()
+	void RemoveAllGPTMessagesFromScrollBox();
+
 protected:
 
 	// ############### Buttons ###############
@@ -139,7 +142,7 @@ private:
 
 	// Functions for remove messages at the chat
 	UFUNCTION()
-	void RemoveLastChatGPTMessageFromScrollBox();
+	void RemoveLastGPTMessageFromScrollBox();
 
 	UFUNCTION()
 	void HandleChatGPTResponse(const FString& Response);

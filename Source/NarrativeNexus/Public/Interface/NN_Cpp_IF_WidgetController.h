@@ -21,7 +21,6 @@ public:
 
 	virtual void ShowWidget(UUserWidget* SubWidget) = 0;
 	virtual void HideWidget(UUserWidget* SubWidget) = 0;
-	virtual void OnWidgetVisibilityChangedViaInterface() = 0;
 
 	// ############### Main ###############
 
@@ -54,5 +53,10 @@ public:
 	// ############### GameNavigator ###############
 	
 	virtual void RemoveAllNodesFromScrollBoxViaInterface() = 0;
+	virtual void OnGameNavigatorWidgetVisibilityChangedViaInterface() = 0;
 
+	// ############### GameChat ###############
+
+	virtual void RemoveAllGPTMessagesFromScrollBoxViaInterface() = 0;
+	
 };

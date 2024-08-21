@@ -23,7 +23,7 @@ public:
 
 	//virtual void OnWidgetVisibilityChanged(ESlateVisibility OldVisibility, ESlateVisibility NewVisibility) override;
 	UFUNCTION()
-	void OnWidgetVisibilityChanged();
+	void OnGameNavigatorWidgetVisibilityChanged();
 
 	UFUNCTION()
 	void RemoveAllNodesFromScrollBox();

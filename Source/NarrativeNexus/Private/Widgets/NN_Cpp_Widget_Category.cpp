@@ -43,6 +43,7 @@ void UNN_Cpp_Widget_Category::OnMainButtonClicked()
 		Interface->ShowWidget(MainWidget);
 		Interface->ShowMainMenuWidgetViaInterface();
 		Interface->RemoveAllNodesFromScrollBoxViaInterface();
+		Interface->RemoveAllGPTMessagesFromScrollBoxViaInterface();
 	}
 }
 
@@ -54,6 +55,7 @@ void UNN_Cpp_Widget_Category::OnGameButtonClicked()
 		Interface->ShowWidget(GameWidget);
 		Interface->ShowGameMenuWidgetViaInterface();
 		Interface->RemoveAllNodesFromScrollBoxViaInterface();
+		Interface->RemoveAllGPTMessagesFromScrollBoxViaInterface();
 	}
 }
 
@@ -65,6 +67,7 @@ void UNN_Cpp_Widget_Category::OnCreatorButtonClicked()
 		Interface->ShowWidget(CreatorWidget);
 		Interface->ShowCreatorMenuWidgetViaInterface();
 		Interface->RemoveAllNodesFromScrollBoxViaInterface();
+		Interface->RemoveAllGPTMessagesFromScrollBoxViaInterface();
 	}
 }
 

@@ -110,7 +110,7 @@ void UNN_Cpp_Widget_GameChat::AddMessageToChat(const FString& Author, const FStr
 	}
 }
 
-void UNN_Cpp_Widget_GameChat::RemoveLastChatGPTMessageFromScrollBox()
+void UNN_Cpp_Widget_GameChat::RemoveLastGPTMessageFromScrollBox()
 {
 	if (MessageScrollBox)
 	{
@@ -133,6 +133,11 @@ void UNN_Cpp_Widget_GameChat::RemoveLastChatGPTMessageFromScrollBox()
 			}
 		}
 	}
+}
+
+void UNN_Cpp_Widget_GameChat::RemoveAllGPTMessagesFromScrollBox()
+{
+	MessageScrollBox->ClearChildren();
 }
 
 // ############### Button - Functions ###############
@@ -164,6 +169,8 @@ void UNN_Cpp_Widget_GameChat::OnSendButtomClicked()
 
 void UNN_Cpp_Widget_GameChat::OnBackButtonClicked()
 {
+	RemoveAllGPTMessagesFromScrollBox();
+
 	if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
 	{
 		if (auto* GPTInterface = Cast<INN_Cpp_IF_GPT>(GetWorld()->GetFirstPlayerController()))
@@ -172,7 +179,7 @@ void UNN_Cpp_Widget_GameChat::OnBackButtonClicked()
 		}
 		Interface->HideWidget(this);
 		Interface->ShowGameNavigatorWidgetViaInterface();
-		Interface->OnWidgetVisibilityChangedViaInterface();
+		Interface->OnGameNavigatorWidgetVisibilityChangedViaInterface();
 
 	}
 }
@@ -192,7 +199,7 @@ void UNN_Cpp_Widget_GameChat::OnRepeatButtonClicked()
 			MutableConversationHistory.RemoveAt(MutableConversationHistory.Num() - 1);
 
 			// Also remove the last message from GPT from the MessageScrollBox
-			RemoveLastChatGPTMessageFromScrollBox();
+			RemoveLastGPTMessageFromScrollBox();
 
 			// Resend the last message to GPT
 			FString LastUserMessage = MutableConversationHistory.Last()->GetStringField(TEXT("content"));
