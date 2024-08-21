@@ -5,6 +5,8 @@
 #include "CoreMinimal.h"
 #include "UObject/Interface.h"
 #include "GPT/NN_Cpp_GPT.h"
+//#include "GPT/NN_Cpp_APIKeyLoader.h"
+//#include "GPT/NN_Cpp_JSONHandler.h"
 #include "NN_Cpp_IF_GPT.generated.h"
 
 // This class does not need to be modified.
@@ -23,4 +25,5 @@ public:
 	virtual void DestroyGPT() = 0;
 	virtual class UNN_Cpp_GPT* GetGPT() const = 0;
 	virtual void SetGPT(UNN_Cpp_GPT* InGPT) = 0;
+	//virtual void SetJSONHandler(UNN_Cpp_JSONHandler* InJSONHandler) = 0;
 };

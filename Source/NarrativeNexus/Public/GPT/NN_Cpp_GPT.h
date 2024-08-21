@@ -6,7 +6,7 @@
 #include "Misc/Base64.h"
 #include "ImageUtils.h"
 #include "Http.h"
-#include "GPT/NN_Cpp_APIKeyLoader.h"
+#include "GPT/NN_Cpp_JSONHandler.h"
 #include "Delegates/DelegateCombinations.h"
 #include "NN_Cpp_GPT.generated.h"
 
@@ -22,6 +22,8 @@ public:
 	FOnGPTResponseReceived OnGPTResponseReceived;
 
 	void SetAPIKey(const FString& InApiKey);
+	void SetJSONHandler(UNN_Cpp_JSONHandler* InJSONHandler);
+
 	void SendMessageToGPT(const FString& Message);
 	void ResetConversation();
 	FString GetLastResponse() const;
@@ -44,4 +46,7 @@ private:
 	TArray<TSharedPtr<FJsonObject>> ConversationHistory;
 
 	FString ApiKey;
+
+	UPROPERTY()
+	UNN_Cpp_JSONHandler* JSONHandlerInstance;
 };
