@@ -15,6 +15,7 @@
 #include "Widgets/Game/NN_Cpp_Widget_GameNavigator.h"
 #include "GPT/NN_Cpp_APIKeyLoader.h"
 #include "GPT/NN_Cpp_JSONHandler.h"
+#include "GPT/NN_Cpp_HTTPRequestHandler.h"
 #include "Interface/NN_Cpp_IF_GPT.h"
 #include "Interface/NN_Cpp_IF_WidgetController.h"
 #include "NN_Cpp_PlayerController.generated.h"
@@ -90,6 +91,9 @@ private:
 
 	UPROPERTY()
 	UNN_Cpp_JSONHandler* JSONHandlerInstance;
+
+	UPROPERTY()
+	UNN_Cpp_HTTPRequestHandler* HTTPRequestHandlerInstance;
 	
 	// ############### Widgets ###############
 

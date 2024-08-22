@@ -7,6 +7,7 @@
 #include "ImageUtils.h"
 #include "Http.h"
 #include "GPT/NN_Cpp_JSONHandler.h"
+#include "GPT/NN_Cpp_HTTPRequestHandler.h"
 #include "Delegates/DelegateCombinations.h"
 #include "NN_Cpp_GPT.generated.h"
 
@@ -23,6 +24,7 @@ public:
 
 	void SetAPIKey(const FString& InApiKey);
 	void SetJSONHandler(UNN_Cpp_JSONHandler* InJSONHandler);
+	void SetHTTPRequestHandler(UNN_Cpp_HTTPRequestHandler* InHTTPRequestHandler);
 
 	void SendMessageToGPT(const FString& Message);
 	void ResetConversation();
@@ -49,4 +51,7 @@ private:
 
 	UPROPERTY()
 	UNN_Cpp_JSONHandler* JSONHandlerInstance;
+
+	UPROPERTY()
+	UNN_Cpp_HTTPRequestHandler* HTTPRequestHandlerInstance;
 };
