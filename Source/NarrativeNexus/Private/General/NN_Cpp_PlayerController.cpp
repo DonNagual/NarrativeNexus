@@ -30,9 +30,11 @@ void ANN_Cpp_PlayerController::InitializeGPT()
 	GPTInstance = NewObject<UNN_Cpp_GPT>(this);
 	APIKeyInstance = NewObject<UNN_Cpp_APIKeyLoader>(this);
 	JSONHandlerInstance = NewObject<UNN_Cpp_JSONHandler>(this);
+	HTTPRequestHandlerInstance = NewObject<UNN_Cpp_HTTPRequestHandler>(this);
 	UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController - InitializeGPTInstance: %p\n"), GPTInstance);
 	UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController - InitializeAPIKeyInstance: %p\n"), APIKeyInstance);
 	UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController - InitializeJSONHandlerInstance: %p\n"), JSONHandlerInstance);
+	UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController - InitializeHTTPRequestHandlerInstance: %p\n"), HTTPRequestHandlerInstance);
 
 	if (GPTInstance && APIKeyInstance)
 	{
@@ -47,6 +49,7 @@ void ANN_Cpp_PlayerController::InitializeGPT()
 			UE_LOG(LogTemp, Error, TEXT("Failed to load API key in InitializeGPT"));
 		}
 		GPTInstance->SetJSONHandler(JSONHandlerInstance);
+		GPTInstance->SetHTTPRequestHandler(HTTPRequestHandlerInstance);
 	}
 	else
 	{
@@ -60,13 +63,14 @@ void ANN_Cpp_PlayerController::DestroyGPT()
 	{
 		GameChatWidget->NativeDestruct();
 		GPTInstance->ConditionalBeginDestroy();
+		HTTPRequestHandlerInstance = nullptr;
 		APIKeyInstance = nullptr;
 		JSONHandlerInstance = nullptr;
 		GPTInstance = nullptr;
+		UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController - DestroyHTTPRequestHandlerInstance: %p\n"), HTTPRequestHandlerInstance);
 		UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController - DestroyJSONHandlerInstance: %p\n"), JSONHandlerInstance);
 		UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController - DestroyAPIKeyInstance: %p\n"), APIKeyInstance);
 		UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController - DestroyGPTInstance: %p\n"), GPTInstance);
-
 	}
 }
 

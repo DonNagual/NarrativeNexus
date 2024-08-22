@@ -25,5 +25,4 @@ public:
 	virtual void DestroyGPT() = 0;
 	virtual class UNN_Cpp_GPT* GetGPT() const = 0;
 	virtual void SetGPT(UNN_Cpp_GPT* InGPT) = 0;
-	//virtual void SetJSONHandler(UNN_Cpp_JSONHandler* InJSONHandler) = 0;
 };
