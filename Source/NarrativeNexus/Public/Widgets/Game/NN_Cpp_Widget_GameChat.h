@@ -130,8 +130,8 @@ private:
 	UFUNCTION()
 	void GenerateChatImage(const FString& Summary);
 
-	UFUNCTION()
-	FString GetAllMessagesFromConversationHistory();
+	//UFUNCTION()
+	//FString GetAllMessagesFromConversationHistory();
 
 	// ############### Message - Functions ###############
 

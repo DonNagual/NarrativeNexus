@@ -71,8 +71,6 @@ void UNN_Cpp_GPT::GenerateImageSummaryFromConversation(const FString& Summary, T
 	RequestManagerInstance->SendRequest(ApiKey, Params, JSONHandlerInstance, HTTPRequestHandlerInstance, ConversationManagerInstance, OnImageSummaryGenerated);
 }
 
-// ######################### TODO #########################
-
 // ######################### Generate Image From Conversation #########################
 
 void UNN_Cpp_GPT::GenerateChatImageFromConversation(const FString& Summary, TFunction<void(UTexture2D*)> OnChatImageGenerated)
@@ -168,23 +166,7 @@ void UNN_Cpp_GPT::OnImageResponseReceived(FHttpRequestPtr Request, FHttpResponse
 	}
 }
 
-void UNN_Cpp_GPT::ResetConversation()
-{
-	ConversationHistory.Empty();
-	LastResponse = TEXT("");
-}
-
 FString UNN_Cpp_GPT::GetLastResponse() const
 {
 	return LastResponse;
-}
-
-const TArray<TSharedPtr<FJsonObject>>& UNN_Cpp_GPT::GetConversationHistory() const
-{
-	return ConversationHistory;
-}
-
-TArray<TSharedPtr<FJsonObject>>& UNN_Cpp_GPT::GetMutableConversationHistory()
-{
-	return ConversationHistory;
 }
