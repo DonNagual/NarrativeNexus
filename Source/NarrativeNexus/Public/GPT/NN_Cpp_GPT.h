@@ -6,8 +6,11 @@
 #include "Misc/Base64.h"
 #include "ImageUtils.h"
 #include "Http.h"
+#include "Structs/NN_Cpp_GPTRequestParams.h"
 #include "GPT/NN_Cpp_JSONHandler.h"
 #include "GPT/NN_Cpp_HTTPRequestHandler.h"
+#include "GPT/NN_Cpp_GPTRequestManager.h"
+#include "GPT/NN_Cpp_GPTResponseManager.h"
 #include "Delegates/DelegateCombinations.h"
 #include "NN_Cpp_GPT.generated.h"
 
@@ -25,6 +28,9 @@ public:
 	void SetAPIKey(const FString& InApiKey);
 	void SetJSONHandler(UNN_Cpp_JSONHandler* InJSONHandler);
 	void SetHTTPRequestHandler(UNN_Cpp_HTTPRequestHandler* InHTTPRequestHandler);
+	void SetRequestManager(UNN_Cpp_GPTRequestManager* InRequestManager);
+	void SetResponseManager(UNN_Cpp_GPTResponseManager* InResponseManager);
+	void SetConversationManager(UNN_Cpp_GPTConversationManager* InConversationManager);
 
 	void SendMessageToGPT(const FString& Message);
 	void ResetConversation();
@@ -38,7 +44,6 @@ public:
 
 private:
 	// Callback method when a response is received
-	void OnTextResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful);
 	void OnImageResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful, TFunction<void(UTexture2D*)> OnImageGenerated);
 
 	// The response from GPT will be stored here for further use
@@ -54,4 +59,13 @@ private:
 
 	UPROPERTY()
 	UNN_Cpp_HTTPRequestHandler* HTTPRequestHandlerInstance;
+
+	UPROPERTY()
+	UNN_Cpp_GPTRequestManager* RequestManagerInstance;
+
+	UPROPERTY()
+	UNN_Cpp_GPTResponseManager* ResponseManagerInstance;
+
+	UPROPERTY()
+	UNN_Cpp_GPTConversationManager* ConversationManagerInstance;
 };

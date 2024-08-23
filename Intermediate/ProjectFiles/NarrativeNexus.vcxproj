@@ -261,6 +261,7 @@
     <None Include="..\..\Config\DefaultEngine.ini"/>
     <None Include="..\..\Config\DefaultGame.ini"/>
     <None Include="..\..\Config\DefaultInput.ini"/>
+    <None Include="..\..\Config\keys.txt"/>
     <None Include="..\..\Source\NarrativeNexus\NarrativeNexus.Build.cs"/>
     <ClCompile Include="..\..\Source\NarrativeNexus\NarrativeNexus.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -284,16 +285,13 @@
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_GPT.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
-    <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_GPTImageGenerator.cpp">
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_GPTConversationManager.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
-    <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_GPTMessageHandler.cpp">
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_GPTRequestManager.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
-    <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_GPTResponseProcessor.cpp">
-      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_GPTSummaryGenerator.cpp">
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_GPTResponseManager.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_HTTPRequestHandler.cpp">
@@ -306,6 +304,9 @@
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\Interface\NN_Cpp_IF_WidgetController.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\Structs\NN_Cpp_GPTRequestParams.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\NN_Cpp_Widget_Category.cpp">
@@ -377,14 +378,14 @@
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\General\NN_Cpp_PlayerController.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_APIKeyLoader.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_GPT.h"/>
-    <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_GPTImageGenerator.h"/>
-    <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_GPTMessageHandler.h"/>
-    <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_GPTResponseProcessor.h"/>
-    <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_GPTSummaryGenerator.h"/>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_GPTConversationManager.h"/>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_GPTRequestManager.h"/>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_GPTResponseManager.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_HTTPRequestHandler.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_JSONHandler.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Interface\NN_Cpp_IF_GPT.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Interface\NN_Cpp_IF_WidgetController.h"/>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\Structs\NN_Cpp_GPTRequestParams.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\NN_Cpp_Widget_Category.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\NN_Cpp_Widget_Help.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Widgets\NN_Cpp_Widget_Quit.h"/>

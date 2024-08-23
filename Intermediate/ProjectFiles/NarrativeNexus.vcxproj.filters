@@ -31,6 +31,9 @@
     <None Include="..\..\Config\DefaultInput.ini">
       <Filter>Config</Filter>
     </None>
+    <None Include="..\..\Config\keys.txt">
+      <Filter>Config</Filter>
+    </None>
     <Filter Include="Source\NarrativeNexus">
       <UniqueIdentifier>{04FEA5C8-60B3-3C7D-B0FB-104FFCAD1522}</UniqueIdentifier>
     </Filter>
@@ -70,16 +73,13 @@
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_GPT.cpp">
       <Filter>Source\NarrativeNexus\Private\GPT</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_GPTImageGenerator.cpp">
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_GPTConversationManager.cpp">
       <Filter>Source\NarrativeNexus\Private\GPT</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_GPTMessageHandler.cpp">
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_GPTRequestManager.cpp">
       <Filter>Source\NarrativeNexus\Private\GPT</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_GPTResponseProcessor.cpp">
-      <Filter>Source\NarrativeNexus\Private\GPT</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_GPTSummaryGenerator.cpp">
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_GPTResponseManager.cpp">
       <Filter>Source\NarrativeNexus\Private\GPT</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_HTTPRequestHandler.cpp">
@@ -96,6 +96,12 @@
     </ClCompile>
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\Interface\NN_Cpp_IF_WidgetController.cpp">
       <Filter>Source\NarrativeNexus\Private\Interface</Filter>
+    </ClCompile>
+    <Filter Include="Source\NarrativeNexus\Private\Structs">
+      <UniqueIdentifier>{233E755D-6755-32CD-B744-25C531549386}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\Structs\NN_Cpp_GPTRequestParams.cpp">
+      <Filter>Source\NarrativeNexus\Private\Structs</Filter>
     </ClCompile>
     <Filter Include="Source\NarrativeNexus\Private\Widgets">
       <UniqueIdentifier>{652D077C-4E5E-331A-BA24-C869F7B2EB2B}</UniqueIdentifier>
@@ -199,16 +205,13 @@
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_GPT.h">
       <Filter>Source\NarrativeNexus\Public\GPT</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_GPTImageGenerator.h">
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_GPTConversationManager.h">
       <Filter>Source\NarrativeNexus\Public\GPT</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_GPTMessageHandler.h">
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_GPTRequestManager.h">
       <Filter>Source\NarrativeNexus\Public\GPT</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_GPTResponseProcessor.h">
-      <Filter>Source\NarrativeNexus\Public\GPT</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_GPTSummaryGenerator.h">
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_GPTResponseManager.h">
       <Filter>Source\NarrativeNexus\Public\GPT</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_HTTPRequestHandler.h">
@@ -225,6 +228,12 @@
     </ClInclude>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\Interface\NN_Cpp_IF_WidgetController.h">
       <Filter>Source\NarrativeNexus\Public\Interface</Filter>
+    </ClInclude>
+    <Filter Include="Source\NarrativeNexus\Public\Structs">
+      <UniqueIdentifier>{8803FE5E-527B-34E8-BA6E-A31CEC3EA89B}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\Structs\NN_Cpp_GPTRequestParams.h">
+      <Filter>Source\NarrativeNexus\Public\Structs</Filter>
     </ClInclude>
     <Filter Include="Source\NarrativeNexus\Public\Widgets">
       <UniqueIdentifier>{CC1666D7-3C1B-39A0-A7EA-256B68BD009E}</UniqueIdentifier>
