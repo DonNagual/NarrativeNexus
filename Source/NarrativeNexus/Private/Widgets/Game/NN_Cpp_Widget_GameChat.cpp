@@ -30,7 +30,13 @@ void UNN_Cpp_Widget_GameChat::NativeDestruct()
 
 void UNN_Cpp_Widget_GameChat::SetGPT(UNN_Cpp_GPT* InGPT)
 {
+	if (GPT)
+	{
+		GPT->OnGPTResponseReceived.RemoveAll(this);
+	}
+
 	GPT = InGPT;
+
 	if (GPT)
 	{
 		GPT->OnGPTResponseReceived.AddDynamic(this, &UNN_Cpp_Widget_GameChat::HandleChatGPTResponse);

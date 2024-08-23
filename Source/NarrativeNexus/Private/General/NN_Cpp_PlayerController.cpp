@@ -31,10 +31,18 @@ void ANN_Cpp_PlayerController::InitializeGPT()
 	APIKeyInstance = NewObject<UNN_Cpp_APIKeyLoader>(this);
 	JSONHandlerInstance = NewObject<UNN_Cpp_JSONHandler>(this);
 	HTTPRequestHandlerInstance = NewObject<UNN_Cpp_HTTPRequestHandler>(this);
+	RequestManagerInstance = NewObject<UNN_Cpp_GPTRequestManager>(this);
+	ResponseManagerInstance = NewObject<UNN_Cpp_GPTResponseManager>(this);
+	ConversationManagerInstance = NewObject< UNN_Cpp_GPTConversationManager>(this);
+
+	// DEBUG
 	UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController - InitializeGPTInstance: %p\n"), GPTInstance);
 	UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController - InitializeAPIKeyInstance: %p\n"), APIKeyInstance);
 	UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController - InitializeJSONHandlerInstance: %p\n"), JSONHandlerInstance);
 	UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController - InitializeHTTPRequestHandlerInstance: %p\n"), HTTPRequestHandlerInstance);
+	UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController - InitializeRequestManagerInstance: %p\n"), RequestManagerInstance);
+	UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController - InitializeResponseManagerInstance: %p\n"), ResponseManagerInstance);
+	UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController - InitializeConversationManagerInstance: %p\n"), ConversationManagerInstance);
 
 	if (GPTInstance && APIKeyInstance)
 	{
@@ -50,6 +58,11 @@ void ANN_Cpp_PlayerController::InitializeGPT()
 		}
 		GPTInstance->SetJSONHandler(JSONHandlerInstance);
 		GPTInstance->SetHTTPRequestHandler(HTTPRequestHandlerInstance);
+		GPTInstance->SetRequestManager(RequestManagerInstance);
+		GPTInstance->SetResponseManager(ResponseManagerInstance);
+		GPTInstance->SetConversationManager(ConversationManagerInstance);
+
+		RequestManagerInstance->SetResponseManager(ResponseManagerInstance);
 	}
 	else
 	{
@@ -63,10 +76,16 @@ void ANN_Cpp_PlayerController::DestroyGPT()
 	{
 		GameChatWidget->NativeDestruct();
 		GPTInstance->ConditionalBeginDestroy();
+		ConversationManagerInstance = nullptr;
+		ResponseManagerInstance = nullptr;
+		RequestManagerInstance = nullptr;
 		HTTPRequestHandlerInstance = nullptr;
 		APIKeyInstance = nullptr;
 		JSONHandlerInstance = nullptr;
 		GPTInstance = nullptr;
+		UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController - DestroyConversationManagerInstance: %p\n"), ConversationManagerInstance);
+		UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController - DestroyResponseManagerInstance: %p\n"), ResponseManagerInstance);
+		UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController - DestroyRequestManagerInstance: %p\n"), RequestManagerInstance);
 		UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController - DestroyHTTPRequestHandlerInstance: %p\n"), HTTPRequestHandlerInstance);
 		UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController - DestroyJSONHandlerInstance: %p\n"), JSONHandlerInstance);
 		UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController - DestroyAPIKeyInstance: %p\n"), APIKeyInstance);
