@@ -33,10 +33,8 @@ public:
 	void SetConversationManager(UNN_Cpp_GPTConversationManager* InConversationManager);
 
 	void SendMessageToGPT(const FString& Message);
-	void ResetConversation();
 	FString GetLastResponse() const;
-	const TArray<TSharedPtr<FJsonObject>>& GetConversationHistory() const;
-	TArray<TSharedPtr<FJsonObject>>& GetMutableConversationHistory();
+
 	void GenerateShortSummaryFromConversation(const FString& Summary, TFunction<void(const FString&)> OnShortSummaryGenerated);
 	void GenerateMaxSummaryFromConversation(const FString& Summary, TFunction<void(const FString&)> OnMaxSummaryGenerated);
 	void GenerateImageSummaryFromConversation(const FString& Summary, TFunction<void(const FString&)> OnImageSummaryGenerated);
@@ -48,9 +46,6 @@ private:
 
 	// The response from GPT will be stored here for further use
 	FString LastResponse;
-
-	// Store the entire conversation history
-	TArray<TSharedPtr<FJsonObject>> ConversationHistory;
 
 	FString ApiKey;
 

@@ -83,6 +83,8 @@ void ANN_Cpp_PlayerController::DestroyGPT()
 		APIKeyInstance = nullptr;
 		JSONHandlerInstance = nullptr;
 		GPTInstance = nullptr;
+
+		// DEBUG
 		UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController - DestroyConversationManagerInstance: %p\n"), ConversationManagerInstance);
 		UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController - DestroyResponseManagerInstance: %p\n"), ResponseManagerInstance);
 		UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController - DestroyRequestManagerInstance: %p\n"), RequestManagerInstance);

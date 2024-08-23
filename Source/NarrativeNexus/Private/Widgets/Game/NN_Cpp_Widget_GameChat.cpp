@@ -89,21 +89,6 @@ void UNN_Cpp_Widget_GameChat::AddMessageToChat(const FString& Author, const FStr
 
 			// Scroll to the bottom to show the latest message
 			MessageScrollBox->ScrollToEnd();
-
-			// Check how many messages have been generated and create a summary
-			static int32 MessageCounter = 0;
-			MessageCounter++;
-
-			if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
-			{
-				int32 CurrentMessageNumber = Interface->GetCurrentMessageNumberViaInterface();
-				if (MessageCounter >= CurrentMessageNumber)
-				{
-					FString AllMessages = GetAllMessagesFromConversationHistory();
-					GenerateShortSummary(AllMessages);
-					MessageCounter = 0;
-				}
-			}
 		}
 		else
 		{
@@ -192,42 +177,12 @@ void UNN_Cpp_Widget_GameChat::OnBackButtonClicked()
 
 void UNN_Cpp_Widget_GameChat::OnRepeatButtonClicked()
 {
-	if (GPT && GPT->GetConversationHistory().Num() > 0)
-	{
-		auto& MutableConversationHistory = GPT->GetMutableConversationHistory();
-		// Check whether the last message comes from GPT (assistant) or from the user (user)
-		TSharedPtr<FJsonObject> LastMessageObject = MutableConversationHistory.Last();
-		FString Role = LastMessageObject->GetStringField(TEXT("role"));
-
-		if (Role == TEXT("assistant"))
-		{
-			// Romove the last message from the array containing the response from GPT
-			MutableConversationHistory.RemoveAt(MutableConversationHistory.Num() - 1);
-
-			// Also remove the last message from GPT from the MessageScrollBox
-			RemoveLastGPTMessageFromScrollBox();
-
-			// Resend the last message to GPT
-			FString LastUserMessage = MutableConversationHistory.Last()->GetStringField(TEXT("content"));
-			GPT->SendMessageToGPT(LastUserMessage);
-		}
-		else
-		{
-			// If the last message is not from ChatGPT, resend the entire history
-			GPT->SendMessageToGPT(MutableConversationHistory.Last()->GetStringField(TEXT("content")));
-		}
-	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("No previous responde available to repeat"));
-	}
 }
 
 void UNN_Cpp_Widget_GameChat::OnResetButtonClicked()
 {
 	if (GPT)
 	{
-		GPT->ResetConversation();
 		MessageScrollBox->ClearChildren();
 	}
 }
@@ -254,20 +209,6 @@ void UNN_Cpp_Widget_GameChat::OnSelectMiddleButtonClicked()
 
 void UNN_Cpp_Widget_GameChat::OnSelectLowerButtonClicked()
 {
-}
-
-FString UNN_Cpp_Widget_GameChat::GetAllMessagesFromConversationHistory()
-{
-	// Get all messages from the conversation history
-	FString AllMessages;
-	auto& ConversationHistory = GPT->GetMutableConversationHistory();
-	for (int32 i = 0; i < ConversationHistory.Num(); ++i)
-	{
-		AllMessages += ConversationHistory[i]->GetStringField(TEXT("content")) + TEXT("\n");
-	}
-	// DEBUG
-	//UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_Widget_GameChat - AllMessages: %p\n-- %s\n"), *AllMessages, *AllMessages);
-	return AllMessages;
 }
 
 void UNN_Cpp_Widget_GameChat::GenerateShortSummary(const FString& Summary)
