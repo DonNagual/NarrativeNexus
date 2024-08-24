@@ -41,14 +41,12 @@ public:
 
 	void GenerateShortSummaryFromConversation(const FString& Summary, TFunction<void(const FString&)> OnShortSummaryGenerated);
 	void GenerateMaxSummaryFromConversation(const FString& Summary, TFunction<void(const FString&)> OnMaxSummaryGenerated);
-	void GenerateImageSummaryFromConversation(const FString& Summary, TFunction<void(const FString&)> OnImageSummaryGenerated);
-	void GenerateChatImageFromConversation(const FString& Summary, TFunction<void(UTexture2D*)> OnChatImageGenerated);
+	void GenerateImageDescriptionFromConversation(const FString& Summary, TFunction<void(const FString&)> OnImageSummaryGenerated);
+	
+	void GenerateImageFromDescription(const FString& Summary, TFunction<void(UTexture2D*)> OnImageGenerated);
 
 private:
-	// Callback method when a response is received
-	void OnImageResponseReceived(FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful, TFunction<void(UTexture2D*)> OnImageGenerated);
 
-	// The response from GPT will be stored here for further use
 	FString LastResponse;
 
 	FString ApiKey;

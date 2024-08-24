@@ -125,27 +125,24 @@ private:
 	void GenerateMaxSummary(const FString& Summary);
 
 	UFUNCTION()
-	void GenerateImageSummary(const FString& Summary);
+	void GenerateImageDescription(const FString& Summary);
 
 	UFUNCTION()
 	void GenerateChatImage(const FString& Summary);
-
-	//UFUNCTION()
-	//FString GetAllMessagesFromConversationHistory();
 
 	// ############### Message - Functions ###############
 
 	// Functions for adding messages to the chat
 	void AddMessageToChat(const FString& Author, const FString& MessageText);
 	void AddMessageToChatFromUser(const FString& MessageText);
-	void AddMessageToChatFromChatGPT(const FString& MessageText);
+	void AddMessageToChatFromGPT(const FString& MessageText);
 
 	// Functions for remove messages at the chat
 	UFUNCTION()
 	void RemoveLastGPTMessageFromScrollBox();
 
 	UFUNCTION()
-	void HandleChatGPTResponse(const FString& Response);
+	void HandleGPTResponse(const FString& Response);
 
 	// GPT-Instanz
 	UPROPERTY()
