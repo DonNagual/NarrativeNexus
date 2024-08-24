@@ -17,13 +17,13 @@ class NARRATIVENEXUS_API UNN_Cpp_GPTTextRequestManager : public UObject
 	GENERATED_BODY()
 	
 public:
-	void SendRequest(
+	void SendTextRequest(
 		const FString& ApiKey,
 		const FGPTRequestParams& Params,
 		UNN_Cpp_JSONHandler* JSONHandlerInstance,
 		UNN_Cpp_HTTPRequestHandler* HTTPRequestHandlerInstance,
 		UNN_Cpp_GPTConversationManager* ConversationManager,
-		TFunction<void(const FString&)> OnResponseReceived
+		TFunction<void(const FString&)> OnTextResponseReceived
 	);
 
 	void SetTextResponseManager(UNN_Cpp_GPTTextResponseManager* InTextResponseManager);

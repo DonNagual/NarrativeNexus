@@ -33,6 +33,8 @@ void ANN_Cpp_PlayerController::InitializeGPT()
 	HTTPRequestHandlerInstance = NewObject<UNN_Cpp_HTTPRequestHandler>(this);
 	TextRequestManagerInstance = NewObject<UNN_Cpp_GPTTextRequestManager>(this);
 	TextResponseManagerInstance = NewObject<UNN_Cpp_GPTTextResponseManager>(this);
+	ImageRequestManagerInstance = NewObject<UNN_Cpp_GPTImageRequestManager>(this);
+	ImageResponseManagerInstance = NewObject<UNN_Cpp_GPTImageResponseManager>(this);
 	ConversationManagerInstance = NewObject< UNN_Cpp_GPTConversationManager>(this);
 
 	// DEBUG
@@ -42,6 +44,8 @@ void ANN_Cpp_PlayerController::InitializeGPT()
 	UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController - InitializeHTTPRequestHandlerInstance: %p\n"), HTTPRequestHandlerInstance);
 	UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController - InitializeTextRequestManagerInstance: %p\n"), TextRequestManagerInstance);
 	UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController - InitializeTextResponseManagerInstance: %p\n"), TextResponseManagerInstance);
+	UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController - InitializeImageRequestManagerInstance: %p\n"), ImageRequestManagerInstance);
+	UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController - InitializeImageResponseManagerInstance: %p\n"), ImageResponseManagerInstance);
 	UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController - InitializeConversationManagerInstance: %p\n"), ConversationManagerInstance);
 
 	if (GPTInstance && APIKeyInstance)
@@ -60,9 +64,12 @@ void ANN_Cpp_PlayerController::InitializeGPT()
 		GPTInstance->SetHTTPRequestHandler(HTTPRequestHandlerInstance);
 		GPTInstance->SetTextRequestManager(TextRequestManagerInstance);
 		GPTInstance->SetTextResponseManager(TextResponseManagerInstance);
+		GPTInstance->SetImageRequestManager(ImageRequestManagerInstance);
+		GPTInstance->SetImageResponseManager(ImageResponseManagerInstance);
 		GPTInstance->SetConversationManager(ConversationManagerInstance);
 
 		TextRequestManagerInstance->SetTextResponseManager(TextResponseManagerInstance);
+		ImageRequestManagerInstance->SetImageResponseManager(ImageResponseManagerInstance);
 	}
 	else
 	{
@@ -77,6 +84,8 @@ void ANN_Cpp_PlayerController::DestroyGPT()
 		GameChatWidget->NativeDestruct();
 		GPTInstance->ConditionalBeginDestroy();
 		ConversationManagerInstance = nullptr;
+		ImageResponseManagerInstance = nullptr;
+		ImageRequestManagerInstance = nullptr;
 		TextResponseManagerInstance = nullptr;
 		TextRequestManagerInstance = nullptr;
 		HTTPRequestHandlerInstance = nullptr;
@@ -86,6 +95,8 @@ void ANN_Cpp_PlayerController::DestroyGPT()
 
 		// DEBUG
 		UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController - DestroyConversationManagerInstance: %p\n"), ConversationManagerInstance);
+		UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController - DestroyImageResponseManagerInstance: %p\n"), ImageResponseManagerInstance);
+		UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController - DestroyImageRequestManagerInstance: %p\n"), ImageRequestManagerInstance);
 		UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController - DestroyTextResponseManagerInstance: %p\n"), TextResponseManagerInstance);
 		UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController - DestroyTextRequestManagerInstance: %p\n"), TextRequestManagerInstance);
 		UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_PlayerController - DestroyHTTPRequestHandlerInstance: %p\n"), HTTPRequestHandlerInstance);

@@ -7,13 +7,13 @@ void UNN_Cpp_GPTTextRequestManager::SetTextResponseManager(UNN_Cpp_GPTTextRespon
     TextResponseManagerInstance = InTextResponseManager;
 }
 
-void UNN_Cpp_GPTTextRequestManager::SendRequest(
+void UNN_Cpp_GPTTextRequestManager::SendTextRequest(
 	const FString& ApiKey,
 	const FGPTRequestParams& Params,
 	UNN_Cpp_JSONHandler* JSONHandlerInstance,
 	UNN_Cpp_HTTPRequestHandler* HTTPRequestHandlerInstance,
     UNN_Cpp_GPTConversationManager* ConversationManager,
-	TFunction<void(const FString&)> OnResponseReceived
+	TFunction<void(const FString&)> OnTextResponseReceived
 )
 {
     if (!JSONHandlerInstance || !HTTPRequestHandlerInstance)
@@ -63,7 +63,7 @@ void UNN_Cpp_GPTTextRequestManager::SendRequest(
         );
 
         HTTPRequestHandlerInstance->SetRequestPayload(Request, JsonString);
-        Request->OnProcessRequestComplete().BindLambda([this, JSONHandlerInstance, ConversationManager, OnResponseReceived](FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful)
+        Request->OnProcessRequestComplete().BindLambda([this, JSONHandlerInstance, ConversationManager, OnTextResponseReceived](FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful)
         {
             if (bWasSuccessful && Response.IsValid())
             {
@@ -72,13 +72,13 @@ void UNN_Cpp_GPTTextRequestManager::SendRequest(
                 // Übergeben der Verarbeitung an den ResponseManager, um sicherzustellen, dass OnResponseReceived nur einmal aufgerufen wird
                 if (TextResponseManagerInstance)
                 {
-                    TextResponseManagerInstance->ProcessResponse(ResponseString, JSONHandlerInstance, ConversationManager, OnResponseReceived);
+                    TextResponseManagerInstance->ProcessResponse(ResponseString, JSONHandlerInstance, ConversationManager, OnTextResponseReceived);
                 }
             }
             else
             {
                 UE_LOG(LogTemp, Error, TEXT("Failed to contact OpenAI."));
-                OnResponseReceived(TEXT("Failed to contact OpenAI."));
+                OnTextResponseReceived(TEXT("Failed to contact OpenAI."));
             }
         });
         Request->ProcessRequest();
