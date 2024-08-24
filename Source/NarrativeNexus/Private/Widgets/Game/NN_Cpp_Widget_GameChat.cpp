@@ -39,7 +39,7 @@ void UNN_Cpp_Widget_GameChat::SetGPT(UNN_Cpp_GPT* InGPT)
 
 	if (GPT)
 	{
-		GPT->OnGPTResponseReceived.AddDynamic(this, &UNN_Cpp_Widget_GameChat::HandleChatGPTResponse);
+		GPT->OnGPTResponseReceived.AddDynamic(this, &UNN_Cpp_Widget_GameChat::HandleGPTResponse);
 	}
 	else
 	{
@@ -49,9 +49,9 @@ void UNN_Cpp_Widget_GameChat::SetGPT(UNN_Cpp_GPT* InGPT)
 
 // ############### GPT - Functions ###############
 
-void UNN_Cpp_Widget_GameChat::HandleChatGPTResponse(const FString& Response)
+void UNN_Cpp_Widget_GameChat::HandleGPTResponse(const FString& Response)
 {
-	AddMessageToChatFromChatGPT(Response);;
+	AddMessageToChatFromGPT(Response);;
 }
 
 void UNN_Cpp_Widget_GameChat::AddMessageToChatFromUser(const FString& MessageText)
@@ -59,7 +59,7 @@ void UNN_Cpp_Widget_GameChat::AddMessageToChatFromUser(const FString& MessageTex
 	AddMessageToChat(TEXT("Arkadius"), MessageText);
 }
 
-void UNN_Cpp_Widget_GameChat::AddMessageToChatFromChatGPT(const FString& MessageText)
+void UNN_Cpp_Widget_GameChat::AddMessageToChatFromGPT(const FString& MessageText)
 {
 	AddMessageToChat(TEXT("GPT"), MessageText);
 }
@@ -213,7 +213,6 @@ void UNN_Cpp_Widget_GameChat::OnSelectLowerButtonClicked()
 
 void UNN_Cpp_Widget_GameChat::GenerateShortSummary(const FString& Summary)
 {
-	// Check if Summary generation is enabled
 	if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
 	{
 		if (!Interface->IsSummaryGenerationEnabledViaInterface())
@@ -223,7 +222,6 @@ void UNN_Cpp_Widget_GameChat::GenerateShortSummary(const FString& Summary)
 		}
 	}
 
-	// Generate a summary of the conversation
 	GPT->GenerateShortSummaryFromConversation(Summary, [this](const FString& OnShortSummaryGenerated)
 		{
 			if (ExecutiveSummaryText)
@@ -237,9 +235,9 @@ void UNN_Cpp_Widget_GameChat::GenerateShortSummary(const FString& Summary)
 		});
 }
 
+// Generate a summary of the conversation
 void UNN_Cpp_Widget_GameChat::GenerateMaxSummary(const FString& Summary)
 {
-	// Check if Summary generation is enabled
 	if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
 	{
 		if (!Interface->IsSummaryGenerationEnabledViaInterface())
@@ -249,7 +247,6 @@ void UNN_Cpp_Widget_GameChat::GenerateMaxSummary(const FString& Summary)
 		}
 	}
 
-	// Generate a summary of the conversation
 	GPT->GenerateMaxSummaryFromConversation(Summary, [this](const FString& OnMaxSummaryGenerated)
 		{
 			if (ExecutiveSummaryText)
@@ -263,7 +260,7 @@ void UNN_Cpp_Widget_GameChat::GenerateMaxSummary(const FString& Summary)
 		});
 }
 
-void UNN_Cpp_Widget_GameChat::GenerateImageSummary(const FString& Summary)
+void UNN_Cpp_Widget_GameChat::GenerateImageDescription(const FString& Summary)
 {
 	// Check if Summary generation is enabled
 	if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
@@ -276,7 +273,7 @@ void UNN_Cpp_Widget_GameChat::GenerateImageSummary(const FString& Summary)
 	}
 
 	// Generate a summary of the conversation
-	GPT->GenerateImageSummaryFromConversation(Summary, [this](const FString& OnImageSummaryGenerated)
+	GPT->GenerateImageDescriptionFromConversation(Summary, [this](const FString& OnImageSummaryGenerated)
 		{
 			if (ExecutiveSummaryText)
 			{
@@ -302,12 +299,12 @@ void UNN_Cpp_Widget_GameChat::GenerateChatImage(const FString& Summary)
 	}
 
 	// Generate the image based on the summary
-	GPT->GenerateChatImageFromConversation(Summary, [this](UTexture2D* OnChatImageGenerated)
+	GPT->GenerateImageFromDescription(Summary, [this](UTexture2D* OnImageGenerated)
 		{
-			if (OnChatImageGenerated && StoryImage)
+			if (OnImageGenerated && StoryImage)
 			{
 				// Show image
-				StoryImage->SetBrushFromTexture(OnChatImageGenerated);
+				StoryImage->SetBrushFromTexture(OnImageGenerated);
 				GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Purple, TEXT("Image generated successfully."));
 			}
 			else
