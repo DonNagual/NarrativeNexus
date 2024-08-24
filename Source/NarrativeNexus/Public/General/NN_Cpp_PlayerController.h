@@ -18,6 +18,8 @@
 #include "GPT/NN_Cpp_HTTPRequestHandler.h"
 #include "GPT/NN_Cpp_GPTTextRequestManager.h"
 #include "GPT/NN_Cpp_GPTTextResponseManager.h"
+#include "GPT/NN_Cpp_GPTImageRequestManager.h"
+#include "GPT/NN_Cpp_GPTImageResponseManager.h"
 #include "GPT/NN_Cpp_GPTConversationManager.h"
 #include "Interface/NN_Cpp_IF_GPT.h"
 #include "Interface/NN_Cpp_IF_WidgetController.h"
@@ -103,6 +105,12 @@ private:
 
 	UPROPERTY()
 	UNN_Cpp_GPTTextResponseManager* TextResponseManagerInstance;
+
+	UPROPERTY()
+	UNN_Cpp_GPTImageRequestManager* ImageRequestManagerInstance;
+
+	UPROPERTY()
+	UNN_Cpp_GPTImageResponseManager* ImageResponseManagerInstance;
 
 	UPROPERTY()
 	UNN_Cpp_GPTConversationManager* ConversationManagerInstance;

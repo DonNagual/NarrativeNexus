@@ -11,6 +11,8 @@
 #include "GPT/NN_Cpp_HTTPRequestHandler.h"
 #include "GPT/NN_Cpp_GPTTextRequestManager.h"
 #include "GPT/NN_Cpp_GPTTextResponseManager.h"
+#include "GPT/NN_Cpp_GPTImageRequestManager.h"
+#include "GPT/NN_Cpp_GPTImageResponseManager.h"
 #include "Delegates/DelegateCombinations.h"
 #include "NN_Cpp_GPT.generated.h"
 
@@ -30,6 +32,8 @@ public:
 	void SetHTTPRequestHandler(UNN_Cpp_HTTPRequestHandler* InHTTPRequestHandler);
 	void SetTextRequestManager(UNN_Cpp_GPTTextRequestManager* InTextRequestManager);
 	void SetTextResponseManager(UNN_Cpp_GPTTextResponseManager* InTextResponseManager);
+	void SetImageRequestManager(UNN_Cpp_GPTImageRequestManager* InImageRequestManager);
+	void SetImageResponseManager(UNN_Cpp_GPTImageResponseManager* InImageResponseManager);
 	void SetConversationManager(UNN_Cpp_GPTConversationManager* InConversationManager);
 
 	void SendMessageToGPT(const FString& Message);
@@ -60,6 +64,12 @@ private:
 
 	UPROPERTY()
 	UNN_Cpp_GPTTextResponseManager* TextResponseManagerInstance;
+
+	UPROPERTY()
+	UNN_Cpp_GPTImageRequestManager* ImageRequestManagerInstance;
+
+	UPROPERTY()
+	UNN_Cpp_GPTImageResponseManager* ImageResponseManagerInstance;
 
 	UPROPERTY()
 	UNN_Cpp_GPTConversationManager* ConversationManagerInstance;
