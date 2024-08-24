@@ -1,4 +1,4 @@
-// NN_Cpp_GPTResponseManager.h
+// NN_Cpp_GPTTextResponseManager.h
 
 #pragma once
 
@@ -7,10 +7,10 @@
 #include "GPT/NN_Cpp_JSONHandler.h"
 #include "GPT/NN_Cpp_GPTConversationManager.h"
 #include "Structs/NN_Cpp_GPTRequestParams.h"
-#include "NN_Cpp_GPTResponseManager.generated.h"
+#include "NN_Cpp_GPTTextResponseManager.generated.h"
 
 UCLASS()
-class NARRATIVENEXUS_API UNN_Cpp_GPTResponseManager : public UObject
+class NARRATIVENEXUS_API UNN_Cpp_GPTTextResponseManager : public UObject
 {
 	GENERATED_BODY()
 	

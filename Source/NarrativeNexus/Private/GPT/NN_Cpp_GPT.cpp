@@ -17,14 +17,14 @@ void UNN_Cpp_GPT::SetHTTPRequestHandler(UNN_Cpp_HTTPRequestHandler* InHTTPReques
 	HTTPRequestHandlerInstance = InHTTPRequestHandler;
 }
 
-void UNN_Cpp_GPT::SetRequestManager(UNN_Cpp_GPTRequestManager* InRequestManager)
+void UNN_Cpp_GPT::SetTextRequestManager(UNN_Cpp_GPTTextRequestManager* InTextRequestManager)
 {
-	RequestManagerInstance = InRequestManager;
+	TextRequestManagerInstance = InTextRequestManager;
 }
 
-void UNN_Cpp_GPT::SetResponseManager(UNN_Cpp_GPTResponseManager* InResponseManager)
+void UNN_Cpp_GPT::SetTextResponseManager(UNN_Cpp_GPTTextResponseManager* InTextResponseManager)
 {
-	ResponseManagerInstance = InResponseManager;
+	TextResponseManagerInstance = InTextResponseManager;
 }
 
 void UNN_Cpp_GPT::SetConversationManager(UNN_Cpp_GPTConversationManager* InConversationManager)
@@ -39,7 +39,7 @@ void UNN_Cpp_GPT::SendMessageToGPT(const FString& Message)
 	FGPTRequestParams Params(Message, TEXT("Bitte begrenzen Sie die Antwort auf maximal 1000 Zeichen."), 250);
 	//Params.ConversationHistory = ConversationHistory;
 	
-	RequestManagerInstance->SendRequest(ApiKey, Params, JSONHandlerInstance, HTTPRequestHandlerInstance, ConversationManagerInstance,
+	TextRequestManagerInstance->SendRequest(ApiKey, Params, JSONHandlerInstance, HTTPRequestHandlerInstance, ConversationManagerInstance,
 		[this](const FString& Response)
 		{
 			LastResponse = Response;
@@ -52,7 +52,7 @@ void UNN_Cpp_GPT::SendMessageToGPT(const FString& Message)
 void UNN_Cpp_GPT::GenerateShortSummaryFromConversation(const FString& Summary, TFunction<void(const FString&)> OnShortSummaryGenerated)
 {
 	FGPTRequestParams Params(Summary, TEXT("Bitte fassen Sie das obige Gespräch in weniger als 500 Zeichen zusammen."), 150);
-	RequestManagerInstance->SendRequest(ApiKey, Params, JSONHandlerInstance, HTTPRequestHandlerInstance, ConversationManagerInstance, OnShortSummaryGenerated);
+	TextRequestManagerInstance->SendRequest(ApiKey, Params, JSONHandlerInstance, HTTPRequestHandlerInstance, ConversationManagerInstance, OnShortSummaryGenerated);
 }
 
 // ######################### Generate Max Summary From Conversation #########################
@@ -60,7 +60,7 @@ void UNN_Cpp_GPT::GenerateShortSummaryFromConversation(const FString& Summary, T
 void UNN_Cpp_GPT::GenerateMaxSummaryFromConversation(const FString& Summary, TFunction<void(const FString&)> OnMaxSummaryGenerated)
 {
 	FGPTRequestParams Params(Summary, TEXT("Bitte fassen Sie das obige Gespräch in weniger als 5000 Zeichen zusammen."), 150);
-	RequestManagerInstance->SendRequest(ApiKey, Params, JSONHandlerInstance, HTTPRequestHandlerInstance, ConversationManagerInstance, OnMaxSummaryGenerated);
+	TextRequestManagerInstance->SendRequest(ApiKey, Params, JSONHandlerInstance, HTTPRequestHandlerInstance, ConversationManagerInstance, OnMaxSummaryGenerated);
 }
 
 // ######################### Generate Image Description From Conversation #########################
@@ -68,7 +68,7 @@ void UNN_Cpp_GPT::GenerateMaxSummaryFromConversation(const FString& Summary, TFu
 void UNN_Cpp_GPT::GenerateImageSummaryFromConversation(const FString& Summary, TFunction<void(const FString&)> OnImageSummaryGenerated)
 {
 	FGPTRequestParams Params(Summary, TEXT("Bitte fassen Sie das obige Gespräch in weniger als 950 Zeichen zusammen."), 150);
-	RequestManagerInstance->SendRequest(ApiKey, Params, JSONHandlerInstance, HTTPRequestHandlerInstance, ConversationManagerInstance, OnImageSummaryGenerated);
+	TextRequestManagerInstance->SendRequest(ApiKey, Params, JSONHandlerInstance, HTTPRequestHandlerInstance, ConversationManagerInstance, OnImageSummaryGenerated);
 }
 
 // ######################### Generate Image From Conversation #########################
