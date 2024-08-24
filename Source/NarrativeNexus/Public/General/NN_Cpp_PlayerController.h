@@ -16,8 +16,8 @@
 #include "GPT/NN_Cpp_APIKeyLoader.h"
 #include "GPT/NN_Cpp_JSONHandler.h"
 #include "GPT/NN_Cpp_HTTPRequestHandler.h"
-#include "GPT/NN_Cpp_GPTRequestManager.h"
-#include "GPT/NN_Cpp_GPTResponseManager.h"
+#include "GPT/NN_Cpp_GPTTextRequestManager.h"
+#include "GPT/NN_Cpp_GPTTextResponseManager.h"
 #include "GPT/NN_Cpp_GPTConversationManager.h"
 #include "Interface/NN_Cpp_IF_GPT.h"
 #include "Interface/NN_Cpp_IF_WidgetController.h"
@@ -99,10 +99,10 @@ private:
 	UNN_Cpp_HTTPRequestHandler* HTTPRequestHandlerInstance;
 
 	UPROPERTY()
-	UNN_Cpp_GPTRequestManager* RequestManagerInstance;
+	UNN_Cpp_GPTTextRequestManager* TextRequestManagerInstance;
 
 	UPROPERTY()
-	UNN_Cpp_GPTResponseManager* ResponseManagerInstance;
+	UNN_Cpp_GPTTextResponseManager* TextResponseManagerInstance;
 
 	UPROPERTY()
 	UNN_Cpp_GPTConversationManager* ConversationManagerInstance;

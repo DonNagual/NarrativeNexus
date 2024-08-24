@@ -1,8 +1,8 @@
-// NN_Cpp_GPTResponseManager.cpp
+// NN_Cpp_GPTTextResponseManager.cpp
 
-#include "GPT/NN_Cpp_GPTResponseManager.h"
+#include "GPT/NN_Cpp_GPTTextResponseManager.h"
 
-void UNN_Cpp_GPTResponseManager::ProcessResponse(const FString& ResponseString,
+void UNN_Cpp_GPTTextResponseManager::ProcessResponse(const FString& ResponseString,
 	UNN_Cpp_JSONHandler* JSONHandlerInstance,
 	UNN_Cpp_GPTConversationManager* ConversationManager,
 	TFunction<void(const FString&)> OnResponseProcessed

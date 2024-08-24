@@ -1,4 +1,4 @@
-// NN_Cpp_GPTRequestManager.h
+// NN_Cpp_GPTTextRequestManager.h
 
 #pragma once
 
@@ -7,12 +7,12 @@
 #include "GPT/NN_Cpp_JSONHandler.h"
 #include "GPT/NN_Cpp_HTTPRequestHandler.h"
 #include "GPT/NN_Cpp_GPTConversationManager.h"
-#include "GPT/NN_Cpp_GPTResponseManager.h"
+#include "GPT/NN_Cpp_GPTTextResponseManager.h"
 #include "Structs/NN_Cpp_GPTRequestParams.h"
-#include "NN_Cpp_GPTRequestManager.generated.h"
+#include "NN_Cpp_GPTTextRequestManager.generated.h"
 
 UCLASS()
-class NARRATIVENEXUS_API UNN_Cpp_GPTRequestManager : public UObject
+class NARRATIVENEXUS_API UNN_Cpp_GPTTextRequestManager : public UObject
 {
 	GENERATED_BODY()
 	
@@ -26,9 +26,9 @@ public:
 		TFunction<void(const FString&)> OnResponseReceived
 	);
 
-	void SetResponseManager(UNN_Cpp_GPTResponseManager* InResponseManager);
+	void SetTextResponseManager(UNN_Cpp_GPTTextResponseManager* InTextResponseManager);
 
 private:
 
-	UNN_Cpp_GPTResponseManager* ResponseManagerInstance;
+	UNN_Cpp_GPTTextResponseManager* TextResponseManagerInstance;
 };

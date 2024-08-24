@@ -9,8 +9,8 @@
 #include "Structs/NN_Cpp_GPTRequestParams.h"
 #include "GPT/NN_Cpp_JSONHandler.h"
 #include "GPT/NN_Cpp_HTTPRequestHandler.h"
-#include "GPT/NN_Cpp_GPTRequestManager.h"
-#include "GPT/NN_Cpp_GPTResponseManager.h"
+#include "GPT/NN_Cpp_GPTTextRequestManager.h"
+#include "GPT/NN_Cpp_GPTTextResponseManager.h"
 #include "Delegates/DelegateCombinations.h"
 #include "NN_Cpp_GPT.generated.h"
 
@@ -28,8 +28,8 @@ public:
 	void SetAPIKey(const FString& InApiKey);
 	void SetJSONHandler(UNN_Cpp_JSONHandler* InJSONHandler);
 	void SetHTTPRequestHandler(UNN_Cpp_HTTPRequestHandler* InHTTPRequestHandler);
-	void SetRequestManager(UNN_Cpp_GPTRequestManager* InRequestManager);
-	void SetResponseManager(UNN_Cpp_GPTResponseManager* InResponseManager);
+	void SetTextRequestManager(UNN_Cpp_GPTTextRequestManager* InTextRequestManager);
+	void SetTextResponseManager(UNN_Cpp_GPTTextResponseManager* InTextResponseManager);
 	void SetConversationManager(UNN_Cpp_GPTConversationManager* InConversationManager);
 
 	void SendMessageToGPT(const FString& Message);
@@ -56,10 +56,10 @@ private:
 	UNN_Cpp_HTTPRequestHandler* HTTPRequestHandlerInstance;
 
 	UPROPERTY()
-	UNN_Cpp_GPTRequestManager* RequestManagerInstance;
+	UNN_Cpp_GPTTextRequestManager* TextRequestManagerInstance;
 
 	UPROPERTY()
-	UNN_Cpp_GPTResponseManager* ResponseManagerInstance;
+	UNN_Cpp_GPTTextResponseManager* TextResponseManagerInstance;
 
 	UPROPERTY()
 	UNN_Cpp_GPTConversationManager* ConversationManagerInstance;

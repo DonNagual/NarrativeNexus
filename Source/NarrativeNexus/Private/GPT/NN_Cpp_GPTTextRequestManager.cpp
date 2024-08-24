@@ -1,13 +1,13 @@
-// NN_Cpp_GPTRequestManager.cpp
+// NN_Cpp_GPTTextRequestManager.cpp
 
-#include "GPT/NN_Cpp_GPTRequestManager.h"
+#include "GPT/NN_Cpp_GPTTextRequestManager.h"
 
-void UNN_Cpp_GPTRequestManager::SetResponseManager(UNN_Cpp_GPTResponseManager* InResponseManager)
+void UNN_Cpp_GPTTextRequestManager::SetTextResponseManager(UNN_Cpp_GPTTextResponseManager* InTextResponseManager)
 {
-    ResponseManagerInstance = InResponseManager;
+    TextResponseManagerInstance = InTextResponseManager;
 }
 
-void UNN_Cpp_GPTRequestManager::SendRequest(
+void UNN_Cpp_GPTTextRequestManager::SendRequest(
 	const FString& ApiKey,
 	const FGPTRequestParams& Params,
 	UNN_Cpp_JSONHandler* JSONHandlerInstance,
@@ -70,9 +70,9 @@ void UNN_Cpp_GPTRequestManager::SendRequest(
                 FString ResponseString = Response->GetContentAsString();
 
                 // Übergeben der Verarbeitung an den ResponseManager, um sicherzustellen, dass OnResponseReceived nur einmal aufgerufen wird
-                if (ResponseManagerInstance)
+                if (TextResponseManagerInstance)
                 {
-                    ResponseManagerInstance->ProcessResponse(ResponseString, JSONHandlerInstance, ConversationManager, OnResponseReceived);
+                    TextResponseManagerInstance->ProcessResponse(ResponseString, JSONHandlerInstance, ConversationManager, OnResponseReceived);
                 }
             }
             else

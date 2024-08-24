@@ -76,10 +76,16 @@
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_GPTConversationManager.cpp">
       <Filter>Source\NarrativeNexus\Private\GPT</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_GPTRequestManager.cpp">
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_GPTImageRequestManager.cpp">
       <Filter>Source\NarrativeNexus\Private\GPT</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_GPTResponseManager.cpp">
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_GPTImageResponseManager.cpp">
+      <Filter>Source\NarrativeNexus\Private\GPT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_GPTTextRequestManager.cpp">
+      <Filter>Source\NarrativeNexus\Private\GPT</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_GPTTextResponseManager.cpp">
       <Filter>Source\NarrativeNexus\Private\GPT</Filter>
     </ClCompile>
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\GPT\NN_Cpp_HTTPRequestHandler.cpp">
@@ -208,10 +214,16 @@
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_GPTConversationManager.h">
       <Filter>Source\NarrativeNexus\Public\GPT</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_GPTRequestManager.h">
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_GPTImageRequestManager.h">
       <Filter>Source\NarrativeNexus\Public\GPT</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_GPTResponseManager.h">
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_GPTImageResponseManager.h">
+      <Filter>Source\NarrativeNexus\Public\GPT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_GPTTextRequestManager.h">
+      <Filter>Source\NarrativeNexus\Public\GPT</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_GPTTextResponseManager.h">
       <Filter>Source\NarrativeNexus\Public\GPT</Filter>
     </ClInclude>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\GPT\NN_Cpp_HTTPRequestHandler.h">
