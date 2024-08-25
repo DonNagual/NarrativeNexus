@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "UObject/Interface.h"
+#include "Enums/NN_Cpp_EnumButtons.h"
 #include "NN_Cpp_IF_WidgetController.generated.h"
 
 // This class does not need to be modified.
@@ -58,9 +59,14 @@ public:
 	// ############### GameChat ###############
 
 	virtual void RemoveAllGPTMessagesFromScrollBoxViaInterface() = 0;
+	virtual bool IsGameChatWidgetVisibleViaInterface() = 0;
 
 	// ############### AreYouSure ###############
 	
-	virtual void SetWidgetVisibilityViaInterface() = 0;
-	virtual void OnYesButtonClickedForGameChatWidgetViaInterface() = 0;
+	//virtual void SetAreYouSureWidgetVisibilityViaInterface() = 0;
+	virtual void ShowAreYouSureWidgetViaInterface() = 0;
+	virtual void HideAreYouSureWidgetViaInterface() = 0;
+	virtual void OnYesButtonClickedAfterMainButtonViaInterface() = 0;
+
+	virtual void SetTriggeredWidgetViaInterface(ETriggeredButton TriggeredButton) = 0;
 };

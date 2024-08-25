@@ -17,6 +17,7 @@ void ANN_Cpp_PlayerController::InitializeWidgets()
 		Widget->AddToViewport();
 		CategoryWidget = Cast<UNN_Cpp_Widget_Category>(Widget);
 		MainWidget = Cast<UNN_Cpp_Widget_Main>(CategoryWidget->MainWidget);
+		MainMenuWidget = Cast< UNN_Cpp_Widget_MainMenu>(MainWidget->MainMenuWidget);
 		CreatorWidget = Cast<UNN_Cpp_Widget_Creator>(CategoryWidget->CreatorWidget);
 		GameWidget = Cast<UNN_Cpp_Widget_Game>(CategoryWidget->GameWidget);
 		MainOptionsWidget = Cast<UNN_Cpp_Widget_MainOptions>(MainWidget->MainOptionsWidget);
@@ -154,6 +155,11 @@ void ANN_Cpp_PlayerController::RemoveAllGPTMessagesFromScrollBoxViaInterface()
 	GameChatWidget->RemoveAllGPTMessagesFromScrollBox();
 }
 
+bool ANN_Cpp_PlayerController::IsGameChatWidgetVisibleViaInterface()
+{
+	return GameChatWidget ? GameChatWidget->IsGameChatWidgetVisible() : false;
+}
+
 // ############### Main ###############
 
 void ANN_Cpp_PlayerController::ShowMainMenuWidgetViaInterface()
@@ -257,13 +263,27 @@ void ANN_Cpp_PlayerController::RemoveAllNodesFromScrollBoxViaInterface()
 	GameNavigatorWidget->RemoveAllNodesFromScrollBox();
 }
 
-void ANN_Cpp_PlayerController::SetWidgetVisibilityViaInterface()
+void ANN_Cpp_PlayerController::ShowAreYouSureWidgetViaInterface()
 {
-	AreYouSureWidget->SetWidgetVisibility();
+	AreYouSureWidget->ShowAreYouSureWidget();
 }
 
-void ANN_Cpp_PlayerController::OnYesButtonClickedForGameChatWidgetViaInterface()
+void ANN_Cpp_PlayerController::HideAreYouSureWidgetViaInterface()
 {
-	GameChatWidget->ClearMessages();
+	AreYouSureWidget->HideAreYouSureWidget();
+}
 
+void ANN_Cpp_PlayerController::OnYesButtonClickedAfterMainButtonViaInterface()
+{
+	GameChatWidget->RemoveAllGPTMessagesFromScrollBox();
+	HideWidget(GameChatWidget);
+	CategoryWidget->OnMainButtonClicked();
+}
+
+void ANN_Cpp_PlayerController::SetTriggeredWidgetViaInterface(ETriggeredButton TriggeredButton)
+{
+	if (AreYouSureWidget)
+	{
+		AreYouSureWidget->SetTriggeredButton(TriggeredButton);
+	}
 }

@@ -267,6 +267,9 @@
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <ClInclude Include="..\..\Source\NarrativeNexus\NarrativeNexus.h"/>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\Enums\NN_Cpp_EnumButtons.cpp">
+      <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\General\NN_Cpp_GameInstance.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
@@ -381,6 +384,7 @@
     <ClCompile Include="..\..\Source\NarrativeNexus\Private\Widgets\Main\NN_Cpp_Widget_MainTutorial.cpp">
       <AdditionalIncludeDirectories>$(ClCompile_AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\Enums\NN_Cpp_EnumButtons.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\General\NN_Cpp_GameInstance.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\General\NN_Cpp_GameModeBase.h"/>
     <ClInclude Include="..\..\Source\NarrativeNexus\Public\General\NN_Cpp_GameStateBase.h"/>

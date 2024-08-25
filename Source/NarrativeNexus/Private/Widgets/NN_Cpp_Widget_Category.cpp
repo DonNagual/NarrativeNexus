@@ -39,13 +39,23 @@ void UNN_Cpp_Widget_Category::HideCategorySubWidget(UUserWidget* SubWidget)
 
 void UNN_Cpp_Widget_Category::OnMainButtonClicked()
 {
-	HideAllWidgets();
 	if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
 	{
-		Interface->ShowWidget(MainWidget);
-		Interface->ShowMainMenuWidgetViaInterface();
-		Interface->RemoveAllNodesFromScrollBoxViaInterface();
-		Interface->RemoveAllGPTMessagesFromScrollBoxViaInterface();
+		bool IsVisible = Interface->IsGameChatWidgetVisibleViaInterface();
+		UE_LOG(LogTemp, Warning, TEXT("Is GameChatWidget Visible: %s"), IsVisible ? TEXT("True") : TEXT("False"));
+		if (IsVisible)
+		{
+			Interface->ShowAreYouSureWidgetViaInterface();
+			Interface->SetTriggeredWidgetViaInterface(ETriggeredButton::MainButton);
+		}
+		else
+		{
+			HideAllWidgets();
+			Interface->ShowWidget(MainWidget);
+			Interface->ShowMainMenuWidgetViaInterface();
+			Interface->RemoveAllNodesFromScrollBoxViaInterface();
+			Interface->RemoveAllGPTMessagesFromScrollBoxViaInterface();
+		}
 	}
 }
 

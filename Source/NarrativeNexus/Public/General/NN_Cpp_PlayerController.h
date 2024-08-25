@@ -81,11 +81,16 @@ public:
 	// ############### GameChat ###############
 
 	virtual void RemoveAllGPTMessagesFromScrollBoxViaInterface() override;
+	virtual bool IsGameChatWidgetVisibleViaInterface()override;
 
 	// ############### AreYouSure ###############
 
-	virtual void SetWidgetVisibilityViaInterface() override;
-	virtual void OnYesButtonClickedForGameChatWidgetViaInterface() override;
+	//virtual void SetAreYouSureWidgetVisibilityViaInterface() override;
+	virtual void ShowAreYouSureWidgetViaInterface() override;
+	virtual void HideAreYouSureWidgetViaInterface() override;
+	virtual void OnYesButtonClickedAfterMainButtonViaInterface() override;
+
+	virtual void SetTriggeredWidgetViaInterface(ETriggeredButton TriggeredButton) override;
 
 protected:
 
@@ -128,6 +133,9 @@ private:
 
 	UPROPERTY()
 	class UNN_Cpp_Widget_Main* MainWidget;
+
+	UPROPERTY()
+	class UNN_Cpp_Widget_MainMenu* MainMenuWidget;
 
 	UPROPERTY()
 	class UNN_Cpp_Widget_MainOptions* MainOptionsWidget;

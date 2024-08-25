@@ -10,39 +10,47 @@ void UNN_Cpp_Widget_AreYouSure::NativeConstruct()
 	NoButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_AreYouSure::OnNoButtonClicked);
 }
 
+void UNN_Cpp_Widget_AreYouSure::SetTriggeredButton(ETriggeredButton InTriggeredButton)
+{
+	TriggeredButton = InTriggeredButton;
+}
+
+void UNN_Cpp_Widget_AreYouSure::ShowAreYouSureWidget()
+{
+	this->SetVisibility(ESlateVisibility::Visible);
+}
+
+void UNN_Cpp_Widget_AreYouSure::HideAreYouSureWidget()
+{
+	this->SetVisibility(ESlateVisibility::Collapsed);
+}
+
 void UNN_Cpp_Widget_AreYouSure::OnYesButtonClicked()
 {
 	if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
 	{
-		Interface->OnYesButtonClickedForGameChatWidgetViaInterface();
+		switch (TriggeredButton)
+		{
+		case ETriggeredButton::MainButton:
+			Interface->OnYesButtonClickedAfterMainButtonViaInterface();
+			HideAreYouSureWidget();
+			break;
+		case ETriggeredButton::RepeatButton:
+			break;
+		case ETriggeredButton::BackButton:
+			break;
+		default:
+			break;
+		}
 	}
-
-	SetWidgetVisibility();
 }
 
 void UNN_Cpp_Widget_AreYouSure::OnNoButtonClicked()
 {
-	SetWidgetVisibility();
-}
-
-void UNN_Cpp_Widget_AreYouSure::SetWidgetVisibility()
-{
-	if (this->IsVisible())
-	{
-		this->SetVisibility(ESlateVisibility::Collapsed);
-	}
-	else
-	{
-		this->SetVisibility(ESlateVisibility::Visible);
-	}
+	HideAreYouSureWidget();
 }
 
 void UNN_Cpp_Widget_AreYouSure::WriteAreYouSureMessage()
 {
 
-}
-
-bool UNN_Cpp_Widget_AreYouSure::IsWidgetVisible() const
-{
-	return this->IsVisible();
 }

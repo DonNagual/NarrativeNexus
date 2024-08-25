@@ -49,6 +49,12 @@
     <Filter Include="Source\NarrativeNexus\Private">
       <UniqueIdentifier>{D9DBA5D8-76D3-3F78-A597-D341323A8311}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\NarrativeNexus\Private\Enums">
+      <UniqueIdentifier>{2690A016-F31D-3E1F-AC48-A46190D55CEA}</UniqueIdentifier>
+    </Filter>
+    <ClCompile Include="..\..\Source\NarrativeNexus\Private\Enums\NN_Cpp_EnumButtons.cpp">
+      <Filter>Source\NarrativeNexus\Private\Enums</Filter>
+    </ClCompile>
     <Filter Include="Source\NarrativeNexus\Private\General">
       <UniqueIdentifier>{FA52DCF7-1F60-3838-AA80-C1F9484D9DE6}</UniqueIdentifier>
     </Filter>
@@ -190,6 +196,12 @@
     <Filter Include="Source\NarrativeNexus\Public">
       <UniqueIdentifier>{BFE93F78-3B91-31D4-9205-EA2E15236660}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\NarrativeNexus\Public\Enums">
+      <UniqueIdentifier>{11128F29-4C32-3F09-82EF-03ECA985EAD2}</UniqueIdentifier>
+    </Filter>
+    <ClInclude Include="..\..\Source\NarrativeNexus\Public\Enums\NN_Cpp_EnumButtons.h">
+      <Filter>Source\NarrativeNexus\Public\Enums</Filter>
+    </ClInclude>
     <Filter Include="Source\NarrativeNexus\Public\General">
       <UniqueIdentifier>{D87E2BFB-6A9F-3E5B-96F8-7071FE788C3A}</UniqueIdentifier>
     </Filter>
