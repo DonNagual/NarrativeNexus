@@ -30,6 +30,9 @@ public:
 	UPROPERTY(meta = (BindWidget))
 	class UUserWidget* CreatorWidget;
 
+	UPROPERTY(meta = (BindWidget))
+	class UUserWidget* AreYouSureWidget;
+
 protected:
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<UPanelWidget> CategoryContainer;

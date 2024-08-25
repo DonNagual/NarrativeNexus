@@ -22,6 +22,7 @@ void ANN_Cpp_PlayerController::InitializeWidgets()
 		MainOptionsWidget = Cast<UNN_Cpp_Widget_MainOptions>(MainWidget->MainOptionsWidget);
 		GameNavigatorWidget = Cast<UNN_Cpp_Widget_GameNavigator>(GameWidget->GameNavigatorWidget);
 		GameChatWidget = Cast<UNN_Cpp_Widget_GameChat>(GameWidget->GameChatWidget);
+		AreYouSureWidget = Cast<UNN_Cpp_Widget_AreYouSure>(CategoryWidget->AreYouSureWidget);
 	}
 }
 
@@ -254,4 +255,15 @@ int32 ANN_Cpp_PlayerController::GetCurrentMessageNumberViaInterface() const
 void ANN_Cpp_PlayerController::RemoveAllNodesFromScrollBoxViaInterface()
 {
 	GameNavigatorWidget->RemoveAllNodesFromScrollBox();
+}
+
+void ANN_Cpp_PlayerController::SetWidgetVisibilityViaInterface()
+{
+	AreYouSureWidget->SetWidgetVisibility();
+}
+
+void ANN_Cpp_PlayerController::OnYesButtonClickedForGameChatWidgetViaInterface()
+{
+	GameChatWidget->ClearMessages();
+
 }

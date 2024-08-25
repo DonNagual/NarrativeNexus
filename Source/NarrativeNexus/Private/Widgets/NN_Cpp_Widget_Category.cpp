@@ -1,4 +1,5 @@
 // NN_Cpp_Widget_Category.cpp
+
 #include "Widgets/NN_Cpp_Widget_Category.h"
 
 void UNN_Cpp_Widget_Category::NativeConstruct()
@@ -25,6 +26,7 @@ void UNN_Cpp_Widget_Category::HideAllWidgets()
 	HideCategorySubWidget(CreatorWidget);
 	HideCategorySubWidget(HelpWidget);
 	HideCategorySubWidget(QuitWidget);
+	HideCategorySubWidget(AreYouSureWidget);
 }
 
 void UNN_Cpp_Widget_Category::HideCategorySubWidget(UUserWidget* SubWidget)
