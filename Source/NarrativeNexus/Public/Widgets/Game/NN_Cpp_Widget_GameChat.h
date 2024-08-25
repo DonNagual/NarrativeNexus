@@ -31,6 +31,9 @@ public:
 	UFUNCTION()
 	void ClearMessages();
 
+	UFUNCTION()
+	bool IsGameChatWidgetVisible();
+
 protected:
 
 	// ############### Buttons ###############

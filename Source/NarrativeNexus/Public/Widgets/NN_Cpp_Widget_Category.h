@@ -8,6 +8,7 @@
 #include "Components/Button.h"
 #include "Blueprint/UserWidget.h"
 #include "General/NN_Cpp_GameInstance.h"
+#include "Enums/NN_Cpp_EnumButtons.h"
 #include "Interface/NN_Cpp_IF_WidgetController.h"
 #include "NN_Cpp_Widget_Category.generated.h"
 
@@ -18,6 +19,9 @@ class NARRATIVENEXUS_API UNN_Cpp_Widget_Category : public UUserWidget
 	
 public:
 	virtual void NativeConstruct() override;
+
+	UFUNCTION()
+	void OnMainButtonClicked();
 
 	// ############### Widgets ###############
 
@@ -65,9 +69,6 @@ private:
 
 	UFUNCTION()
 	void HideAllWidgets();
-
-	UFUNCTION()
-	void OnMainButtonClicked();
 
 	UFUNCTION()
 	void OnGameButtonClicked();
