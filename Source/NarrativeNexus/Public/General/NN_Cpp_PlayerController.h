@@ -6,6 +6,7 @@
 #include "Blueprint/UserWidget.h"
 #include "GameFramework/PlayerController.h"
 #include "Widgets/NN_Cpp_Widget_Category.h"
+#include "Widgets/NN_Cpp_Widget_AreYouSure.h"
 #include "Widgets/Main/NN_Cpp_Widget_Main.h"
 #include "Widgets/Main/NN_Cpp_Widget_MainMenu.h"
 #include "Widgets/Main/NN_Cpp_Widget_MainOptions.h"
@@ -81,6 +82,11 @@ public:
 
 	virtual void RemoveAllGPTMessagesFromScrollBoxViaInterface() override;
 
+	// ############### AreYouSure ###############
+
+	virtual void SetWidgetVisibilityViaInterface() override;
+	virtual void OnYesButtonClickedForGameChatWidgetViaInterface() override;
+
 protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "UI Category")
@@ -137,6 +143,9 @@ private:
 
 	UPROPERTY()
 	class UNN_Cpp_Widget_GameNavigator*	GameNavigatorWidget;
+
+	UPROPERTY()
+	class UNN_Cpp_Widget_AreYouSure* AreYouSureWidget;
 
 	void InitializeWidgets();
 };

@@ -28,6 +28,9 @@ public:
 	UFUNCTION()
 	void RemoveAllGPTMessagesFromScrollBox();
 
+	UFUNCTION()
+	void ClearMessages();
+
 protected:
 
 	// ############### Buttons ###############

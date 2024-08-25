@@ -58,5 +58,9 @@ public:
 	// ############### GameChat ###############
 
 	virtual void RemoveAllGPTMessagesFromScrollBoxViaInterface() = 0;
+
+	// ############### AreYouSure ###############
 	
+	virtual void SetWidgetVisibilityViaInterface() = 0;
+	virtual void OnYesButtonClickedForGameChatWidgetViaInterface() = 0;
 };
