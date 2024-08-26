@@ -88,9 +88,14 @@ public:
 	//virtual void SetAreYouSureWidgetVisibilityViaInterface() override;
 	virtual void ShowAreYouSureWidgetViaInterface() override;
 	virtual void HideAreYouSureWidgetViaInterface() override;
-	virtual void OnYesButtonClickedAfterMainButtonViaInterface() override;
 
 	virtual void SetTriggeredWidgetViaInterface(ETriggeredButton TriggeredButton) override;
+	virtual void OnYesButtonClickedAfterMainButtonViaInterface() override;
+	virtual void OnYesButtonClickedAfterGameButtonViaInterface() override;
+	virtual void OnYesButtonClickedAfterCreatorButtonViaInterface() override;
+	virtual void OnYesButtonClickedAfterResetButtonViaInterface() override;
+	virtual void OnYesButtonClickedAfterRepeatButtonViaInterface() override;
+	virtual void OnYesButtonClickedAfterBackButtonViaInterface() override;
 
 protected:
 

@@ -263,6 +263,8 @@ void ANN_Cpp_PlayerController::RemoveAllNodesFromScrollBoxViaInterface()
 	GameNavigatorWidget->RemoveAllNodesFromScrollBox();
 }
 
+// ############### AreYouSure ###############
+
 void ANN_Cpp_PlayerController::ShowAreYouSureWidgetViaInterface()
 {
 	AreYouSureWidget->ShowAreYouSureWidget();
@@ -273,6 +275,14 @@ void ANN_Cpp_PlayerController::HideAreYouSureWidgetViaInterface()
 	AreYouSureWidget->HideAreYouSureWidget();
 }
 
+void ANN_Cpp_PlayerController::SetTriggeredWidgetViaInterface(ETriggeredButton TriggeredButton)
+{
+	if (AreYouSureWidget)
+	{
+		AreYouSureWidget->SetTriggeredButton(TriggeredButton);
+	}
+}
+
 void ANN_Cpp_PlayerController::OnYesButtonClickedAfterMainButtonViaInterface()
 {
 	GameChatWidget->RemoveAllGPTMessagesFromScrollBox();
@@ -280,10 +290,28 @@ void ANN_Cpp_PlayerController::OnYesButtonClickedAfterMainButtonViaInterface()
 	CategoryWidget->OnMainButtonClicked();
 }
 
-void ANN_Cpp_PlayerController::SetTriggeredWidgetViaInterface(ETriggeredButton TriggeredButton)
+void ANN_Cpp_PlayerController::OnYesButtonClickedAfterGameButtonViaInterface()
 {
-	if (AreYouSureWidget)
-	{
-		AreYouSureWidget->SetTriggeredButton(TriggeredButton);
-	}
+	GameChatWidget->RemoveAllGPTMessagesFromScrollBox();
+	HideWidget(GameChatWidget);
+	CategoryWidget->OnGameButtonClicked();
+}
+
+void ANN_Cpp_PlayerController::OnYesButtonClickedAfterCreatorButtonViaInterface()
+{
+	GameChatWidget->RemoveAllGPTMessagesFromScrollBox();
+	HideWidget(GameChatWidget);
+	CategoryWidget->OnCreatorButtonClicked();
+}
+
+void ANN_Cpp_PlayerController::OnYesButtonClickedAfterResetButtonViaInterface()
+{
+}
+
+void ANN_Cpp_PlayerController::OnYesButtonClickedAfterRepeatButtonViaInterface()
+{
+}
+
+void ANN_Cpp_PlayerController::OnYesButtonClickedAfterBackButtonViaInterface()
+{
 }

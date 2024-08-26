@@ -29,9 +29,6 @@ public:
 	void RemoveAllGPTMessagesFromScrollBox();
 
 	UFUNCTION()
-	void ClearMessages();
-
-	UFUNCTION()
 	bool IsGameChatWidgetVisible();
 
 protected:

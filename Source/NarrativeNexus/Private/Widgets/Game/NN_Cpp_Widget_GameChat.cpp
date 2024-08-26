@@ -188,14 +188,6 @@ void UNN_Cpp_Widget_GameChat::OnResetButtonClicked()
 	}
 }
 
-void UNN_Cpp_Widget_GameChat::ClearMessages()
-{
-	if (GPT)
-	{
-		MessageScrollBox->ClearChildren();
-	}
-}
-
 bool UNN_Cpp_Widget_GameChat::IsGameChatWidgetVisible()
 {
 	return this->IsVisible();

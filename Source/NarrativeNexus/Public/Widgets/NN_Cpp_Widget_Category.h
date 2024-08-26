@@ -20,8 +20,16 @@ class NARRATIVENEXUS_API UNN_Cpp_Widget_Category : public UUserWidget
 public:
 	virtual void NativeConstruct() override;
 
+	// ############### Buttons ###############
+
 	UFUNCTION()
 	void OnMainButtonClicked();
+
+	UFUNCTION()
+	void OnGameButtonClicked();
+
+	UFUNCTION()
+	void OnCreatorButtonClicked();
 
 	// ############### Widgets ###############
 
@@ -69,12 +77,6 @@ private:
 
 	UFUNCTION()
 	void HideAllWidgets();
-
-	UFUNCTION()
-	void OnGameButtonClicked();
-
-	UFUNCTION()
-	void OnCreatorButtonClicked();
 
 	UFUNCTION()
 	void OnHelpButtonClicked();
