@@ -38,6 +38,7 @@ public:
 
 	void SendMessageToGPT(const FString& Message);
 	FString GetLastResponse() const;
+	UNN_Cpp_GPTConversationManager* GetConversationManager() const;
 
 	void GenerateShortSummaryFromConversation(const FString& Summary, TFunction<void(const FString&)> OnShortSummaryGenerated);
 	void GenerateMaxSummaryFromConversation(const FString& Summary, TFunction<void(const FString&)> OnMaxSummaryGenerated);

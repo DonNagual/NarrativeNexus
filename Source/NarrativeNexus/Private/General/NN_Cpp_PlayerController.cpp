@@ -305,10 +305,6 @@ void ANN_Cpp_PlayerController::OnYesButtonClickedAfterCreatorButtonViaInterface(
 	CategoryWidget->OnCreatorButtonClicked();
 }
 
-void ANN_Cpp_PlayerController::OnYesButtonClickedAfterResetButtonViaInterface()
-{
-}
-
 void ANN_Cpp_PlayerController::OnYesButtonClickedAfterBackButtonViaInterface()
 {
 	GameChatWidget->RemoveAllGPTMessagesFromScrollBox();

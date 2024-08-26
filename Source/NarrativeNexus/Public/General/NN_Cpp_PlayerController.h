@@ -93,7 +93,6 @@ public:
 	virtual void OnYesButtonClickedAfterMainButtonViaInterface() override;
 	virtual void OnYesButtonClickedAfterGameButtonViaInterface() override;
 	virtual void OnYesButtonClickedAfterCreatorButtonViaInterface() override;
-	virtual void OnYesButtonClickedAfterResetButtonViaInterface() override;
 	virtual void OnYesButtonClickedAfterBackButtonViaInterface() override;
 
 protected:

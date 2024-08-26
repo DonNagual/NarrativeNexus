@@ -53,6 +53,9 @@ void UNN_Cpp_GPTTextRequestManager::SendTextRequest(
 
     FString JsonString = JSONHandlerInstance->SerializeJSON(JsonObject);
 
+    // DEBUG
+    //UE_LOG(LogTemp, Error, TEXT("JsonObject: %s\n"), *JsonString)
+
     if (!ApiKey.IsEmpty())
     {
         TSharedRef<IHttpRequest, ESPMode::ThreadSafe> Request = HTTPRequestHandlerInstance->CreateRequest(

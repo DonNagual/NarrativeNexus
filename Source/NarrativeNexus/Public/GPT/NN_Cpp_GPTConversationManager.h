@@ -15,6 +15,7 @@ public:
 	void AddMessageToHistory(const FString& Role, const FString Content);
 	const TArray<TSharedPtr<FJsonObject>>& GetConversationHistory() const;
 	void ClearHistory();
+	void RemoveLastMessageFromAssistant();
 
 private:
 	TArray<TSharedPtr<FJsonObject>> ConversationHistory;

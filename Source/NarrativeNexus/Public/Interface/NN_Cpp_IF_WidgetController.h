@@ -68,7 +68,6 @@ public:
 	virtual void OnYesButtonClickedAfterMainButtonViaInterface() = 0;
 	virtual void OnYesButtonClickedAfterGameButtonViaInterface() = 0;
 	virtual void OnYesButtonClickedAfterCreatorButtonViaInterface() = 0;
-	virtual void OnYesButtonClickedAfterResetButtonViaInterface() = 0;
 	virtual void OnYesButtonClickedAfterBackButtonViaInterface() = 0;
 
 	virtual void SetTriggeredWidgetViaInterface(ETriggeredButton TriggeredButton) = 0;

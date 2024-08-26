@@ -85,3 +85,8 @@ FString UNN_Cpp_GPT::GetLastResponse() const
 {
 	return LastResponse;
 }
+
+UNN_Cpp_GPTConversationManager* UNN_Cpp_GPT::GetConversationManager() const
+{
+	return ConversationManagerInstance;
+}

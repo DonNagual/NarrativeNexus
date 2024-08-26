@@ -14,7 +14,6 @@ enum class ETriggeredButton : uint8
 	MainButton UMETA(DisplayName = "MainButton"),
 	GameButton UMETA(DisplayName = "GameButton"),
 	CreatorButton UMETA(DisplayName = "CreatorButton"),
-	ResetButton UMETA(DisplayName = "ResetButton"),
 	ReaktionButton UMETA(DisplayName = "ReaktionButton"),
 	BackButton UMETA(DisplayName = "BackButton")
 };

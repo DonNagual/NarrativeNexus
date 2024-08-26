@@ -9,7 +9,7 @@ void UNN_Cpp_Widget_GameChat::NativeConstruct()
 	SendButtom->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameChat::OnSendButtomClicked);
 	BackButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameChat::OnBackButtonClicked);
 	ReaktionButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameChat::OnReaktionButtonClicked);
-	ResetButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameChat::OnResetButtonClicked);
+	RepeatButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameChat::OnRepeatButtonClicked);
 	InfoButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameChat::OnInfoButtonClicked);
 	SummaryButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameChat::OnSummaryButtonClicked);
 	ContinueButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameChat::OnContinueButtonClicked);
@@ -160,6 +160,8 @@ void UNN_Cpp_Widget_GameChat::OnSendButtomClicked()
 
 void UNN_Cpp_Widget_GameChat::OnBackButtonClicked()
 {
+	RemoveLastGPTMessageFromScrollBox();
+
 	if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
 	{
 		Interface->ShowAreYouSureWidgetViaInterface();
@@ -172,12 +174,20 @@ void UNN_Cpp_Widget_GameChat::OnReaktionButtonClicked()
 	
 }
 
-void UNN_Cpp_Widget_GameChat::OnResetButtonClicked()
+void UNN_Cpp_Widget_GameChat::OnRepeatButtonClicked()
 {
-	if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
+	if (GPT)
 	{
-		Interface->ShowAreYouSureWidgetViaInterface();
-		Interface->SetTriggeredWidgetViaInterface(ETriggeredButton::ResetButton);
+		GPT->GetConversationManager()->RemoveLastMessageFromAssistant();
+
+		RemoveLastGPTMessageFromScrollBox();
+
+		const TArray<TSharedPtr<FJsonObject>>& ConversationHistory = GPT->GetConversationManager()->GetConversationHistory();
+		if (ConversationHistory.Num() > 0)
+		{
+			FString LastConversation = ConversationHistory.Last()->GetStringField(TEXT("content"));
+			GPT->SendMessageToGPT(LastConversation);
+		}
 	}
 }
 

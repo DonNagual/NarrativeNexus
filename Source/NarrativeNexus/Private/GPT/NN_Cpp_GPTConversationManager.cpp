@@ -4,6 +4,11 @@
 
 void UNN_Cpp_GPTConversationManager::AddMessageToHistory(const FString& Role, const FString Content)
 {
+	if (ConversationHistory.Num() > 0 && ConversationHistory.Last()->GetStringField(TEXT("content")) == Content)
+	{
+		return;
+	}
+
 	TSharedPtr<FJsonObject> NewMessageObject = MakeShareable(new FJsonObject());
 	NewMessageObject->SetStringField(TEXT("role"), Role);
 	NewMessageObject->SetStringField(TEXT("content"), Content);
@@ -39,5 +44,13 @@ void UNN_Cpp_GPTConversationManager::TrimHistory()
 	if (ConversationHistory.Num() > MaxHistorySize)
 	{
 		ConversationHistory.RemoveAt(0, ConversationHistory.Num() - MaxHistorySize);
+	}
+}
+
+void UNN_Cpp_GPTConversationManager::RemoveLastMessageFromAssistant()
+{
+	if (ConversationHistory.Last()->GetStringField(TEXT("role")) == TEXT("assistant"))
+	{
+		ConversationHistory.RemoveAt(ConversationHistory.Num() - 1);
 	}
 }
