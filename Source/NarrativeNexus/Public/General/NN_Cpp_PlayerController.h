@@ -12,6 +12,7 @@
 #include "Widgets/Main/NN_Cpp_Widget_MainOptions.h"
 #include "Widgets/Creator/NN_Cpp_Widget_Creator.h"
 #include "Widgets/Game/NN_Cpp_Widget_Game.h"
+#include "Widgets/Game/NN_Cpp_Widget_GameMenu.h"
 #include "Widgets/Game/NN_Cpp_Widget_GameChat.h"
 #include "Widgets/Game/NN_Cpp_Widget_GameNavigator.h"
 #include "GPT/NN_Cpp_APIKeyLoader.h"
@@ -85,7 +86,6 @@ public:
 
 	// ############### AreYouSure ###############
 
-	//virtual void SetAreYouSureWidgetVisibilityViaInterface() override;
 	virtual void ShowAreYouSureWidgetViaInterface() override;
 	virtual void HideAreYouSureWidgetViaInterface() override;
 
@@ -94,7 +94,6 @@ public:
 	virtual void OnYesButtonClickedAfterGameButtonViaInterface() override;
 	virtual void OnYesButtonClickedAfterCreatorButtonViaInterface() override;
 	virtual void OnYesButtonClickedAfterResetButtonViaInterface() override;
-	virtual void OnYesButtonClickedAfterRepeatButtonViaInterface() override;
 	virtual void OnYesButtonClickedAfterBackButtonViaInterface() override;
 
 protected:
@@ -150,6 +149,9 @@ private:
 
 	UPROPERTY()
 	class UNN_Cpp_Widget_Game* GameWidget;
+
+	UPROPERTY()
+	class UNN_Cpp_Widget_GameMenu* GameMenuWidget;
 
 	UPROPERTY()
 	class UNN_Cpp_Widget_GameChat* GameChatWidget;

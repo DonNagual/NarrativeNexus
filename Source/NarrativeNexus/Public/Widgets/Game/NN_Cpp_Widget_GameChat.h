@@ -42,7 +42,7 @@ protected:
 	TObjectPtr<UButton> BackButton;
 
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<UButton> RepeatButton;
+	TObjectPtr<UButton> ReaktionButton;
 
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<UButton> ResetButton;
@@ -96,7 +96,7 @@ private:
 	void OnBackButtonClicked();
 
 	UFUNCTION()
-	void OnRepeatButtonClicked();
+	void OnReaktionButtonClicked();
 
 	UFUNCTION()
 	void OnResetButtonClicked();

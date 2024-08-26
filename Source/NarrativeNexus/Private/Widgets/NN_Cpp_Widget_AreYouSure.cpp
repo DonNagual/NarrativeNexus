@@ -46,11 +46,12 @@ void UNN_Cpp_Widget_AreYouSure::OnYesButtonClicked()
 		case ETriggeredButton::ResetButton:
 			Interface->OnYesButtonClickedAfterResetButtonViaInterface();
 			break;
-		case ETriggeredButton::RepeatButton:
-			Interface->OnYesButtonClickedAfterRepeatButtonViaInterface();
+		case ETriggeredButton::ReaktionButton:
+			
 			break;
 		case ETriggeredButton::BackButton:
 			Interface->OnYesButtonClickedAfterBackButtonViaInterface();
+			HideAreYouSureWidget();
 			break;
 		default:
 			break;

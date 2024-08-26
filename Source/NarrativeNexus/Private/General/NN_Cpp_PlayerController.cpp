@@ -16,11 +16,12 @@ void ANN_Cpp_PlayerController::InitializeWidgets()
 	{
 		Widget->AddToViewport();
 		CategoryWidget = Cast<UNN_Cpp_Widget_Category>(Widget);
+		CreatorWidget = Cast<UNN_Cpp_Widget_Creator>(CategoryWidget->CreatorWidget);
 		MainWidget = Cast<UNN_Cpp_Widget_Main>(CategoryWidget->MainWidget);
 		MainMenuWidget = Cast< UNN_Cpp_Widget_MainMenu>(MainWidget->MainMenuWidget);
-		CreatorWidget = Cast<UNN_Cpp_Widget_Creator>(CategoryWidget->CreatorWidget);
-		GameWidget = Cast<UNN_Cpp_Widget_Game>(CategoryWidget->GameWidget);
 		MainOptionsWidget = Cast<UNN_Cpp_Widget_MainOptions>(MainWidget->MainOptionsWidget);
+		GameWidget = Cast<UNN_Cpp_Widget_Game>(CategoryWidget->GameWidget);
+		GameMenuWidget = Cast<UNN_Cpp_Widget_GameMenu>(GameWidget->GameMenuWidget);
 		GameNavigatorWidget = Cast<UNN_Cpp_Widget_GameNavigator>(GameWidget->GameNavigatorWidget);
 		GameChatWidget = Cast<UNN_Cpp_Widget_GameChat>(GameWidget->GameChatWidget);
 		AreYouSureWidget = Cast<UNN_Cpp_Widget_AreYouSure>(CategoryWidget->AreYouSureWidget);
@@ -308,10 +309,11 @@ void ANN_Cpp_PlayerController::OnYesButtonClickedAfterResetButtonViaInterface()
 {
 }
 
-void ANN_Cpp_PlayerController::OnYesButtonClickedAfterRepeatButtonViaInterface()
-{
-}
-
 void ANN_Cpp_PlayerController::OnYesButtonClickedAfterBackButtonViaInterface()
 {
+	GameChatWidget->RemoveAllGPTMessagesFromScrollBox();
+	HideWidget(GameChatWidget);
+	DestroyGPT();
+	GameWidget->ShowGameNavigatorWidget();
+	GameNavigatorWidget->OnGameNavigatorWidgetVisibilityChanged();
 }

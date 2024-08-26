@@ -8,7 +8,7 @@ void UNN_Cpp_Widget_GameChat::NativeConstruct()
 
 	SendButtom->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameChat::OnSendButtomClicked);
 	BackButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameChat::OnBackButtonClicked);
-	RepeatButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameChat::OnRepeatButtonClicked);
+	ReaktionButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameChat::OnReaktionButtonClicked);
 	ResetButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameChat::OnResetButtonClicked);
 	InfoButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameChat::OnInfoButtonClicked);
 	SummaryButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameChat::OnSummaryButtonClicked);
@@ -160,31 +160,24 @@ void UNN_Cpp_Widget_GameChat::OnSendButtomClicked()
 
 void UNN_Cpp_Widget_GameChat::OnBackButtonClicked()
 {
-	RemoveAllGPTMessagesFromScrollBox();
-
 	if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
 	{
-		if (auto* GPTInterface = Cast<INN_Cpp_IF_GPT>(GetWorld()->GetFirstPlayerController()))
-		{
-			GPTInterface->DestroyGPT();
-		}
-		Interface->HideWidget(this);
-		Interface->ShowGameNavigatorWidgetViaInterface();
-		Interface->OnGameNavigatorWidgetVisibilityChangedViaInterface();
-
+		Interface->ShowAreYouSureWidgetViaInterface();
+		Interface->SetTriggeredWidgetViaInterface(ETriggeredButton::BackButton);
 	}
 }
 
-void UNN_Cpp_Widget_GameChat::OnRepeatButtonClicked()
+void UNN_Cpp_Widget_GameChat::OnReaktionButtonClicked()
 {
-	RemoveLastGPTMessageFromScrollBox();
+	
 }
 
 void UNN_Cpp_Widget_GameChat::OnResetButtonClicked()
 {
 	if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
 	{
-		//Interface->SetAreYouSureWidgetVisibilityViaInterface();
+		Interface->ShowAreYouSureWidgetViaInterface();
+		Interface->SetTriggeredWidgetViaInterface(ETriggeredButton::ResetButton);
 	}
 }
 
