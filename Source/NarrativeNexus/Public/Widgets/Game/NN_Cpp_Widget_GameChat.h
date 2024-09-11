@@ -10,7 +10,7 @@
 #include "Components/Image.h"
 #include "Blueprint/UserWidget.h"
 #include "NN_Cpp_Widget_GameChatMessage.h"
-#include "Interface/NN_Cpp_IF_GPT.h"
+#include "GPT/NN_Cpp_GPT.h"
 #include "Interface/NN_Cpp_IF_WidgetController.h"
 #include "NN_Cpp_Widget_GameChat.generated.h"
 
@@ -54,7 +54,7 @@ protected:
 	TObjectPtr<UButton> SummaryButton;
 
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<UButton> ContinueButton;
+	TObjectPtr<UButton> ImageButton;
 
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<UButton> SelectTopButton;
@@ -108,7 +108,7 @@ private:
 	void OnSummaryButtonClicked();
 
 	UFUNCTION()
-	void OnContinueButtonClicked();
+	void OnImageButtonClicked();
 
 	UFUNCTION()
 	void OnSelectTopButtonClicked();
@@ -122,10 +122,10 @@ private:
 	// ############### Generate Summary and Image ###############
 
 	UFUNCTION()
-	void GenerateShortSummary(const FString& Summary);
+	void GenerateShortSummary();
 
 	UFUNCTION()
-	void GenerateMaxSummary(const FString& Summary);
+	void GenerateMaxSummary();
 
 	UFUNCTION()
 	void GenerateImageDescription(const FString& Summary);

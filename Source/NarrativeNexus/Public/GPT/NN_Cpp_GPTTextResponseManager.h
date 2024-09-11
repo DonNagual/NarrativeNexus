@@ -21,4 +21,9 @@ public:
 		UNN_Cpp_GPTConversationManager* ConversationManager,
 		TFunction<void(const FString&)> OnResponseProcessed
 	);
+	void SummaryResponse(
+		const FString& ResponseString,
+		UNN_Cpp_JSONHandler* JSONHandlerInstance,
+		UNN_Cpp_GPTConversationManager* ConversationManager,
+		TFunction<void(const FString&)> OnSummaryResponseProcessed);
 };

@@ -47,9 +47,10 @@ public:
 
 	// ############### Options ###############
 
-	virtual bool IsSummaryGenerationEnabledViaInterface() const = 0;
+	virtual bool IsShortSummaryGenerationEnabledViaInterface() const = 0;
+	virtual bool IsMaxSummaryGenerationEnabledViaInterface() const = 0;
 	virtual bool IsImageGenerationEnabledViaInterface() const = 0;
-	virtual int32 GetCurrentMessageNumberViaInterface() const = 0;
+	virtual int32 GetMaxConversationHistorySizeViaInterface() const = 0;
 
 	// ############### GameNavigator ###############
 	

@@ -29,3 +29,25 @@ struct FGPTRequestParams
 
     TArray<TSharedPtr<FJsonObject>> ConversationHistory;
 };
+
+USTRUCT()
+struct FGPTRequestHistoryParams
+{
+    GENERATED_BODY()
+
+    // Standardconstructor
+    FGPTRequestHistoryParams()
+        : MaxTokens(0) {}
+
+    // Constructor with parameters
+    FGPTRequestHistoryParams(const FString& InInstruction, int32 InMaxTokens)
+        : Instruction(InInstruction), MaxTokens(InMaxTokens) {}
+
+    // The instruction to the model on how it should process the request
+    FString Instruction;
+
+    // The maximum number of tokens to be used for the response
+    int32 MaxTokens;
+
+    TArray<TSharedPtr<FJsonObject>> SummaryHistory;
+};

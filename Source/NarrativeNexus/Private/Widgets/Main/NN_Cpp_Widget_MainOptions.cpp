@@ -8,11 +8,12 @@ void UNN_Cpp_Widget_MainOptions::NativeConstruct()
 
 	BackButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_MainOptions::OnBackButtonClicked);
 	GenerateImageCheckBox->OnCheckStateChanged.AddDynamic(this, &UNN_Cpp_Widget_MainOptions::OnGenerateImageCheckBoxChanged);
-	GenerateSummaryCheckBox->OnCheckStateChanged.AddDynamic(this, &UNN_Cpp_Widget_MainOptions::OnGenerateSummaryCheckBoxChanged);
+	GenerateShortSummaryCheckBox->OnCheckStateChanged.AddDynamic(this, &UNN_Cpp_Widget_MainOptions::OnGenerateShortSummaryCheckBoxChanged);
+	GenerateMaxSummaryCheckBox->OnCheckStateChanged.AddDynamic(this, &UNN_Cpp_Widget_MainOptions::OnGenerateMaxSummaryCheckBoxChanged);
 	UpButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_MainOptions::OnUpButtonClicked);
 	DownButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_MainOptions::OnDownButtonClicked);
 
-	MessageNumberText->SetText(FText::AsNumber(CurrentMessageNumber));
+	MaxConversationHistorySizeText->SetText(FText::AsNumber(MaxConversationHistorySize));
 }
 
 void UNN_Cpp_Widget_MainOptions::OnBackButtonClicked()
@@ -24,15 +25,26 @@ void UNN_Cpp_Widget_MainOptions::OnBackButtonClicked()
 	}
 }
 
-void UNN_Cpp_Widget_MainOptions::OnGenerateSummaryCheckBoxChanged(bool bIsChecked)
+void UNN_Cpp_Widget_MainOptions::OnGenerateShortSummaryCheckBoxChanged(bool bIsChecked)
 {
 	// DEBUG
-	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, bIsChecked ? TEXT("Summary Generation Enabled") : TEXT("Summary Generation Disabled"));
+	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, bIsChecked ? TEXT("Short Summary Generation Enabled") : TEXT("Short Summary Generation Disabled"));
 }
 
-bool UNN_Cpp_Widget_MainOptions::IsSummaryGenerationEnabled() const
+void UNN_Cpp_Widget_MainOptions::OnGenerateMaxSummaryCheckBoxChanged(bool bIsChecked)
 {
-	return GenerateSummaryCheckBox->IsChecked();
+	// DEBUG
+	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, bIsChecked ? TEXT("Max Summary Generation Enabled") : TEXT("Max Summary Generation Disabled"));
+}
+
+bool UNN_Cpp_Widget_MainOptions::IsShortSummaryGenerationEnabled() const
+{
+	return GenerateShortSummaryCheckBox->IsChecked();
+}
+
+bool UNN_Cpp_Widget_MainOptions::IsMaxSummaryGenerationEnabled() const
+{
+	return GenerateMaxSummaryCheckBox->IsChecked();
 }
 
 void UNN_Cpp_Widget_MainOptions::OnGenerateImageCheckBoxChanged(bool bIsChecked)
@@ -48,23 +60,23 @@ bool UNN_Cpp_Widget_MainOptions::IsImageGenerationEnabled() const
 
 void UNN_Cpp_Widget_MainOptions::OnUpButtonClicked()
 {
-	if (CurrentMessageNumber < 20)
+	if (MaxConversationHistorySize < 20)
 	{
-		CurrentMessageNumber++;
-		MessageNumberText->SetText(FText::AsNumber(CurrentMessageNumber));
+		MaxConversationHistorySize++;
+		MaxConversationHistorySizeText->SetText(FText::AsNumber(MaxConversationHistorySize));
 	}
 }
 
 void UNN_Cpp_Widget_MainOptions::OnDownButtonClicked()
 {
-	if (CurrentMessageNumber > 4)
+	if (MaxConversationHistorySize > 4)
 	{
-		CurrentMessageNumber--;
-		MessageNumberText->SetText(FText::AsNumber(CurrentMessageNumber));
+		MaxConversationHistorySize--;
+		MaxConversationHistorySizeText->SetText(FText::AsNumber(MaxConversationHistorySize));
 	}
 }
 
-int UNN_Cpp_Widget_MainOptions::GetCurrentMessageNumber() const
+int UNN_Cpp_Widget_MainOptions::GetMaxConversationHistorySize() const
 {
-	return CurrentMessageNumber;
+	return MaxConversationHistorySize;
 }

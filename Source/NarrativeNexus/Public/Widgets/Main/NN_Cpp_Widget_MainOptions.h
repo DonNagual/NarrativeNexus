@@ -19,9 +19,11 @@ public:
 
 	bool IsImageGenerationEnabled() const;
 
-	bool IsSummaryGenerationEnabled() const;
+	bool IsShortSummaryGenerationEnabled() const;
 
-	int GetCurrentMessageNumber() const;
+	bool IsMaxSummaryGenerationEnabled() const;
+
+	int GetMaxConversationHistorySize() const;
 
 protected:
 	// ############### Buttons ###############
@@ -38,7 +40,7 @@ protected:
 	TObjectPtr<UButton> DownButton;
 
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<UTextBlock> MessageNumberText;
+	TObjectPtr<UTextBlock> MaxConversationHistorySizeText;
 	
 	// ############### CheckBox ###############
 
@@ -46,7 +48,10 @@ protected:
 	TObjectPtr<UCheckBox> GenerateImageCheckBox;
 
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<UCheckBox> GenerateSummaryCheckBox;
+	TObjectPtr<UCheckBox> GenerateShortSummaryCheckBox;
+
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UCheckBox> GenerateMaxSummaryCheckBox;
 
 private:
 	// ############### Functions ###############
@@ -55,14 +60,17 @@ private:
 	void OnBackButtonClicked();
 
 	UFUNCTION()
-	void OnGenerateSummaryCheckBoxChanged(bool bIsChecked);
+	void OnGenerateShortSummaryCheckBoxChanged(bool bIsChecked);
+
+	UFUNCTION()
+	void OnGenerateMaxSummaryCheckBoxChanged(bool bIsChecked);
 
 	UFUNCTION()
 	void OnGenerateImageCheckBoxChanged(bool bIsChecked);
 
 	// ############### Message Number ###############
 	
-	int32 CurrentMessageNumber = 4;
+	int32 MaxConversationHistorySize = 4;
 
 	UFUNCTION()
 	void OnUpButtonClicked();

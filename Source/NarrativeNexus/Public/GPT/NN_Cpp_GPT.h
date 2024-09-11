@@ -7,12 +7,14 @@
 #include "ImageUtils.h"
 #include "Http.h"
 #include "Structs/NN_Cpp_GPTRequestParams.h"
+#include "GPT/NN_Cpp_APIKeyLoader.h"
 #include "GPT/NN_Cpp_JSONHandler.h"
 #include "GPT/NN_Cpp_HTTPRequestHandler.h"
 #include "GPT/NN_Cpp_GPTTextRequestManager.h"
 #include "GPT/NN_Cpp_GPTTextResponseManager.h"
 #include "GPT/NN_Cpp_GPTImageRequestManager.h"
 #include "GPT/NN_Cpp_GPTImageResponseManager.h"
+//#include "Interface/NN_Cpp_IF_GPT.h"
 #include "Delegates/DelegateCombinations.h"
 #include "NN_Cpp_GPT.generated.h"
 
@@ -37,11 +39,12 @@ public:
 	void SetConversationManager(UNN_Cpp_GPTConversationManager* InConversationManager);
 
 	void SendMessageToGPT(const FString& Message);
+	void GenerateShortSummaryFromConversation(TFunction<void(const FString&)> OnShortSummaryGenerated);
+	void GenerateMaxSummaryFromConversation(TFunction<void(const FString&)> OnMaxSummaryGenerated);
+
 	FString GetLastResponse() const;
 	UNN_Cpp_GPTConversationManager* GetConversationManager() const;
 
-	void GenerateShortSummaryFromConversation(const FString& Summary, TFunction<void(const FString&)> OnShortSummaryGenerated);
-	void GenerateMaxSummaryFromConversation(const FString& Summary, TFunction<void(const FString&)> OnMaxSummaryGenerated);
 	void GenerateImageDescriptionFromConversation(const FString& Summary, TFunction<void(const FString&)> OnImageSummaryGenerated);
 	
 	void GenerateImageFromDescription(const FString& Summary, TFunction<void(UTexture2D*)> OnImageGenerated);

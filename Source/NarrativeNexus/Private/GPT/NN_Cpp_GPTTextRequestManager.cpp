@@ -54,7 +54,7 @@ void UNN_Cpp_GPTTextRequestManager::SendTextRequest(
     FString JsonString = JSONHandlerInstance->SerializeJSON(JsonObject);
 
     // DEBUG
-    //UE_LOG(LogTemp, Error, TEXT("JsonObject: %s\n"), *JsonString)
+    UE_LOG(LogTemp, Error, TEXT("JsonObject: %s\n"), *JsonString)
 
     if (!ApiKey.IsEmpty())
     {
@@ -89,5 +89,75 @@ void UNN_Cpp_GPTTextRequestManager::SendTextRequest(
     else
     {
         UE_LOG(LogTemp, Error, TEXT("API key is empty in SendRequest"));
+    }
+}
+
+void UNN_Cpp_GPTTextRequestManager::SendSummaryRequest(
+    const FString& ApiKey,
+    const FGPTRequestHistoryParams& Params,
+    UNN_Cpp_JSONHandler* JSONHandlerInstance,
+    UNN_Cpp_HTTPRequestHandler* HTTPRequestHandlerInstance,
+    UNN_Cpp_GPTConversationManager* ConversationManager,
+    TFunction<void(const FString&)> OnSummaryResponseReceived
+)
+{
+    if (!JSONHandlerInstance || !HTTPRequestHandlerInstance)
+    {
+        UE_LOG(LogTemp, Error, TEXT("JSONHandlerInstance oder HTTPRequestHandlerInstance ist nullptr in SendSummaryRequest"));
+        return;
+    }
+
+    const TArray<TSharedPtr<FJsonObject>>& ConversationHistory = ConversationManager->GetConversationHistory();
+
+    TArray<TSharedPtr<FJsonValue>> JsonArray;
+    for (const TSharedPtr<FJsonObject>& JsonObject : ConversationHistory)
+    {
+        JsonArray.Add(MakeShareable(new FJsonValueObject(JsonObject)));
+    }
+
+    TSharedPtr<FJsonObject> InstructionMessageObject = MakeShareable(new FJsonObject());
+    InstructionMessageObject->SetStringField(TEXT("role"), TEXT("system"));
+    InstructionMessageObject->SetStringField(TEXT("content"), Params.Instruction);
+    JsonArray.Add(MakeShareable(new FJsonValueObject(InstructionMessageObject)));
+
+    TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject());
+    JsonObject->SetStringField(TEXT("model"), TEXT("gpt-4o-mini"));
+    JsonObject->SetArrayField(TEXT("messages"), JsonArray);
+    JsonObject->SetNumberField(TEXT("max_tokens"), Params.MaxTokens);
+
+    FString JsonString = JSONHandlerInstance->SerializeJSON(JsonObject);
+
+    if (!ApiKey.IsEmpty())
+    {
+        TSharedRef<IHttpRequest, ESPMode::ThreadSafe> Request = HTTPRequestHandlerInstance->CreateRequest(
+            TEXT("https://api.openai.com/v1/chat/completions"),
+            TEXT("POST"),
+            TEXT("application/json"),
+            ApiKey
+        );
+
+        HTTPRequestHandlerInstance->SetRequestPayload(Request, JsonString);
+        Request->OnProcessRequestComplete().BindLambda([this, JSONHandlerInstance, ConversationManager, OnSummaryResponseReceived](FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful)
+            {
+                if (bWasSuccessful && Response.IsValid())
+                {
+                    FString ResponseString = Response->GetContentAsString();
+
+                    if (TextResponseManagerInstance)
+                    {
+                        TextResponseManagerInstance->SummaryResponse(ResponseString, JSONHandlerInstance, ConversationManager, OnSummaryResponseReceived);
+                    }
+                }
+                else
+                {
+                    UE_LOG(LogTemp, Error, TEXT("Fehler beim Kontaktieren von OpenAI."));
+                    OnSummaryResponseReceived(TEXT("Fehler beim Kontaktieren von OpenAI."));
+                }
+            });
+        Request->ProcessRequest();
+    }
+    else
+    {
+        UE_LOG(LogTemp, Error, TEXT("API-Schlüssel ist leer in SendSummaryRequest"));
     }
 }

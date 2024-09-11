@@ -26,6 +26,14 @@ public:
 		TFunction<void(const FString&)> OnTextResponseReceived
 	);
 
+	void SendSummaryRequest(
+		const FString& ApiKey,
+		const FGPTRequestHistoryParams& Params,
+		UNN_Cpp_JSONHandler* JSONHandlerInstance,
+		UNN_Cpp_HTTPRequestHandler* HTTPRequestHandlerInstance,
+		UNN_Cpp_GPTConversationManager* ConversationManager,
+		TFunction<void(const FString&)> OnSummaryResponseReceived);
+
 	void SetTextResponseManager(UNN_Cpp_GPTTextResponseManager* InTextResponseManager);
 
 private:

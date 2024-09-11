@@ -12,7 +12,7 @@ void UNN_Cpp_Widget_GameChat::NativeConstruct()
 	RepeatButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameChat::OnRepeatButtonClicked);
 	InfoButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameChat::OnInfoButtonClicked);
 	SummaryButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameChat::OnSummaryButtonClicked);
-	ContinueButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameChat::OnContinueButtonClicked);
+	ImageButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameChat::OnImageButtonClicked);
 	SelectTopButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameChat::OnSelectTopButtonClicked);
 	SelectMiddleButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameChat::OnSelectMiddleButtonClicked);
 	SelectLowerButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameChat::OnSelectLowerButtonClicked);
@@ -191,20 +191,17 @@ void UNN_Cpp_Widget_GameChat::OnRepeatButtonClicked()
 	}
 }
 
-bool UNN_Cpp_Widget_GameChat::IsGameChatWidgetVisible()
-{
-	return this->IsVisible();
-}
-
 void UNN_Cpp_Widget_GameChat::OnInfoButtonClicked()
 {
+
 }
 
 void UNN_Cpp_Widget_GameChat::OnSummaryButtonClicked()
 {
+	GenerateShortSummary();
 }
 
-void UNN_Cpp_Widget_GameChat::OnContinueButtonClicked()
+void UNN_Cpp_Widget_GameChat::OnImageButtonClicked()
 {
 }
 
@@ -220,18 +217,20 @@ void UNN_Cpp_Widget_GameChat::OnSelectLowerButtonClicked()
 {
 }
 
-void UNN_Cpp_Widget_GameChat::GenerateShortSummary(const FString& Summary)
+void UNN_Cpp_Widget_GameChat::GenerateShortSummary()
 {
 	if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
 	{
-		if (!Interface->IsSummaryGenerationEnabledViaInterface())
+		if (!Interface->IsShortSummaryGenerationEnabledViaInterface())
 		{
 			UE_LOG(LogTemp, Error, TEXT("Summary generation is disabled in the options."));
 			return;
 		}
 	}
 
-	GPT->GenerateShortSummaryFromConversation(Summary, [this](const FString& OnShortSummaryGenerated)
+	if (GPT)
+	{
+		GPT->GenerateShortSummaryFromConversation([this](const FString& OnShortSummaryGenerated)
 		{
 			if (ExecutiveSummaryText)
 			{
@@ -242,31 +241,25 @@ void UNN_Cpp_Widget_GameChat::GenerateShortSummary(const FString& Summary)
 				UE_LOG(LogTemp, Error, TEXT("Failed to set executive summary text."));
 			}
 		});
+	}
 }
 
 // Generate a summary of the conversation
-void UNN_Cpp_Widget_GameChat::GenerateMaxSummary(const FString& Summary)
+void UNN_Cpp_Widget_GameChat::GenerateMaxSummary()
 {
 	if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
 	{
-		if (!Interface->IsSummaryGenerationEnabledViaInterface())
+		if (!Interface->IsMaxSummaryGenerationEnabledViaInterface())
 		{
 			UE_LOG(LogTemp, Error, TEXT("Summary generation is disabled in the options."));
 			return;
 		}
 	}
 
-	GPT->GenerateMaxSummaryFromConversation(Summary, [this](const FString& OnMaxSummaryGenerated)
-		{
-			if (ExecutiveSummaryText)
-			{
-				ExecutiveSummaryText->SetText(FText::FromString(OnMaxSummaryGenerated));
-			}
-			else
-			{
-				UE_LOG(LogTemp, Error, TEXT("Failed to set executive summary text."));
-			}
-		});
+	if (GPT)
+	{
+		GPT->GenerateMaxSummaryFromConversation([this](const FString& OnMaxSummaryGenerated) {});
+	}
 }
 
 void UNN_Cpp_Widget_GameChat::GenerateImageDescription(const FString& Summary)
@@ -274,11 +267,11 @@ void UNN_Cpp_Widget_GameChat::GenerateImageDescription(const FString& Summary)
 	// Check if Summary generation is enabled
 	if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
 	{
-		if (!Interface->IsSummaryGenerationEnabledViaInterface())
-		{
-			UE_LOG(LogTemp, Error, TEXT("Summary generation is disabled in the options."));
-			return;
-		}
+		//if (!Interface->IsSummaryGenerationEnabledViaInterface())
+		//{
+		//	UE_LOG(LogTemp, Error, TEXT("Summary generation is disabled in the options."));
+		//	return;
+		//}
 	}
 
 	// Generate a summary of the conversation
@@ -321,4 +314,9 @@ void UNN_Cpp_Widget_GameChat::GenerateChatImage(const FString& Summary)
 				UE_LOG(LogTemp, Error, TEXT("Failed to generate image from conversation"));
 			}
 		});
+}
+
+bool UNN_Cpp_Widget_GameChat::IsGameChatWidgetVisible()
+{
+	return this->IsVisible();
 }

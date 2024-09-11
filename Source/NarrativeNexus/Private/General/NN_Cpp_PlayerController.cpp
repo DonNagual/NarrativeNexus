@@ -16,14 +16,18 @@ void ANN_Cpp_PlayerController::InitializeWidgets()
 	{
 		Widget->AddToViewport();
 		CategoryWidget = Cast<UNN_Cpp_Widget_Category>(Widget);
+
 		CreatorWidget = Cast<UNN_Cpp_Widget_Creator>(CategoryWidget->CreatorWidget);
 		MainWidget = Cast<UNN_Cpp_Widget_Main>(CategoryWidget->MainWidget);
+
 		MainMenuWidget = Cast< UNN_Cpp_Widget_MainMenu>(MainWidget->MainMenuWidget);
 		MainOptionsWidget = Cast<UNN_Cpp_Widget_MainOptions>(MainWidget->MainOptionsWidget);
+
 		GameWidget = Cast<UNN_Cpp_Widget_Game>(CategoryWidget->GameWidget);
 		GameMenuWidget = Cast<UNN_Cpp_Widget_GameMenu>(GameWidget->GameMenuWidget);
 		GameNavigatorWidget = Cast<UNN_Cpp_Widget_GameNavigator>(GameWidget->GameNavigatorWidget);
 		GameChatWidget = Cast<UNN_Cpp_Widget_GameChat>(GameWidget->GameChatWidget);
+
 		AreYouSureWidget = Cast<UNN_Cpp_Widget_AreYouSure>(CategoryWidget->AreYouSureWidget);
 	}
 }
@@ -232,11 +236,20 @@ void ANN_Cpp_PlayerController::ShowGameInventoryWidgetViaInterface()
 	GameWidget->ShowGameInventoryWidget();
 }
 
-bool ANN_Cpp_PlayerController::IsSummaryGenerationEnabledViaInterface() const
+bool ANN_Cpp_PlayerController::IsShortSummaryGenerationEnabledViaInterface() const
 {
 	if (MainOptionsWidget)
 	{
-		return MainOptionsWidget->IsSummaryGenerationEnabled();
+		return MainOptionsWidget->IsShortSummaryGenerationEnabled();
+	}
+	return false;
+}
+
+bool ANN_Cpp_PlayerController::IsMaxSummaryGenerationEnabledViaInterface() const
+{
+	if (MainOptionsWidget)
+	{
+		return MainOptionsWidget->IsMaxSummaryGenerationEnabled();
 	}
 	return false;
 }
@@ -250,11 +263,11 @@ bool ANN_Cpp_PlayerController::IsImageGenerationEnabledViaInterface() const
 	return false;
 }
 
-int32 ANN_Cpp_PlayerController::GetCurrentMessageNumberViaInterface() const
+int32 ANN_Cpp_PlayerController::GetMaxConversationHistorySizeViaInterface() const
 {
 	if (MainOptionsWidget)
 	{
-		return MainOptionsWidget->GetCurrentMessageNumber();
+		return MainOptionsWidget->GetMaxConversationHistorySize();
 	}
 	return 4;
 }

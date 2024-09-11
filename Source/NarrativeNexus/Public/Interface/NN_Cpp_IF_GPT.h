@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "UObject/Interface.h"
-#include "GPT/NN_Cpp_GPT.h"
+//#include "GPT/NN_Cpp_GPT.h"
 #include "NN_Cpp_IF_GPT.generated.h"
 
 // This class does not need to be modified.
