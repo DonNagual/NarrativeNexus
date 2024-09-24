@@ -254,11 +254,29 @@ bool ANN_Cpp_PlayerController::IsMaxSummaryGenerationEnabledViaInterface() const
 	return false;
 }
 
-bool ANN_Cpp_PlayerController::IsImageGenerationEnabledViaInterface() const
+bool ANN_Cpp_PlayerController::IsInfoGenerationEnabledViaInterface() const
 {
 	if (MainOptionsWidget)
 	{
-		return MainOptionsWidget->IsImageGenerationEnabled();
+		return MainOptionsWidget->IsInfoGenerationEnabled();
+	}
+	return false;
+}
+
+bool ANN_Cpp_PlayerController::IsDescriptionGenerationForImageEnabledViaInterface() const
+{
+	if (MainOptionsWidget)
+	{
+		return MainOptionsWidget->IsDescriptionGenerationForImageEnabled();
+	}
+	return false;
+}
+
+bool ANN_Cpp_PlayerController::IsGenerateImageFromDiscriptionEnabledViaInterface() const
+{
+	if (MainOptionsWidget)
+	{
+		return MainOptionsWidget->IsGenerateImageFromDiscriptionEnabled();
 	}
 	return false;
 }

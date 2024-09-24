@@ -71,7 +71,9 @@ public:
 
 	virtual bool IsShortSummaryGenerationEnabledViaInterface() const override;
 	virtual bool IsMaxSummaryGenerationEnabledViaInterface() const override;
-	virtual bool IsImageGenerationEnabledViaInterface() const override;
+	virtual bool IsInfoGenerationEnabledViaInterface() const override;
+	virtual bool IsDescriptionGenerationForImageEnabledViaInterface() const override;
+	virtual bool IsGenerateImageFromDiscriptionEnabledViaInterface() const override;
 	virtual int32 GetMaxConversationHistorySizeViaInterface() const override;
 
 	// ############### GameNavigator ###############

@@ -51,3 +51,47 @@ struct FGPTRequestHistoryParams
 
     TArray<TSharedPtr<FJsonObject>> SummaryHistory;
 };
+
+USTRUCT()
+struct FGPTRequestImageDescriptionParams
+{
+    GENERATED_BODY()
+
+    // Standardconstructor
+    FGPTRequestImageDescriptionParams()
+        : MaxTokens(0) {}
+
+    // Constructor with parameters
+    FGPTRequestImageDescriptionParams(const FString& InInstruction, int32 InMaxTokens)
+        : Instruction(InInstruction), MaxTokens(InMaxTokens) {}
+
+    // The instruction to the model on how it should process the request
+    FString Instruction;
+
+    // The maximum number of tokens to be used for the response
+    int32 MaxTokens;
+
+    TArray<TSharedPtr<FJsonObject>> ImageDescription;
+};
+
+USTRUCT()
+struct FGPTRequestInfoAboutConversationParams
+{
+    GENERATED_BODY()
+
+    // Standardconstructor
+    FGPTRequestInfoAboutConversationParams()
+        : MaxTokens(0) {}
+
+    // Constructor with parameters
+    FGPTRequestInfoAboutConversationParams(const FString& InInstruction, int32 InMaxTokens)
+        : Instruction(InInstruction), MaxTokens(InMaxTokens) {}
+
+    // The instruction to the model on how it should process the request
+    FString Instruction;
+
+    // The maximum number of tokens to be used for the response
+    int32 MaxTokens;
+
+    TArray<TSharedPtr<FJsonObject>> InfoAboutConversation;
+};

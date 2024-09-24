@@ -69,10 +69,17 @@ void UNN_Cpp_GPT::GenerateMaxSummaryFromConversation(TFunction<void(const FStrin
 }
 
 // Generate Image Description From Conversation
-void UNN_Cpp_GPT::GenerateImageDescriptionFromConversation(const FString& Summary, TFunction<void(const FString&)> OnImageSummaryGenerated)
+void UNN_Cpp_GPT::GenerateImageDescriptionFromConversation(TFunction<void(const FString&)> OnImageDescriptionGenerated)
 {
-	FGPTRequestParams Params(Summary, TEXT("Bitte fassen Sie das obige Gespräch in weniger als 950 Zeichen zusammen."), 150);
-	TextRequestManagerInstance->SendTextRequest(ApiKey, Params, JSONHandlerInstance, HTTPRequestHandlerInstance, ConversationManagerInstance, OnImageSummaryGenerated);
+	FGPTRequestImageDescriptionParams Params(TEXT("Bitte formuliere eine detaillierte Bildbeschreibung basierend auf dem obigen Gespräch, die als Grundlage zur Erstellung eines Bildes dient. Die Beschreibung sollte prägnant sein und weniger als 500 Zeichen umfassen."), 150);
+	TextRequestManagerInstance->SendImageDescriptionRequest(ApiKey, Params, JSONHandlerInstance, HTTPRequestHandlerInstance, ConversationManagerInstance, OnImageDescriptionGenerated);
+}
+
+// Generate Info From Converation Partner
+void UNN_Cpp_GPT::GenerateInfoAboutConversation(TFunction<void(const FString&)> OnInfoAboutConversationGenerated)
+{
+	FGPTRequestInfoAboutConversationParams Params(TEXT("Bitte formuliere eine prägnante Beschreibung der Person, mit der ich chatte, die als Grundlage dient, um mehr über diese zu erfahren. Die Beschreibung sollte klar und unter 500 Zeichen sein."), 150);
+	TextRequestManagerInstance->SendInfoAboutConversationRequest(ApiKey, Params, JSONHandlerInstance, HTTPRequestHandlerInstance, ConversationManagerInstance, OnInfoAboutConversationGenerated);
 }
 
 // Generate Image From Description

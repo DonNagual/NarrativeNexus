@@ -7,7 +7,7 @@
 //	GPTInstance = InGPT;
 //}
 
-// ############### Conversation History ###############
+// ############################## Conversation History ##############################
 
 void UNN_Cpp_GPTConversationManager::AddMessageToHistory(const FString& Role, const FString Content)
 {
@@ -71,7 +71,7 @@ void UNN_Cpp_GPTConversationManager::TrimConversationHistory()
 	}
 }
 
-// ############### Summary History ###############
+// ############################## Summary History ##############################
 
 void UNN_Cpp_GPTConversationManager::AddSummaryToHistory(const FString& SummaryContent)
 {
@@ -111,5 +111,90 @@ void UNN_Cpp_GPTConversationManager::TrimSummaryHistory()
 	if (SummaryHistory.Num() > MaxSummaryHistorySize)
 	{
 		SummaryHistory.RemoveAt(0, SummaryHistory.Num() - MaxSummaryHistorySize);
+	}
+}
+
+// ############################## Image Description ##############################
+
+void UNN_Cpp_GPTConversationManager::AddImageDescriptionToHistory(const FString& ImageDescriptionContent)
+{
+	TSharedPtr<FJsonObject> NewImageDescriptionObject = MakeShareable(new FJsonObject());
+	NewImageDescriptionObject->SetStringField(TEXT("role"), TEXT("Painter"));
+	NewImageDescriptionObject->SetStringField(TEXT("content"), ImageDescriptionContent);
+
+	// Separate history for summaries
+	ImageDescriptionHistory.Add(NewImageDescriptionObject);
+	TrimImageDescriptionHistory();
+
+	// DEBUG
+	FString HistoryString;
+	for (const TSharedPtr<FJsonObject>& MessageObj : ImageDescriptionHistory)
+	{
+		FString Role, Content;
+		MessageObj->TryGetStringField(TEXT("role"), Role);
+		MessageObj->TryGetStringField(TEXT("content"), Content);
+
+		HistoryString += FString::Printf(TEXT("-- %s: %s\n"), *Role, *Content);
+	}
+	UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_ConversationManager - ImageDescriptionHistory: %p\n%s\n"), this, *HistoryString);
+}
+
+const TArray<TSharedPtr<FJsonObject>>& UNN_Cpp_GPTConversationManager::GetImageDescriptionHistory() const
+{
+	return ImageDescriptionHistory;
+}
+
+void UNN_Cpp_GPTConversationManager::ClearImageDescriptionHistory()
+{
+	ImageDescriptionHistory.Empty();
+}
+
+void UNN_Cpp_GPTConversationManager::TrimImageDescriptionHistory()
+{
+	if (ImageDescriptionHistory.Num() > MaxImageDescriptionHistorySize)
+	{
+		ImageDescriptionHistory.RemoveAt(0, ImageDescriptionHistory.Num() - MaxImageDescriptionHistorySize);
+	}
+}
+
+// ############################## Info About Conversation ##############################
+
+void UNN_Cpp_GPTConversationManager::AddInfoAboutConversationToHistory(const FString& InfoAboutConversationContent)
+{
+	TSharedPtr<FJsonObject> NewInfoAboutConversationObject = MakeShareable(new FJsonObject());
+	NewInfoAboutConversationObject->SetStringField(TEXT("role"), TEXT("Researcher"));
+	NewInfoAboutConversationObject->SetStringField(TEXT("content"), InfoAboutConversationContent);
+
+	InfoAboutConversationHistory.Add(NewInfoAboutConversationObject);
+	TrimInfoAboutConversationHistory();
+
+	// DEBUG
+	FString HistoryString;
+	for (const TSharedPtr<FJsonObject>& MessageObj : InfoAboutConversationHistory)
+	{
+		FString Role, Content;
+		MessageObj->TryGetStringField(TEXT("role"), Role);
+		MessageObj->TryGetStringField(TEXT("content"), Content);
+
+		HistoryString += FString::Printf(TEXT("-- %s: %s\n"), *Role, *Content);
+	}
+	UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_ConversationManager - ImageDescriptionHistory: %p\n%s\n"), this, *HistoryString);
+}
+
+const TArray<TSharedPtr<FJsonObject>>& UNN_Cpp_GPTConversationManager::GetInfoAboutConversationHistory() const
+{
+	return InfoAboutConversationHistory;
+}
+
+void UNN_Cpp_GPTConversationManager::ClearInfoAboutConversationHistory()
+{
+	InfoAboutConversationHistory.Empty();
+}
+
+void UNN_Cpp_GPTConversationManager::TrimInfoAboutConversationHistory()
+{
+	if (InfoAboutConversationHistory.Num() > MaxInfoAboutConversationHistorySize)
+	{
+		InfoAboutConversationHistory.RemoveAt(0, InfoAboutConversationHistory.Num() - MaxInfoAboutConversationHistorySize);
 	}
 }

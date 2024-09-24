@@ -45,7 +45,9 @@ public:
 	FString GetLastResponse() const;
 	UNN_Cpp_GPTConversationManager* GetConversationManager() const;
 
-	void GenerateImageDescriptionFromConversation(const FString& Summary, TFunction<void(const FString&)> OnImageSummaryGenerated);
+	void GenerateImageDescriptionFromConversation(TFunction<void(const FString&)> OnImageDescriptionGenerated);
+
+	void GenerateInfoAboutConversation(TFunction<void(const FString&)> OnInfoAboutConversationGenerated);
 	
 	void GenerateImageFromDescription(const FString& Summary, TFunction<void(UTexture2D*)> OnImageGenerated);
 

@@ -32,7 +32,26 @@ public:
 		UNN_Cpp_JSONHandler* JSONHandlerInstance,
 		UNN_Cpp_HTTPRequestHandler* HTTPRequestHandlerInstance,
 		UNN_Cpp_GPTConversationManager* ConversationManager,
-		TFunction<void(const FString&)> OnSummaryResponseReceived);
+		TFunction<void(const FString&)> OnSummaryResponseReceived
+	);
+
+	void SendImageDescriptionRequest(
+		const FString& ApiKey,
+		const FGPTRequestImageDescriptionParams& Params,
+		UNN_Cpp_JSONHandler* JSONHandlerInstance,
+		UNN_Cpp_HTTPRequestHandler* HTTPRequestHandlerInstance,
+		UNN_Cpp_GPTConversationManager* ConversationManager,
+		TFunction<void(const FString&)> OnImageDescriptionResponseReceived
+	);
+
+	void SendInfoAboutConversationRequest(
+		const FString& ApiKey,
+		const FGPTRequestInfoAboutConversationParams& Params,
+		UNN_Cpp_JSONHandler* JSONHandlerInstance,
+		UNN_Cpp_HTTPRequestHandler* HTTPRequestHandlerInstance,
+		UNN_Cpp_GPTConversationManager* ConversationManager,
+		TFunction<void(const FString&)> OnInfoAboutConversationResponseReceived
+	);
 
 	void SetTextResponseManager(UNN_Cpp_GPTTextResponseManager* InTextResponseManager);
 

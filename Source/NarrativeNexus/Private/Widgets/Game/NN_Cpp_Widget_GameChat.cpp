@@ -10,12 +10,23 @@ void UNN_Cpp_Widget_GameChat::NativeConstruct()
 	BackButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameChat::OnBackButtonClicked);
 	ReaktionButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameChat::OnReaktionButtonClicked);
 	RepeatButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameChat::OnRepeatButtonClicked);
-	InfoButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameChat::OnInfoButtonClicked);
-	SummaryButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameChat::OnSummaryButtonClicked);
-	ImageButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameChat::OnImageButtonClicked);
+
+	SwitchToInfoButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameChat::OnSwitchToInfoButtonClicked);
+	SwitchToSummaryButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameChat::OnSwitchToSummaryButtonClicked);
+	SwitchToImageButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameChat::OnSwitchToImageButtonClicked);
+
+	GenerateInfoButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameChat::OnGenerateInfoButtonClicked);
+	GenerateSummaryButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameChat::OnGenerateSummaryButtonClicked);
+	GenerateImageButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameChat::OnGenerateImageButtonClicked);
+
 	SelectTopButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameChat::OnSelectTopButtonClicked);
 	SelectMiddleButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameChat::OnSelectMiddleButtonClicked);
 	SelectLowerButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameChat::OnSelectLowerButtonClicked);
+
+	if (TextWidgetSwitcher)
+	{
+		TextWidgetSwitcher->SetActiveWidgetIndex(1);
+	}
 }
 
 void UNN_Cpp_Widget_GameChat::NativeDestruct()
@@ -105,13 +116,13 @@ void UNN_Cpp_Widget_GameChat::RemoveLastGPTMessageFromScrollBox()
 {
 	if (MessageScrollBox)
 	{
-		// Scroll backwards through the children of the MessageScrollBox to find the last widget of ChatGPT
+		// Scroll backwards through the children of the MessageScrollBox to find the last widget of CGPT
 		for (int32 i = MessageScrollBox->GetChildrenCount() - 1; i >= 0; i--)
 		{
 			UWidget* ChildWidget = MessageScrollBox->GetChildAt(i);
 			if (UUserWidget* MessageWidget = Cast<UUserWidget>(ChildWidget))
 			{
-				// Check whether the widget has the author "ChatGPT"
+				// Check whether the widget has the author "GPT"
 				if (UTextBlock* AuthorTextBlock = Cast<UTextBlock>(MessageWidget->GetWidgetFromName(TEXT("MessageAuthor"))))
 				{
 					if (AuthorTextBlock->GetText().ToString() == TEXT("GPT"))
@@ -191,18 +202,71 @@ void UNN_Cpp_Widget_GameChat::OnRepeatButtonClicked()
 	}
 }
 
-void UNN_Cpp_Widget_GameChat::OnInfoButtonClicked()
+void UNN_Cpp_Widget_GameChat::OnSwitchToInfoButtonClicked()
 {
-
+	if (TextWidgetSwitcher)
+	{
+		int32 index = TextWidgetSwitcher->GetActiveWidgetIndex();
+		if (index != 0)
+		{
+			TextWidgetSwitcher->SetActiveWidgetIndex(0);
+		}
+	}
 }
 
-void UNN_Cpp_Widget_GameChat::OnSummaryButtonClicked()
+void UNN_Cpp_Widget_GameChat::OnSwitchToSummaryButtonClicked()
 {
+	if (TextWidgetSwitcher)
+	{
+		int32 index = TextWidgetSwitcher->GetActiveWidgetIndex();
+		if (index != 1)
+		{
+			TextWidgetSwitcher->SetActiveWidgetIndex(1);
+		}
+	}
+}
+
+void UNN_Cpp_Widget_GameChat::OnSwitchToImageButtonClicked()
+{
+	if (TextWidgetSwitcher)
+	{
+		int32 index = TextWidgetSwitcher->GetActiveWidgetIndex();
+		if (index != 2)
+		{
+			TextWidgetSwitcher->SetActiveWidgetIndex(2);
+		}
+	}
+}
+
+void UNN_Cpp_Widget_GameChat::OnGenerateInfoButtonClicked()
+{
+	int32 index = TextWidgetSwitcher->GetActiveWidgetIndex();
+	if (index != 0)
+	{
+		OnSwitchToInfoButtonClicked();
+	}
+	GenerateInfo();
+}
+
+void UNN_Cpp_Widget_GameChat::OnGenerateSummaryButtonClicked()
+{
+	int32 index = TextWidgetSwitcher->GetActiveWidgetIndex();
+	if (index != 1)
+	{
+		OnSwitchToSummaryButtonClicked();
+	}
 	GenerateShortSummary();
 }
 
-void UNN_Cpp_Widget_GameChat::OnImageButtonClicked()
+void UNN_Cpp_Widget_GameChat::OnGenerateImageButtonClicked()
 {
+	int32 index = TextWidgetSwitcher->GetActiveWidgetIndex();
+	if (index != 2)
+	{
+		OnSwitchToImageButtonClicked();
+	}
+	GenerateImageDescription();
+	// TODO
 }
 
 void UNN_Cpp_Widget_GameChat::OnSelectTopButtonClicked()
@@ -232,9 +296,9 @@ void UNN_Cpp_Widget_GameChat::GenerateShortSummary()
 	{
 		GPT->GenerateShortSummaryFromConversation([this](const FString& OnShortSummaryGenerated)
 		{
-			if (ExecutiveSummaryText)
+			if (SummaryText)
 			{
-				ExecutiveSummaryText->SetText(FText::FromString(OnShortSummaryGenerated));
+				SummaryText->SetText(FText::FromString(OnShortSummaryGenerated));
 			}
 			else
 			{
@@ -256,64 +320,103 @@ void UNN_Cpp_Widget_GameChat::GenerateMaxSummary()
 		}
 	}
 
+	// Generate Max Summary From Conversation
 	if (GPT)
 	{
+		// TODO
 		GPT->GenerateMaxSummaryFromConversation([this](const FString& OnMaxSummaryGenerated) {});
 	}
 }
 
-void UNN_Cpp_Widget_GameChat::GenerateImageDescription(const FString& Summary)
+void UNN_Cpp_Widget_GameChat::GenerateImageDescription()
 {
-	// Check if Summary generation is enabled
+	// Check if Generate Image Description is enabled
 	if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
 	{
-		//if (!Interface->IsSummaryGenerationEnabledViaInterface())
-		//{
-		//	UE_LOG(LogTemp, Error, TEXT("Summary generation is disabled in the options."));
-		//	return;
-		//}
-	}
-
-	// Generate a summary of the conversation
-	GPT->GenerateImageDescriptionFromConversation(Summary, [this](const FString& OnImageSummaryGenerated)
+		if (!Interface->IsDescriptionGenerationForImageEnabledViaInterface())
 		{
-			if (ExecutiveSummaryText)
-			{
-				ExecutiveSummaryText->SetText(FText::FromString(OnImageSummaryGenerated));
-			}
-			else
-			{
-				UE_LOG(LogTemp, Error, TEXT("Failed to set executive summary text."));
-			}
+			UE_LOG(LogTemp, Error, TEXT("Generate Image Description is disabled in the options."));
+			return;
+		}
+	}
+	// Generate Image Description From Conversation
+	if (GPT)
+	{
+		GPT->GenerateImageDescriptionFromConversation([this](const FString& OnImageDescriptionGenerated) {
+		if (ImageText)
+		{
+			ImageText->SetText(FText::FromString(OnImageDescriptionGenerated));
+			GenerateChatImage();
+		}
+		else
+		{
+			UE_LOG(LogTemp, Error, TEXT("Failed to set Image Description text."));
+		}
 		});
+	}
 }
 
-void UNN_Cpp_Widget_GameChat::GenerateChatImage(const FString& Summary)
+void UNN_Cpp_Widget_GameChat::GenerateChatImage()
 {
-	// Check if image generation is enabled
 	if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
 	{
-		if (!Interface->IsImageGenerationEnabledViaInterface())
+		if (!Interface->IsGenerateImageFromDiscriptionEnabledViaInterface())
 		{
-			UE_LOG(LogTemp, Error, TEXT("Image generation is disabled in the options."));
+			UE_LOG(LogTemp, Error, TEXT("Generate Image From Image Description is disabled in the options."));
+			return;
+		}
+	}
+	// Generate Image From Image Description
+	if (GPT)
+	{
+		const TArray<TSharedPtr<FJsonObject>>& ImageDescriptonHistory = GPT->GetConversationManager()->GetImageDescriptionHistory();
+		if (ImageDescriptonHistory.Num() > 0)
+		{
+			FString LastImageDescripton = ImageDescriptonHistory.Last()->GetStringField(TEXT("content"));
+			GPT->GenerateImageFromDescription(LastImageDescripton, [this](UTexture2D* GeneratedImage)
+			{
+				if (GeneratedImage && StoryImage)
+				{
+					StoryImage->SetBrushFromTexture(GeneratedImage, true);
+				}
+				else
+				{
+					UE_LOG(LogTemp, Error, TEXT("Failed to generate or display image."));
+				}
+			});
+		}
+	}
+	else
+	{
+		UE_LOG(LogTemp, Error, TEXT("GPT instance is null."));
+	}
+}
+
+void UNN_Cpp_Widget_GameChat::GenerateInfo()
+{
+	if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
+	{
+		if (!Interface->IsInfoGenerationEnabledViaInterface())
+		{
+			UE_LOG(LogTemp, Error, TEXT("Generate Info is disabled in the options."));
 			return;
 		}
 	}
 
-	// Generate the image based on the summary
-	GPT->GenerateImageFromDescription(Summary, [this](UTexture2D* OnImageGenerated)
-		{
-			if (OnImageGenerated && StoryImage)
+	// Generate Info From Conversation
+	if (GPT)
+	{
+		GPT->GenerateInfoAboutConversation([this](const FString& OnInfoAboutConversationGenerated) {
+			if (InfoText)
 			{
-				// Show image
-				StoryImage->SetBrushFromTexture(OnImageGenerated);
-				GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Purple, TEXT("Image generated successfully."));
+				InfoText->SetText(FText::FromString(OnInfoAboutConversationGenerated));
 			}
 			else
 			{
-				UE_LOG(LogTemp, Error, TEXT("Failed to generate image from conversation"));
+				UE_LOG(LogTemp, Error, TEXT("Failed to set Image Description text."));
 			}
-		});
+			});
+	}
 }
 
 bool UNN_Cpp_Widget_GameChat::IsGameChatWidgetVisible()

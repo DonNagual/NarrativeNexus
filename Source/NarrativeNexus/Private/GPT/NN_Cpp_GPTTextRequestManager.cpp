@@ -7,6 +7,8 @@ void UNN_Cpp_GPTTextRequestManager::SetTextResponseManager(UNN_Cpp_GPTTextRespon
     TextResponseManagerInstance = InTextResponseManager;
 }
 
+// ######################### Send Text Request #########################
+
 void UNN_Cpp_GPTTextRequestManager::SendTextRequest(
 	const FString& ApiKey,
 	const FGPTRequestParams& Params,
@@ -31,7 +33,6 @@ void UNN_Cpp_GPTTextRequestManager::SendTextRequest(
     ConversationManager->AddMessageToHistory(TEXT("user"), Params.Summary);
 
     const TArray<TSharedPtr<FJsonObject>>& ConversationHistory = ConversationManager->GetConversationHistory();
-
     // Convert ConversationHistory to an array of FJsonValue
     TArray<TSharedPtr<FJsonValue>> JsonArray;
     for (const TSharedPtr<FJsonObject>& JsonObject : ConversationHistory)
@@ -53,8 +54,8 @@ void UNN_Cpp_GPTTextRequestManager::SendTextRequest(
 
     FString JsonString = JSONHandlerInstance->SerializeJSON(JsonObject);
 
-    // DEBUG
-    UE_LOG(LogTemp, Error, TEXT("JsonObject: %s\n"), *JsonString)
+    // ######################### DEBUG #########################
+    //UE_LOG(LogTemp, Error, TEXT("JsonObject: %s\n"), *JsonString)
 
     if (!ApiKey.IsEmpty())
     {
@@ -92,6 +93,8 @@ void UNN_Cpp_GPTTextRequestManager::SendTextRequest(
     }
 }
 
+// ######################### Send Summary Request #########################
+
 void UNN_Cpp_GPTTextRequestManager::SendSummaryRequest(
     const FString& ApiKey,
     const FGPTRequestHistoryParams& Params,
@@ -108,7 +111,6 @@ void UNN_Cpp_GPTTextRequestManager::SendSummaryRequest(
     }
 
     const TArray<TSharedPtr<FJsonObject>>& ConversationHistory = ConversationManager->GetConversationHistory();
-
     TArray<TSharedPtr<FJsonValue>> JsonArray;
     for (const TSharedPtr<FJsonObject>& JsonObject : ConversationHistory)
     {
@@ -152,6 +154,151 @@ void UNN_Cpp_GPTTextRequestManager::SendSummaryRequest(
                 {
                     UE_LOG(LogTemp, Error, TEXT("Fehler beim Kontaktieren von OpenAI."));
                     OnSummaryResponseReceived(TEXT("Fehler beim Kontaktieren von OpenAI."));
+                }
+            });
+        Request->ProcessRequest();
+    }
+    else
+    {
+        UE_LOG(LogTemp, Error, TEXT("API-Schlüssel ist leer in SendSummaryRequest"));
+    }
+}
+
+// ######################### Send Image Description Request #########################
+
+void UNN_Cpp_GPTTextRequestManager::SendImageDescriptionRequest(
+    const FString& ApiKey,
+    const FGPTRequestImageDescriptionParams& Params,
+    UNN_Cpp_JSONHandler* JSONHandlerInstance,
+    UNN_Cpp_HTTPRequestHandler* HTTPRequestHandlerInstance,
+    UNN_Cpp_GPTConversationManager* ConversationManager,
+    TFunction<void(const FString&)> OnImageDescriptionResponseReceived)
+{
+    if (!JSONHandlerInstance || !HTTPRequestHandlerInstance)
+    {
+        UE_LOG(LogTemp, Error, TEXT("JSONHandlerInstance oder HTTPRequestHandlerInstance ist nullptr in SendSummaryRequest"));
+        return;
+    }
+
+    const TArray<TSharedPtr<FJsonObject>>& ConversationHistory = ConversationManager->GetConversationHistory();
+    TArray<TSharedPtr<FJsonValue>> JsonArray;
+    for (const TSharedPtr<FJsonObject>& JsonObject : ConversationHistory)
+    {
+        JsonArray.Add(MakeShareable(new FJsonValueObject(JsonObject)));
+    }
+
+    TSharedPtr<FJsonObject> InstructionMessageObject = MakeShareable(new FJsonObject());
+    InstructionMessageObject->SetStringField(TEXT("role"), TEXT("system"));
+    InstructionMessageObject->SetStringField(TEXT("content"), Params.Instruction);
+    JsonArray.Add(MakeShareable(new FJsonValueObject(InstructionMessageObject)));
+
+    TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject());
+    JsonObject->SetStringField(TEXT("model"), TEXT("gpt-4o-mini"));
+    JsonObject->SetArrayField(TEXT("messages"), JsonArray);
+    JsonObject->SetNumberField(TEXT("max_tokens"), Params.MaxTokens);
+
+    FString JsonString = JSONHandlerInstance->SerializeJSON(JsonObject);
+
+    // ######################### DEBUG #########################
+    //UE_LOG(LogTemp, Error, TEXT("JsonObject: %s\n"), *JsonString)
+
+    if (!ApiKey.IsEmpty())
+    {
+        TSharedRef<IHttpRequest, ESPMode::ThreadSafe> Request = HTTPRequestHandlerInstance->CreateRequest(
+            TEXT("https://api.openai.com/v1/chat/completions"),
+            TEXT("POST"),
+            TEXT("application/json"),
+            ApiKey
+        );
+
+        HTTPRequestHandlerInstance->SetRequestPayload(Request, JsonString);
+        Request->OnProcessRequestComplete().BindLambda([this, JSONHandlerInstance, ConversationManager, OnImageDescriptionResponseReceived](FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful)
+            {
+                if (bWasSuccessful && Response.IsValid())
+                {
+                    FString ResponseString = Response->GetContentAsString();
+
+                    if (TextResponseManagerInstance)
+                    {
+                        TextResponseManagerInstance->ImageDescriptionResponse(ResponseString, JSONHandlerInstance, ConversationManager, OnImageDescriptionResponseReceived);
+                    }
+                }
+                else
+                {
+                    UE_LOG(LogTemp, Error, TEXT("Fehler beim Kontaktieren von OpenAI."));
+                    OnImageDescriptionResponseReceived(TEXT("Fehler beim Kontaktieren von OpenAI."));
+                }
+            });
+        Request->ProcessRequest();
+    }
+    else
+    {
+        UE_LOG(LogTemp, Error, TEXT("API-Schlüssel ist leer in SendSummaryRequest"));
+    }
+}
+
+// ######################### Send Info Request #########################
+void UNN_Cpp_GPTTextRequestManager::SendInfoAboutConversationRequest(
+    const FString& ApiKey,
+    const FGPTRequestInfoAboutConversationParams& Params,
+    UNN_Cpp_JSONHandler* JSONHandlerInstance,
+    UNN_Cpp_HTTPRequestHandler* HTTPRequestHandlerInstance,
+    UNN_Cpp_GPTConversationManager* ConversationManager,
+    TFunction<void(const FString&)> OnInfoAboutConversationResponseReceived)
+{
+    if (!JSONHandlerInstance || !HTTPRequestHandlerInstance)
+    {
+        UE_LOG(LogTemp, Error, TEXT("JSONHandlerInstance oder HTTPRequestHandlerInstance ist nullptr in SendSummaryRequest"));
+        return;
+    }
+
+    const TArray<TSharedPtr<FJsonObject>>& ConversationHistory = ConversationManager->GetConversationHistory();
+    TArray<TSharedPtr<FJsonValue>> JsonArray;
+    for (const TSharedPtr<FJsonObject>& JsonObject : ConversationHistory)
+    {
+        JsonArray.Add(MakeShareable(new FJsonValueObject(JsonObject)));
+    }
+
+    TSharedPtr<FJsonObject> InstructionMessageObject = MakeShareable(new FJsonObject());
+    InstructionMessageObject->SetStringField(TEXT("role"), TEXT("system"));
+    InstructionMessageObject->SetStringField(TEXT("content"), Params.Instruction);
+    JsonArray.Add(MakeShareable(new FJsonValueObject(InstructionMessageObject)));
+
+    TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject());
+    JsonObject->SetStringField(TEXT("model"), TEXT("gpt-4o-mini"));
+    JsonObject->SetArrayField(TEXT("messages"), JsonArray);
+    JsonObject->SetNumberField(TEXT("max_tokens"), Params.MaxTokens);
+
+    FString JsonString = JSONHandlerInstance->SerializeJSON(JsonObject);
+
+    // ######################### DEBUG #########################
+    //UE_LOG(LogTemp, Error, TEXT("JsonObject: %s\n"), *JsonString)
+
+    if (!ApiKey.IsEmpty())
+    {
+        TSharedRef<IHttpRequest, ESPMode::ThreadSafe> Request = HTTPRequestHandlerInstance->CreateRequest(
+            TEXT("https://api.openai.com/v1/chat/completions"),
+            TEXT("POST"),
+            TEXT("application/json"),
+            ApiKey
+        );
+
+        HTTPRequestHandlerInstance->SetRequestPayload(Request, JsonString);
+        Request->OnProcessRequestComplete().BindLambda([this, JSONHandlerInstance, ConversationManager, OnInfoAboutConversationResponseReceived](FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful)
+            {
+                if (bWasSuccessful && Response.IsValid())
+                {
+                    FString ResponseString = Response->GetContentAsString();
+
+                    if (TextResponseManagerInstance)
+                    {
+                        TextResponseManagerInstance->InfoAboutConversationResponse(ResponseString, JSONHandlerInstance, ConversationManager, OnInfoAboutConversationResponseReceived);
+                    }
+                }
+                else
+                {
+                    UE_LOG(LogTemp, Error, TEXT("Fehler beim Kontaktieren von OpenAI."));
+                    OnInfoAboutConversationResponseReceived(TEXT("Fehler beim Kontaktieren von OpenAI."));
                 }
             });
         Request->ProcessRequest();

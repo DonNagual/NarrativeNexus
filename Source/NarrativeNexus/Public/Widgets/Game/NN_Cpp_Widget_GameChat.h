@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Components/Button.h"
+#include "Components/WidgetSwitcher.h"
 #include "Components/TextBlock.h"
 #include "Components/EditableTextBox.h"
 #include "Components/ScrollBox.h"
@@ -47,14 +48,23 @@ protected:
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<UButton> RepeatButton;
 
-	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<UButton> InfoButton;
+	UPROPERTY(meta = (BindeWidget))
+	TObjectPtr<UButton> GenerateInfoButton;
 
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<UButton> SummaryButton;
+	TObjectPtr<UButton> SwitchToInfoButton;
+
+	UPROPERTY(meta = (BindeWidget))
+	TObjectPtr<UButton> GenerateSummaryButton;
 
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<UButton> ImageButton;
+	TObjectPtr<UButton> SwitchToSummaryButton;
+
+	UPROPERTY(meta = (BindeWidget))
+	TObjectPtr<UButton> GenerateImageButton;
+
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UButton> SwitchToImageButton;
 
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<UButton> SelectTopButton;
@@ -81,10 +91,19 @@ protected:
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<UImage> StoryImage;
 
-	// ############### Summary Text ###############
+	// ############### Text Feld ###############
 
-	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<UTextBlock> ExecutiveSummaryText;
+	UPROPERTY(meta = (BindeWidget))
+	TObjectPtr<UWidgetSwitcher> TextWidgetSwitcher;
+
+	UPROPERTY(meta = (BindeWidget))
+	TObjectPtr<UTextBlock> InfoText;
+
+	UPROPERTY(meta = (BindeWidget))
+	TObjectPtr<UTextBlock> SummaryText;
+
+	UPROPERTY(meta = (BindeWidget))
+	TObjectPtr<UTextBlock> ImageText;
 
 private:
 	// ############### Button - Functions ###############
@@ -102,13 +121,22 @@ private:
 	void OnRepeatButtonClicked();
 
 	UFUNCTION()
-	void OnInfoButtonClicked();
+	void OnSwitchToInfoButtonClicked();
 
 	UFUNCTION()
-	void OnSummaryButtonClicked();
+	void OnSwitchToSummaryButtonClicked();
 
 	UFUNCTION()
-	void OnImageButtonClicked();
+	void OnSwitchToImageButtonClicked();
+
+	UFUNCTION()
+	void OnGenerateInfoButtonClicked();
+
+	UFUNCTION()
+	void OnGenerateSummaryButtonClicked();
+
+	UFUNCTION()
+	void OnGenerateImageButtonClicked();
 
 	UFUNCTION()
 	void OnSelectTopButtonClicked();
@@ -128,10 +156,13 @@ private:
 	void GenerateMaxSummary();
 
 	UFUNCTION()
-	void GenerateImageDescription(const FString& Summary);
+	void GenerateImageDescription();
 
 	UFUNCTION()
-	void GenerateChatImage(const FString& Summary);
+	void GenerateChatImage();
+
+	UFUNCTION()
+	void GenerateInfo();
 
 	// ############### Message - Functions ###############
 
