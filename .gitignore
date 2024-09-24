@@ -365,12 +365,18 @@ FodyWeavers.xsd
 # OPENAI_API_KEY
 /config/keys.txt
 
-# Ignoriere das Saved und config Verzeichnis
-Saved/
-Config/keys.txt
-Intermediate/
+# Unreal Engine
 Binaries/
-<<<<<<< HEAD
+DerivedDataCache/
+Intermediate/
+Saved/
+Build/
+Config/keys.txt
 
-=======
->>>>>>> master
+# Visual Studio
+.vs/
+*.VC.db
+*.VC.VC.opendb
+
+
+
