@@ -370,7 +370,7 @@ Intermediate/
 *.vcxproj.filters
 Saved/
 Build/
-Content/Paks/*.ucas
+*.ucas
 
 # OPENAI_API_KEY
 Config/keys.txt
