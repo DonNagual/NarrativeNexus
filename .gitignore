@@ -366,19 +366,19 @@ FodyWeavers.xsd
 /config/keys.txt
 
 # Unreal Engine
-Binaries/
-DerivedDataCache/
-Intermediate/
+/Binaries/
+/DerivedDataCache/
+/Intermediate/
 *.vcxproj
 *.vcxproj.filters
-Saved/
-Build/
-Content/Paks/*.ucas
+/Saved/
+/Build/
+/Content/Paks/*.ucas
 
-Config/keys.txt
+/Config/keys.txt
 
 # Visual Studio
-.vs/
+/.vs/
 *.VC.db
 *.VC.VC.opendb
 
