@@ -369,6 +369,8 @@ FodyWeavers.xsd
 Binaries/
 DerivedDataCache/
 Intermediate/
+*.vcxproj
+*.vcxproj.filters
 Saved/
 Build/
 Content/Paks/*.ucas
