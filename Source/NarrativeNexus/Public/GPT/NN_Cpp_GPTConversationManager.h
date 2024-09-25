@@ -32,12 +32,22 @@ public:
 	const TArray<TSharedPtr<FJsonObject>>& GetInfoAboutConversationHistory() const;
 	void ClearInfoAboutConversationHistory();
 
+	void AddSuggestionsFromConversationToHistory(const FString& SuggestionsFromConversationContent);
+	const TArray<TSharedPtr<FJsonObject>>& GetSuggestionsFromConversationHistory() const;
+	void ClearSuggestionsFromConversationHistory();
+
+	// Getter for the Suggestion-Strings
+	FString GetPositiveSuggestion() const { return PositiveSuggestion; }
+	FString GetNeutralSuggestion() const { return NeutralSuggestion; }
+	FString GetNegativeSuggestion() const { return NegativeSuggestion; }
+
 private:
 
 	TArray<TSharedPtr<FJsonObject>> ConversationHistory;
 	TArray<TSharedPtr<FJsonObject>> SummaryHistory;
 	TArray<TSharedPtr<FJsonObject>> ImageDescriptionHistory;
 	TArray<TSharedPtr<FJsonObject>> InfoAboutConversationHistory;
+	TArray<TSharedPtr<FJsonObject>> SuggestionsFromConversationHistory;
 
 	void TrimConversationHistory();
 
@@ -47,11 +57,16 @@ private:
 
 	void TrimInfoAboutConversationHistory();
 
+	void TrimSuggestionsFromConversationHistory();
+
 	const int32 MaxSummaryHistorySize = 10;
 	const int32 MaxImageDescriptionHistorySize = 20;
 	const int32 MaxInfoAboutConversationHistorySize = 20;
+	const int32 MaxSuggestionsFromConversationHistorySize = 20;
 
-	// GPT-Instanz
-	//UPROPERTY()
-	//UNN_Cpp_GPT* GPTInstance;
+	FString PositiveSuggestion;
+	FString NeutralSuggestion;
+	FString NegativeSuggestion;
+
+
 };

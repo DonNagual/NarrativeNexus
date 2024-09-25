@@ -53,6 +53,15 @@ public:
 		TFunction<void(const FString&)> OnInfoAboutConversationResponseReceived
 	);
 
+	void SendSuggestionsFromConversationRequest(
+		const FString& ApiKey,
+		const FGPTRequestSuggestionsFromConversationParams& Params,
+		UNN_Cpp_JSONHandler* JSONHandlerInstance,
+		UNN_Cpp_HTTPRequestHandler* HTTPRequestHandlerInstance,
+		UNN_Cpp_GPTConversationManager* ConversationManager,
+		TFunction<void(const FString&)> OnSuggestionsFromConversationResponseReceived
+	);
+
 	void SetTextResponseManager(UNN_Cpp_GPTTextResponseManager* InTextResponseManager);
 
 private:

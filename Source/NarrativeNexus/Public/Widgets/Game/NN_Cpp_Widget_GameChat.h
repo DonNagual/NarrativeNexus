@@ -93,17 +93,26 @@ protected:
 
 	// ############### Text Feld ###############
 
-	UPROPERTY(meta = (BindeWidget))
+	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<UWidgetSwitcher> TextWidgetSwitcher;
 
-	UPROPERTY(meta = (BindeWidget))
+	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<UTextBlock> InfoText;
 
-	UPROPERTY(meta = (BindeWidget))
+	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<UTextBlock> SummaryText;
 
-	UPROPERTY(meta = (BindeWidget))
+	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<UTextBlock> ImageText;
+
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UTextBlock> TopButtonText;
+
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UTextBlock> MiddleButtonText;
+
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UTextBlock> LowerButtonText;
 
 private:
 	// ############### Button - Functions ###############
@@ -163,6 +172,9 @@ private:
 
 	UFUNCTION()
 	void GenerateInfo();
+
+	UFUNCTION()
+	void GenerateConversationChoices();
 
 	// ############### Message - Functions ###############
 

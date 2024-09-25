@@ -42,4 +42,11 @@ public:
 		UNN_Cpp_GPTConversationManager* ConversationManager,
 		TFunction<void(const FString&)> OnInfoAboutConversationResponseReceived
 	);
+
+	void SuggestionsFromConversationResponse(
+		const FString& ResponseString,
+		UNN_Cpp_JSONHandler* JSONHandlerInstance,
+		UNN_Cpp_GPTConversationManager* ConversationManager,
+		TFunction<void(const FString&)> OnSuggestionsFromConversationResponseReceived
+	);
 };

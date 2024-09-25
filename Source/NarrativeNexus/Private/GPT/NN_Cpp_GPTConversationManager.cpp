@@ -178,7 +178,7 @@ void UNN_Cpp_GPTConversationManager::AddInfoAboutConversationToHistory(const FSt
 
 		HistoryString += FString::Printf(TEXT("-- %s: %s\n"), *Role, *Content);
 	}
-	UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_ConversationManager - ImageDescriptionHistory: %p\n%s\n"), this, *HistoryString);
+	UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_ConversationManager - InfoAboutConversationHistory: %p\n%s\n"), this, *HistoryString);
 }
 
 const TArray<TSharedPtr<FJsonObject>>& UNN_Cpp_GPTConversationManager::GetInfoAboutConversationHistory() const
@@ -196,5 +196,75 @@ void UNN_Cpp_GPTConversationManager::TrimInfoAboutConversationHistory()
 	if (InfoAboutConversationHistory.Num() > MaxInfoAboutConversationHistorySize)
 	{
 		InfoAboutConversationHistory.RemoveAt(0, InfoAboutConversationHistory.Num() - MaxInfoAboutConversationHistorySize);
+	}
+}
+
+// ############################## Suggestions From Conversation ##############################
+
+void UNN_Cpp_GPTConversationManager::AddSuggestionsFromConversationToHistory(const FString& SuggestionsFromConversationContent)
+{
+	// Delete old values
+	PositiveSuggestion.Empty();
+	NeutralSuggestion.Empty();
+	NegativeSuggestion.Empty();
+
+	TSharedPtr<FJsonObject> NewSuggestionsFromConversationObject = MakeShareable(new FJsonObject());
+	NewSuggestionsFromConversationObject->SetStringField(TEXT("role"), TEXT("Suggestor"));
+	NewSuggestionsFromConversationObject->SetStringField(TEXT("content"), SuggestionsFromConversationContent);
+
+	SuggestionsFromConversationHistory.Add(NewSuggestionsFromConversationObject);
+	TrimSuggestionsFromConversationHistory();
+
+	// Remove backticks and spaces
+	FString CleanedContent = SuggestionsFromConversationContent.Replace(TEXT("```json"), TEXT("")).Replace(TEXT("```"), TEXT("")).TrimStartAndEnd();
+
+	// Parse the JSON object and save the new values
+	TSharedPtr<FJsonObject> SuggestionsObject;
+	TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(CleanedContent);
+
+	// DEBUG
+	UE_LOG(LogTemp, Warning, TEXT("Cleaned JSON: %s"), *CleanedContent);
+
+	if (FJsonSerializer::Deserialize(Reader, SuggestionsObject) && SuggestionsObject.IsValid())
+	{
+		// Extrahiere die neuen Werte und speichere sie in den globalen Variablen
+		SuggestionsObject->TryGetStringField(TEXT("positive"), PositiveSuggestion);
+		SuggestionsObject->TryGetStringField(TEXT("neutral"), NeutralSuggestion);
+		SuggestionsObject->TryGetStringField(TEXT("negative"), NegativeSuggestion);
+
+		// DEBUG
+		UE_LOG(LogTemp, Warning, TEXT("Extracted Positive: %s"), *PositiveSuggestion);
+		UE_LOG(LogTemp, Warning, TEXT("Extracted Neutral: %s"), *NeutralSuggestion);
+		UE_LOG(LogTemp, Warning, TEXT("Extracted Negative: %s"), *NegativeSuggestion);
+	}
+
+	// DEBUG
+	FString HistoryString;
+	for (const TSharedPtr<FJsonObject>& MessageObj : SuggestionsFromConversationHistory)
+	{
+		FString Role, Content;
+		MessageObj->TryGetStringField(TEXT("role"), Role);
+		MessageObj->TryGetStringField(TEXT("content"), Content);
+
+		HistoryString += FString::Printf(TEXT("-- %s: %s\n"), *Role, *Content);
+	}
+	UE_LOG(LogTemp, Warning, TEXT("NN_Cpp_ConversationManager - SuggestionsFromConversationHistory: %p\n%s\n"), this, *HistoryString);
+}
+
+const TArray<TSharedPtr<FJsonObject>>& UNN_Cpp_GPTConversationManager::GetSuggestionsFromConversationHistory() const
+{
+	return SuggestionsFromConversationHistory;
+}
+
+void UNN_Cpp_GPTConversationManager::ClearSuggestionsFromConversationHistory()
+{
+	SuggestionsFromConversationHistory.Empty();
+}
+
+void UNN_Cpp_GPTConversationManager::TrimSuggestionsFromConversationHistory()
+{
+	if (SuggestionsFromConversationHistory.Num() > MaxSuggestionsFromConversationHistorySize)
+	{
+		SuggestionsFromConversationHistory.RemoveAt(0, SuggestionsFromConversationHistory.Num() - MaxSuggestionsFromConversationHistorySize);
 	}
 }

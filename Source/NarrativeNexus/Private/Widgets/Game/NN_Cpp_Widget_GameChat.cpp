@@ -62,7 +62,7 @@ void UNN_Cpp_Widget_GameChat::SetGPT(UNN_Cpp_GPT* InGPT)
 
 void UNN_Cpp_Widget_GameChat::HandleGPTResponse(const FString& Response)
 {
-	AddMessageToChatFromGPT(Response);;
+	AddMessageToChatFromGPT(Response);
 }
 
 void UNN_Cpp_Widget_GameChat::AddMessageToChatFromUser(const FString& MessageText)
@@ -182,7 +182,10 @@ void UNN_Cpp_Widget_GameChat::OnBackButtonClicked()
 
 void UNN_Cpp_Widget_GameChat::OnReaktionButtonClicked()
 {
-	
+	if (ReaktionButton)
+	{
+		GenerateConversationChoices();
+	}
 }
 
 void UNN_Cpp_Widget_GameChat::OnRepeatButtonClicked()
@@ -368,23 +371,18 @@ void UNN_Cpp_Widget_GameChat::GenerateChatImage()
 	}
 	// Generate Image From Image Description
 	if (GPT)
-	{
-		const TArray<TSharedPtr<FJsonObject>>& ImageDescriptonHistory = GPT->GetConversationManager()->GetImageDescriptionHistory();
-		if (ImageDescriptonHistory.Num() > 0)
+	{	
+		GPT->GenerateImageFromDescription([this](UTexture2D* GeneratedImage)
 		{
-			FString LastImageDescripton = ImageDescriptonHistory.Last()->GetStringField(TEXT("content"));
-			GPT->GenerateImageFromDescription(LastImageDescripton, [this](UTexture2D* GeneratedImage)
+			if (GeneratedImage && StoryImage)
 			{
-				if (GeneratedImage && StoryImage)
-				{
-					StoryImage->SetBrushFromTexture(GeneratedImage, true);
-				}
-				else
-				{
-					UE_LOG(LogTemp, Error, TEXT("Failed to generate or display image."));
-				}
-			});
-		}
+				StoryImage->SetBrushFromTexture(GeneratedImage, true);
+			}
+			else
+			{
+				UE_LOG(LogTemp, Error, TEXT("Failed to generate or display image."));
+			}
+		});
 	}
 	else
 	{
@@ -406,7 +404,8 @@ void UNN_Cpp_Widget_GameChat::GenerateInfo()
 	// Generate Info From Conversation
 	if (GPT)
 	{
-		GPT->GenerateInfoAboutConversation([this](const FString& OnInfoAboutConversationGenerated) {
+		GPT->GenerateInfoAboutConversation([this](const FString& OnInfoAboutConversationGenerated)
+		{
 			if (InfoText)
 			{
 				InfoText->SetText(FText::FromString(OnInfoAboutConversationGenerated));
@@ -415,7 +414,41 @@ void UNN_Cpp_Widget_GameChat::GenerateInfo()
 			{
 				UE_LOG(LogTemp, Error, TEXT("Failed to set Image Description text."));
 			}
-			});
+		});
+	}
+}
+
+void UNN_Cpp_Widget_GameChat::GenerateConversationChoices()
+{
+	if (GPT)
+	{
+		GPT->GenerateSuggestionsFromConversation([this](const FString& OnSuggestionsFromConversationGenerated)
+		{
+			// Access to the strings stored in the ConversationManager
+			FString PositiveSuggestion = GPT->GetConversationManager()->GetPositiveSuggestion();
+			FString NeutralSuggestion = GPT->GetConversationManager()->GetNeutralSuggestion();
+			FString NegativeSuggestion = GPT->GetConversationManager()->GetNegativeSuggestion();
+
+			// DEBUG
+			UE_LOG(LogTemp, Warning, TEXT("PositiveSuggestion: %s"), *PositiveSuggestion);
+			UE_LOG(LogTemp, Warning, TEXT("NeutralSuggestion: %s"), *NeutralSuggestion);
+			UE_LOG(LogTemp, Warning, TEXT("NegativeSuggestion: %s"), *NegativeSuggestion);
+
+			// Set the texts for the buttons as soon as the strings are filled
+			if (!PositiveSuggestion.IsEmpty() && !NeutralSuggestion.IsEmpty() && !NegativeSuggestion.IsEmpty())
+			{
+				if (TopButtonText && MiddleButtonText && LowerButtonText)
+				{
+					TopButtonText->SetText(FText::FromString(PositiveSuggestion));
+					MiddleButtonText->SetText(FText::FromString(NeutralSuggestion));
+					LowerButtonText->SetText(FText::FromString(NegativeSuggestion));
+				}
+			}
+			else
+			{
+				UE_LOG(LogTemp, Warning, TEXT("Failed to set suggestions - one or more suggestions are empty."));
+			}
+		});
 	}
 }
 

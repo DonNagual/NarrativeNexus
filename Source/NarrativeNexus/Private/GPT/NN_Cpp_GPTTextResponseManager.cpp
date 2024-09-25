@@ -193,3 +193,51 @@ void UNN_Cpp_GPTTextResponseManager::InfoAboutConversationResponse(
     }
 }
 
+void UNN_Cpp_GPTTextResponseManager::SuggestionsFromConversationResponse(
+    const FString& ResponseString,
+    UNN_Cpp_JSONHandler* JSONHandlerInstance,
+    UNN_Cpp_GPTConversationManager* ConversationManager,
+    TFunction<void(const FString&)> OnSuggestionsFromConversationResponseReceived)
+{
+    if (!JSONHandlerInstance)
+    {
+        UE_LOG(LogTemp, Error, TEXT("JSONHandlerInstance ist nullptr in ImageDescriptionResponse"));
+        OnSuggestionsFromConversationResponseReceived(TEXT("Fehler: JSONHandlerInstance ist nullptr"));
+        return;
+    }
+
+    TSharedPtr<FJsonObject> JsonObject = JSONHandlerInstance->DeserializeJSON(ResponseString);
+
+    if (JsonObject.IsValid())
+    {
+        const TArray<TSharedPtr<FJsonValue>>* ChoicesArray;
+        if (JsonObject->TryGetArrayField(TEXT("choices"), ChoicesArray) && ChoicesArray != nullptr && ChoicesArray->Num() > 0)
+        {
+            TSharedPtr<FJsonObject> FirstChoice = (*ChoicesArray)[0]->AsObject();
+            if (FirstChoice.IsValid() && FirstChoice->HasField(TEXT("message")))
+            {
+                FString SuggestionsFromConversationReply = FirstChoice->GetObjectField(TEXT("message"))->GetStringField(TEXT("content"));
+
+                ConversationManager->AddSuggestionsFromConversationToHistory(SuggestionsFromConversationReply);
+
+                OnSuggestionsFromConversationResponseReceived(SuggestionsFromConversationReply);
+            }
+            else
+            {
+                UE_LOG(LogTemp, Error, TEXT("Fehler beim Finden des 'message'-Felds in der ersten Wahl."));
+                OnSuggestionsFromConversationResponseReceived(TEXT("Keine Nachricht in der Antwort gefunden."));
+            }
+        }
+        else
+        {
+            UE_LOG(LogTemp, Error, TEXT("Fehler beim Finden des 'choices'-Arrays oder es ist leer."));
+            OnSuggestionsFromConversationResponseReceived(TEXT("Keine Wahlmöglichkeiten in der Antwort gefunden."));
+        }
+    }
+    else
+    {
+        UE_LOG(LogTemp, Error, TEXT("Fehler beim Deserialisieren der JSON-Antwort."));
+        OnSuggestionsFromConversationResponseReceived(TEXT("Fehler beim Parsen der JSON-Antwort."));
+    }
+}
+

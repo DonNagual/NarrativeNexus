@@ -48,8 +48,10 @@ public:
 	void GenerateImageDescriptionFromConversation(TFunction<void(const FString&)> OnImageDescriptionGenerated);
 
 	void GenerateInfoAboutConversation(TFunction<void(const FString&)> OnInfoAboutConversationGenerated);
+
+	void GenerateSuggestionsFromConversation(TFunction<void(const FString&)>OnSuggestionsFromConversationGenerated);
 	
-	void GenerateImageFromDescription(const FString& Summary, TFunction<void(UTexture2D*)> OnImageGenerated);
+	void GenerateImageFromDescription(TFunction<void(UTexture2D*)> OnImageGenerated);
 
 private:
 

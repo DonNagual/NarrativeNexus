@@ -9,10 +9,10 @@ void UNN_Cpp_GPTImageRequestManager::SetImageResponseManager(UNN_Cpp_GPTImageRes
 
 void UNN_Cpp_GPTImageRequestManager::SendImageRequest(
 	const FString& ApiKey,
-	const FString& Prompt,
-	const FString& Size,
+	const FGPTRequestImageParams& Params,
 	UNN_Cpp_JSONHandler* JSONHandlerInstance,
 	UNN_Cpp_HTTPRequestHandler* HTTPRequestHandlerInstance,
+	UNN_Cpp_GPTConversationManager* ConversationManager,
 	TFunction<void(UTexture2D*)> OnImageResponseReceived
 )
 {
@@ -22,14 +22,25 @@ void UNN_Cpp_GPTImageRequestManager::SendImageRequest(
 		return;
 	}
 
+	const TArray<TSharedPtr<FJsonObject>>& ImageDescriptonHistory = ConversationManager->GetImageDescriptionHistory();
+	if (ImageDescriptonHistory.Num() == 0)
+	{
+		UE_LOG(LogTemp, Error, TEXT("No image description found in history."));
+		return;
+	}
+	FString LastImageDescripton = ImageDescriptonHistory.Last()->GetStringField(TEXT("content"));
+
 	// Create the JSON payload with the prompt
 	TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject());
-	JsonObject->SetStringField(TEXT("prompt"), Prompt);
+	JsonObject->SetStringField(TEXT("prompt"), LastImageDescripton);
 	JsonObject->SetNumberField(TEXT("n"), 1);
-	JsonObject->SetStringField(TEXT("size"), Size);
+	JsonObject->SetStringField(TEXT("size"), Params.Size);
 	JsonObject->SetStringField(TEXT("response_format"), TEXT("b64_json"));
 
 	FString JsonString = JSONHandlerInstance->SerializeJSON(JsonObject);
+
+	// ######################### DEBUG #########################
+	UE_LOG(LogTemp, Error, TEXT("JsonObject: %s\n"), *JsonString)
 
 	if (!ApiKey.IsEmpty())
 	{

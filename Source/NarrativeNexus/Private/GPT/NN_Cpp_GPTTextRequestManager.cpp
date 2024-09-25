@@ -129,6 +129,9 @@ void UNN_Cpp_GPTTextRequestManager::SendSummaryRequest(
 
     FString JsonString = JSONHandlerInstance->SerializeJSON(JsonObject);
 
+    // ######################### DEBUG #########################
+    //UE_LOG(LogTemp, Error, TEXT("JsonObject: %s\n"), *JsonString)
+
     if (!ApiKey.IsEmpty())
     {
         TSharedRef<IHttpRequest, ESPMode::ThreadSafe> Request = HTTPRequestHandlerInstance->CreateRequest(
@@ -299,6 +302,79 @@ void UNN_Cpp_GPTTextRequestManager::SendInfoAboutConversationRequest(
                 {
                     UE_LOG(LogTemp, Error, TEXT("Fehler beim Kontaktieren von OpenAI."));
                     OnInfoAboutConversationResponseReceived(TEXT("Fehler beim Kontaktieren von OpenAI."));
+                }
+            });
+        Request->ProcessRequest();
+    }
+    else
+    {
+        UE_LOG(LogTemp, Error, TEXT("API-Schlüssel ist leer in SendSummaryRequest"));
+    }
+}
+
+// ######################### Suggestions From Conversation Request #########################
+void UNN_Cpp_GPTTextRequestManager::SendSuggestionsFromConversationRequest(
+    const FString& ApiKey,
+    const FGPTRequestSuggestionsFromConversationParams& Params,
+    UNN_Cpp_JSONHandler* JSONHandlerInstance,
+    UNN_Cpp_HTTPRequestHandler* HTTPRequestHandlerInstance,
+    UNN_Cpp_GPTConversationManager* ConversationManager,
+    TFunction<void(const FString&)> OnSuggestionsFromConversationResponseReceived)
+{
+    if (!JSONHandlerInstance || !HTTPRequestHandlerInstance)
+    {
+        UE_LOG(LogTemp, Error, TEXT("JSONHandlerInstance oder HTTPRequestHandlerInstance ist nullptr in SendSummaryRequest"));
+        return;
+    }
+    
+    TArray<TSharedPtr<FJsonValue>> JsonArray;
+
+    TSharedPtr<FJsonObject> InstructionMessageObject = MakeShareable(new FJsonObject());
+    InstructionMessageObject->SetStringField(TEXT("role"), TEXT("system"));
+    InstructionMessageObject->SetStringField(TEXT("content"), Params.Instruction);
+    JsonArray.Add(MakeShareable(new FJsonValueObject(InstructionMessageObject)));
+
+    const TArray<TSharedPtr<FJsonObject>>& ConversationHistory = ConversationManager->GetConversationHistory();
+    for (const TSharedPtr<FJsonObject>& JsonObject : ConversationHistory)
+    {
+        JsonArray.Add(MakeShareable(new FJsonValueObject(JsonObject)));
+    }
+
+    TSharedPtr<FJsonObject> JsonObject = MakeShareable(new FJsonObject());
+    JsonObject->SetStringField(TEXT("model"), TEXT("gpt-4o-mini"));
+    JsonObject->SetArrayField(TEXT("messages"), JsonArray);
+    JsonObject->SetNumberField(TEXT("max_tokens"), Params.MaxTokens);
+
+    FString JsonString = JSONHandlerInstance->SerializeJSON(JsonObject);
+
+    // ######################### DEBUG #########################
+    UE_LOG(LogTemp, Error, TEXT("JsonObject: %s\n"), *JsonString)
+
+    if (!ApiKey.IsEmpty())
+    {
+        TSharedRef<IHttpRequest, ESPMode::ThreadSafe> Request = HTTPRequestHandlerInstance->CreateRequest(
+            TEXT("https://api.openai.com/v1/chat/completions"),
+            TEXT("POST"),
+            TEXT("application/json"),
+            ApiKey
+        );
+
+        HTTPRequestHandlerInstance->SetRequestPayload(Request, JsonString);
+        Request->OnProcessRequestComplete().BindLambda([this, JSONHandlerInstance, ConversationManager, OnSuggestionsFromConversationResponseReceived](FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful)
+            {
+                if (bWasSuccessful && Response.IsValid())
+                {
+                    FString ResponseString = Response->GetContentAsString();
+
+                    if (TextResponseManagerInstance)
+                    {
+                        TextResponseManagerInstance->SuggestionsFromConversationResponse(ResponseString, JSONHandlerInstance, ConversationManager, OnSuggestionsFromConversationResponseReceived);
+                    }
+                }
+                else
+                {
+                    UE_LOG(LogTemp, Error, TEXT("Fehler beim Kontaktieren von OpenAI."));
+                    OnSuggestionsFromConversationResponseReceived(TEXT("Fehler beim Kontaktieren von OpenAI."));
                 }
             });
         Request->ProcessRequest();
