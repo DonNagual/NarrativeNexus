@@ -79,7 +79,7 @@ void UNN_Cpp_GPT::GenerateInfoAboutConversation(TFunction<void(const FString&)> 
 void UNN_Cpp_GPT::GenerateSuggestionsFromConversation(TFunction<void(const FString&)> OnSuggestionsFromConversationGenerated)
 {
 	FGPTRequestSuggestionsFromConversationParams Params(TEXT(
-		"Generiere, als JSON-Objekt, drei mögliche Nachrichten, aus der Perspektive des Users, bezogen auf die Unterhaltung. "
+		"Generiere, als JSON-Objekt, drei Nachrichten, aus der Perspektive des Users, um die Unterhaltung voranzutreiben. "
 		"Das Format sollte so aussehen: "
 		"{'positive': 'Positive Nachricht', 'neutral': 'Neutrale Nachricht', 'negative': 'Negative Nachricht'}. "
 		"Jede Antwort sollte nicht länger als 50 Zeichen sein."), 100);

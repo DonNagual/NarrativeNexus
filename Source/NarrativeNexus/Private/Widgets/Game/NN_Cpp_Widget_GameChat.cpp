@@ -161,7 +161,7 @@ void UNN_Cpp_Widget_GameChat::OnSendButtomClicked()
 		// Add the user's message to the chat window
 		AddMessageToChatFromUser(InputText);
 
-		// Send the message to ChatGPT
+		// Send the message to GPT
 		GPT->SendMessageToGPT(InputText);
 
 		// Clear the input field
@@ -274,14 +274,56 @@ void UNN_Cpp_Widget_GameChat::OnGenerateImageButtonClicked()
 
 void UNN_Cpp_Widget_GameChat::OnSelectTopButtonClicked()
 {
+	if (TopButtonText)
+	{
+		FString SuggestionText = TopButtonText->GetText().ToString();
+
+		if (SuggestionText.IsEmpty())
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Cannot send an empty message"));
+			return;
+		}
+
+		AddMessageToChatFromUser(SuggestionText);
+
+		GPT->SendMessageToGPT(SuggestionText);
+	}
 }
 
 void UNN_Cpp_Widget_GameChat::OnSelectMiddleButtonClicked()
 {
+	if (MiddleButtonText)
+	{
+		FString SuggestionText = MiddleButtonText->GetText().ToString();
+
+		if (SuggestionText.IsEmpty())
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Cannot send an empty message"));
+			return;
+		}
+
+		AddMessageToChatFromUser(SuggestionText);
+
+		GPT->SendMessageToGPT(SuggestionText);
+	}
 }
 
 void UNN_Cpp_Widget_GameChat::OnSelectLowerButtonClicked()
 {
+	if (LowerButtonText)
+	{
+		FString SuggestionText = LowerButtonText->GetText().ToString();
+
+		if (SuggestionText.IsEmpty())
+		{
+			UE_LOG(LogTemp, Warning, TEXT("Cannot send an empty message"));
+			return;
+		}
+
+		AddMessageToChatFromUser(SuggestionText);
+
+		GPT->SendMessageToGPT(SuggestionText);
+	}
 }
 
 void UNN_Cpp_Widget_GameChat::GenerateShortSummary()
