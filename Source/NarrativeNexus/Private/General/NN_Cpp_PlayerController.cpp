@@ -23,6 +23,8 @@ void ANN_Cpp_PlayerController::InitializeWidgets()
 		MainMenuWidget = Cast< UNN_Cpp_Widget_MainMenu>(MainWidget->MainMenuWidget);
 		MainOptionsWidget = Cast<UNN_Cpp_Widget_MainOptions>(MainWidget->MainOptionsWidget);
 
+		MainOptionsChatWidget = Cast<UNN_Cpp_Widget_MainOptionsChat>(MainOptionsWidget->MainOptionsChatWidget);
+
 		GameWidget = Cast<UNN_Cpp_Widget_Game>(CategoryWidget->GameWidget);
 		GameMenuWidget = Cast<UNN_Cpp_Widget_GameMenu>(GameWidget->GameMenuWidget);
 		GameNavigatorWidget = Cast<UNN_Cpp_Widget_GameNavigator>(GameWidget->GameNavigatorWidget);
@@ -238,54 +240,63 @@ void ANN_Cpp_PlayerController::ShowGameInventoryWidgetViaInterface()
 
 bool ANN_Cpp_PlayerController::IsShortSummaryGenerationEnabledViaInterface() const
 {
-	if (MainOptionsWidget)
+	if (MainOptionsChatWidget)
 	{
-		return MainOptionsWidget->IsShortSummaryGenerationEnabled();
+		return MainOptionsChatWidget->IsShortSummaryGenerationEnabled();
 	}
 	return false;
 }
 
 bool ANN_Cpp_PlayerController::IsMaxSummaryGenerationEnabledViaInterface() const
 {
-	if (MainOptionsWidget)
+	if (MainOptionsChatWidget)
 	{
-		return MainOptionsWidget->IsMaxSummaryGenerationEnabled();
+		return MainOptionsChatWidget->IsMaxSummaryGenerationEnabled();
 	}
 	return false;
 }
 
 bool ANN_Cpp_PlayerController::IsInfoGenerationEnabledViaInterface() const
 {
-	if (MainOptionsWidget)
+	if (MainOptionsChatWidget)
 	{
-		return MainOptionsWidget->IsInfoGenerationEnabled();
+		return MainOptionsChatWidget->IsInfoGenerationEnabled();
+	}
+	return false;
+}
+
+bool ANN_Cpp_PlayerController::IsSuggestionGenerationEnabledViaInterface() const
+{
+	if (MainOptionsChatWidget)
+	{
+		return MainOptionsChatWidget->IsSuggestionGenerationEnabled();
 	}
 	return false;
 }
 
 bool ANN_Cpp_PlayerController::IsDescriptionGenerationForImageEnabledViaInterface() const
 {
-	if (MainOptionsWidget)
+	if (MainOptionsChatWidget)
 	{
-		return MainOptionsWidget->IsDescriptionGenerationForImageEnabled();
+		return MainOptionsChatWidget->IsDescriptionGenerationForImageEnabled();
 	}
 	return false;
 }
 
 bool ANN_Cpp_PlayerController::IsGenerateImageFromDiscriptionEnabledViaInterface() const
 {
-	if (MainOptionsWidget)
+	if (MainOptionsChatWidget)
 	{
-		return MainOptionsWidget->IsGenerateImageFromDiscriptionEnabled();
+		return MainOptionsChatWidget->IsGenerateImageFromDiscriptionEnabled();
 	}
 	return false;
 }
 
 int32 ANN_Cpp_PlayerController::GetMaxConversationHistorySizeViaInterface() const
 {
-	if (MainOptionsWidget)
+	if (MainOptionsChatWidget)
 	{
-		return MainOptionsWidget->GetMaxConversationHistorySize();
+		return MainOptionsChatWidget->GetMaxConversationHistorySize();
 	}
 	return 4;
 }

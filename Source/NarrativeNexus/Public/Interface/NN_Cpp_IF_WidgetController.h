@@ -50,6 +50,7 @@ public:
 	virtual bool IsShortSummaryGenerationEnabledViaInterface() const = 0;
 	virtual bool IsMaxSummaryGenerationEnabledViaInterface() const = 0;
 	virtual bool IsInfoGenerationEnabledViaInterface() const = 0;
+	virtual bool IsSuggestionGenerationEnabledViaInterface() const = 0;
 	virtual bool IsDescriptionGenerationForImageEnabledViaInterface() const = 0;
 	virtual bool IsGenerateImageFromDiscriptionEnabledViaInterface() const = 0;
 	virtual int32 GetMaxConversationHistorySizeViaInterface() const = 0;

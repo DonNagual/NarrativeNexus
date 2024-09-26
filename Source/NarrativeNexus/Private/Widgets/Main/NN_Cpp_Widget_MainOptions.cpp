@@ -6,122 +6,48 @@ void UNN_Cpp_Widget_MainOptions::NativeConstruct()
 {
 	Super::NativeConstruct();
 
-	BackButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_MainOptions::OnBackButtonClicked);
-	GenerateShortSummaryCheckBox->OnCheckStateChanged.AddDynamic(this, &UNN_Cpp_Widget_MainOptions::OnGenerateShortSummaryCheckBoxChanged);
-	GenerateMaxSummaryCheckBox->OnCheckStateChanged.AddDynamic(this, &UNN_Cpp_Widget_MainOptions::OnGenerateMaxSummaryCheckBoxChanged);
-	GenerateImageDescriptionCheckBox->OnCheckStateChanged.AddDynamic(this, &UNN_Cpp_Widget_MainOptions::OnGenerateImageDescriptionCheckBox);
-	GenerateImageCheckBox->OnCheckStateChanged.AddDynamic(this, &UNN_Cpp_Widget_MainOptions::OnGenerateImageCheckBoxChanged);
-	UpButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_MainOptions::OnUpButtonClicked);
-	DownButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_MainOptions::OnDownButtonClicked);
+	OptionsMainButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_MainOptions::OnSwitchToOptionsMainWidget);
+	OptionsChatButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_MainOptions::OnSwitchToOptionsChatWidget);
+	OptionsCreatorButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_MainOptions::OnSwitchToOptionsCreatorWidget);
 
-	APIKeySaveButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_MainOptions::OnAPIKeySaveButtonClicked);
-
-	MaxConversationHistorySizeText->SetText(FText::AsNumber(MaxConversationHistorySize));
-}
-
-void UNN_Cpp_Widget_MainOptions::OnBackButtonClicked()
-{
-	if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
+	if (OptionsWidgetSwitcher)
 	{
-		Interface->HideWidget(this);
-		Interface->ShowMainMenuWidgetViaInterface();
+		OptionsWidgetSwitcher->SetActiveWidgetIndex(0);
 	}
 }
 
-bool UNN_Cpp_Widget_MainOptions::IsShortSummaryGenerationEnabled() const
+void UNN_Cpp_Widget_MainOptions::OnSwitchToOptionsMainWidget()
 {
-	return GenerateShortSummaryCheckBox->IsChecked();
-}
-
-bool UNN_Cpp_Widget_MainOptions::IsMaxSummaryGenerationEnabled() const
-{
-	return GenerateMaxSummaryCheckBox->IsChecked();
-}
-
-bool UNN_Cpp_Widget_MainOptions::IsInfoGenerationEnabled() const
-{
-	return GenerateInfoCheckBox->IsChecked();
-}
-
-bool UNN_Cpp_Widget_MainOptions::IsDescriptionGenerationForImageEnabled() const
-{
-	return GenerateImageDescriptionCheckBox->IsChecked();
-}
-
-bool UNN_Cpp_Widget_MainOptions::IsGenerateImageFromDiscriptionEnabled() const
-{
-	return GenerateImageCheckBox->IsChecked();
-}
-
-void UNN_Cpp_Widget_MainOptions::OnGenerateShortSummaryCheckBoxChanged(bool bIsChecked)
-{
-	// DEBUG
-	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, bIsChecked ? TEXT("Short Summary Generation Enabled") : TEXT("Short Summary Generation Disabled"));
-}
-
-void UNN_Cpp_Widget_MainOptions::OnGenerateMaxSummaryCheckBoxChanged(bool bIsChecked)
-{
-	// DEBUG
-	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, bIsChecked ? TEXT("Max Summary Generation Enabled") : TEXT("Max Summary Generation Disabled"));
-}
-
-void UNN_Cpp_Widget_MainOptions::OnGenerateImageDescriptionCheckBox(bool bIsChecked)
-{
-	// DEBUG
-	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, bIsChecked ? TEXT("Image Generation Description Enabled") : TEXT("Image Generation Description Disabled"));
-}
-
-void UNN_Cpp_Widget_MainOptions::OnGenerateImageCheckBoxChanged(bool bIsChecked)
-{
-	// DEBUG
-	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, bIsChecked ? TEXT("Image Generation Enabled") : TEXT("Image Generation Disabled"));
-}
-
-void UNN_Cpp_Widget_MainOptions::OnAPIKeySaveButtonClicked()
-{
-	if (APIKeyInputText)
+	if (OptionsWidgetSwitcher)
 	{
-		// Get the input text
-		FString InputAPIKey = APIKeyInputText->GetText().ToString();
-
-		// Check for empty input
-		if (InputAPIKey.IsEmpty())
+		int32 index = OptionsWidgetSwitcher->GetActiveWidgetIndex();
+		if (index != 0)
 		{
-			UE_LOG(LogTemp, Warning, TEXT("Cannot save an empty API Key"));
-			return;
-		}
-
-		FString FilePath = FPaths::ProjectDir() + TEXT("config/keys.txt");
-		if (FFileHelper::SaveStringToFile(InputAPIKey, *FilePath))
-		{
-			GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Green, TEXT("API Key successfully saved!"));
-		}
-		else
-		{
-			GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Red, TEXT("Failed to save API Key."));
+			OptionsWidgetSwitcher->SetActiveWidgetIndex(0);
 		}
 	}
 }
 
-void UNN_Cpp_Widget_MainOptions::OnUpButtonClicked()
+void UNN_Cpp_Widget_MainOptions::OnSwitchToOptionsChatWidget()
 {
-	if (MaxConversationHistorySize < 20)
+	if (OptionsWidgetSwitcher)
 	{
-		MaxConversationHistorySize++;
-		MaxConversationHistorySizeText->SetText(FText::AsNumber(MaxConversationHistorySize));
+		int32 index = OptionsWidgetSwitcher->GetActiveWidgetIndex();
+		if (index != 1)
+		{
+			OptionsWidgetSwitcher->SetActiveWidgetIndex(1);
+		}
 	}
 }
 
-void UNN_Cpp_Widget_MainOptions::OnDownButtonClicked()
+void UNN_Cpp_Widget_MainOptions::OnSwitchToOptionsCreatorWidget()
 {
-	if (MaxConversationHistorySize > 4)
+	if (OptionsWidgetSwitcher)
 	{
-		MaxConversationHistorySize--;
-		MaxConversationHistorySizeText->SetText(FText::AsNumber(MaxConversationHistorySize));
+		int32 index = OptionsWidgetSwitcher->GetActiveWidgetIndex();
+		if (index != 2)
+		{
+			OptionsWidgetSwitcher->SetActiveWidgetIndex(2);
+		}
 	}
-}
-
-int UNN_Cpp_Widget_MainOptions::GetMaxConversationHistorySize() const
-{
-	return MaxConversationHistorySize;
 }

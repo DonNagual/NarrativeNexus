@@ -10,6 +10,7 @@
 #include "Widgets/Main/NN_Cpp_Widget_Main.h"
 #include "Widgets/Main/NN_Cpp_Widget_MainMenu.h"
 #include "Widgets/Main/NN_Cpp_Widget_MainOptions.h"
+#include "Widgets/Main/NN_Cpp_Widget_MainOptionsChat.h"
 #include "Widgets/Creator/NN_Cpp_Widget_Creator.h"
 #include "Widgets/Game/NN_Cpp_Widget_Game.h"
 #include "Widgets/Game/NN_Cpp_Widget_GameMenu.h"
@@ -72,6 +73,7 @@ public:
 	virtual bool IsShortSummaryGenerationEnabledViaInterface() const override;
 	virtual bool IsMaxSummaryGenerationEnabledViaInterface() const override;
 	virtual bool IsInfoGenerationEnabledViaInterface() const override;
+	virtual bool IsSuggestionGenerationEnabledViaInterface() const override;
 	virtual bool IsDescriptionGenerationForImageEnabledViaInterface() const override;
 	virtual bool IsGenerateImageFromDiscriptionEnabledViaInterface() const override;
 	virtual int32 GetMaxConversationHistorySizeViaInterface() const override;
@@ -144,6 +146,9 @@ private:
 
 	UPROPERTY()
 	class UNN_Cpp_Widget_MainOptions* MainOptionsWidget;
+
+	UPROPERTY()
+	class UNN_Cpp_Widget_MainOptionsChat* MainOptionsChatWidget;
 
 	UPROPERTY()
 	class UNN_Cpp_Widget_Creator* CreatorWidget;

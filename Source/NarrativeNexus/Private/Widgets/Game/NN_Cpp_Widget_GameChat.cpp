@@ -184,7 +184,15 @@ void UNN_Cpp_Widget_GameChat::OnReaktionButtonClicked()
 {
 	if (ReaktionButton)
 	{
-		GenerateConversationChoices();
+		if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
+		{
+			if (!Interface->IsSuggestionGenerationEnabledViaInterface())
+			{
+				UE_LOG(LogTemp, Error, TEXT("Suggestion generation is disabled in the options."));
+				return;
+			}
+			GenerateConversationChoices();
+		}
 	}
 }
 
