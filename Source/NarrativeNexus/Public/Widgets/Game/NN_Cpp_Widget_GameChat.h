@@ -4,13 +4,14 @@
 
 #include "CoreMinimal.h"
 #include "Components/Button.h"
+#include "Components/WidgetSwitcher.h"
 #include "Components/TextBlock.h"
 #include "Components/EditableTextBox.h"
 #include "Components/ScrollBox.h"
 #include "Components/Image.h"
 #include "Blueprint/UserWidget.h"
 #include "NN_Cpp_Widget_GameChatMessage.h"
-#include "Interface/NN_Cpp_IF_GPT.h"
+#include "GPT/NN_Cpp_GPT.h"
 #include "Interface/NN_Cpp_IF_WidgetController.h"
 #include "NN_Cpp_Widget_GameChat.generated.h"
 
@@ -25,6 +26,12 @@ public:
 
 	void SetGPT(UNN_Cpp_GPT* InGPT);
 
+	UFUNCTION()
+	void RemoveAllGPTMessagesFromScrollBox();
+
+	UFUNCTION()
+	bool IsGameChatWidgetVisible();
+
 protected:
 
 	// ############### Buttons ###############
@@ -36,19 +43,28 @@ protected:
 	TObjectPtr<UButton> BackButton;
 
 	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UButton> ReaktionButton;
+
+	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<UButton> RepeatButton;
 
-	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<UButton> ResetButton;
+	UPROPERTY(meta = (BindeWidget))
+	TObjectPtr<UButton> GenerateInfoButton;
 
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<UButton> InfoButton;
+	TObjectPtr<UButton> SwitchToInfoButton;
+
+	UPROPERTY(meta = (BindeWidget))
+	TObjectPtr<UButton> GenerateSummaryButton;
 
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<UButton> SummaryButton;
+	TObjectPtr<UButton> SwitchToSummaryButton;
+
+	UPROPERTY(meta = (BindeWidget))
+	TObjectPtr<UButton> GenerateImageButton;
 
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<UButton> ContinueButton;
+	TObjectPtr<UButton> SwitchToImageButton;
 
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<UButton> SelectTopButton;
@@ -75,10 +91,28 @@ protected:
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<UImage> StoryImage;
 
-	// ############### Summary Text ###############
+	// ############### Text Feld ###############
 
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<UTextBlock> ExecutiveSummaryText;
+	TObjectPtr<UWidgetSwitcher> TextWidgetSwitcher;
+
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UTextBlock> InfoText;
+
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UTextBlock> SummaryText;
+
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UTextBlock> ImageText;
+
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UTextBlock> TopButtonText;
+
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UTextBlock> MiddleButtonText;
+
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UTextBlock> LowerButtonText;
 
 private:
 	// ############### Button - Functions ###############
@@ -90,19 +124,28 @@ private:
 	void OnBackButtonClicked();
 
 	UFUNCTION()
+	void OnReaktionButtonClicked();
+
+	UFUNCTION()
 	void OnRepeatButtonClicked();
 
 	UFUNCTION()
-	void OnResetButtonClicked();
+	void OnSwitchToInfoButtonClicked();
 
 	UFUNCTION()
-	void OnInfoButtonClicked();
+	void OnSwitchToSummaryButtonClicked();
 
 	UFUNCTION()
-	void OnSummaryButtonClicked();
+	void OnSwitchToImageButtonClicked();
 
 	UFUNCTION()
-	void OnContinueButtonClicked();
+	void OnGenerateInfoButtonClicked();
+
+	UFUNCTION()
+	void OnGenerateSummaryButtonClicked();
+
+	UFUNCTION()
+	void OnGenerateImageButtonClicked();
 
 	UFUNCTION()
 	void OnSelectTopButtonClicked();
@@ -116,33 +159,36 @@ private:
 	// ############### Generate Summary and Image ###############
 
 	UFUNCTION()
-	void GenerateShortSummary(const FString& Summary);
+	void GenerateShortSummary();
 
 	UFUNCTION()
-	void GenerateMaxSummary(const FString& Summary);
+	void GenerateMaxSummary();
 
 	UFUNCTION()
-	void GenerateImageSummary(const FString& Summary);
+	void GenerateImageDescription();
 
 	UFUNCTION()
-	void GenerateChatImage(const FString& Summary);
+	void GenerateChatImage();
 
 	UFUNCTION()
-	FString GetAllMessagesFromConversationHistory();
+	void GenerateInfo();
+
+	UFUNCTION()
+	void GenerateConversationChoices();
 
 	// ############### Message - Functions ###############
 
 	// Functions for adding messages to the chat
 	void AddMessageToChat(const FString& Author, const FString& MessageText);
 	void AddMessageToChatFromUser(const FString& MessageText);
-	void AddMessageToChatFromChatGPT(const FString& MessageText);
+	void AddMessageToChatFromGPT(const FString& MessageText);
 
 	// Functions for remove messages at the chat
 	UFUNCTION()
-	void RemoveLastChatGPTMessageFromScrollBox();
+	void RemoveLastGPTMessageFromScrollBox();
 
 	UFUNCTION()
-	void HandleChatGPTResponse(const FString& Response);
+	void HandleGPTResponse(const FString& Response);
 
 	// GPT-Instanz
 	UPROPERTY()

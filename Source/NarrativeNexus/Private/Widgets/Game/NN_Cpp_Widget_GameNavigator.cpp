@@ -12,7 +12,7 @@ void UNN_Cpp_Widget_GameNavigator::NativeConstruct()
 	AcceptButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_GameNavigator::OnAcceptButtonClicked);
 }
 
-void UNN_Cpp_Widget_GameNavigator::OnWidgetVisibilityChanged()
+void UNN_Cpp_Widget_GameNavigator::OnGameNavigatorWidgetVisibilityChanged()
 {
 	if (this->IsVisible())
 	{
@@ -45,6 +45,10 @@ void UNN_Cpp_Widget_GameNavigator::RemoveAllNodesFromScrollBox()
 	if (NodeScrollBox)
 	{
 		NodeScrollBox->ClearChildren();
+		if (auto* GPTInterface = Cast<INN_Cpp_IF_GPT>(GetWorld()->GetFirstPlayerController()))
+		{
+			GPTInterface->DestroyGPT();
+		}
 	}
 }
 
@@ -59,7 +63,6 @@ void UNN_Cpp_Widget_GameNavigator::OnBackButtonClicked()
 		PCInterface->HideWidget(this);
 		PCInterface->ShowGameMenuWidgetViaInterface();
 	}
-
 	RemoveAllNodesFromScrollBox();
 }
 

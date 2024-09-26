@@ -6,65 +6,48 @@ void UNN_Cpp_Widget_MainOptions::NativeConstruct()
 {
 	Super::NativeConstruct();
 
-	BackButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_MainOptions::OnBackButtonClicked);
-	GenerateImageCheckBox->OnCheckStateChanged.AddDynamic(this, &UNN_Cpp_Widget_MainOptions::OnGenerateImageCheckBoxChanged);
-	GenerateSummaryCheckBox->OnCheckStateChanged.AddDynamic(this, &UNN_Cpp_Widget_MainOptions::OnGenerateSummaryCheckBoxChanged);
-	UpButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_MainOptions::OnUpButtonClicked);
-	DownButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_MainOptions::OnDownButtonClicked);
+	OptionsMainButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_MainOptions::OnSwitchToOptionsMainWidget);
+	OptionsChatButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_MainOptions::OnSwitchToOptionsChatWidget);
+	OptionsCreatorButton->OnClicked.AddUniqueDynamic(this, &UNN_Cpp_Widget_MainOptions::OnSwitchToOptionsCreatorWidget);
 
-	MessageNumberText->SetText(FText::AsNumber(CurrentMessageNumber));
-}
-
-void UNN_Cpp_Widget_MainOptions::OnBackButtonClicked()
-{
-	if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
+	if (OptionsWidgetSwitcher)
 	{
-		Interface->HideWidget(this);
-		Interface->ShowMainMenuWidgetViaInterface();
+		OptionsWidgetSwitcher->SetActiveWidgetIndex(0);
 	}
 }
 
-void UNN_Cpp_Widget_MainOptions::OnGenerateSummaryCheckBoxChanged(bool bIsChecked)
+void UNN_Cpp_Widget_MainOptions::OnSwitchToOptionsMainWidget()
 {
-	// DEBUG
-	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, bIsChecked ? TEXT("Summary Generation Enabled") : TEXT("Summary Generation Disabled"));
-}
-
-bool UNN_Cpp_Widget_MainOptions::IsSummaryGenerationEnabled() const
-{
-	return GenerateSummaryCheckBox->IsChecked();
-}
-
-void UNN_Cpp_Widget_MainOptions::OnGenerateImageCheckBoxChanged(bool bIsChecked)
-{
-	// DEBUG
-	GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Yellow, bIsChecked ? TEXT("Image Generation Enabled") : TEXT("Image Generation Disabled"));
-}
-
-bool UNN_Cpp_Widget_MainOptions::IsImageGenerationEnabled() const
-{
-	return GenerateImageCheckBox->IsChecked();
-}
-
-void UNN_Cpp_Widget_MainOptions::OnUpButtonClicked()
-{
-	if (CurrentMessageNumber < 20)
+	if (OptionsWidgetSwitcher)
 	{
-		CurrentMessageNumber++;
-		MessageNumberText->SetText(FText::AsNumber(CurrentMessageNumber));
+		int32 index = OptionsWidgetSwitcher->GetActiveWidgetIndex();
+		if (index != 0)
+		{
+			OptionsWidgetSwitcher->SetActiveWidgetIndex(0);
+		}
 	}
 }
 
-void UNN_Cpp_Widget_MainOptions::OnDownButtonClicked()
+void UNN_Cpp_Widget_MainOptions::OnSwitchToOptionsChatWidget()
 {
-	if (CurrentMessageNumber > 4)
+	if (OptionsWidgetSwitcher)
 	{
-		CurrentMessageNumber--;
-		MessageNumberText->SetText(FText::AsNumber(CurrentMessageNumber));
+		int32 index = OptionsWidgetSwitcher->GetActiveWidgetIndex();
+		if (index != 1)
+		{
+			OptionsWidgetSwitcher->SetActiveWidgetIndex(1);
+		}
 	}
 }
 
-int UNN_Cpp_Widget_MainOptions::GetCurrentMessageNumber() const
+void UNN_Cpp_Widget_MainOptions::OnSwitchToOptionsCreatorWidget()
 {
-	return CurrentMessageNumber;
+	if (OptionsWidgetSwitcher)
+	{
+		int32 index = OptionsWidgetSwitcher->GetActiveWidgetIndex();
+		if (index != 2)
+		{
+			OptionsWidgetSwitcher->SetActiveWidgetIndex(2);
+		}
+	}
 }

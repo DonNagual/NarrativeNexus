@@ -8,6 +8,7 @@
 #include "Components/Button.h"
 #include "Blueprint/UserWidget.h"
 #include "General/NN_Cpp_GameInstance.h"
+#include "Enums/NN_Cpp_EnumButtons.h"
 #include "Interface/NN_Cpp_IF_WidgetController.h"
 #include "NN_Cpp_Widget_Category.generated.h"
 
@@ -19,6 +20,17 @@ class NARRATIVENEXUS_API UNN_Cpp_Widget_Category : public UUserWidget
 public:
 	virtual void NativeConstruct() override;
 
+	// ############### Buttons ###############
+
+	UFUNCTION()
+	void OnMainButtonClicked();
+
+	UFUNCTION()
+	void OnGameButtonClicked();
+
+	UFUNCTION()
+	void OnCreatorButtonClicked();
+
 	// ############### Widgets ###############
 
 	UPROPERTY(meta = (BindWidget))
@@ -29,6 +41,9 @@ public:
 
 	UPROPERTY(meta = (BindWidget))
 	class UUserWidget* CreatorWidget;
+
+	UPROPERTY(meta = (BindWidget))
+	class UUserWidget* AreYouSureWidget;
 
 protected:
 	UPROPERTY(meta = (BindWidget))
@@ -62,15 +77,6 @@ private:
 
 	UFUNCTION()
 	void HideAllWidgets();
-
-	UFUNCTION()
-	void OnMainButtonClicked();
-
-	UFUNCTION()
-	void OnGameButtonClicked();
-
-	UFUNCTION()
-	void OnCreatorButtonClicked();
 
 	UFUNCTION()
 	void OnHelpButtonClicked();

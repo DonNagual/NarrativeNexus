@@ -15,7 +15,7 @@ void UNN_Cpp_Widget_GameMenu::OnNewNexusButtonClicked()
 	if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
 	{
 		Interface->ShowGameNavigatorWidgetViaInterface();
-		Interface->OnWidgetVisibilityChangedViaInterface();
+		Interface->OnGameNavigatorWidgetVisibilityChangedViaInterface();
 	}
 }
 

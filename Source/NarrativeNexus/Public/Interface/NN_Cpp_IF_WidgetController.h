@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "UObject/Interface.h"
+#include "Enums/NN_Cpp_EnumButtons.h"
 #include "NN_Cpp_IF_WidgetController.generated.h"
 
 // This class does not need to be modified.
@@ -21,7 +22,6 @@ public:
 
 	virtual void ShowWidget(UUserWidget* SubWidget) = 0;
 	virtual void HideWidget(UUserWidget* SubWidget) = 0;
-	virtual void OnWidgetVisibilityChangedViaInterface() = 0;
 
 	// ############### Main ###############
 
@@ -47,8 +47,32 @@ public:
 
 	// ############### Options ###############
 
-	virtual bool IsSummaryGenerationEnabledViaInterface() const = 0;
-	virtual bool IsImageGenerationEnabledViaInterface() const = 0;
-	virtual int32 GetCurrentMessageNumberViaInterface() const = 0;
+	virtual bool IsShortSummaryGenerationEnabledViaInterface() const = 0;
+	virtual bool IsMaxSummaryGenerationEnabledViaInterface() const = 0;
+	virtual bool IsInfoGenerationEnabledViaInterface() const = 0;
+	virtual bool IsSuggestionGenerationEnabledViaInterface() const = 0;
+	virtual bool IsDescriptionGenerationForImageEnabledViaInterface() const = 0;
+	virtual bool IsGenerateImageFromDiscriptionEnabledViaInterface() const = 0;
+	virtual int32 GetMaxConversationHistorySizeViaInterface() const = 0;
+
+	// ############### GameNavigator ###############
 	
+	virtual void RemoveAllNodesFromScrollBoxViaInterface() = 0;
+	virtual void OnGameNavigatorWidgetVisibilityChangedViaInterface() = 0;
+
+	// ############### GameChat ###############
+
+	virtual void RemoveAllGPTMessagesFromScrollBoxViaInterface() = 0;
+	virtual bool IsGameChatWidgetVisibleViaInterface() = 0;
+
+	// ############### AreYouSure ###############
+	
+	virtual void ShowAreYouSureWidgetViaInterface() = 0;
+	virtual void HideAreYouSureWidgetViaInterface() = 0;
+	virtual void OnYesButtonClickedAfterMainButtonViaInterface() = 0;
+	virtual void OnYesButtonClickedAfterGameButtonViaInterface() = 0;
+	virtual void OnYesButtonClickedAfterCreatorButtonViaInterface() = 0;
+	virtual void OnYesButtonClickedAfterBackButtonViaInterface() = 0;
+
+	virtual void SetTriggeredWidgetViaInterface(ETriggeredButton TriggeredButton) = 0;
 };

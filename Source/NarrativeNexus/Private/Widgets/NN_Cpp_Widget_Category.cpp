@@ -1,4 +1,5 @@
 // NN_Cpp_Widget_Category.cpp
+
 #include "Widgets/NN_Cpp_Widget_Category.h"
 
 void UNN_Cpp_Widget_Category::NativeConstruct()
@@ -25,6 +26,7 @@ void UNN_Cpp_Widget_Category::HideAllWidgets()
 	HideCategorySubWidget(CreatorWidget);
 	HideCategorySubWidget(HelpWidget);
 	HideCategorySubWidget(QuitWidget);
+	HideCategorySubWidget(AreYouSureWidget);
 }
 
 void UNN_Cpp_Widget_Category::HideCategorySubWidget(UUserWidget* SubWidget)
@@ -37,31 +39,68 @@ void UNN_Cpp_Widget_Category::HideCategorySubWidget(UUserWidget* SubWidget)
 
 void UNN_Cpp_Widget_Category::OnMainButtonClicked()
 {
-	HideAllWidgets();
 	if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
 	{
-		Interface->ShowWidget(MainWidget);
-		Interface->ShowMainMenuWidgetViaInterface();
+		bool IsVisible = Interface->IsGameChatWidgetVisibleViaInterface();
+		UE_LOG(LogTemp, Error, TEXT("Is GameChatWidget Visible: %s"), IsVisible ? TEXT("True") : TEXT("False"));
+		if (IsVisible)
+		{
+			Interface->ShowAreYouSureWidgetViaInterface();
+			Interface->SetTriggeredWidgetViaInterface(ETriggeredButton::MainButton);
+		}
+		else
+		{
+			HideAllWidgets();
+			Interface->ShowWidget(MainWidget);
+			Interface->ShowMainMenuWidgetViaInterface();
+			Interface->RemoveAllNodesFromScrollBoxViaInterface();
+			Interface->RemoveAllGPTMessagesFromScrollBoxViaInterface();
+		}
 	}
 }
 
 void UNN_Cpp_Widget_Category::OnGameButtonClicked()
 {
-	HideAllWidgets();
 	if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
 	{
-		Interface->ShowWidget(GameWidget);
-		Interface->ShowGameMenuWidgetViaInterface();
+		bool IsVisible = Interface->IsGameChatWidgetVisibleViaInterface();
+		UE_LOG(LogTemp, Error, TEXT("Is GameChatWidget Visible: %s"), IsVisible ? TEXT("True") : TEXT("False"));
+		if (IsVisible)
+		{
+			Interface->ShowAreYouSureWidgetViaInterface();
+			Interface->SetTriggeredWidgetViaInterface(ETriggeredButton::GameButton);
+		}
+		else
+		{
+
+			HideAllWidgets();
+			Interface->ShowWidget(GameWidget);
+			Interface->ShowGameMenuWidgetViaInterface();
+			Interface->RemoveAllNodesFromScrollBoxViaInterface();
+			Interface->RemoveAllGPTMessagesFromScrollBoxViaInterface();
+		}
 	}
 }
 
 void UNN_Cpp_Widget_Category::OnCreatorButtonClicked()
 {
-	HideAllWidgets();
 	if (auto* Interface = Cast<INN_Cpp_IF_WidgetController>(GetWorld()->GetFirstPlayerController()))
 	{
-		Interface->ShowWidget(CreatorWidget);
-		Interface->ShowCreatorMenuWidgetViaInterface();
+		bool IsVisible = Interface->IsGameChatWidgetVisibleViaInterface();
+		UE_LOG(LogTemp, Error, TEXT("Is GameChatWidget Visible: %s"), IsVisible ? TEXT("True") : TEXT("False"));
+		if (IsVisible)
+		{
+			Interface->ShowAreYouSureWidgetViaInterface();
+			Interface->SetTriggeredWidgetViaInterface(ETriggeredButton::CreatorButton);
+		}
+		else
+		{
+			HideAllWidgets();
+			Interface->ShowWidget(CreatorWidget);
+			Interface->ShowCreatorMenuWidgetViaInterface();
+			Interface->RemoveAllNodesFromScrollBoxViaInterface();
+			Interface->RemoveAllGPTMessagesFromScrollBoxViaInterface();
+		}
 	}
 }
 

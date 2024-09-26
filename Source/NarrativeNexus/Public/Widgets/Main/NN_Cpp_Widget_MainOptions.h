@@ -3,8 +3,7 @@
 
 #include "CoreMinimal.h"
 #include "Components/Button.h"
-#include "Components/CheckBox.h"
-#include "Components/TextBlock.h"
+#include "Components/WidgetSwitcher.h"
 #include "Blueprint/UserWidget.h"
 #include "Interface/NN_Cpp_IF_WidgetController.h"
 #include "NN_Cpp_Widget_MainOptions.generated.h"
@@ -17,57 +16,43 @@ class NARRATIVENEXUS_API UNN_Cpp_Widget_MainOptions : public UUserWidget
 public:
 	virtual void NativeConstruct() override;
 
-	bool IsImageGenerationEnabled() const;
+	// ############### Widgets ###############
 
-	bool IsSummaryGenerationEnabled() const;
+	UPROPERTY(meta = (BindWidget))
+	class UUserWidget* MainOptionsMainWidget;
 
-	int GetCurrentMessageNumber() const;
+	UPROPERTY(meta = (BindWidget))
+	class UUserWidget* MainOptionsChatWidget;
+
+	UPROPERTY(meta = (BindWidget))
+	class UUserWidget* MainOptionsCreatorWidget;
 
 protected:
 	// ############### Buttons ###############
 
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<UButton> BackButton;
-
-	// ############### Message Counter ###############
+	TObjectPtr<UButton> OptionsMainButton;
 
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<UButton> UpButton;
+	TObjectPtr<UButton> OptionsChatButton;
 
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<UButton> DownButton;
+	TObjectPtr<UButton> OptionsCreatorButton;
+
+	// ############### WidgetSwitcher ###############
 
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<UTextBlock> MessageNumberText;
-	
-	// ############### CheckBox ###############
-
-	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<UCheckBox> GenerateImageCheckBox;
-
-	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<UCheckBox> GenerateSummaryCheckBox;
+	TObjectPtr<UWidgetSwitcher> OptionsWidgetSwitcher;
 
 private:
 	// ############### Functions ###############
 
 	UFUNCTION()
-	void OnBackButtonClicked();
+	void OnSwitchToOptionsMainWidget();
 
 	UFUNCTION()
-	void OnGenerateSummaryCheckBoxChanged(bool bIsChecked);
+	void OnSwitchToOptionsChatWidget();
 
 	UFUNCTION()
-	void OnGenerateImageCheckBoxChanged(bool bIsChecked);
-
-	// ############### Message Number ###############
-	
-	int32 CurrentMessageNumber = 4;
-
-	UFUNCTION()
-	void OnUpButtonClicked();
-
-	UFUNCTION()
-	void OnDownButtonClicked();
-
+	void OnSwitchToOptionsCreatorWidget();
 };

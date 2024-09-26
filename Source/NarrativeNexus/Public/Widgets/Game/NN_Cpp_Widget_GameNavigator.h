@@ -20,9 +20,13 @@ class NARRATIVENEXUS_API UNN_Cpp_Widget_GameNavigator : public UUserWidget
 	
 public:
 	virtual void NativeConstruct() override;
+
 	//virtual void OnWidgetVisibilityChanged(ESlateVisibility OldVisibility, ESlateVisibility NewVisibility) override;
 	UFUNCTION()
-	void OnWidgetVisibilityChanged();
+	void OnGameNavigatorWidgetVisibilityChanged();
+
+	UFUNCTION()
+	void RemoveAllNodesFromScrollBox();
 
 protected:
 
@@ -79,6 +83,4 @@ private:
 	UFUNCTION()
 	void AddNodeToScrollBox();
 
-	UFUNCTION()
-	void RemoveAllNodesFromScrollBox();
 };
