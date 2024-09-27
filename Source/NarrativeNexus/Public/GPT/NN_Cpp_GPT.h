@@ -1,5 +1,4 @@
 // NN_Cpp_GPT.h
-
 #pragma once
 
 #include "CoreMinimal.h"

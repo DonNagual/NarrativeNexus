@@ -17,14 +17,11 @@
 	],
 	"Plugins": [
 		{
-			"Name": "ModelingToolsEditorMode",
-			"Enabled": true,
-			"TargetAllowList": [
-				"Editor"
-			]
+			"Name": "SQLiteCore",
+			"Enabled": true
 		},
 		{
-			"Name": "SQLiteCore",
+			"Name": "SQLiteSupport",
 			"Enabled": true
 		}
 	]

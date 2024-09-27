@@ -16,15 +16,6 @@
 #include "Widgets/Game/NN_Cpp_Widget_GameMenu.h"
 #include "Widgets/Game/NN_Cpp_Widget_GameChat.h"
 #include "Widgets/Game/NN_Cpp_Widget_GameNavigator.h"
-//#include "GPT/NN_Cpp_APIKeyLoader.h"
-//#include "GPT/NN_Cpp_JSONHandler.h"
-//#include "GPT/NN_Cpp_HTTPRequestHandler.h"
-//#include "GPT/NN_Cpp_GPTTextRequestManager.h"
-//#include "GPT/NN_Cpp_GPTTextResponseManager.h"
-//#include "GPT/NN_Cpp_GPTImageRequestManager.h"
-//#include "GPT/NN_Cpp_GPTImageResponseManager.h"
-//#include "GPT/NN_Cpp_GPTConversationManager.h"
-//#include "Interface/NN_Cpp_IF_GPT.h"
 #include "NN_Cpp_PlayerController.generated.h"
 
 UCLASS()

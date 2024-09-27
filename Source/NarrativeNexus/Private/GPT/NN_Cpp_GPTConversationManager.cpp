@@ -2,11 +2,6 @@
 
 #include "GPT/NN_Cpp_GPTConversationManager.h"
 
-//void UNN_Cpp_GPTConversationManager::SetGPT(UNN_Cpp_GPT* InGPT)
-//{
-//	GPTInstance = InGPT;
-//}
-
 // ############################## Conversation History ##############################
 
 void UNN_Cpp_GPTConversationManager::AddMessageToHistory(const FString& Role, const FString Content)
@@ -61,11 +56,6 @@ void UNN_Cpp_GPTConversationManager::TrimConversationHistory()
 		int MaxSize = Interface->GetMaxConversationHistorySizeViaInterface();
 		if (ConversationHistory.Num() > MaxSize)
 		{
-			//if (GPTInstance)
-			//{
-			//	// DOTO
-			//	UE_LOG(LogTemp, Error, TEXT("NN_Cpp_GPTConversationManager: "))
-			//}
 			ConversationHistory.RemoveAt(0, ConversationHistory.Num() - MaxSize);
 		}
 	}
