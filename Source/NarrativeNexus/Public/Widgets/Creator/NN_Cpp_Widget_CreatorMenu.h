@@ -1,9 +1,11 @@
-// Fill out your copyright notice in the Description page of Project Settings.
 // NN_Cpp_Widget_CreatorMenu.h
+
 #pragma once
 
 #include "CoreMinimal.h"
 #include "Components/Button.h"
+#include "Components/EditableTextBox.h"
+#include "Components/WidgetSwitcher.h"
 #include "Blueprint/UserWidget.h"
 #include "Interface/NN_Cpp_IF_WidgetController.h"
 #include "NN_Cpp_Widget_CreatorMenu.generated.h"
@@ -20,24 +22,49 @@ protected:
 	// ############### Buttons ###############
 
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<UButton> WorldButton;
+	TObjectPtr<UButton> CreateNewNexusButton;
 
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<UButton> StoryButton;
+	TObjectPtr<UButton> LoadExistingNexusButton;
 
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<UButton> CharacterButton;
+	TObjectPtr<UButton> OpenNexusCreatorButton;
+
+	// ############### WidgetSwitcher ###############
+
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UWidgetSwitcher> NexusCreatorWidgetSwitcher;
+
+	// ############### Text Box ###############
+
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UEditableTextBox> CreateNexusNameEditableTextBox;
+
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UEditableTextBox> CreatePasswordEditableTextBox;
+
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UEditableTextBox> CreateRepeatPasswordEditableTextBox;
+
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UEditableTextBox> LoadNexusNameEditableTextBox;
+
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UEditableTextBox> LoadPasswordEditableTextBox;
 
 private:
 
 	// ############### Functions ###############
 
 	UFUNCTION()
-	void OnWorldButtonClicked();
+	void OnOpenNexusCreatorButtonClicked();
 
 	UFUNCTION()
-	void OnStoryButtonClicked();
+	void OnSwitchToCreateNewNexusBorder();
 
 	UFUNCTION()
-	void OnCharacterButtonClicked();
+	void OnSwitchToLoadExistingNexusBorder();
+
+
+
 };

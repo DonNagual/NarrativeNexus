@@ -1,5 +1,5 @@
-// Fill out your copyright notice in the Description page of Project Settings.
 // NN_Cpp_Widget_Creator.h
+
 #pragma once
 
 #include "CoreMinimal.h"
@@ -17,17 +17,14 @@ public:
 
 	// ############### Widgets ###############
 
-	UPROPERTY(meta = (BindwIDGET))
+	UPROPERTY(meta = (BindWidget))
 	class UUserWidget* CreatorMenuWidget;
 
-	UPROPERTY(meta = (BindWidget))
-	class UUserWidget* CreatorWorldWidget;
-
-	UPROPERTY(meta = (BindWidget))
-	class UUserWidget* CreatorCharacterWidget;
+	UPROPERTY(META = (BindWidget))
+	class UUserWidget* CreatorNavigatorWidget;
 
 	UPROPERTY(META = (BindWidget))
-	class UUserWidget* CreatorStoryWidget;
+	class UUserWidget* CharacterMenuWidget;
 
 	// ############### Functions ###############
 
@@ -35,13 +32,10 @@ public:
 	virtual void ShowCreatorMenuWidget();
 
 	UFUNCTION()
-	virtual void ShowCreatorWorlWidget();
+	virtual void ShowCreatorNavigatorWidget();
 
 	UFUNCTION()
-	virtual void ShowCreatorCharacterWidget();
-
-	UFUNCTION()
-	virtual void ShowCreatorStoryWidget();
+	virtual void ShowCharacterMenuWidget();
 
 protected:
 

@@ -23,6 +23,10 @@
 		{
 			"Name": "SQLiteSupport",
 			"Enabled": true
+		},
+		{
+			"Name": "DatabaseSupport",
+			"Enabled": true
 		}
 	]
 }

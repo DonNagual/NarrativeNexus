@@ -1,4 +1,5 @@
 // NN_Cpp_Widget_Category.h
+
 #pragma once
 
 #include "CoreMinimal.h"

@@ -46,8 +46,12 @@ void UNN_Cpp_Widget_AreYouSure::OnYesButtonClicked()
 		case ETriggeredButton::ReaktionButton:
 			
 			break;
-		case ETriggeredButton::BackButton:
-			Interface->OnYesButtonClickedAfterBackButtonViaInterface();
+		case ETriggeredButton::BackGameChatButton:
+			Interface->OnYesButtonClickedAfterBackGameChatButtonViaInterface();
+			HideAreYouSureWidget();
+			break;
+		case ETriggeredButton::BackCreateButton:
+			Interface->OnYesButtonClickedAfterBackCreateButtonViaInterface();
 			HideAreYouSureWidget();
 			break;
 		default:

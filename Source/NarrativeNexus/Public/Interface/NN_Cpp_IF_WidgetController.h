@@ -35,8 +35,9 @@ public:
 
 	virtual void ShowCreatorMenuWidgetViaInterface() = 0;
 	virtual void ShowCreatorWorlWidgetViaInterface() = 0;
-	virtual void ShowCreatorCharacterWidgetViaInterface() = 0;
+	virtual void ShowCharacterMenuWidgetViaInterface() = 0;
 	virtual void ShowCreatorStoryWidgetViaInterface() = 0;
+	virtual void ShowCreatorNavigatorWidgetViaInterface() = 0;
 
 	// ############### Game ###############
 
@@ -72,7 +73,8 @@ public:
 	virtual void OnYesButtonClickedAfterMainButtonViaInterface() = 0;
 	virtual void OnYesButtonClickedAfterGameButtonViaInterface() = 0;
 	virtual void OnYesButtonClickedAfterCreatorButtonViaInterface() = 0;
-	virtual void OnYesButtonClickedAfterBackButtonViaInterface() = 0;
+	virtual void OnYesButtonClickedAfterBackGameChatButtonViaInterface() = 0;
+	virtual void OnYesButtonClickedAfterBackCreateButtonViaInterface() = 0;
 
 	virtual void SetTriggeredWidgetViaInterface(ETriggeredButton TriggeredButton) = 0;
 };

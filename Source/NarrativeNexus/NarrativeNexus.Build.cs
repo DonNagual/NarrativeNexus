@@ -16,14 +16,16 @@ public class NarrativeNexus : ModuleRules
             "Engine",
             "InputCore",
             "EnhancedInput",
-            "Http",
-            "Json"
+            "HTTP",
+            "Json",
+            "DatabaseSupport",
+            "SQLiteCore",
+            "SQLiteSupport"
         });
 
 		PrivateDependencyModuleNames.AddRange(new string[]
         {
-            "SQLiteCore",
-            "SQLiteSupport"
+            
         });
 
         // Uncomment if you are using Slate UI

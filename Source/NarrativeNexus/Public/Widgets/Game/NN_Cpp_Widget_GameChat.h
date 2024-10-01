@@ -40,7 +40,7 @@ protected:
 	TObjectPtr<UButton> SendButtom;
 
 	UPROPERTY(meta = (BindWidget))
-	TObjectPtr<UButton> BackButton;
+	TObjectPtr<UButton> BackGameChatButton;
 
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<UButton> ReaktionButton;
@@ -121,7 +121,7 @@ private:
 	void OnSendButtomClicked();
 
 	UFUNCTION()
-	void OnBackButtonClicked();
+	void OnBackGameChatButtonClicked();
 
 	UFUNCTION()
 	void OnReaktionButtonClicked();

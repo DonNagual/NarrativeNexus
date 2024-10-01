@@ -12,6 +12,8 @@
 #include "Widgets/Main/NN_Cpp_Widget_MainOptions.h"
 #include "Widgets/Main/NN_Cpp_Widget_MainOptionsChat.h"
 #include "Widgets/Creator/NN_Cpp_Widget_Creator.h"
+#include "Widgets/Creator/Character/NN_Cpp_Widget_CharacterMenu.h"
+#include "Widgets/Creator/NN_Cpp_Widget_CreatorNavigator.h"
 #include "Widgets/Game/NN_Cpp_Widget_Game.h"
 #include "Widgets/Game/NN_Cpp_Widget_GameMenu.h"
 #include "Widgets/Game/NN_Cpp_Widget_GameChat.h"
@@ -49,8 +51,9 @@ public:
 
 	virtual void ShowCreatorMenuWidgetViaInterface() override;
 	virtual void ShowCreatorWorlWidgetViaInterface() override;
-	virtual void ShowCreatorCharacterWidgetViaInterface() override;
+	virtual void ShowCharacterMenuWidgetViaInterface() override;
 	virtual void ShowCreatorStoryWidgetViaInterface() override;
+	virtual void ShowCreatorNavigatorWidgetViaInterface() override;
 
 	// ############### Game ###############
 
@@ -88,7 +91,8 @@ public:
 	virtual void OnYesButtonClickedAfterMainButtonViaInterface() override;
 	virtual void OnYesButtonClickedAfterGameButtonViaInterface() override;
 	virtual void OnYesButtonClickedAfterCreatorButtonViaInterface() override;
-	virtual void OnYesButtonClickedAfterBackButtonViaInterface() override;
+	virtual void OnYesButtonClickedAfterBackGameChatButtonViaInterface() override;
+	virtual void OnYesButtonClickedAfterBackCreateButtonViaInterface() override;
 
 protected:
 
@@ -143,6 +147,12 @@ private:
 
 	UPROPERTY()
 	class UNN_Cpp_Widget_Creator* CreatorWidget;
+
+	UPROPERTY()
+	class UNN_Cpp_Widget_CreatorNavigator* CreatorNavigatorWidget;
+
+	UPROPERTY()
+	class UNN_Cpp_Widget_CharacterMenu* CharacterMenuWidget;
 
 	UPROPERTY()
 	class UNN_Cpp_Widget_Game* GameWidget;

@@ -18,11 +18,13 @@ void ANN_Cpp_PlayerController::InitializeWidgets()
 		CategoryWidget = Cast<UNN_Cpp_Widget_Category>(Widget);
 
 		CreatorWidget = Cast<UNN_Cpp_Widget_Creator>(CategoryWidget->CreatorWidget);
-		MainWidget = Cast<UNN_Cpp_Widget_Main>(CategoryWidget->MainWidget);
+		CreatorNavigatorWidget = Cast<UNN_Cpp_Widget_CreatorNavigator>(CreatorWidget->CreatorNavigatorWidget);
 
+
+
+		MainWidget = Cast<UNN_Cpp_Widget_Main>(CategoryWidget->MainWidget);
 		MainMenuWidget = Cast< UNN_Cpp_Widget_MainMenu>(MainWidget->MainMenuWidget);
 		MainOptionsWidget = Cast<UNN_Cpp_Widget_MainOptions>(MainWidget->MainOptionsWidget);
-
 		MainOptionsChatWidget = Cast<UNN_Cpp_Widget_MainOptionsChat>(MainOptionsWidget->MainOptionsChatWidget);
 
 		GameWidget = Cast<UNN_Cpp_Widget_Game>(CategoryWidget->GameWidget);
@@ -203,17 +205,22 @@ void ANN_Cpp_PlayerController::ShowCreatorMenuWidgetViaInterface()
 
 void ANN_Cpp_PlayerController::ShowCreatorWorlWidgetViaInterface()
 {
-	CreatorWidget->ShowCreatorWorlWidget();
+	
 }
 
-void ANN_Cpp_PlayerController::ShowCreatorCharacterWidgetViaInterface()
+void ANN_Cpp_PlayerController::ShowCharacterMenuWidgetViaInterface()
 {
-	CreatorWidget->ShowCreatorCharacterWidget();
+	CreatorWidget->ShowCharacterMenuWidget();
 }
 
 void ANN_Cpp_PlayerController::ShowCreatorStoryWidgetViaInterface()
 {
-	CreatorWidget->ShowCreatorStoryWidget();
+	
+}
+
+void ANN_Cpp_PlayerController::ShowCreatorNavigatorWidgetViaInterface()
+{
+	CreatorWidget->ShowCreatorNavigatorWidget();
 }
 
 // ############### Game ###############
@@ -347,11 +354,16 @@ void ANN_Cpp_PlayerController::OnYesButtonClickedAfterCreatorButtonViaInterface(
 	CategoryWidget->OnCreatorButtonClicked();
 }
 
-void ANN_Cpp_PlayerController::OnYesButtonClickedAfterBackButtonViaInterface()
+void ANN_Cpp_PlayerController::OnYesButtonClickedAfterBackGameChatButtonViaInterface()
 {
 	GameChatWidget->RemoveAllGPTMessagesFromScrollBox();
 	HideWidget(GameChatWidget);
 	DestroyGPT();
 	GameWidget->ShowGameNavigatorWidget();
 	GameNavigatorWidget->OnGameNavigatorWidgetVisibilityChanged();
+}
+
+void ANN_Cpp_PlayerController::OnYesButtonClickedAfterBackCreateButtonViaInterface()
+{
+	CreatorWidget->ShowCreatorMenuWidget();
 }
