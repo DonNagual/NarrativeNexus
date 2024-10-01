@@ -29,7 +29,7 @@ public:
 	class UUserWidget* CharacterAbilitiesWidget;
 
 	UPROPERTY(meta = (BindWidget))
-	class UUserWidget* CharacterBackstoryWidget;
+	class UUserWidget* CharacterBackgroundWidget;
 
 protected:
 	// ############### Buttons ###############
